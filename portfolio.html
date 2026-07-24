@@ -1,4 +1,3 @@
-<!-- portfolio.html -->
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -23,79 +22,113 @@
     </nav>
 
     <main>
-        <section>
-            <div style="text-align: center;"><h2 data-i18n="page_portfolio_title">作品集與專案</h2></div>
-            <div class="portfolio-grid">
-                <div class="portfolio-card">
-                    <img src="https://via.placeholder.com/300x150" alt="專案圖片">
-                    <div class="portfolio-content">
-                        <h3 data-i18n="proj1_title">第一個專案</h3>
-                        <p data-i18n="proj1_desc">這裡是專案的簡短描述。展示了什麼技術或解決了什麼問題。</p>
-                        <a href="#" data-i18n="btn_more">查看更多 →</a>
-                    </div>
+        <section class="portfolio-section">
+            
+            <!-- 確保標題置中 -->
+            <div style="text-align: center; margin-bottom: 50px; width: 100%;">
+                <h2 style="display: inline-block; margin: 0; padding-bottom: 10px; border-bottom: 3px solid #ff4d4d;" data-i18n="page_portfolio_title">作品集與專案</h2>
+            </div>
+            
+            <!-- 作品集卡片區塊 -->
+            <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;">
+                
+                <!-- 專案 1：網頁設計與開發 -->
+                <div class="portfolio-card" style="background-color: #1a1a1a; border-radius: 15px; padding: 20px; width: 300px;">
+                    <!-- 未來替換圖片，現在用一個預設的深色方塊代替 -->
+                    <img src="https://via.placeholder.com/300x150/333333/888888?text=Project+1" alt="Project 1" style="width: 100%; border-radius: 10px; margin-bottom: 15px;">
+                    <h3 data-i18n="proj1_title" style="margin-bottom: 10px;">企業品牌形象重塑與網站開發</h3>
+                    <p data-i18n="proj1_desc" style="font-size: 0.9em; color: #ccc; line-height: 1.5; margin-bottom: 20px;">結合現代美學與流暢的 UI/UX 設計，使用 HTML/CSS/JS 為客戶打造響應式官方網站，大幅提升品牌專業度與使用者停留時間。</p>
+                    <!-- 這是可以點擊的超連結，href="#" 代表先不跳轉到別的網頁 -->
+                    <a href="#" style="color: #ff4d4d; text-decoration: none; font-weight: bold; transition: 0.3s;" data-i18n="proj1_link">查看專案 &rarr;</a>
                 </div>
-                <div class="portfolio-card">
-                    <img src="https://via.placeholder.com/300x150" alt="專案圖片">
-                    <div class="portfolio-content">
-                        <h3 data-i18n="proj2_title">部落格文章分享</h3>
-                        <p data-i18n="proj2_desc">分享你的學習心得、技術文章或生活點滴。</p>
-                        <a href="#" data-i18n="btn_read">閱讀文章 →</a>
-                    </div>
+
+                <!-- 專案 2：影片剪輯與特效 -->
+                <div class="portfolio-card" style="background-color: #1a1a1a; border-radius: 15px; padding: 20px; width: 300px;">
+                    <img src="https://via.placeholder.com/300x150/333333/888888?text=Project+2" alt="Project 2" style="width: 100%; border-radius: 10px; margin-bottom: 15px;">
+                    <h3 data-i18n="proj2_title" style="margin-bottom: 10px;">商業宣傳影片與特效剪輯</h3>
+                    <p data-i18n="proj2_desc" style="font-size: 0.9em; color: #ccc; line-height: 1.5; margin-bottom: 20px;">運用 Adobe Premiere Pro 與 After Effects 製作高質感的商業短片。透過精準的節奏掌控與視覺特效，有效提升產品曝光率。</p>
+                    <a href="#" style="color: #ff4d4d; text-decoration: none; font-weight: bold; transition: 0.3s;" data-i18n="proj2_link">觀看影片 &rarr;</a>
                 </div>
-                <div class="portfolio-card">
-                    <img src="https://via.placeholder.com/300x150" alt="專案圖片">
-                    <div class="portfolio-content">
-                        <h3 data-i18n="proj3_title">第三個專案</h3>
-                        <p data-i18n="proj3_desc">這裡是專案的簡短描述。展示了什麼技術或解決了什麼問題。</p>
-                        <a href="#" data-i18n="btn_more">查看更多 →</a>
-                    </div>
+
+                <!-- 專案 3：互動程式開發 -->
+                <div class="portfolio-card" style="background-color: #1a1a1a; border-radius: 15px; padding: 20px; width: 300px;">
+                    <img src="https://via.placeholder.com/300x150/333333/888888?text=Project+3" alt="Project 3" style="width: 100%; border-radius: 10px; margin-bottom: 15px;">
+                    <h3 data-i18n="proj3_title" style="margin-bottom: 10px;">互動式網頁應用程式開發</h3>
+                    <p data-i18n="proj3_desc" style="font-size: 0.9em; color: #ccc; line-height: 1.5; margin-bottom: 20px;">從零到一獨立開發的網頁應用程式，導入模組化架構與多國語言切換系統，展現扎實的邏輯思維與前端開發能力。</p>
+                    <a href="#" style="color: #ff4d4d; text-decoration: none; font-weight: bold; transition: 0.3s;" data-i18n="proj3_link">閱讀文章 &rarr;</a>
                 </div>
+
             </div>
         </section>
     </main>
 
     <footer>
-        <p data-i18n="footer_contact">聯絡我：your.email@example.com</p>
-        <p style="margin-top: 10px;">&copy; 2024 <span data-i18n="footer_rights">[你的名字]. 版權所有</span></p>
+        <p data-i18n="footer_contact">聯絡我：anle82760@gmail.com</p>
+        <p style="margin-top: 10px;">&copy; 2024 <span data-i18n="footer_rights">BroQiangStudio. 版權所有.</span></p>
     </footer>
 
+    <!-- ================= 完整的語言切換系統與字典 ================= -->
     <script>
         const translations = {
             "zh-TW": {
                 "nav_about": "關於我", "nav_resume": "專業履歷", "nav_portfolio": "作品集",
                 "page_portfolio_title": "作品集與專案",
-                "proj1_title": "第一個專案", "proj1_desc": "這裡是專案的簡短描述。展示了什麼技術或解決了什麼問題。",
-                "proj2_title": "部落格文章分享", "proj2_desc": "分享你的學習心得、技術文章或生活點滴。",
-                "proj3_title": "第三個專案", "proj3_desc": "這裡是專案的簡短描述。展示了什麼技術或解決了什麼問題。",
-                "btn_more": "查看更多 →", "btn_read": "閱讀文章 →",
-                "footer_contact": "聯絡我：your.email@example.com", "footer_rights": "[你的名字]. 版權所有."
+                "proj1_title": "企業品牌形象重塑與網站開發",
+                "proj1_desc": "結合現代美學與流暢的 UI/UX 設計，使用 HTML/CSS/JS 為客戶打造響應式官方網站，大幅提升品牌專業度與使用者停留時間。",
+                "proj1_link": "查看專案 →",
+                "proj2_title": "商業宣傳影片與特效剪輯",
+                "proj2_desc": "運用 Adobe Premiere Pro 與 After Effects 製作高質感的商業短片。透過精準的節奏掌控與視覺特效，有效提升產品曝光率。",
+                "proj2_link": "觀看影片 →",
+                "proj3_title": "互動式網頁應用程式開發",
+                "proj3_desc": "從零到一獨立開發的網頁應用程式，導入模組化架構與多國語言切換系統，展現扎實的邏輯思維與前端開發能力。",
+                "proj3_link": "閱讀文章 →",
+                "footer_contact": "聯絡我：anle82760@gmail.com",
+                "footer_rights": "BroQiangStudio. 版權所有."
             },
             "zh-CN": {
                 "nav_about": "关于我", "nav_resume": "专业履历", "nav_portfolio": "作品集",
-                "page_portfolio_title": "作品集与项目",
-                "proj1_title": "第一个项目", "proj1_desc": "这里是项目的简短描述。展示了什么技术或解决了什么问题。",
-                "proj2_title": "博客文章分享", "proj2_desc": "分享你的学习心得、技术文章或生活点滴。",
-                "proj3_title": "第三个项目", "proj3_desc": "这里是项目的简短描述。展示了什么技术或解决了什么问题。",
-                "btn_more": "查看更多 →", "btn_read": "阅读文章 →",
-                "footer_contact": "联系我：your.email@example.com", "footer_rights": "[你的名字]. 版权所有."
+                "page_portfolio_title": "作品集与专案",
+                "proj1_title": "企业品牌形象重塑与网站开发",
+                "proj1_desc": "结合现代美学与流畅的 UI/UX 设计，使用 HTML/CSS/JS 为客户打造响应式官方网站，大幅提升品牌专业度与使用者停留时间。",
+                "proj1_link": "查看专案 →",
+                "proj2_title": "商业宣传影片与特效剪辑",
+                "proj2_desc": "运用 Adobe Premiere Pro 与 After Effects 制作高质感的商业短片。透过精准的节奏掌控与视觉特效，有效提升产品曝光率。",
+                "proj2_link": "观看影片 →",
+                "proj3_title": "互动式网页应用程序开发",
+                "proj3_desc": "从零到一独立开发的网页应用程序，导入模块化架构与多国语言切换系统，展现扎实的逻辑思维与前端开发能力。",
+                "proj3_link": "阅读文章 →",
+                "footer_contact": "联系我：anle82760@gmail.com",
+                "footer_rights": "BroQiangStudio. 版权所有."
             },
             "en": {
                 "nav_about": "About Me", "nav_resume": "Resume", "nav_portfolio": "Portfolio",
                 "page_portfolio_title": "Portfolio & Projects",
-                "proj1_title": "Project One", "proj1_desc": "A brief description of the project, highlighting technologies used or problems solved.",
-                "proj2_title": "Blog Post", "proj2_desc": "Share your learning experiences, technical articles, or daily life.",
-                "proj3_title": "Project Three", "proj3_desc": "A brief description of the project, highlighting technologies used or problems solved.",
-                "btn_more": "View More →", "btn_read": "Read Article →",
-                "footer_contact": "Contact me: your.email@example.com", "footer_rights": "[Your Name]. All Rights Reserved."
+                "proj1_title": "Corporate Rebranding & Web Dev",
+                "proj1_desc": "Crafted a responsive official website utilizing HTML/CSS/JS, focusing on modern aesthetics and seamless UI/UX to elevate brand presence.",
+                "proj1_link": "View Project →",
+                "proj2_title": "Commercial Video & VFX",
+                "proj2_desc": "Produced high-quality commercial short films using Premiere Pro and After Effects. Enhanced product visibility through visual effects.",
+                "proj2_link": "Watch Video →",
+                "proj3_title": "Interactive Web App Dev",
+                "proj3_desc": "Developed a web application from scratch, implementing a modular architecture and multi-language system to demonstrate front-end capabilities.",
+                "proj3_link": "Read Article →",
+                "footer_contact": "Contact me: anle82760@gmail.com",
+                "footer_rights": "BroQiangStudio. All Rights Reserved."
             },
             "ms": {
                 "nav_about": "Mengenai Saya", "nav_resume": "Resume", "nav_portfolio": "Portfolio",
                 "page_portfolio_title": "Portfolio & Projek",
-                "proj1_title": "Projek Pertama", "proj1_desc": "Penerangan ringkas mengenai projek, teknologi yang digunakan atau masalah yang diselesaikan.",
-                "proj2_title": "Perkongsian Blog", "proj2_desc": "Kongsi pengalaman pembelajaran, artikel teknikal, atau kehidupan harian.",
-                "proj3_title": "Projek Ketiga", "proj3_desc": "Penerangan ringkas mengenai projek, teknologi yang digunakan atau masalah yang diselesaikan.",
-                "btn_more": "Lihat Lagi →", "btn_read": "Baca Artikel →",
-                "footer_contact": "Hubungi saya: your.email@example.com", "footer_rights": "[Nama Anda]. Hak Cipta Terpelihara."
+                "proj1_title": "Penjenamaan Semula & Pembangunan Web",
+                "proj1_desc": "Membina laman web rasmi responsif menggunakan HTML/CSS/JS dengan tumpuan pada estetika moden dan UI/UX yang lancar untuk imej jenama.",
+                "proj1_link": "Lihat Projek →",
+                "proj2_title": "Video Komersial & VFX",
+                "proj2_desc": "Menghasilkan filem pendek komersial berkualiti menggunakan Premiere Pro dan After Effects. Meningkatkan produk melalui kesan visual.",
+                "proj2_link": "Tonton Video →",
+                "proj3_title": "Pembangunan Aplikasi Web Interaktif",
+                "proj3_desc": "Membangunkan aplikasi web dari awal, melaksanakan sistem sokongan pelbagai bahasa untuk menunjukkan keupayaan bahagian hadapan yang kukuh.",
+                "proj3_link": "Baca Artikel →",
+                "footer_contact": "Hubungi saya: anle82760@gmail.com",
+                "footer_rights": "BroQiangStudio. Hak Cipta Terpelihara."
             }
         };
 
