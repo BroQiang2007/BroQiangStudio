@@ -1,0 +1,220 @@
+/* style.css */
+:root {
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --text-main: #ffffff;
+    --text-secondary: #a0a0a0;
+    --accent-red: #ff4757;
+    --accent-hover: #ff6b81;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: var(--accent-red);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent-hover);
+}
+
+/* 導覽列 */
+nav {
+    position: sticky;
+    top: 0;
+    background-color: rgba(18, 18, 18, 0.9);
+    padding: 15px 0;
+    text-align: center;
+    backdrop-filter: blur(5px);
+    z-index: 100;
+    border-bottom: 1px solid #333;
+}
+
+nav a {
+    margin: 0 15px;
+    color: var(--text-main);
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: var(--accent-red);
+}
+
+/* 頁面主要內容區塊 */
+main {
+    flex: 1; /* 讓 footer 固定在底部 */
+}
+
+section {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    border-bottom: 3px solid var(--accent-red);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* 個人名片 (Hero) */
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--accent-red);
+    box-shadow: 0 10px 20px rgba(255, 71, 87, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.profile-img:hover {
+    transform: scale(1.05);
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin: 20px 0 10px;
+}
+
+.hero p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    max-width: 500px;
+}
+
+.social-links {
+    margin-top: 20px;
+}
+
+.social-links a {
+    display: inline-block;
+    background-color: var(--card-bg);
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background-color: var(--accent-red);
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* 專業履歷 */
+.resume-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.resume-box {
+    background-color: var(--card-bg);
+    padding: 20px;
+    border-radius: 15px;
+    flex: 1;
+    min-width: 300px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.resume-box:hover {
+    transform: translateY(-5px);
+}
+
+.resume-box h3 {
+    color: var(--accent-red);
+    margin-bottom: 15px;
+}
+
+.resume-box ul {
+    list-style-type: none;
+}
+
+.resume-box li {
+    margin-bottom: 15px;
+}
+
+.resume-box span.date {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    display: block;
+}
+
+/* 作品集 */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.portfolio-card {
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(255, 71, 87, 0.15);
+}
+
+.portfolio-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    background-color: #333;
+}
+
+.portfolio-content {
+    padding: 20px;
+}
+
+.portfolio-content h3 {
+    margin-bottom: 10px;
+}
+
+.portfolio-content p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+/* 頁尾 */
+footer {
+    text-align: center;
+    padding: 30px;
+    background-color: var(--card-bg);
+    color: var(--text-secondary);
+    margin-top: 50px;
+}
