@@ -1,4 +1,3 @@
-<!-- resume.html -->
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -23,38 +22,41 @@
     </nav>
 
     <main>
-        <section>
-            <div style="text-align: center;"><h2 data-i18n="page_resume_title">專業履歷</h2></div>
-            <div class="resume-container">
-                <div class="resume-box">
+        <section class="resume-section">
+            <h2 style="text-align: center; margin-bottom: 40px;" data-i18n="page_resume_title">專業履歷</h2>
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+                <!-- 左側：工作經驗 -->
+                <div class="resume-box" style="flex: 1; min-width: 300px;">
                     <h3 data-i18n="work_title">💼 工作經驗</h3>
                     <ul>
-                        <li>
-                            <strong data-i18n="job1_title">[公司名稱（無數據）] - [職稱（無數據）]</strong>
-                            <span class="date" data-i18n="job1_date">日期無數據 - 至今</span>
-                            <p style="font-size: 0.9rem; color: #a0a0a0;" data-i18n="job1_desc">工作內容或達成的專案成就。（無數據）</p>
+                        <li style="margin-bottom: 20px;">
+                            <strong data-i18n="job1_title">[公司名稱（無數據）] - [職稱（無數據）]</strong><br>
+                            <span class="date" data-i18n="job1_date" style="font-size: 0.9em; color: #aaa;">日期無數據 - 至今</span>
+                            <p style="margin-top: 5px; font-size: 0.95em;" data-i18n="job1_desc">工作內容或達成的專案成就。（無數據）</p>
                         </li>
                         <li>
-                            <strong data-i18n="job2_title">[前公司名稱（無數據）] - [職稱（無數據）]</strong>
-                            <span class="date" data-i18n="job2_date">日期無數據 - 日期無數據</span>
-                            <p style="font-size: 0.9rem; color: #a0a0a0;" data-i18n="job2_desc">工作內容或達成的專案成就。（無數據）</p>
+                            <strong data-i18n="job2_title">[前公司名稱（無數據）] - [職稱（無數據）]</strong><br>
+                            <span class="date" data-i18n="job2_date" style="font-size: 0.9em; color: #aaa;">日期無數據 - 日期無數據</span>
+                            <p style="margin-top: 5px; font-size: 0.95em;" data-i18n="job2_desc">工作內容或達成的專案成就。（無數據）</p>
                         </li>
                     </ul>
                 </div>
 
-                <div class="resume-box">
-                    <h3 data-i18n="skills_title">🛠 專業技能</h3>
-                    <p data-i18n="skills_desc">AI, HTML / CSS, JavaScript, 專案管理, 視覺設計，Adobe Ilustrator, Adobe PhotoShop, Adobe Premeire Pro, Adobe After Effects</p>
-                    
-                    <h3 style="margin-top: 25px;" data-i18n="edu_title">🎓 學歷</h3>
+                <!-- 右側：專業技能 & 學歷 -->
+                <div class="resume-box" style="flex: 1; min-width: 300px;">
+                    <h3 data-i18n="skills_title">🛠️ 專業技能</h3>
+                    <p data-i18n="skills_desc">AI, HTML / CSS, JavaScript, 專案管理, 視覺設計, Adobe Illustrator, Adobe Photoshop, Adobe Premiere Pro, Adobe After Effects</p>
+
+                    <h3 style="margin-top: 30px;" data-i18n="edu_title">🎓 學歷</h3>
                     <ul>
-                        <li>
-                            <strong data-i18n="edu1_title">[Adtect JTM AP Nibong Tebal] - [多媒體證書課程]</strong>
-                            <span class="date" data-i18n="edu1_date">07/2025 - 07/2027</span>
+                        <li style="margin-bottom: 15px;">
+                            <strong data-i18n="edu1_title">[Adtect JTM AP Nibong Tebal] - [多媒體證書課程]</strong><br>
+                            <span class="date" data-i18n="edu1_date" style="font-size: 0.9em; color: #aaa;">07/2025 - 07/2027</span>
                         </li>
-                        <li>    
-                            <strong data-i18n="edu1_title">[SMK BUKIT GAMBIR] - [SPM]</strong>
-                            <span class="date" data-i18n="edu1_date">2020 - 2025</span>
+                        <li>
+                            <strong data-i18n="edu2_title">[SMK BUKIT GAMBIR] - [SPM]</strong><br>
+                            <span class="date" data-i18n="edu2_date" style="font-size: 0.9em; color: #aaa;">2020 - 2025</span>
                         </li>
                     </ul>
                 </div>
@@ -64,46 +66,91 @@
 
     <footer>
         <p data-i18n="footer_contact">聯絡我：anle82760@gmail.com</p>
-        <p style="margin-top: 10px;">&copy; 2024 <span data-i18n="footer_rights">BroQiangStudio. 版權所有</span></p>
+        <p style="margin-top: 10px;">&copy; 2024 <span data-i18n="footer_rights">BroQiangStudio. 版權所有.</span></p>
     </footer>
 
+    <!-- ================= 完整的語言切換系統 ================= -->
     <script>
         const translations = {
             "zh-TW": {
                 "nav_about": "關於我", "nav_resume": "專業履歷", "nav_portfolio": "作品集",
                 "page_resume_title": "專業履歷",
-                "work_title": "💼 工作經驗", "job1_title": "[公司名稱（無數據）] - [職稱（無數據）]", "job1_date": "日期無數據 - 至今", "job1_desc": "工作內容或達成的專案成就。（無數據）",
-                "job2_title": "[前公司名稱（無數據）] - [職稱（無數據）]", "job2_date": "日期無數據 - 日期無數據", "job2_desc": "工作內容或達成的專案成就。(無數據）",
-                "skills_title": "🛠 專業技能", "skills_desc": "AI, HTML / CSS, JavaScript, 專案管理, 視覺設計，Adobe Ilustrator, Adobe PhotoShop, Adobe Premeire Pro, Adobe After Effects",
-                "edu_title": "🎓 學歷", "edu1_title": "[Adtec JTM AP Nibong Tebal] - [多媒體證書課程]", "edu1_date": "07/2025 -07/2026",
-                "footer_contact": "聯絡我：anle82760@gmail.com", "footer_rights": "BroQiangStudio. 版權所有."
+                "work_title": "💼 工作經驗",
+                "job1_title": "[公司名稱（無數據）] - [職稱（無數據）]",
+                "job1_date": "日期無數據 - 至今",
+                "job1_desc": "工作內容或達成的專案成就。（無數據）",
+                "job2_title": "[前公司名稱（無數據）] - [職稱（無數據）]",
+                "job2_date": "日期無數據 - 日期無數據",
+                "job2_desc": "工作內容或達成的專案成就。（無數據）",
+                "skills_title": "🛠️ 專業技能",
+                "skills_desc": "AI, HTML / CSS, JavaScript, 專案管理, 視覺設計, Adobe Illustrator, Adobe Photoshop, Adobe Premiere Pro, Adobe After Effects",
+                "edu_title": "🎓 學歷",
+                "edu1_title": "[Adtect JTM AP Nibong Tebal] - [多媒體證書課程]",
+                "edu1_date": "07/2025 - 07/2027",
+                "edu2_title": "[SMK BUKIT GAMBIR] - [SPM]",
+                "edu2_date": "2020 - 2025",
+                "footer_contact": "聯絡我：anle82760@gmail.com",
+                "footer_rights": "BroQiangStudio. 版權所有."
             },
             "zh-CN": {
                 "nav_about": "关于我", "nav_resume": "专业履历", "nav_portfolio": "作品集",
                 "page_resume_title": "专业履历",
-                "work_title": "💼 工作经验", "job1_title": "[公司名称] - [职称]", "job1_date": "2022.01 - 至今", "job1_desc": "简述你的工作内容或达成的项目成就。",
-                "job2_title": "[前公司名称] - [职称]", "job2_date": "2019.06 - 2021.12", "job2_desc": "简述你的工作内容或达成的项目成就。",
-                "skills_title": "🛠 专业技能", "skills_desc": "HTML / CSS, JavaScript, 项目管理, 视觉设计...",
-                "edu_title": "🎓 学历", "edu1_title": "[大学名称] - [科系]", "edu1_date": "毕业年份",
-                "footer_contact": "联系我：your.email@example.com", "footer_rights": "[你的名字]. 版权所有."
+                "work_title": "💼 工作经验",
+                "job1_title": "[公司名称（无数据）] - [职称（无数据）]",
+                "job1_date": "日期无数据 - 至今",
+                "job1_desc": "工作内容或达成的专案成就。（无数据）",
+                "job2_title": "[前公司名称（无数据）] - [职称（无数据）]",
+                "job2_date": "日期无数据 - 日期无数据",
+                "job2_desc": "工作内容或达成的专案成就。（无数据）",
+                "skills_title": "🛠️ 专业技能",
+                "skills_desc": "AI, HTML / CSS, JavaScript, 专案管理, 视觉设计, Adobe Illustrator, Adobe Photoshop, Adobe Premiere Pro, Adobe After Effects",
+                "edu_title": "🎓 学历",
+                "edu1_title": "[Adtect JTM AP Nibong Tebal] - [多媒体证书课程]",
+                "edu1_date": "07/2025 - 07/2027",
+                "edu2_title": "[SMK BUKIT GAMBIR] - [SPM]",
+                "edu2_date": "2020 - 2025",
+                "footer_contact": "联系我：anle82760@gmail.com",
+                "footer_rights": "BroQiangStudio. 版权所有."
             },
             "en": {
                 "nav_about": "About Me", "nav_resume": "Resume", "nav_portfolio": "Portfolio",
-                "page_resume_title": "Professional Resume",
-                "work_title": "💼 Work Experience", "job1_title": "[Company Name] - [Role]", "job1_date": "Jan 2022 - Present", "job1_desc": "Briefly describe your work or achievements.",
-                "job2_title": "[Previous Company] - [Role]", "job2_date": "Jun 2019 - Dec 2021", "job2_desc": "Briefly describe your work or achievements.",
-                "skills_title": "🛠 Skills", "skills_desc": "HTML / CSS, JavaScript, Project Management, Visual Design...",
-                "edu_title": "🎓 Education", "edu1_title": "[University] - [Major]", "edu1_date": "Year of Graduation",
-                "footer_contact": "Contact me: your.email@example.com", "footer_rights": "[Your Name]. All Rights Reserved."
+                "page_resume_title": "Resume",
+                "work_title": "💼 Work Experience",
+                "job1_title": "[Company Name (N/A)] - [Job Title (N/A)]",
+                "job1_date": "Date N/A - Present",
+                "job1_desc": "Job description or project achievements. (N/A)",
+                "job2_title": "[Prev Company (N/A)] - [Job Title (N/A)]",
+                "job2_date": "Date N/A - Date N/A",
+                "job2_desc": "Job description or project achievements. (N/A)",
+                "skills_title": "🛠️ Professional Skills",
+                "skills_desc": "AI, HTML / CSS, JavaScript, Project Management, Visual Design, Adobe Illustrator, Adobe Photoshop, Adobe Premiere Pro, Adobe After Effects",
+                "edu_title": "🎓 Education",
+                "edu1_title": "[Adtect JTM AP Nibong Tebal] - [Multimedia Certificate]",
+                "edu1_date": "07/2025 - 07/2027",
+                "edu2_title": "[SMK BUKIT GAMBIR] - [SPM]",
+                "edu2_date": "2020 - 2025",
+                "footer_contact": "Contact me: anle82760@gmail.com",
+                "footer_rights": "BroQiangStudio. All Rights Reserved."
             },
             "ms": {
                 "nav_about": "Mengenai Saya", "nav_resume": "Resume", "nav_portfolio": "Portfolio",
-                "page_resume_title": "Resume Profesional",
-                "work_title": "💼 Pengalaman Kerja", "job1_title": "[Syarikat] - [Jawatan]", "job1_date": "Jan 2022 - Kini", "job1_desc": "Terangkan tugas atau pencapaian anda.",
-                "job2_title": "[Syarikat Terdahulu] - [Jawatan]", "job2_date": "Jun 2019 - Dis 2021", "job2_desc": "Terangkan tugas atau pencapaian anda.",
-                "skills_title": "🛠 Kemahiran", "skills_desc": "HTML / CSS, JavaScript, Pengurusan Projek, Reka Bentuk...",
-                "edu_title": "🎓 Pendidikan", "edu1_title": "[Universiti] - [Jurusan]", "edu1_date": "Tahun Tamat Pengajian",
-                "footer_contact": "Hubungi saya: your.email@example.com", "footer_rights": "[Nama Anda]. Hak Cipta Terpelihara."
+                "page_resume_title": "Resume",
+                "work_title": "💼 Pengalaman Kerja",
+                "job1_title": "[Nama Syarikat (Tiada Data)] - [Jawatan (Tiada Data)]",
+                "job1_date": "Tarikh Tiada Data - Kini",
+                "job1_desc": "Penerangan tugas atau pencapaian projek. (Tiada Data)",
+                "job2_title": "[Syarikat Terdahulu (Tiada Data)] - [Jawatan (Tiada Data)]",
+                "job2_date": "Tarikh Tiada Data - Tarikh Tiada Data",
+                "job2_desc": "Penerangan tugas atau pencapaian projek. (Tiada Data)",
+                "skills_title": "🛠️ Kemahiran Profesional",
+                "skills_desc": "AI, HTML / CSS, JavaScript, Pengurusan Projek, Reka Bentuk Visual, Adobe Illustrator, Adobe Photoshop, Adobe Premiere Pro, Adobe After Effects",
+                "edu_title": "🎓 Pendidikan",
+                "edu1_title": "[Adtect JTM AP Nibong Tebal] - [Sijil Multimedia]",
+                "edu1_date": "07/2025 - 07/2027",
+                "edu2_title": "[SMK BUKIT GAMBIR] - [SPM]",
+                "edu2_date": "2020 - 2025",
+                "footer_contact": "Hubungi saya: anle82760@gmail.com",
+                "footer_rights": "BroQiangStudio. Hak Cipta Terpelihara."
             }
         };
 
