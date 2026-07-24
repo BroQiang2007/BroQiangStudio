@@ -10,37 +10,44 @@
 <body>
 
     <nav>
-        <a href="index.html">關於我</a>
-        <a href="resume.html">專業履歷</a>
-        <a href="portfolio.html">作品集</a>
+        <a href="index.html" data-i18n="nav_about">關於我</a>
+        <a href="resume.html" data-i18n="nav_resume">專業履歷</a>
+        <a href="portfolio.html" data-i18n="nav_portfolio">作品集</a>
+        
+        <select class="lang-selector" id="languageSelect" onchange="changeLanguage()">
+            <option value="zh-TW">繁體中文</option>
+            <option value="zh-CN">简体中文</option>
+            <option value="en">English</option>
+            <option value="ms">Bahasa Melayu</option>
+        </select>
     </nav>
 
     <main>
         <section>
-            <div style="text-align: center;"><h2>作品集與專案</h2></div>
+            <div style="text-align: center;"><h2 data-i18n="page_portfolio_title">作品集與專案</h2></div>
             <div class="portfolio-grid">
                 <div class="portfolio-card">
                     <img src="https://via.placeholder.com/300x150" alt="專案圖片">
                     <div class="portfolio-content">
-                        <h3>第一個專案</h3>
-                        <p>這裡是專案的簡短描述。展示了什麼技術或解決了什麼問題。</p>
-                        <a href="#">查看更多 →</a>
+                        <h3 data-i18n="proj1_title">第一個專案</h3>
+                        <p data-i18n="proj1_desc">這裡是專案的簡短描述。展示了什麼技術或解決了什麼問題。</p>
+                        <a href="#" data-i18n="btn_more">查看更多 →</a>
                     </div>
                 </div>
                 <div class="portfolio-card">
                     <img src="https://via.placeholder.com/300x150" alt="專案圖片">
                     <div class="portfolio-content">
-                        <h3>部落格文章分享</h3>
-                        <p>分享你的學習心得、技術文章或生活點滴。</p>
-                        <a href="#">閱讀文章 →</a>
+                        <h3 data-i18n="proj2_title">部落格文章分享</h3>
+                        <p data-i18n="proj2_desc">分享你的學習心得、技術文章或生活點滴。</p>
+                        <a href="#" data-i18n="btn_read">閱讀文章 →</a>
                     </div>
                 </div>
                 <div class="portfolio-card">
                     <img src="https://via.placeholder.com/300x150" alt="專案圖片">
                     <div class="portfolio-content">
-                        <h3>第三個專案</h3>
-                        <p>這裡是專案的簡短描述。展示了什麼技術或解決了什麼問題。</p>
-                        <a href="#">查看更多 →</a>
+                        <h3 data-i18n="proj3_title">第三個專案</h3>
+                        <p data-i18n="proj3_desc">這裡是專案的簡短描述。展示了什麼技術或解決了什麼問題。</p>
+                        <a href="#" data-i18n="btn_more">查看更多 →</a>
                     </div>
                 </div>
             </div>
@@ -48,9 +55,68 @@
     </main>
 
     <footer>
-        <p>聯絡我：your.email@example.com</p>
-        <p style="margin-top: 10px;">&copy; 2024 [你的名字]. All Rights Reserved.</p>
+        <p data-i18n="footer_contact">聯絡我：your.email@example.com</p>
+        <p style="margin-top: 10px;">&copy; 2024 <span data-i18n="footer_rights">[你的名字]. 版權所有</span></p>
     </footer>
 
+    <script>
+        const translations = {
+            "zh-TW": {
+                "nav_about": "關於我", "nav_resume": "專業履歷", "nav_portfolio": "作品集",
+                "page_portfolio_title": "作品集與專案",
+                "proj1_title": "第一個專案", "proj1_desc": "這裡是專案的簡短描述。展示了什麼技術或解決了什麼問題。",
+                "proj2_title": "部落格文章分享", "proj2_desc": "分享你的學習心得、技術文章或生活點滴。",
+                "proj3_title": "第三個專案", "proj3_desc": "這裡是專案的簡短描述。展示了什麼技術或解決了什麼問題。",
+                "btn_more": "查看更多 →", "btn_read": "閱讀文章 →",
+                "footer_contact": "聯絡我：your.email@example.com", "footer_rights": "[你的名字]. 版權所有."
+            },
+            "zh-CN": {
+                "nav_about": "关于我", "nav_resume": "专业履历", "nav_portfolio": "作品集",
+                "page_portfolio_title": "作品集与项目",
+                "proj1_title": "第一个项目", "proj1_desc": "这里是项目的简短描述。展示了什么技术或解决了什么问题。",
+                "proj2_title": "博客文章分享", "proj2_desc": "分享你的学习心得、技术文章或生活点滴。",
+                "proj3_title": "第三个项目", "proj3_desc": "这里是项目的简短描述。展示了什么技术或解决了什么问题。",
+                "btn_more": "查看更多 →", "btn_read": "阅读文章 →",
+                "footer_contact": "联系我：your.email@example.com", "footer_rights": "[你的名字]. 版权所有."
+            },
+            "en": {
+                "nav_about": "About Me", "nav_resume": "Resume", "nav_portfolio": "Portfolio",
+                "page_portfolio_title": "Portfolio & Projects",
+                "proj1_title": "Project One", "proj1_desc": "A brief description of the project, highlighting technologies used or problems solved.",
+                "proj2_title": "Blog Post", "proj2_desc": "Share your learning experiences, technical articles, or daily life.",
+                "proj3_title": "Project Three", "proj3_desc": "A brief description of the project, highlighting technologies used or problems solved.",
+                "btn_more": "View More →", "btn_read": "Read Article →",
+                "footer_contact": "Contact me: your.email@example.com", "footer_rights": "[Your Name]. All Rights Reserved."
+            },
+            "ms": {
+                "nav_about": "Mengenai Saya", "nav_resume": "Resume", "nav_portfolio": "Portfolio",
+                "page_portfolio_title": "Portfolio & Projek",
+                "proj1_title": "Projek Pertama", "proj1_desc": "Penerangan ringkas mengenai projek, teknologi yang digunakan atau masalah yang diselesaikan.",
+                "proj2_title": "Perkongsian Blog", "proj2_desc": "Kongsi pengalaman pembelajaran, artikel teknikal, atau kehidupan harian.",
+                "proj3_title": "Projek Ketiga", "proj3_desc": "Penerangan ringkas mengenai projek, teknologi yang digunakan atau masalah yang diselesaikan.",
+                "btn_more": "Lihat Lagi →", "btn_read": "Baca Artikel →",
+                "footer_contact": "Hubungi saya: your.email@example.com", "footer_rights": "[Nama Anda]. Hak Cipta Terpelihara."
+            }
+        };
+
+        function changeLanguage() {
+            const lang = document.getElementById("languageSelect").value;
+            document.querySelectorAll("[data-i18n]").forEach(el => {
+                const key = el.getAttribute("data-i18n");
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            localStorage.setItem("selectedLanguage", lang);
+        }
+
+        window.onload = function() {
+            const savedLang = localStorage.getItem("selectedLanguage");
+            if (savedLang) {
+                document.getElementById("languageSelect").value = savedLang;
+                changeLanguage();
+            }
+        };
+    </script>
 </body>
 </html>
