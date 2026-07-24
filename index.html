@@ -10,16 +10,23 @@
 <body>
 
     <nav>
-        <a href="index.html">關於我</a>
-        <a href="resume.html">專業履歷</a>
-        <a href="portfolio.html">作品集</a>
+        <a href="index.html" data-i18n="nav_about">關於我</a>
+        <a href="resume.html" data-i18n="nav_resume">專業履歷</a>
+        <a href="portfolio.html" data-i18n="nav_portfolio">作品集</a>
+        
+        <select class="lang-selector" id="languageSelect" onchange="changeLanguage()">
+            <option value="zh-TW">繁體中文</option>
+            <option value="zh-CN">简体中文</option>
+            <option value="en">English</option>
+            <option value="ms">Bahasa Melayu</option>
+        </select>
     </nav>
 
     <main>
         <section class="hero">
-            <img src="https://via.placeholder.com/150" alt="我的大頭貼" class="profile-img">
-            <h1>嗨，我是 [你的名字]</h1>
-            <p>這是一句簡短的自我介紹，例如：熱愛用程式解決問題的開發者 / 喜歡用設計說故事的創作者。</p>
+            <img src="https://via.placeholder.com/150" alt="Profile" class="profile-img">
+            <h1 data-i18n="hero_title">嗨，我是 [你的名字]</h1>
+            <p data-i18n="hero_desc">熱愛用程式解決問題的開發者 / 喜歡用設計說故事的創作者。</p>
             
             <div class="social-links">
                 <a href="#">Instagram</a>
@@ -30,9 +37,63 @@
     </main>
 
     <footer>
-        <p>聯絡我：your.email@example.com</p>
-        <p style="margin-top: 10px;">&copy; 2024 [你的名字]. All Rights Reserved.</p>
+        <p data-i18n="footer_contact">聯絡我：your.email@example.com</p>
+        <p style="margin-top: 10px;">&copy; 2024 <span data-i18n="footer_rights">[你的名字]. 版權所有</span></p>
     </footer>
 
+    <!-- 共用語言指令庫 (每個 HTML 底下都會有一樣的這段) -->
+    <script src="script-translation.js" onerror="embedScript(this)"></script>
+    <script>
+        // 將所有翻譯集中在這裡
+        const translations = {
+            "zh-TW": {
+                "nav_about": "關於我", "nav_resume": "專業履歷", "nav_portfolio": "作品集",
+                "hero_title": "嗨，我是 [你的名字]",
+                "hero_desc": "熱愛用程式解決問題的開發者 / 喜歡用設計說故事的創作者。",
+                "footer_contact": "聯絡我：your.email@example.com",
+                "footer_rights": "[你的名字]. 版權所有."
+            },
+            "zh-CN": {
+                "nav_about": "关于我", "nav_resume": "专业履历", "nav_portfolio": "作品集",
+                "hero_title": "嗨，我是 [你的名字]",
+                "hero_desc": "热爱用程式解决问题的开发者 / 喜欢用设计说故事的创作者。",
+                "footer_contact": "联系我：your.email@example.com",
+                "footer_rights": "[你的名字]. 版权所有."
+            },
+            "en": {
+                "nav_about": "About Me", "nav_resume": "Resume", "nav_portfolio": "Portfolio",
+                "hero_title": "Hi, I'm [Your Name]",
+                "hero_desc": "A developer passionate about solving problems / A creator who loves storytelling through design.",
+                "footer_contact": "Contact me: your.email@example.com",
+                "footer_rights": "[Your Name]. All Rights Reserved."
+            },
+            "ms": {
+                "nav_about": "Mengenai Saya", "nav_resume": "Resume", "nav_portfolio": "Portfolio",
+                "hero_title": "Hai, saya [Nama Anda]",
+                "hero_desc": "Seorang pembangun yang bersemangat menyelesaikan masalah / Pencipta yang suka bercerita melalui reka bentuk.",
+                "footer_contact": "Hubungi saya: your.email@example.com",
+                "footer_rights": "[Nama Anda]. Hak Cipta Terpelihara."
+            }
+        };
+
+        function changeLanguage() {
+            const lang = document.getElementById("languageSelect").value;
+            document.querySelectorAll("[data-i18n]").forEach(el => {
+                const key = el.getAttribute("data-i18n");
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            localStorage.setItem("selectedLanguage", lang);
+        }
+
+        window.onload = function() {
+            const savedLang = localStorage.getItem("selectedLanguage");
+            if (savedLang) {
+                document.getElementById("languageSelect").value = savedLang;
+                changeLanguage();
+            }
+        };
+    </script>
 </body>
 </html>
