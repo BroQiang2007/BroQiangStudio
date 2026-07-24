@@ -10,40 +10,47 @@
 <body>
 
     <nav>
-        <a href="index.html">關於我</a>
-        <a href="resume.html">專業履歷</a>
-        <a href="portfolio.html">作品集</a>
+        <a href="index.html" data-i18n="nav_about">關於我</a>
+        <a href="resume.html" data-i18n="nav_resume">專業履歷</a>
+        <a href="portfolio.html" data-i18n="nav_portfolio">作品集</a>
+        
+        <select class="lang-selector" id="languageSelect" onchange="changeLanguage()">
+            <option value="zh-TW">繁體中文</option>
+            <option value="zh-CN">简体中文</option>
+            <option value="en">English</option>
+            <option value="ms">Bahasa Melayu</option>
+        </select>
     </nav>
 
     <main>
         <section>
-            <div style="text-align: center;"><h2>專業履歷</h2></div>
+            <div style="text-align: center;"><h2 data-i18n="page_resume_title">專業履歷</h2></div>
             <div class="resume-container">
                 <div class="resume-box">
-                    <h3>💼 工作經驗</h3>
+                    <h3 data-i18n="work_title">💼 工作經驗</h3>
                     <ul>
                         <li>
-                            <strong>[公司名稱] - [職稱]</strong>
-                            <span class="date">2022.01 - 至今</span>
-                            <p style="font-size: 0.9rem; color: #a0a0a0;">簡述你的工作內容或達成的專案成就。</p>
+                            <strong data-i18n="job1_title">[公司名稱] - [職稱]</strong>
+                            <span class="date" data-i18n="job1_date">2022.01 - 至今</span>
+                            <p style="font-size: 0.9rem; color: #a0a0a0;" data-i18n="job1_desc">簡述你的工作內容或達成的專案成就。</p>
                         </li>
                         <li>
-                            <strong>[前公司名稱] - [職稱]</strong>
-                            <span class="date">2019.06 - 2021.12</span>
-                            <p style="font-size: 0.9rem; color: #a0a0a0;">簡述你的工作內容或達成的專案成就。</p>
+                            <strong data-i18n="job2_title">[前公司名稱] - [職稱]</strong>
+                            <span class="date" data-i18n="job2_date">2019.06 - 2021.12</span>
+                            <p style="font-size: 0.9rem; color: #a0a0a0;" data-i18n="job2_desc">簡述你的工作內容或達成的專案成就。</p>
                         </li>
                     </ul>
                 </div>
 
                 <div class="resume-box">
-                    <h3>🛠 專業技能</h3>
-                    <p>HTML / CSS, JavaScript, 專案管理, 視覺設計...</p>
+                    <h3 data-i18n="skills_title">🛠 專業技能</h3>
+                    <p data-i18n="skills_desc">HTML / CSS, JavaScript, 專案管理, 視覺設計...</p>
                     
-                    <h3 style="margin-top: 25px;">🎓 學歷</h3>
+                    <h3 style="margin-top: 25px;" data-i18n="edu_title">🎓 學歷</h3>
                     <ul>
                         <li>
-                            <strong>[大學名稱] - [科系]</strong>
-                            <span class="date">畢業年份</span>
+                            <strong data-i18n="edu1_title">[大學名稱] - [科系]</strong>
+                            <span class="date" data-i18n="edu1_date">畢業年份</span>
                         </li>
                     </ul>
                 </div>
@@ -52,9 +59,68 @@
     </main>
 
     <footer>
-        <p>聯絡我：your.email@example.com</p>
-        <p style="margin-top: 10px;">&copy; 2024 [你的名字]. All Rights Reserved.</p>
+        <p data-i18n="footer_contact">聯絡我：your.email@example.com</p>
+        <p style="margin-top: 10px;">&copy; 2024 <span data-i18n="footer_rights">[你的名字]. 版權所有</span></p>
     </footer>
 
+    <script>
+        const translations = {
+            "zh-TW": {
+                "nav_about": "關於我", "nav_resume": "專業履歷", "nav_portfolio": "作品集",
+                "page_resume_title": "專業履歷",
+                "work_title": "💼 工作經驗", "job1_title": "[公司名稱] - [職稱]", "job1_date": "2022.01 - 至今", "job1_desc": "簡述你的工作內容或達成的專案成就。",
+                "job2_title": "[前公司名稱] - [職稱]", "job2_date": "2019.06 - 2021.12", "job2_desc": "簡述你的工作內容或達成的專案成就。",
+                "skills_title": "🛠 專業技能", "skills_desc": "HTML / CSS, JavaScript, 專案管理, 視覺設計...",
+                "edu_title": "🎓 學歷", "edu1_title": "[大學名稱] - [科系]", "edu1_date": "畢業年份",
+                "footer_contact": "聯絡我：your.email@example.com", "footer_rights": "[你的名字]. 版權所有."
+            },
+            "zh-CN": {
+                "nav_about": "关于我", "nav_resume": "专业履历", "nav_portfolio": "作品集",
+                "page_resume_title": "专业履历",
+                "work_title": "💼 工作经验", "job1_title": "[公司名称] - [职称]", "job1_date": "2022.01 - 至今", "job1_desc": "简述你的工作内容或达成的项目成就。",
+                "job2_title": "[前公司名称] - [职称]", "job2_date": "2019.06 - 2021.12", "job2_desc": "简述你的工作内容或达成的项目成就。",
+                "skills_title": "🛠 专业技能", "skills_desc": "HTML / CSS, JavaScript, 项目管理, 视觉设计...",
+                "edu_title": "🎓 学历", "edu1_title": "[大学名称] - [科系]", "edu1_date": "毕业年份",
+                "footer_contact": "联系我：your.email@example.com", "footer_rights": "[你的名字]. 版权所有."
+            },
+            "en": {
+                "nav_about": "About Me", "nav_resume": "Resume", "nav_portfolio": "Portfolio",
+                "page_resume_title": "Professional Resume",
+                "work_title": "💼 Work Experience", "job1_title": "[Company Name] - [Role]", "job1_date": "Jan 2022 - Present", "job1_desc": "Briefly describe your work or achievements.",
+                "job2_title": "[Previous Company] - [Role]", "job2_date": "Jun 2019 - Dec 2021", "job2_desc": "Briefly describe your work or achievements.",
+                "skills_title": "🛠 Skills", "skills_desc": "HTML / CSS, JavaScript, Project Management, Visual Design...",
+                "edu_title": "🎓 Education", "edu1_title": "[University] - [Major]", "edu1_date": "Year of Graduation",
+                "footer_contact": "Contact me: your.email@example.com", "footer_rights": "[Your Name]. All Rights Reserved."
+            },
+            "ms": {
+                "nav_about": "Mengenai Saya", "nav_resume": "Resume", "nav_portfolio": "Portfolio",
+                "page_resume_title": "Resume Profesional",
+                "work_title": "💼 Pengalaman Kerja", "job1_title": "[Syarikat] - [Jawatan]", "job1_date": "Jan 2022 - Kini", "job1_desc": "Terangkan tugas atau pencapaian anda.",
+                "job2_title": "[Syarikat Terdahulu] - [Jawatan]", "job2_date": "Jun 2019 - Dis 2021", "job2_desc": "Terangkan tugas atau pencapaian anda.",
+                "skills_title": "🛠 Kemahiran", "skills_desc": "HTML / CSS, JavaScript, Pengurusan Projek, Reka Bentuk...",
+                "edu_title": "🎓 Pendidikan", "edu1_title": "[Universiti] - [Jurusan]", "edu1_date": "Tahun Tamat Pengajian",
+                "footer_contact": "Hubungi saya: your.email@example.com", "footer_rights": "[Nama Anda]. Hak Cipta Terpelihara."
+            }
+        };
+
+        function changeLanguage() {
+            const lang = document.getElementById("languageSelect").value;
+            document.querySelectorAll("[data-i18n]").forEach(el => {
+                const key = el.getAttribute("data-i18n");
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            localStorage.setItem("selectedLanguage", lang);
+        }
+
+        window.onload = function() {
+            const savedLang = localStorage.getItem("selectedLanguage");
+            if (savedLang) {
+                document.getElementById("languageSelect").value = savedLang;
+                changeLanguage();
+            }
+        };
+    </script>
 </body>
 </html>
