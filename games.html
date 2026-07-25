@@ -9,14 +9,19 @@
 </head>
 <body>
     <nav>
-        <a href="index.html">關於我</a>
-        <a href="resume.html">專業履歷</a>
-        <a href="portfolio.html">作品集</a>
-        <a href="games.html" class="active">遊戲日常</a>
+        <!-- 這裡的 data-i18n 就是 JavaScript 認得的翻譯標記，千萬不能掉！ -->
+        <a href="index.html" data-i18n="nav_about">關於我</a>
+        <a href="resume.html" data-i18n="nav_resume">專業履歷</a>
+        <a href="portfolio.html" data-i18n="nav_portfolio">作品集</a>
+        <a href="games.html" data-i18n="nav_games">遊戲日常</a>
         
         <div class="nav-controls">
+            <!-- 四個語言選項完整補齊 -->
             <select class="lang-selector" id="languageSelect" onchange="changeLanguage()">
                 <option value="zh-TW">繁體中文</option>
+                <option value="zh-CN">简体中文</option>
+                <option value="en">English</option>
+                <option value="ms">Bahasa Melayu</option>
             </select>
             <button id="themeBtn" class="theme-toggle-btn">☀️</button>
         </div>
