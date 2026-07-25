@@ -17,7 +17,8 @@
             <a href="games.html" data-i18n="nav_games">遊戲日常</a>
         </nav>
         <div class="top-right-controls">
-            <!-- 已經移除 desktop-only，手機版右上角現在會顯示這個按鈕了！ -->
+            <!-- 新增的聲音控制按鈕 (預設為靜音圖示) -->
+            <button class="mute-btn" id="muteBtn" title="開啟/關閉背景音樂">🔇</button>
             <a href="about-me.html" class="intro-btn" data-i18n="intro_btn">了解更多</a>
             <div class="settings-wrapper desktop-only">
                 <button class="settings-icon-btn" id="desktopSettingsBtn">⚙️</button>
@@ -58,7 +59,8 @@
 
     <main class="hero-section">
         <div class="hero-bg">
-            <video src="Drift.mp4" autoplay loop muted playsinline></video>
+            <!-- 必須加上 muted 才能確保自動播放不被瀏覽器阻擋 -->
+            <video id="bgVideo" src="background.mp4" autoplay loop muted playsinline></video>
             <div class="overlay"></div>
         </div>
         <div class="hero-content">
