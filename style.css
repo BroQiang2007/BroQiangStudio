@@ -10,7 +10,7 @@
     --card-bg: #1e1e1e;
     --accent-color: #e50914; 
     --footer-bg: #050505;
-    /* 邊框顏色改淡一點，按鈕看起來更高級 */
+    /* 邊框顏色改淡，按鈕看起來更高級 */
     --border-color: rgba(255, 255, 255, 0.2); 
 }
 
@@ -59,11 +59,32 @@ body {
     to { opacity: 0; }
 }
 
+/* =========================
+   iPhone 液態玻璃導覽列 (全站套用)
+   ========================= */
+.top-bar {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: var(--nav-bg-glass); 
+    
+    /* 核心魔法：毛玻璃模糊效果 */
+    backdrop-filter: saturate(180%) blur(20px); 
+    -webkit-backdrop-filter: saturate(180%) blur(20px); 
+    
+    border-bottom: 1px solid var(--border-color); 
+    z-index: 1000; 
+}
 
 /* 電腦版橫排選單 */
 .desktop-nav {
     display: flex;
-    gap: 15px; /* 按鈕間距 */
+    gap: 15px; 
     flex: 1;
     justify-content: flex-start;
 }
@@ -90,7 +111,7 @@ body {
     color: var(--text-color);
     border: 1px solid var(--border-color);
     padding: 6px 12px;
-    border-radius: 20px; /* 跟隨整體圓潤風格 */
+    border-radius: 20px; 
     outline: none;
     cursor: pointer;
 }
@@ -118,7 +139,7 @@ body {
     width: 250px;
     height: 100vh;
     
-    /* 改為與頂部相同的液態玻璃特效 */
+    /* 與頂部相同的液態玻璃特效 */
     background-color: var(--nav-bg-glass);
     backdrop-filter: saturate(180%) blur(25px); 
     -webkit-backdrop-filter: saturate(180%) blur(25px); 
@@ -126,9 +147,9 @@ body {
     border-right: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
-    align-items: center; /* 讓裡面的按鈕置中 */
+    align-items: center; 
     padding: 80px 20px 20px;
-    gap: 20px; /* 按鈕的上下間距 */
+    gap: 20px; 
     transition: left 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     z-index: 1001;
 }
@@ -156,10 +177,10 @@ body {
     color: var(--text-color);
     text-decoration: none;
     font-size: 0.95rem;
-    letter-spacing: 1px; /* 增加字距，看起來更大氣 */
-    padding: 8px 24px; /* 拉出長條膠囊狀 */
-    border-radius: 30px; /* 極致圓潤 */
-    border: 1px solid var(--border-color); /* 預設淡淡的邊框 */
+    letter-spacing: 1px; 
+    padding: 8px 24px; 
+    border-radius: 30px; 
+    border: 1px solid var(--border-color); 
     background-color: transparent;
     transition: all 0.3s ease;
     white-space: nowrap;
@@ -176,7 +197,6 @@ body {
 .sidebar a:hover, .sidebar a.active {
     color: var(--accent-color);
     border-color: var(--accent-color);
-    /* 微微透出主題色光暈，拒絕死板實心色 */
     background-color: rgba(229, 9, 20, 0.05); 
 }
 
