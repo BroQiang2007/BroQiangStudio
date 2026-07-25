@@ -62,6 +62,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4. 多語言切換字典
     const translations = {
         "zh-TW": {
+            "nav_intro_btn": "了解更多",
+            "about_page_title": "自我介紹",
+            "about_bio_title": "用代碼刻劃未來，用設計訴說故事。",
+            "about_bio_p1": "你好！我是余樂鈜 (Yu Le Hong)。我是一個對網頁開發與多媒體設計充滿狂熱的創作者。對我來說，寫程式不僅僅是敲擊鍵盤，更是把腦海中天馬行空的想像，轉化為真實互動體驗的魔法。",
+            "about_bio_p2": "近期我幾乎全心投入於網站架構與代碼的鑽研，日夜打磨每一個 UI 細節。連身邊的室友和朋友都看見了我這份對完美近乎固執的追求。我深信，這份對技術的狂熱與堅持，必定能在未來開花結果，迎來屬於我的成功。",
+            "about_bio_p3": "無論是極簡的玻璃擬物化介面、流暢的動態效果，還是跨語言的系統架構，我都樂於挑戰。期待能與同樣熱愛科技與設計的你，一起創造出更多令人驚豔的作品！",
             "nav_about": "關於我", "nav_resume": "專業履歷", "nav_portfolio": "作品集", "nav_games": "遊戲日常",
             "hero_title": "嗨，我是 余樂鈜", "hero_subtitle": "熱愛用程式解決問題的開發者 / 喜歡用設計說故事的創作者。",
             "footer_title_1": "BroQiangStudio", "footer_desc": "致力於網頁開發、多媒體設計與創意專案。歡迎與我聯繫交流！",
@@ -93,6 +99,12 @@ document.addEventListener('DOMContentLoaded', () => {
             "game_btn": "查看遊戲詳情 >"
         },
         "zh-CN": {
+            "nav_intro_btn": "了解更多",
+            "about_page_title": "自我介绍",
+            "about_bio_title": "用代码刻画未来，用设计诉说故事。",
+            "about_bio_p1": "你好！我是余乐鈜 (Yu Le Hong)。我是一个对网页开发与多媒体设计充满狂热的创作者。对我来说，写程序不仅是敲击键盘，更是把脑海中天马行空的想象，转化为真实互动体验的魔法。",
+            "about_bio_p2": "近期我几乎全心投入于网站架构与代码的钻研，日夜打磨每一个 UI 细节。连身边的室友和朋友都看见了我这份对完美近乎固执的追求。我深信，这份对技术的狂热与坚持，必定能在未来开花结果，迎来属于我的成功。",
+            "about_bio_p3": "无论是极简的玻璃拟物化界面、流畅的动态效果，还是跨语言的系统架构，我都乐于挑战。期待能与同样热爱科技与设计的你，一起创造出更多令人惊艳的作品！",
             "nav_about": "关于我", "nav_resume": "专业履历", "nav_portfolio": "作品集", "nav_games": "游戏日常",
             "hero_title": "嗨，我是 余乐鈜", "hero_subtitle": "热爱用代码解决问题的开发者 / 喜欢用设计讲故事的创作者。",
             "footer_title_1": "BroQiangStudio", "footer_desc": "致力于网页开发、多媒体设计与创意项目。欢迎与我联系交流！",
@@ -124,6 +136,12 @@ document.addEventListener('DOMContentLoaded', () => {
             "game_btn": "查看游戏详情 >"
         },
         "en": {
+            "nav_intro_btn": "Learn More",
+            "about_page_title": "About Me",
+            "about_bio_title": "Coding the future, designing stories.",
+            "about_bio_p1": "Hi! I'm Yu Le Hong. I am a creator deeply passionate about web development and multimedia design. For me, coding isn't just about typing; it's the magic of turning wild imagination into real interactive experiences.",
+            "about_bio_p2": "Lately, I've poured my heart into mastering web architecture and code, polishing every UI detail day and night. Even my roommates and friends have witnessed this relentless pursuit of perfection. I firmly believe this dedication to tech will blossom into massive success in the future.",
+            "about_bio_p3": "Whether it's minimalist glassmorphism, smooth animations, or multilingual systems, I love the challenge. I look forward to creating stunning projects with those who share the same passion!",
             "nav_about": "About Me", "nav_resume": "Resume", "nav_portfolio": "Portfolio", "nav_games": "Gaming Life",
             "hero_title": "Hi, I'm Yu Le Hong", "hero_subtitle": "Developer solving problems with code / Creator telling stories through design.",
             "footer_title_1": "BroQiangStudio", "footer_desc": "Dedicated to web development, multimedia design, and creative projects. Let's connect!",
@@ -154,6 +172,12 @@ document.addEventListener('DOMContentLoaded', () => {
             "game_btn": "View Details >"
         },
         "ms": {
+            "nav_intro_btn": "Ketahui Lanjut",
+            "about_page_title": "Tentang Saya",
+            "about_bio_title": "Mengekod masa depan, mereka bentuk cerita.",
+            "about_bio_p1": "Hai! Saya Yu Le Hong. Saya seorang pencipta yang sangat meminati pembangunan web dan reka bentuk multimedia. Mengekod adalah magis yang menukar imaginasi kepada realiti interaktif.",
+            "about_bio_p2": "Kebelakangan ini, saya banyak meluangkan masa mendalami kod dan seni bina web siang dan malam. Malah rakan sebilik saya turut melihat keghairahan ini. Saya yakin, usaha keras ini pasti akan membuahkan kejayaan yang besar pada masa hadapan.",
+            "about_bio_p3": "Sama ada UI minimalis, animasi lancar, atau sistem pelbagai bahasa, saya sentiasa bersedia menyahut cabaran. Mari cipta sesuatu yang menakjubkan bersama!",
             "nav_about": "Tentang Saya", "nav_resume": "Resume", "nav_portfolio": "Portfolio", "nav_games": "Kehidupan Permainan",
             "hero_title": "Hai, Saya Yu Le Hong", "hero_subtitle": "Pembangun yang menyelesaikan masalah dengan kod / Pencipta yang bercerita melalui reka bentuk.",
             "footer_title_1": "BroQiangStudio", "footer_desc": "Berdedikasi untuk pembangunan web, reka bentuk multimedia dan projek kreatif. Mari berhubung!",
