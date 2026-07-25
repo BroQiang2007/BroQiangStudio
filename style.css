@@ -264,7 +264,7 @@ h2.section-title::after { content: ''; position: absolute; bottom: 0; left: 50%;
 .btn-link:hover { text-decoration: underline; transform: translateX(5px); }
 
 /* =========================
-   神秘感圖片懸浮切換特效 (Image Reveal)
+   神秘感圖片/影片懸浮切換特效 (Media Reveal)
    ========================= */
 .reveal-img-wrapper {
     position: relative;
@@ -276,7 +276,9 @@ h2.section-title::after { content: ''; position: absolute; bottom: 0; left: 50%;
     background-color: #050505; 
 }
 
-.reveal-img-wrapper img {
+/* 讓圖片跟影片都能完美填滿容器並套用過渡動畫 */
+.reveal-img-wrapper img,
+.reveal-img-wrapper video {
     position: absolute;
     top: 0;
     left: 0;
@@ -292,7 +294,9 @@ h2.section-title::after { content: ''; position: absolute; bottom: 0; left: 50%;
     transform: scale(1);
 }
 
-.reveal-img-wrapper .img-back {
+/* 隱藏的圖片 (.img-back) 或 影片 (.media-back) 預設狀態 */
+.reveal-img-wrapper .img-back,
+.reveal-img-wrapper .media-back {
     opacity: 0;
     z-index: 1;
     transform: scale(1.15); 
@@ -304,7 +308,9 @@ h2.section-title::after { content: ''; position: absolute; bottom: 0; left: 50%;
     transform: scale(0.95); 
 }
 
-.card:hover .reveal-img-wrapper .img-back {
+/* 滑鼠懸浮時浮現隱藏圖片/影片 */
+.card:hover .reveal-img-wrapper .img-back,
+.card:hover .reveal-img-wrapper .media-back {
     opacity: 1;
     transform: scale(1); 
 }
