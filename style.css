@@ -18,15 +18,14 @@
     --bg-color: #f5f5f5;
     --text-color: #121212;
     --text-muted: #555555;
-    /* 亮色模式的液態玻璃背景色 */
-    --nav-bg-glass: rgba(255, 255, 255, 0.75);
+    /* 將原來的 0.75 改成 0.4，讓白色導覽列變得更清透！ */
+    --nav-bg-glass: rgba(255, 255, 255, 0.4); 
     --sidebar-bg: #ffffff;
     --card-bg: #ffffff;
     --accent-color: #d32f2f;
     --footer-bg: #e0e0e0;
     --border-color: #cccccc;
 }
-
 * {
     margin: 0;
     padding: 0;
