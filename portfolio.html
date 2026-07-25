@@ -3,93 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>作品集 | BroQiangStudio</title>
+    <title data-i18n="page_title_portfolio">作品集 | BroQiangStudio</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/jpeg" href="ProfilePicture.jpg">
 </head>
 <body>
     <header class="top-bar">
-        <button id="menuBtn" class="menu-btn">☰</button>
+        <button class="menu-btn" id="menuBtn">☰</button>
         <nav class="desktop-nav">
             <a href="index.html" data-i18n="nav_about">關於我</a>
             <a href="resume.html" data-i18n="nav_resume">專業履歷</a>
             <a href="portfolio.html" class="active" data-i18n="nav_portfolio">作品集</a>
             <a href="games.html" data-i18n="nav_games">遊戲日常</a>
         </nav>
-        <div class="nav-controls">
-            <select class="lang-selector" id="languageSelect" onchange="changeLanguage()">
-                <option value="zh-TW">繁體中文</option>
-                <option value="zh-CN">简体中文</option>
-                <option value="en">English</option>
-                <option value="ms">Bahasa Melayu</option>
-            </select>
-            <button id="themeBtn" class="theme-toggle-btn">☀️</button>
+        <div class="settings-wrapper desktop-only">
+            <button class="settings-icon-btn" id="desktopSettingsBtn">⚙️</button>
+            <div class="settings-dropdown" id="desktopDropdown">
+                <select class="lang-selector"><option value="zh-TW">繁體中文</option><option value="zh-CN">简体中文</option><option value="en">English</option><option value="ms">Bahasa Melayu</option></select>
+                <button class="theme-toggle-btn"><span class="theme-icon">☀️</span> <span class="theme-text">日間模式</span></button>
+            </div>
         </div>
     </header>
 
-    <nav id="sidebar" class="sidebar">
-        <button id="closeBtn" class="close-btn">&times;</button>
-        <a href="index.html" data-i18n="nav_about">關於我</a>
-        <a href="resume.html" data-i18n="nav_resume">專業履歷</a>
-        <a href="portfolio.html" class="active" data-i18n="nav_portfolio">作品集</a>
-        <a href="games.html" data-i18n="nav_games">遊戲日常</a>
-    </nav>
+    <aside class="sidebar" id="sidebar">
+        <button class="close-btn" id="closeBtn">×</button>
+        <nav class="sidebar-nav">
+            <a href="index.html" data-i18n="nav_about">關於我</a>
+            <a href="resume.html" data-i18n="nav_resume">專業履歷</a>
+            <a href="portfolio.html" class="active" data-i18n="nav_portfolio">作品集</a>
+            <a href="games.html" data-i18n="nav_games">遊戲日常</a>
+        </nav>
+        <div class="settings-wrapper mobile-only mobile-settings">
+            <div class="settings-dropdown" id="mobileDropdown">
+                <select class="lang-selector"><option value="zh-TW">繁體中文</option><option value="zh-CN">简体中文</option><option value="en">English</option><option value="ms">Bahasa Melayu</option></select>
+                <button class="theme-toggle-btn"><span class="theme-icon">☀️</span> <span class="theme-text">日間模式</span></button>
+            </div>
+            <button class="settings-icon-btn" id="mobileSettingsBtn">⚙️</button>
+        </div>
+    </aside>
 
     <main class="page-content">
-        <h2 class="section-title" data-i18n="port_title">作品集與專案</h2>
-        
+        <h2 class="section-title" data-i18n="portfolio_header">精選專案</h2>
         <div class="grid-container">
             <div class="card">
-                <div class="card-img-placeholder">Project Image</div>
-                <h3 data-i18n="port_1_title">企業品牌形象重塑與網站開發</h3>
-                <p data-i18n="port_1_desc">結合現代美學與流暢的 UI/UX 設計，使用 HTML/CSS/JS 為客戶打造響應式官方網站，大幅提升品牌專業度與使用者停留時間。</p>
-                <a href="#" class="btn-link" data-i18n="port_1_btn">查看專案 →</a>
+                <div class="card-img-placeholder" data-i18n="project_img">Project Image</div>
+                <h3 data-i18n="project_1_title">個人品牌官方網站</h3>
+                <p data-i18n="project_1_desc">結合深色模式與多語言支持的現代化個人網站，採用 Telegram 風格 UI 交互設計。</p>
+                <a href="#" class="btn-link" data-i18n="view_project">查看詳情 &gt;</a>
             </div>
             <div class="card">
-                <div class="card-img-placeholder">Project Image</div>
-                <h3 data-i18n="port_2_title">商業宣傳影片與特效剪輯</h3>
-                <p data-i18n="port_2_desc">運用 Adobe Premiere Pro 與 After Effects 製作高質感的商業短片。透過精準的節奏掌控與視覺特效，有效提升產品曝光率。</p>
-                <a href="#" class="btn-link" data-i18n="port_2_btn">觀看影片 →</a>
-            </div>
-            <div class="card">
-                <div class="card-img-placeholder">Project Image</div>
-                <h3 data-i18n="port_3_title">跨平台應用程式開發</h3>
-                <p data-i18n="port_3_desc">參與前/後端技術整合，開發兼具流暢度與實用性的應用程式，致力於用程式碼解決生活中的實際問題。</p>
-                <a href="#" class="btn-link" data-i18n="port_3_btn">查看專案 →</a>
+                <div class="card-img-placeholder" data-i18n="project_img">Project Image</div>
+                <h3 data-i18n="project_2_title">多媒體影音剪輯</h3>
+                <p data-i18n="project_2_desc">高質感的動態影片製作，包含車輛追焦、跑車動態剪輯，展現視覺衝擊力。</p>
+                <a href="#" class="btn-link" data-i18n="view_project">查看詳情 &gt;</a>
             </div>
         </div>
     </main>
 
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-col">
-                <h4>BroQiangStudio</h4>
-                <p data-i18n="footer_desc">致力於網頁開發、多媒體設計與創意專案。歡迎與我聯繫交流！</p>
-            </div>
-            <div class="footer-col">
-                <h4 data-i18n="footer_nav">快速導覽</h4>
-                <ul>
-                    <li><a href="index.html" data-i18n="nav_about">關於我</a></li>
-                    <li><a href="resume.html" data-i18n="nav_resume">專業履歷</a></li>
-                    <li><a href="portfolio.html" data-i18n="nav_portfolio">作品集</a></li>
-                    <li><a href="games.html" data-i18n="nav_games">遊戲日常</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-    <h4 data-i18n="footer_social">社群平台</h4>
-    <ul>
-        <!-- 將 href 替換成你的網址，並加上 target="_blank" -->
-        <li><a href="https://www.instagram.com/broqiang2007?utm_source=qr&igsh=MWh6cHk3NWptcW1wYw==" target="_blank" data-i18n="social_ig">Instagram</a></li>
-        <li><a href="https://www.youtube.com/@BroQiang2007" target="_blank" data-i18n="social_yt">YouTube</a></li>
-        <li><a href="https://v.douyin.com/Mxdam2fIoO4/" target="_blank" data-i18n="social_tt">抖音</a></li>
-        <li><a href="https://github.com/BroQiang2007" target="_blank" data-i18n="social_gh">GitHub</a></li>
-    </ul>
-</div>
-        </div>
-        <div class="footer-bottom" data-i18n="footer_copy">
-            &copy; 2026 BroQiangStudio. All rights reserved. | 聯絡我：anle82760@gmail.com
-        </div>
-    </footer>
+    <footer class="site-footer"><div class="footer-bottom"><p>&copy; 2026 BroQiangStudio.</p></div></footer>
     <script src="script.js"></script>
 </body>
 </html>
