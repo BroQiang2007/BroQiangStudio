@@ -34,3 +34,24 @@ function updateThemeIcon(theme) {
         themeBtn.innerHTML = '🌙'; // 亮白模式顯示月亮(切換到暗黑)
     }
 }
+
+// =========================
+// 頁面跳轉平滑動畫邏輯
+// =========================
+document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', function(e) {
+        // 如果點擊的是當前頁面，或是另開新分頁的連結，就不執行退出動畫
+        if (this.href === window.location.href || this.target === '_blank') return;
+        
+        e.preventDefault(); // 暫停原本瞬間跳轉的動作
+        const targetUrl = this.href;
+        
+        // 替整個網頁加上淡出的 CSS 動畫
+        document.body.classList.add('fade-out');
+        
+        // 等待 300 毫秒（配合 CSS 動畫時間）後，再前往下一頁
+        setTimeout(() => {
+            window.location.href = targetUrl;
+        }, 300);
+    });
+});
