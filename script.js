@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 2. 齒輪設定選單控制
+    // 2. 齒輪設定選單控制 (已修復事件冒泡 Bug)
     const desktopSettingsBtn = document.getElementById('desktopSettingsBtn');
     const desktopDropdown = document.getElementById('desktopDropdown');
     const mobileSettingsBtn = document.getElementById('mobileSettingsBtn');
@@ -28,6 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
             e.stopPropagation();
             desktopDropdown.classList.toggle('active');
         });
+        
+        // 【修復關鍵】：防止點擊下拉選單內部時，觸發外層的關閉事件
+        desktopDropdown.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
     }
 
     if (mobileSettingsBtn && mobileDropdown) {
@@ -35,8 +40,14 @@ document.addEventListener("DOMContentLoaded", () => {
             e.stopPropagation();
             mobileDropdown.classList.toggle('active');
         });
+        
+        // 【修復關鍵】：防止點擊下拉選單內部時，觸發外層的關閉事件
+        mobileDropdown.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
     }
 
+    // 點擊網頁其他空白處時，關閉設定選單
     document.addEventListener('click', () => {
         if (desktopDropdown) desktopDropdown.classList.remove('active');
         if (mobileDropdown) mobileDropdown.classList.remove('active');
