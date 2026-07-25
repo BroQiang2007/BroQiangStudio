@@ -1,119 +1,66 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-TW" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me | BroQiangStudio</title>
+    <title>關於我 | BroQiangStudio</title>
     <link rel="stylesheet" href="style.css">
-
     <link rel="icon" type="image/jpeg" href="ProfilePicture.jpg">
 </head>
 <body>
-
-    <body>
-    <!-- 超炫酷背景區塊 (放在 body 的最前面) -->
-    <div class="hero-background">
-        <!-- 如果你要用影片，請用下面這行 (需要上傳一個 bg-video.mp4 到 GitHub) -->
-        <video autoplay muted loop playsinline>
-            <source src="bg-video.mp4" type="video/mp4">
-        </video>
-        
-        <!-- 如果你暫時只有圖片，就把上面 video 刪掉或註解，改用下面這行 -->
-        <!-- <img src="cool-background.jpg" alt="Background"> -->
-    </div>
-
-    <!-- 下面是你原本的 <nav> 和 <main> 等內容... -->
-        
     <nav>
-        <a href="index.html" data-i18n="nav_about">關於我</a>
-        <a href="resume.html" data-i18n="nav_resume">專業履歷</a>
-        <a href="portfolio.html" data-i18n="nav_portfolio">作品集</a>
-        <a href="games.html" data-i18n="nav_games">遊戲日常</a>
+        <a href="index.html" class="active">關於我</a>
+        <a href="resume.html">專業履歷</a>
+        <a href="portfolio.html">作品集</a>
+        <a href="games.html">遊戲日常</a>
         
-        <select class="lang-selector" id="languageSelect" onchange="changeLanguage()">
-            <option value="zh-TW">繁體中文</option>
-            <option value="zh-CN">简体中文</option>
-            <option value="en">English</option>
-            <option value="ms">Bahasa Melayu</option>
-        </select>
+        <div class="nav-controls">
+            <select class="lang-selector" id="languageSelect" onchange="changeLanguage()">
+                <option value="zh-TW">繁體中文</option>
+                <option value="zh-CN">简体中文</option>
+                <option value="en">English</option>
+                <option value="ms">Bahasa Melayu</option>
+            </select>
+            <button id="themeBtn" class="theme-toggle-btn">☀️</button>
+        </div>
     </nav>
 
-    <main>
-        <section class="hero">
-            <!-- 大頭貼圖片網址可以在下面這裡替換 -->
-            <img src="ProfilePicture.jpg" alt="Profile" class="profile-img">
-            <h1 data-i18n="hero_title">嗨，我是 余樂銨</h1>
-            <p data-i18n="hero_desc">熱愛用程式解決問題的開發者 / 喜歡用設計說故事的創作者。</p>
-            
-            <div class="social-links">
-                <a href="https://www.instagram.com/broqiang2007?utm_source=qr&igsh=MWh6cHk3NWptcW1wYw==" target="_blank">Instagram</a>
-                <a href="http://www.youtube.com/@BroQiang2007" target="_blank">YouTube</a>
-                <a href="https://v.douyin.com/Mxdam2fIoO4/" target="_blank" data-i18n="social_douyin">抖音</a>
-                <a href="https://github.com/BroQiang2007" target="_blank">GitHub</a>
-            </div>
-        </section>
+    <main class="about-section">
+        <img src="ProfilePicture.jpg" alt="Profile Picture" class="profile-pic">
+        <h1>嗨，我是 余樂鈜</h1>
+        <p class="subtitle">熱愛用程式解決問題的開發者 / 喜歡用設計說故事的創作者。</p>
     </main>
 
-    <footer>
-        <p data-i18n="footer_contact">聯絡我：anle82760@gmail.com</p>
-        <p style="margin-top: 10px;">&copy; 2026 <span data-i18n="footer_rights">BroQiangStudio. 版權所有.</span></p>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>BroQiangStudio</h4>
+                <p>致力於網頁開發、多媒體設計與創意專案。歡迎與我聯繫交流！</p>
+            </div>
+            <div class="footer-col">
+                <h4>快速導覽</h4>
+                <ul>
+                    <li><a href="index.html">關於我</a></li>
+                    <li><a href="resume.html">專業履歷</a></li>
+                    <li><a href="portfolio.html">作品集</a></li>
+                    <li><a href="games.html">遊戲日常</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>社群平台</h4>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">YouTube</a></li>
+                    <li><a href="#">TikTok (抖音)</a></li>
+                    <li><a href="#">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 BroQiangStudio. All rights reserved. | 聯絡我：anle82760@gmail.com
+        </div>
     </footer>
 
-    <!-- ================= 完整的語言切換系統 ================= -->
-    <script>
-        const translations = {
-            "zh-TW": {
-                "nav_about": "關於我", "nav_resume": "專業履歷", "nav_portfolio": "作品集",
-                "hero_title": "嗨，我是 余樂銨",
-                "hero_desc": "熱愛用程式解決問題的開發者 / 喜歡用設計說故事的創作者。",
-                "footer_contact": "聯絡我：anle82760@gmail.com",
-                "footer_rights": "BroQiangStudio. 版權所有.",
-                "social_douyin": "抖音"
-            },
-            "zh-CN": {
-                "nav_about": "关于我", "nav_resume": "专业履历", "nav_portfolio": "作品集",
-                "hero_title": "嗨，我是 余乐铵",
-                "hero_desc": "热爱用程式解决问题的开发者 / 喜欢用设计说故事的创作者。",
-                "footer_contact": "联系我：anle82760@gmail.com",
-                "footer_rights": "BroQiangStudio. 版权所有.",
-                "social_douyin": "抖音"
-            },
-            "en": {
-                "nav_about": "About Me", "nav_resume": "Resume", "nav_portfolio": "Portfolio",
-                "hero_title": "Hi, I'm MICHAEL ER",
-                "hero_desc": "A developer passionate about solving problems / A creator who loves storytelling through design.",
-                "footer_contact": "Contact me: anle82760@gmail.com",
-                "footer_rights": "BroQiangStudio. All Rights Reserved.",
-                "social_douyin": "DouYin"
-            },
-            "ms": {
-                "nav_about": "Mengenai Saya", "nav_resume": "Resume", "nav_portfolio": "Portfolio",
-                "hero_title": "Hai, saya ER LE AN",
-                "hero_desc": "Seorang pembangun yang bersemangat menyelesaikan masalah / Pencipta yang suka bercerita melalui reka bentuk.",
-                "footer_contact": "Hubungi saya: anle82760@gmail.com",
-                "footer_rights": "BroQiangStudio. Hak Cipta Terpelihara.",
-                "social_douyin": "DouYin"
-            }
-        };
-
-        function changeLanguage() {
-            const lang = document.getElementById("languageSelect").value;
-            document.querySelectorAll("[data-i18n]").forEach(el => {
-                const key = el.getAttribute("data-i18n");
-                if (translations[lang] && translations[lang][key]) {
-                    el.textContent = translations[lang][key];
-                }
-            });
-            localStorage.setItem("selectedLanguage", lang);
-        }
-
-        window.onload = function() {
-            const savedLang = localStorage.getItem("selectedLanguage");
-            if (savedLang) {
-                document.getElementById("languageSelect").value = savedLang;
-                changeLanguage();
-            }
-        };
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
