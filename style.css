@@ -38,27 +38,22 @@ body {
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 /* =========================
-   全透明懸浮導覽列 (徹底移除黑Bar)
+   全透明懸浮導覽列
    ========================= */
 .top-bar {
     position: fixed; top: 0; left: 0; width: 100%;
     display: flex; justify-content: space-between; align-items: center;
     padding: 20px 30px;
-    background-color: transparent; /* 完全透明 */
+    background-color: transparent; 
     backdrop-filter: none; -webkit-backdrop-filter: none; border-bottom: none; 
-    z-index: 1000; 
-    /* 核心魔法：讓透明區域不會阻擋底下滑鼠點擊 */
-    pointer-events: none; 
+    z-index: 1000; pointer-events: none; 
 }
-
-/* 讓按鈕恢復點擊功能 */
 .desktop-nav, .menu-btn, .settings-wrapper { pointer-events: auto; }
-
 .desktop-nav { display: flex; gap: 15px; flex: 1; justify-content: flex-start; }
 .menu-btn { display: none; background: none; border: none; color: var(--text-color); font-size: 2rem; cursor: pointer; }
 
 /* =========================
-   手機版側邊欄 (修改右下角設定)
+   手機版側邊欄
    ========================= */
 .sidebar {
     position: fixed; top: 0; left: -300px; width: 280px; height: 100vh;
@@ -68,12 +63,11 @@ body {
     display: flex; flex-direction: column;
     padding: 80px 20px 20px; transition: left 0.4s cubic-bezier(0.25, 1, 0.5, 1); z-index: 1001;
 }
-
 .sidebar.active { left: 0; box-shadow: 5px 0 25px rgba(0,0,0,0.5); }
 .close-btn { position: absolute; top: 15px; right: 20px; background: none; border: none; color: var(--text-color); font-size: 2.5rem; cursor: pointer; }
 .sidebar-nav { display: flex; flex-direction: column; gap: 15px; width: 100%; }
 
-/* 🔥 布加迪奢華風：圓潤膠囊按鈕 */
+/* 布加迪奢華風：圓潤膠囊按鈕 */
 .desktop-nav a, .sidebar-nav a {
     color: var(--text-color); text-decoration: none; font-size: 0.95rem; letter-spacing: 1px; 
     padding: 10px 24px; border-radius: 30px; border: 1px solid var(--border-color); 
@@ -87,8 +81,6 @@ body {
    Telegram風格 設定彈出選單
    ========================= */
 .settings-wrapper { position: relative; }
-
-/* 齒輪按鈕 */
 .settings-icon-btn {
     background: var(--nav-bg-glass); border: 1px solid var(--border-color); border-radius: 50%;
     width: 45px; height: 45px; display: flex; align-items: center; justify-content: center;
@@ -97,7 +89,6 @@ body {
 }
 .settings-icon-btn:hover { background: var(--accent-color); border-color: var(--accent-color); color: #fff; }
 
-/* 下拉選單外框 */
 .settings-dropdown {
     position: absolute; right: 0; width: 220px;
     background-color: var(--nav-bg-glass); backdrop-filter: saturate(180%) blur(25px); -webkit-backdrop-filter: saturate(180%) blur(25px);
@@ -106,17 +97,12 @@ body {
     opacity: 0; visibility: hidden; transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
     box-shadow: 0 10px 30px rgba(0,0,0,0.4); z-index: 1002;
 }
-
-/* 電腦版選單 (往下彈) */
 #desktopDropdown { top: 60px; transform: translateY(-15px); }
 #desktopDropdown.active { opacity: 1; visibility: visible; transform: translateY(0); }
-
-/* 手機版設定選單 (釘在右下角，往上彈) */
 .mobile-settings { position: absolute; bottom: 25px; right: 25px; }
 #mobileDropdown { top: auto; bottom: 60px; right: 0; transform: translateY(15px); }
 #mobileDropdown.active { opacity: 1; visibility: visible; transform: translateY(0); }
 
-/* 選單內的按鈕樣式 */
 .settings-dropdown .lang-selector, .settings-dropdown .theme-toggle-btn {
     width: 100%; background: transparent; color: var(--text-color); border: 1px solid var(--border-color);
     padding: 10px 15px; border-radius: 10px; cursor: pointer; font-size: 0.95rem; outline: none;
@@ -125,12 +111,9 @@ body {
 .settings-dropdown .lang-selector option { background-color: var(--card-bg); color: var(--text-color); }
 .settings-dropdown .lang-selector:hover, .settings-dropdown .theme-toggle-btn:hover { background: rgba(150, 150, 150, 0.15); }
 
-/* =========================================
-   📱 RWD 切換控制
-   ========================================= */
+/* RWD */
 .desktop-only { display: block; }
 .mobile-only { display: none; }
-
 @media (max-width: 768px) {
     .desktop-only { display: none; }
     .mobile-only { display: block; }
@@ -140,7 +123,7 @@ body {
 }
 
 /* =========================
-   以下保留你原本的內容樣式 (Hero, Card, Footer等)
+   通用頁面樣式
    ========================= */
 main { flex: 1; width: 100%; }
 .hero-section { position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
@@ -159,6 +142,11 @@ h2.section-title::after { content: ''; position: absolute; bottom: 0; left: 50%;
 .card-img-placeholder { width: 100%; height: 180px; background-color: #333; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff; margin-bottom: 15px; }
 .card h3 { margin-bottom: 10px; font-size: 1.3rem; }
 .card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; }
+
+/* 修復藍色連結，改回主題紅色 */
+.btn-link { display: inline-block; color: var(--accent-color); text-decoration: none; font-weight: bold; }
+.btn-link:hover { text-decoration: underline; }
+
 .site-footer { background-color: var(--footer-bg); color: var(--text-color); padding: 40px 20px 20px; border-top: 1px solid var(--border-color); margin-top: auto; }
 .footer-container { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-bottom: 30px; }
 .footer-col h4 { color: var(--accent-color); margin-bottom: 15px; font-size: 1.1rem; }
