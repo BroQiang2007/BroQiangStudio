@@ -150,7 +150,7 @@ const translations = {
         "social_ig": "Instagram", "social_yt": "YouTube", "social_tt": "TikTok (Versi China)", "social_gh": "GitHub",
         "resume_title": "Resume Profesional",
         "resume_exp": "💼 Pengalaman Kerja",
-        "resume_exp_1_title": "[Nama Syarikat] - [Jawatan]",
+        "resume_exp_1_title": "[Nama Syarikat (Tiada Data)] - [Jawatan (Tiada Data)]",
         "resume_exp_1_date": "Tiada Data - Kini",
         "resume_exp_1_desc": "Penerangan tugas atau pencapaian projek. (Tiada Data)",
         "resume_exp_2_title": "[Syarikat Terdahulu (Tiada Data)] - [Jawatan (Tiada Data)]",
