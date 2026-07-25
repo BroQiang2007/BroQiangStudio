@@ -1,14 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
-    /* =========================
-       1. 漢堡選單 (三條線) 控制
-       ========================= */
+    // 1. 漢堡選單控制
     const menuBtn = document.getElementById('menuBtn');
     const closeBtn = document.getElementById('closeBtn');
     const sidebar = document.getElementById('sidebar');
 
     if (menuBtn && sidebar) {
         menuBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); // 防止點擊穿透引發其他事件
+            e.stopPropagation(); 
             sidebar.classList.add('active');
         });
     }
@@ -19,9 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    /* =========================
-       2. 設定選單 (齒輪) 下拉控制
-       ========================= */
+    // 2. 齒輪設定選單控制
     const desktopSettingsBtn = document.getElementById('desktopSettingsBtn');
     const desktopDropdown = document.getElementById('desktopDropdown');
     const mobileSettingsBtn = document.getElementById('mobileSettingsBtn');
@@ -41,15 +37,12 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 點擊空白處自動關閉設定選單
     document.addEventListener('click', () => {
         if (desktopDropdown) desktopDropdown.classList.remove('active');
         if (mobileDropdown) mobileDropdown.classList.remove('active');
     });
 
-    /* =========================
-       3. 日夜模式切換
-       ========================= */
+    // 3. 日夜模式
     const themeToggleBtns = document.querySelectorAll('.theme-toggle-btn');
     const htmlElement = document.documentElement;
 
@@ -59,16 +52,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
             htmlElement.setAttribute('data-theme', newTheme);
             
-            // 更新按鈕文字和圖示
             themeToggleBtns.forEach(updateBtn => {
                 const icon = updateBtn.querySelector('.theme-icon');
                 const text = updateBtn.querySelector('.theme-text');
                 if (newTheme === 'dark') {
-                    icon.textContent = '☀️';
-                    text.textContent = '日間模式';
+                    icon.textContent = '☀️'; text.textContent = '日間模式';
                 } else {
-                    icon.textContent = '🌙';
-                    text.textContent = '夜間模式';
+                    icon.textContent = '🌙'; text.textContent = '夜間模式';
                 }
             });
         });
