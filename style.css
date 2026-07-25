@@ -5,7 +5,6 @@
     --bg-color: #121212;
     --text-color: #ffffff;
     --text-muted: #aaaaaa;
-    /* 調整：夜間模式側邊欄透明度降低，讓後方更清晰 */
     --nav-bg-glass: rgba(20, 20, 20, 0.3); 
     --card-bg: #1e1e1e;
     --accent-color: #e50914; 
@@ -17,7 +16,6 @@
     --bg-color: #f5f5f5;
     --text-color: #121212;
     --text-muted: #555555;
-    /* 調整：日間模式側邊欄透明度降低 */
     --nav-bg-glass: rgba(255, 255, 255, 0.3); 
     --card-bg: #ffffff;
     --accent-color: #d32f2f;
@@ -69,16 +67,28 @@ body {
 
 /* 右上角控制區塊與自介按鈕 */
 .top-right-controls { display: flex; gap: 15px; align-items: center; pointer-events: auto; }
+
+/* 調整：了解更多按鈕也加入玻璃背景與模糊效果 */
 .intro-btn {
-    background: rgba(229, 9, 20, 0.1); border: 1px solid var(--accent-color);
-    color: var(--text-color); padding: 8px 20px; border-radius: 20px;
-    text-decoration: none; font-size: 0.9rem; font-weight: bold;
+    background: var(--nav-bg-glass); 
+    border: 1px solid var(--border-color);
+    color: var(--text-color); 
+    padding: 8px 20px; 
+    border-radius: 20px;
+    text-decoration: none; 
+    font-size: 0.9rem; 
+    font-weight: bold;
     transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); 
-    backdrop-filter: blur(5px); white-space: nowrap; display: inline-block;
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); 
+    white-space: nowrap; 
+    display: inline-block;
 }
 .intro-btn:hover { 
-    background: var(--accent-color); color: #fff; 
-    box-shadow: 0 5px 15px rgba(229, 9, 20, 0.5); transform: translateY(-2px);
+    background: var(--accent-color); 
+    border-color: var(--accent-color);
+    color: #fff; 
+    box-shadow: 0 5px 15px rgba(229, 9, 20, 0.5); 
+    transform: translateY(-2px);
 }
 
 /* =========================
@@ -88,7 +98,6 @@ body {
     position: fixed; top: 0; left: -300px; width: 280px; 
     height: 100%; height: 100dvh; 
     background-color: var(--nav-bg-glass);
-    /* 調整：降低 blur(從25px降到12px)，才能清晰看到背景的輪廓 */
     backdrop-filter: saturate(180%) blur(12px); -webkit-backdrop-filter: saturate(180%) blur(12px); 
     border-right: 1px solid var(--border-color);
     display: flex; flex-direction: column; 
@@ -103,15 +112,22 @@ body {
     flex: 1; overflow-y: auto; padding-bottom: 80px; 
 }
 
-/* 布加迪奢華風：圓潤膠囊按鈕 */
+/* 調整：導覽列的 4 個按鈕加入玻璃背景與模糊效果 */
 .desktop-nav a, .sidebar-nav a {
-    color: var(--text-color); text-decoration: none; font-size: 0.95rem; letter-spacing: 1px; 
-    padding: 10px 24px; border-radius: 30px; 
+    color: var(--text-color); 
+    text-decoration: none; 
+    font-size: 0.95rem; 
+    letter-spacing: 1px; 
+    padding: 10px 24px; 
+    border-radius: 30px; 
     border: 1px solid var(--border-color); 
-    background-color: transparent; transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); white-space: nowrap; text-align: center;
+    background-color: var(--nav-bg-glass); 
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); 
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); 
+    white-space: nowrap; 
+    text-align: center;
 }
 
-/* 調整：分離 Hover 和 Active 狀態，解決手機版邊框顯示不全的問題 */
 .desktop-nav a.active, .sidebar-nav a.active {
     color: var(--accent-color); 
     border-color: var(--accent-color); 
@@ -122,7 +138,7 @@ body {
     color: var(--accent-color); 
     border-color: var(--accent-color); 
     background-color: rgba(229, 9, 20, 0.05); 
-    transform: translateY(-2px); /* 只有滑鼠停留在上面時才浮起，預設 active 不浮起 */
+    transform: translateY(-2px); 
 }
 
 /* =========================
@@ -200,7 +216,6 @@ h2.section-title::after { content: ''; position: absolute; bottom: 0; left: 50%;
     border-radius: 12px; 
     overflow: hidden; 
     padding: 20px; 
-    /* 調整：新增預設的一層微弱邊框與基礎陰影，為後續的LED變色做準備 */
     border: 1px solid var(--border-color);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
     animation: fadeInUp 0.6s cubic-bezier(0.25, 1, 0.5, 1) both;
@@ -214,15 +229,12 @@ h2.section-title::after { content: ''; position: absolute; bottom: 0; left: 50%;
 .card:nth-child(5) { animation-delay: 0.5s; }
 .card:nth-child(6) { animation-delay: 0.6s; }
 
-/* 調整：滑鼠 Hover 觸發紅色邊框 + 雙層紅色 LED 光暈 */
 .card:hover {
     transform: translateY(-8px);
-    border-color: var(--accent-color); /* 邊框變亮紅 */
-    /* 第一層是較擴散的紅光，第二層是較集中的紅光 */
+    border-color: var(--accent-color); 
     box-shadow: 0 10px 30px rgba(229, 9, 20, 0.35), 0 0 15px rgba(229, 9, 20, 0.15); 
 }
 [data-theme="light"] .card:hover {
-    /* 日間模式的紅光稍微加深一點點，確保在白底上看得清楚 */
     box-shadow: 0 10px 30px rgba(211, 47, 47, 0.4), 0 0 15px rgba(211, 47, 47, 0.2);
 }
 
