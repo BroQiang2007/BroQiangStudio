@@ -5,7 +5,6 @@
     --bg-color: #121212;
     --text-color: #ffffff;
     --text-muted: #aaaaaa;
-    /* 夜間模式的玻璃透度調低至 0.6，增加透視感 */
     --nav-bg-glass: rgba(20, 20, 20, 0.6); 
     --card-bg: #1e1e1e;
     --accent-color: #e50914; 
@@ -17,7 +16,6 @@
     --bg-color: #f5f5f5;
     --text-color: #121212;
     --text-muted: #555555;
-    /* 日間模式的玻璃透度調低至 0.55，讓後方背景透出來 */
     --nav-bg-glass: rgba(255, 255, 255, 0.55); 
     --card-bg: #ffffff;
     --accent-color: #d32f2f;
@@ -34,10 +32,23 @@
 body {
     background-color: var(--bg-color); color: var(--text-color);
     line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh;
-    animation: fadeIn 0.5s ease-out forwards; overflow-x: hidden;
+    overflow-x: hidden;
 }
 
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+/* =========================
+   全局絲滑動畫 (Fade In Up)
+   ========================= */
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+    from { opacity: 0; } to { opacity: 1; }
+}
+
+.hero-content, .footer-container {
+    animation: fadeInUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
 
 /* =========================
    全透明懸浮導覽列
@@ -47,77 +58,69 @@ body {
     display: flex; justify-content: space-between; align-items: center;
     padding: 20px 30px;
     background-color: transparent; 
-    backdrop-filter: none; -webkit-backdrop-filter: none; border-bottom: none; 
     z-index: 1000; pointer-events: none; 
 }
-.desktop-nav, .menu-btn, .settings-wrapper { pointer-events: auto; }
+.desktop-nav, .menu-btn, .settings-wrapper, .intro-btn { pointer-events: auto; }
 .desktop-nav { display: flex; gap: 15px; flex: 1; justify-content: flex-start; }
-.menu-btn { display: none; background: none; border: none; color: var(--text-color); font-size: 2rem; cursor: pointer; }
+.menu-btn { display: none; background: none; border: none; color: var(--text-color); font-size: 2rem; cursor: pointer; transition: transform 0.3s ease; }
+.menu-btn:hover { transform: scale(1.1); }
 
 /* 右上角控制區塊與自介按鈕 */
-.top-right-controls {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-    pointer-events: auto;
-}
-
+.top-right-controls { display: flex; gap: 15px; align-items: center; pointer-events: auto; }
 .intro-btn {
-    background: rgba(229, 9, 20, 0.1); 
-    border: 1px solid var(--accent-color);
-    color: var(--text-color); 
-    padding: 8px 20px; 
-    border-radius: 20px;
-    text-decoration: none; 
-    font-size: 0.9rem; 
-    font-weight: bold;
-    transition: all 0.3s ease; 
-    backdrop-filter: blur(5px);
-    white-space: nowrap;
+    background: rgba(229, 9, 20, 0.1); border: 1px solid var(--accent-color);
+    color: var(--text-color); padding: 8px 20px; border-radius: 20px;
+    text-decoration: none; font-size: 0.9rem; font-weight: bold;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); 
+    backdrop-filter: blur(5px); white-space: nowrap; display: inline-block;
 }
-
 .intro-btn:hover { 
-    background: var(--accent-color); 
-    color: #fff; 
-    box-shadow: 0 0 15px rgba(229, 9, 20, 0.6); 
+    background: var(--accent-color); color: #fff; 
+    box-shadow: 0 5px 15px rgba(229, 9, 20, 0.5); transform: translateY(-2px);
 }
 
 /* =========================
-   手機版側邊欄
+   手機版側邊欄 (修復齒輪 Bug)
    ========================= */
 .sidebar {
-    position: fixed; top: 0; left: -300px; width: 280px; height: 100vh;
+    position: fixed; top: 0; left: -300px; width: 280px; 
+    height: 100%; height: 100dvh; /* 解決手機瀏覽器高度 Bug */
     background-color: var(--nav-bg-glass);
     backdrop-filter: saturate(180%) blur(25px); -webkit-backdrop-filter: saturate(180%) blur(25px); 
     border-right: 1px solid var(--border-color);
-    display: flex; flex-direction: column;
+    display: flex; flex-direction: column; /* 讓內部元素可以分配高度 */
     padding: 80px 20px 20px; transition: left 0.4s cubic-bezier(0.25, 1, 0.5, 1); z-index: 1001;
 }
 .sidebar.active { left: 0; box-shadow: 5px 0 25px rgba(0,0,0,0.5); }
-.close-btn { position: absolute; top: 15px; right: 20px; background: none; border: none; color: var(--text-color); font-size: 2.5rem; cursor: pointer; }
-.sidebar-nav { display: flex; flex-direction: column; gap: 15px; width: 100%; }
+.close-btn { position: absolute; top: 15px; right: 20px; background: none; border: none; color: var(--text-color); font-size: 2.5rem; cursor: pointer; transition: transform 0.3s ease; }
+.close-btn:hover { transform: rotate(90deg); color: var(--accent-color); }
+
+.sidebar-nav { 
+    display: flex; flex-direction: column; gap: 15px; width: 100%; 
+    flex: 1; overflow-y: auto; padding-bottom: 80px; /* 給齒輪留出空間，避免重疊 */
+}
 
 /* 布加迪奢華風：圓潤膠囊按鈕 */
 .desktop-nav a, .sidebar-nav a {
     color: var(--text-color); text-decoration: none; font-size: 0.95rem; letter-spacing: 1px; 
     padding: 10px 24px; border-radius: 30px; border: 1px solid var(--border-color); 
-    background-color: transparent; transition: all 0.3s ease; white-space: nowrap; text-align: center;
+    background-color: transparent; transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); white-space: nowrap; text-align: center;
 }
 .desktop-nav a:hover, .desktop-nav a.active, .sidebar-nav a:hover, .sidebar-nav a.active {
-    color: var(--accent-color); border-color: var(--accent-color); background-color: rgba(229, 9, 20, 0.05); 
+    color: var(--accent-color); border-color: var(--accent-color); background-color: rgba(229, 9, 20, 0.05); transform: translateY(-2px);
 }
 
 /* =========================
-   Telegram風格 設定彈出選單
+   設定彈出選單 & 齒輪
    ========================= */
 .settings-wrapper { position: relative; }
 .settings-icon-btn {
     background: var(--nav-bg-glass); border: 1px solid var(--border-color); border-radius: 50%;
     width: 45px; height: 45px; display: flex; align-items: center; justify-content: center;
     cursor: pointer; color: var(--text-color); font-size: 1.3rem;
-    backdrop-filter: blur(10px); transition: all 0.3s ease;
+    backdrop-filter: blur(10px); transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
-.settings-icon-btn:hover { background: var(--accent-color); border-color: var(--accent-color); color: #fff; }
+.settings-icon-btn:hover { background: var(--accent-color); border-color: var(--accent-color); color: #fff; transform: rotate(45deg); }
 
 .settings-dropdown {
     position: absolute; right: 0; width: 220px;
@@ -129,19 +132,21 @@ body {
 }
 #desktopDropdown { top: 60px; transform: translateY(-15px); }
 #desktopDropdown.active { opacity: 1; visibility: visible; transform: translateY(0); }
-.mobile-settings { position: absolute; bottom: 25px; right: 25px; }
+
+/* 手機版齒輪固定於側邊欄右下角 */
+.mobile-settings { position: absolute; bottom: 30px; right: 25px; z-index: 10; }
 #mobileDropdown { top: auto; bottom: 60px; right: 0; transform: translateY(15px); }
 #mobileDropdown.active { opacity: 1; visibility: visible; transform: translateY(0); }
 
 .settings-dropdown .lang-selector, .settings-dropdown .theme-toggle-btn {
     width: 100%; background: transparent; color: var(--text-color); border: 1px solid var(--border-color);
-    padding: 10px 15px; border-radius: 10px; cursor: pointer; font-size: 0.95rem; outline: none;
+    padding: 10px 15px; border-radius: 10px; cursor: pointer; font-size: 0.95rem; outline: none; transition: background 0.3s;
 }
-.settings-dropdown .theme-toggle-btn { display: flex; align-items: center; gap: 10px; text-align: left; transition: background 0.2s; }
+.settings-dropdown .theme-toggle-btn { display: flex; align-items: center; gap: 10px; text-align: left; }
 .settings-dropdown .lang-selector option { background-color: var(--card-bg); color: var(--text-color); }
 .settings-dropdown .lang-selector:hover, .settings-dropdown .theme-toggle-btn:hover { background: rgba(150, 150, 150, 0.15); }
 
-/* RWD - 手機版排版 */
+/* RWD */
 .desktop-only { display: block; }
 .mobile-only { display: none; }
 @media (max-width: 768px) {
@@ -150,20 +155,12 @@ body {
     .desktop-nav { display: none; }
     .menu-btn { display: block; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
     .top-bar { padding: 15px 20px; }
-    
-    .footer-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-    }
-    .footer-col:first-child {
-        grid-column: 1 / span 2;
-        margin-bottom: 20px;
-    }
+    .footer-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .footer-col:first-child { grid-column: 1 / span 2; margin-bottom: 20px; }
 }
 
 /* =========================
-   通用頁面樣式
+   通用頁面與卡片浮動樣式 (Hover)
    ========================= */
 main { flex: 1; width: 100%; }
 .hero-section { position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
@@ -171,19 +168,49 @@ main { flex: 1; width: 100%; }
 .hero-bg video, .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
 .hero-bg .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); }
 .hero-content { position: relative; z-index: 1; text-align: center; padding: 20px; color: #ffffff; }
-.profile-pic { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-color); box-shadow: 0 0 15px rgba(229, 9, 20, 0.5); margin-bottom: 20px; }
+.profile-pic { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-color); box-shadow: 0 0 15px rgba(229, 9, 20, 0.5); margin-bottom: 20px; transition: transform 0.4s ease; }
+.profile-pic:hover { transform: scale(1.05) rotate(3deg); }
 h1 { font-size: 2.5rem; margin-bottom: 10px; text-shadow: 2px 2px 5px rgba(0,0,0,0.8); }
 .subtitle { color: #dddddd; margin-bottom: 30px; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); }
+
 .page-content { padding: 100px 20px 60px; max-width: 1000px; margin: 0 auto; }
-h2.section-title { text-align: center; margin-bottom: 40px; position: relative; padding-bottom: 10px; }
+h2.section-title { text-align: center; margin-bottom: 40px; position: relative; padding-bottom: 10px; animation: fadeIn 1s ease-out forwards; }
 h2.section-title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background-color: var(--accent-color); }
 .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-.card { background-color: var(--card-bg); border-radius: 12px; overflow: hidden; padding: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+
+/* 卡片主體與浮動特效 */
+.card { 
+    background-color: var(--card-bg); border-radius: 12px; overflow: hidden; padding: 20px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    /* 卡片進場接力動畫 */
+    animation: fadeInUp 0.6s cubic-bezier(0.25, 1, 0.5, 1) both;
+    /* 懸浮過渡效果 */
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+}
+/* 卡片順序延遲進場 */
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+.card:nth-child(4) { animation-delay: 0.4s; }
+.card:nth-child(5) { animation-delay: 0.5s; }
+.card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Hover 浮起來！ */
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+[data-theme="light"] .card:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
 .card-img-placeholder { width: 100%; height: 180px; background-color: #333; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff; margin-bottom: 15px; }
-.card h3 { margin-bottom: 10px; font-size: 1.3rem; }
+.card h3 { margin-bottom: 10px; font-size: 1.3rem; transition: color 0.3s ease; }
+.card:hover h3 { color: var(--accent-color); }
 .card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; }
-.btn-link { display: inline-block; color: var(--accent-color); text-decoration: none; font-weight: bold; }
-.btn-link:hover { text-decoration: underline; }
+
+.btn-link { display: inline-block; color: var(--accent-color); text-decoration: none; font-weight: bold; transition: transform 0.3s ease; }
+.btn-link:hover { text-decoration: underline; transform: translateX(5px); }
 
 /* =========================
    底部樣式
@@ -193,5 +220,5 @@ h2.section-title::after { content: ''; position: absolute; bottom: 0; left: 50%;
 .footer-col h4 { color: var(--accent-color); margin-bottom: 15px; font-size: 1.1rem; }
 .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .footer-col p, .footer-col ul li a { color: var(--text-muted); font-size: 0.9rem; text-decoration: none; transition: color 0.3s; }
-.footer-col ul li a:hover { color: var(--accent-color); }
+.footer-col ul li a:hover { color: var(--accent-color); transform: translateX(3px); display: inline-block;}
 .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.85rem; }
