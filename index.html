@@ -3,17 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me | BroQiangStudio</title>
+    <title>關於我 | BroQiangStudio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/jpeg" href="ProfilePicture.jpg">
 </head>
 <body>
-    <nav>
-        <a href="index.html" class="active" data-i18n="nav_about">關於我</a>
-        <a href="resume.html" data-i18n="nav_resume">專業履歷</a>
-        <a href="portfolio.html" data-i18n="nav_portfolio">作品集</a>
-        <a href="games.html" data-i18n="nav_games">遊戲日常</a>
-        
+    <!-- 頂部控制列 (包含漢堡選單與語言/日夜切換) -->
+    <header class="top-bar">
+        <button id="menuBtn" class="menu-btn">☰</button>
         <div class="nav-controls">
             <select class="lang-selector" id="languageSelect" onchange="changeLanguage()">
                 <option value="zh-TW">繁體中文</option>
@@ -23,23 +20,48 @@
             </select>
             <button id="themeBtn" class="theme-toggle-btn">☀️</button>
         </div>
+    </header>
+
+    <!-- 隱藏的左側 Sidebar -->
+    <nav id="sidebar" class="sidebar">
+        <button id="closeBtn" class="close-btn">&times;</button>
+        <a href="index.html" class="active" data-i18n="nav_about">關於我</a>
+        <a href="resume.html" data-i18n="nav_resume">專業履歷</a>
+        <a href="portfolio.html" data-i18n="nav_portfolio">作品集</a>
+        <a href="games.html" data-i18n="nav_games">遊戲日常</a>
     </nav>
 
-    <main class="about-section">
-        <img src="ProfilePicture.jpg" alt="Profile Picture" class="profile-pic">
-        <h1 data-i18n="index_greeting">嗨，我是 余樂銨</h1>
-        <p class="subtitle" data-i18n="index_subtitle">熱愛用程式解決問題的開發者 / 喜歡用設計說故事的創作者。</p>
+    <main>
+        <!-- 影片/圖片背景區塊 -->
+        <section class="hero-section">
+            <div class="hero-bg">
+                <!-- 💡 這裡目前放了一個測試用的無版權動畫影片。
+                     你可以把 src 的網址換成你自己的 .mp4 檔案。
+                     如果你想換成圖片，請把 <video> 整段刪除，換成：<img src="你的圖片.jpg" alt="背景"> -->
+                <video autoplay loop muted playsinline>
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                </video>
+                <div class="overlay"></div> <!-- 黑色半透明遮罩，確保文字清楚 -->
+            </div>
 
-        <div class="social-links">
-    <!-- 把 href 裡面的網址換成你的，並加上 target="_blank" -->
-    <a href="https://www.instagram.com/broqiang2007?utm_source=qr&igsh=MWh6cHk3NWptcW1wYw==" target="_blank" class="social-btn" data-i18n="social_ig">Instagram</a>
-    <a href="https://www.youtube.com/@BroQiang2007" target="_blank" class="social-btn" data-i18n="social_yt">YouTube</a>
-    <a href="https://v.douyin.com/Mxdam2fIoO4/" target="_blank" class="social-btn" data-i18n="social_tt">抖音</a>
-    <a href="https://github.com/BroQiang2007" target="_blank" class="social-btn" data-i18n="social_gh">GitHub</a>
-</div>
+            <div class="hero-content">
+                <img src="ProfilePicture.jpg" alt="Profile Picture" class="profile-pic">
+                <h1 data-i18n="index_greeting">嗨，我是 余樂鈜</h1>
+                <p class="subtitle" data-i18n="index_subtitle">熱愛用程式解決問題的開發者 / 喜歡用設計說故事的創作者。</p>
+            </div>
+        </section>
+
+        <!-- 常駐浮動社群按鈕 -->
+        <div class="floating-socials">
+            <a href="https://www.instagram.com/你的IG帳號" target="_blank" class="social-btn" data-i18n="social_ig">Instagram</a>
+            <a href="https://www.youtube.com/@你的YouTube頻道" target="_blank" class="social-btn" data-i18n="social_yt">YouTube</a>
+            <a href="你的抖音連結" target="_blank" class="social-btn" data-i18n="social_tt">抖音</a>
+            <a href="https://github.com/BroQiang2007" target="_blank" class="social-btn" data-i18n="social_gh">GitHub</a>
+        </div>
     </main>
 
     <footer class="site-footer">
+        <!-- Footer 內容保持不變 -->
         <div class="footer-container">
             <div class="footer-col">
                 <h4>BroQiangStudio</h4>
@@ -55,15 +77,14 @@
                 </ul>
             </div>
             <div class="footer-col">
-    <h4 data-i18n="footer_social">社群平台</h4>
-    <ul>
-        <!-- 將 href 替換成你的網址，並加上 target="_blank" -->
-        <li><a href="https://www.instagram.com/broqiang2007?utm_source=qr&igsh=MWh6cHk3NWptcW1wYw==" target="_blank" data-i18n="social_ig">Instagram</a></li>
-        <li><a href="https://www.youtube.com/@BroQiang2007" target="_blank" data-i18n="social_yt">YouTube</a></li>
-        <li><a href="https://v.douyin.com/Mxdam2fIoO4/" target="_blank" data-i18n="social_tt">抖音</a></li>
-        <li><a href="https://github.com/BroQiang2007" target="_blank" data-i18n="social_gh">GitHub</a></li>
-    </ul>
-</div>
+                <h4 data-i18n="footer_social">社群平台</h4>
+                <ul>
+                    <li><a href="https://www.instagram.com/你的IG帳號" target="_blank" data-i18n="social_ig">Instagram</a></li>
+                    <li><a href="https://www.youtube.com/@你的YouTube頻道" target="_blank" data-i18n="social_yt">YouTube</a></li>
+                    <li><a href="你的抖音連結" target="_blank" data-i18n="social_tt">抖音</a></li>
+                    <li><a href="https://github.com/BroQiang2007" target="_blank" data-i18n="social_gh">GitHub</a></li>
+                </ul>
+            </div>
         </div>
         <div class="footer-bottom" data-i18n="footer_copy">
             &copy; 2026 BroQiangStudio. All rights reserved. | 聯絡我：anle82760@gmail.com
