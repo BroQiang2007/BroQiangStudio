@@ -3,12 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="page_title_resume">Resume | BroQiangStudio</title>
-    <link rel="stylesheet" href="style.css">
-
-    <!-- 新增這行來設定網頁分頁圖標 -->
+    <title data-i18n="page_title_resume">專業履歷 | BroQiangStudio</title>
     <link rel="icon" href="ProfilePicture.jpg" type="image/jpeg">
-    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,13 +16,15 @@
             <a href="portfolio.html" data-i18n="nav_portfolio">作品集</a>
             <a href="games.html" data-i18n="nav_games">遊戲日常</a>
         </nav>
-        <div class="settings-wrapper desktop-only">
-            <button class="settings-icon-btn" id="desktopSettingsBtn">⚙️</button>
-            <div class="settings-dropdown" id="desktopDropdown">
-                <select class="lang-selector">
-                    <option value="zh-TW">繁體中文</option><option value="zh-CN">简体中文</option><option value="en">English</option><option value="ms">Bahasa Melayu</option>
-                </select>
-                <button class="theme-toggle-btn"><span class="theme-icon">☀️</span> <span class="theme-text">日間模式</span></button>
+        <div class="top-right-controls">
+            <div class="settings-wrapper desktop-only">
+                <button class="settings-icon-btn" id="desktopSettingsBtn">⚙️</button>
+                <div class="settings-dropdown" id="desktopDropdown">
+                    <select class="lang-selector">
+                        <option value="zh-TW">繁體中文</option><option value="zh-CN">简体中文</option><option value="en">English</option><option value="ms">Bahasa Melayu</option>
+                    </select>
+                    <button class="theme-toggle-btn"><span class="theme-icon">☀️</span> <span class="theme-text">日間模式</span></button>
+                </div>
             </div>
         </div>
     </header>
@@ -51,7 +49,6 @@
     </aside>
 
     <main class="page-content">
-        <!-- 專業技能 -->
         <h2 class="section-title" data-i18n="resume_header">專業技能</h2>
         <div class="grid-container" style="margin-bottom: 50px;">
             <div class="card">
@@ -68,13 +65,11 @@
             </div>
         </div>
 
-        <!-- 工作經驗 -->
         <h2 class="section-title" data-i18n="resume_exp_header">工作經驗</h2>
         <div class="card" style="margin-bottom: 50px; text-align: center; padding: 40px 20px;">
             <h3 data-i18n="exp_title" style="color: var(--text-muted);">無數據</h3>
         </div>
 
-        <!-- 教育背景 -->
         <h2 class="section-title" data-i18n="resume_edu_header">教育背景</h2>
         <div class="card" style="margin-bottom: 20px;">
             <h3 data-i18n="edu_title_1">互動式多媒體證書</h3>
@@ -87,7 +82,6 @@
             <p data-i18n="edu_desc_2">完成中學基礎教育，培養良好的學習與問題解決能力。</p>
         </div>
 
-        <!-- 聯絡方式 -->
         <h2 class="section-title" data-i18n="resume_contact_header">聯絡方式</h2>
         <div class="card" style="text-align: center;">
             <h3 data-i18n="contact_title" style="margin-bottom: 15px;">隨時歡迎與我聯繫！</h3>
