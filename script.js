@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (mobileDropdown) mobileDropdown.classList.remove('active');
     });
 
-    // 3. 多國語言翻譯字典 (新增了全域聲音按鈕的文字)
+    // 3. 多國語言翻譯字典
     const translations = {
         "zh-TW": {
             "theme_light": "日間模式", "theme_dark": "夜間模式",
@@ -108,53 +108,22 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll('.sound-icon').forEach(iconEl => { iconEl.textContent = isMuted ? '🔇' : '🔊'; });
     }
 
-    // 語言切換事件
-    document.querySelectorAll('.lang-selector').forEach(selector => { 
-        selector.addEventListener('change', (e) => { updateLanguageAndSettings(e.target.value); }); 
-    });
-
-    // 4. 日夜模式切換
+    // --- 網頁載入時的初始化 (加入日夜模式記憶功能) ---
+    // 1. 讀取並套用儲存的日夜模式
+    const savedTheme = localStorage.getItem('preferredTheme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
     document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', newTheme);
-            
-            const currentLang = localStorage.getItem('preferredLang') || 'zh-TW';
-            document.querySelectorAll('.theme-toggle-btn').forEach(updateBtn => {
-                updateBtn.querySelector('.theme-icon').textContent = newTheme === 'dark' ? '☀️' : '🌙';
-                updateBtn.querySelector('.theme-text').textContent = translations[currentLang][newTheme === 'dark' ? 'theme_light' : 'theme_dark'];
-            });
-        });
+        btn.querySelector('.theme-icon').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
     });
 
-    // 5. 全域聲音開關切換 (會控制所有頁面的影片)
-    document.querySelectorAll('.sound-toggle-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            let isMuted = localStorage.getItem('globalMuted') !== 'false';
-            isMuted = !isMuted; // 切換狀態
-            localStorage.setItem('globalMuted', isMuted);
-            
-            // 更新 UI
-            const currentLang = localStorage.getItem('preferredLang') || 'zh-TW';
-            updateLanguageAndSettings(currentLang);
-            
-            // 實時套用到背景影片(如果有)
-            const bgVideo = document.getElementById('bgVideo');
-            if (bgVideo) bgVideo.muted = isMuted;
-
-            // 實時套用到遊戲卡片影片(如果有)
-            document.querySelectorAll('video.media-back').forEach(vid => { vid.muted = isMuted; });
-        });
-    });
-
-    // --- 網頁載入時初始化設定 ---
+    // 2. 讀取並套用語系
     const savedLang = localStorage.getItem('preferredLang') || 'zh-TW';
     updateLanguageAndSettings(savedLang);
 
+    // 3. 讀取並套用全域聲音狀態
     const initMuted = localStorage.getItem('globalMuted') !== 'false'; // 預設為靜音(防瀏覽器阻擋)
     
-    // 初始化背景影片聲音
+    // 初始化背景影片聲音 (首頁專用)
     const bgVideo = document.getElementById('bgVideo');
     if (bgVideo) {
         bgVideo.muted = initMuted;
@@ -168,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // 初始化遊戲日常影片並加入懸浮控制邏輯
+    // 初始化遊戲日常影片並加入懸浮控制邏輯 (遊戲頁專用)
     const cards = document.querySelectorAll('.card');
     cards.forEach(card => {
         const video = card.querySelector('video.media-back');
@@ -184,5 +153,48 @@ document.addEventListener("DOMContentLoaded", () => {
                 video.currentTime = 0; 
             });
         }
+    });
+
+    // --- 事件綁定 ---
+    // 語言切換事件
+    document.querySelectorAll('.lang-selector').forEach(selector => { 
+        selector.addEventListener('change', (e) => { updateLanguageAndSettings(e.target.value); }); 
+    });
+
+    // 日夜模式切換 (加入 localStorage 儲存)
+    document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            
+            // 【修復 Bug】將主題狀態存進 localStorage
+            localStorage.setItem('preferredTheme', newTheme);
+            
+            const currentLang = localStorage.getItem('preferredLang') || 'zh-TW';
+            document.querySelectorAll('.theme-toggle-btn').forEach(updateBtn => {
+                updateBtn.querySelector('.theme-icon').textContent = newTheme === 'dark' ? '☀️' : '🌙';
+                updateBtn.querySelector('.theme-text').textContent = translations[currentLang][newTheme === 'dark' ? 'theme_light' : 'theme_dark'];
+            });
+        });
+    });
+
+    // 全域聲音開關切換
+    document.querySelectorAll('.sound-toggle-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            let isMuted = localStorage.getItem('globalMuted') !== 'false';
+            isMuted = !isMuted; // 切換狀態
+            localStorage.setItem('globalMuted', isMuted);
+            
+            // 更新 UI
+            const currentLang = localStorage.getItem('preferredLang') || 'zh-TW';
+            updateLanguageAndSettings(currentLang);
+            
+            // 實時套用到背景影片(如果有)
+            if (bgVideo) bgVideo.muted = isMuted;
+
+            // 實時套用到遊戲卡片影片(如果有)
+            document.querySelectorAll('video.media-back').forEach(vid => { vid.muted = isMuted; });
+        });
     });
 });
