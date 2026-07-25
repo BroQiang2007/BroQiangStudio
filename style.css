@@ -5,27 +5,27 @@
     --bg-color: #121212;
     --text-color: #ffffff;
     --text-muted: #aaaaaa;
-    /* 液態玻璃背景色 (帶透明度) */
+    /* 液態玻璃背景色 (深色模式) */
     --nav-bg-glass: rgba(10, 10, 10, 0.65); 
-    --sidebar-bg: #0a0a0a;
     --card-bg: #1e1e1e;
     --accent-color: #e50914; 
     --footer-bg: #050505;
-    --border-color: #333333;
+    /* 邊框顏色改淡一點，按鈕看起來更高級 */
+    --border-color: rgba(255, 255, 255, 0.2); 
 }
 
 [data-theme="light"] {
     --bg-color: #f5f5f5;
     --text-color: #121212;
     --text-muted: #555555;
-    /* 將原來的 0.75 改成 0.4，讓白色導覽列變得更清透！ */
+    /* 液態玻璃背景色 (亮色模式 - 清透感 0.4) */
     --nav-bg-glass: rgba(255, 255, 255, 0.4); 
-    --sidebar-bg: #ffffff;
     --card-bg: #ffffff;
     --accent-color: #d32f2f;
     --footer-bg: #e0e0e0;
-    --border-color: #cccccc;
+    --border-color: rgba(0, 0, 0, 0.2);
 }
+
 * {
     margin: 0;
     padding: 0;
@@ -63,7 +63,7 @@ body {
    iPhone 液態玻璃導覽列 (全站套用)
    ========================= */
 .top-bar {
-    position: fixed; /* 固定在畫面上方 */
+    position: fixed; 
     top: 0;
     left: 0;
     width: 100%;
@@ -71,35 +71,22 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
-    background-color: var(--nav-bg-glass); /* 半透明背景 */
+    background-color: var(--nav-bg-glass); 
     
     /* 核心魔法：毛玻璃模糊效果 */
     backdrop-filter: saturate(180%) blur(20px); 
     -webkit-backdrop-filter: saturate(180%) blur(20px); 
     
-    border-bottom: 1px solid rgba(150, 150, 150, 0.15); /* 超細微的邊界線增加立體感 */
-    z-index: 1000; /* 確保永遠浮在最上層 */
+    border-bottom: 1px solid var(--border-color); 
+    z-index: 1000; 
 }
 
 /* 電腦版橫排選單 */
 .desktop-nav {
     display: flex;
-    gap: 25px;
+    gap: 15px; /* 按鈕間距 */
     flex: 1;
     justify-content: flex-start;
-}
-
-.desktop-nav a {
-    color: var(--text-color);
-    text-decoration: none;
-    font-size: 1.1rem;
-    font-weight: bold;
-    padding: 5px 10px;
-    white-space: nowrap;
-}
-
-.desktop-nav a:hover, .desktop-nav a.active {
-    color: var(--accent-color);
 }
 
 /* 漢堡選單按鈕 (電腦版預設隱藏) */
@@ -118,18 +105,17 @@ body {
     gap: 15px;
 }
 
-/* 修改：讓語言切換框變成透明，完美融入毛玻璃導覽列 */
+/* 語言切換框 (無違和透明版) */
 .lang-selector {
-    background-color: transparent; /* 改成透明 */
+    background-color: transparent; 
     color: var(--text-color);
     border: 1px solid var(--border-color);
-    padding: 5px 10px;
-    border-radius: 5px;
+    padding: 6px 12px;
+    border-radius: 20px; /* 跟隨整體圓潤風格 */
     outline: none;
     cursor: pointer;
 }
 
-/* 新增：確保點開選單時，裡面的選項有實色背景，字才不會跟後面的影片糊在一起 */
 .lang-selector option {
     background-color: var(--card-bg);
     color: var(--text-color);
@@ -143,30 +129,39 @@ body {
     color: var(--text-color);
 }
 
-/* 手機版側邊欄 */
+/* =========================
+   手機版側邊欄 (全面升級液態玻璃)
+   ========================= */
 .sidebar {
     position: fixed;
     top: 0;
     left: -300px;
     width: 250px;
     height: 100vh;
-    background-color: var(--sidebar-bg); /* 側邊欄用實色，避免太花 */
+    
+    /* 改為與頂部相同的液態玻璃特效 */
+    background-color: var(--nav-bg-glass);
+    backdrop-filter: saturate(180%) blur(25px); 
+    -webkit-backdrop-filter: saturate(180%) blur(25px); 
+    
     border-right: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
-    padding: 70px 20px 20px;
-    transition: left 0.4s ease;
+    align-items: center; /* 讓裡面的按鈕置中 */
+    padding: 80px 20px 20px;
+    gap: 20px; /* 按鈕的上下間距 */
+    transition: left 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     z-index: 1001;
 }
 
 .sidebar.active {
     left: 0;
-    box-shadow: 5px 0 15px rgba(0,0,0,0.8);
+    box-shadow: 5px 0 25px rgba(0,0,0,0.5);
 }
 
 .close-btn {
     position: absolute;
-    top: 15px;
+    top: 10px;
     right: 20px;
     background: none;
     border: none;
@@ -175,17 +170,35 @@ body {
     cursor: pointer;
 }
 
-.sidebar a {
+/* =========================
+   🔥 布加迪奢華風：圓潤膠囊按鈕 (電腦 & 手機共用)
+   ========================= */
+.desktop-nav a, .sidebar a {
     color: var(--text-color);
     text-decoration: none;
-    font-size: 1.2rem;
-    padding: 15px 10px;
-    border-bottom: 1px solid var(--border-color);
-    font-weight: bold;
+    font-size: 0.95rem;
+    letter-spacing: 1px; /* 增加字距，看起來更大氣 */
+    padding: 8px 24px; /* 拉出長條膠囊狀 */
+    border-radius: 30px; /* 極致圓潤 */
+    border: 1px solid var(--border-color); /* 預設淡淡的邊框 */
+    background-color: transparent;
+    transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
+/* 手機版側邊欄按鈕拉寬一點 */
+.sidebar a {
+    width: 90%;
+    text-align: center;
+}
+
+/* 滑鼠移過去 & 當前頁面的高亮效果 */
+.desktop-nav a:hover, .desktop-nav a.active,
 .sidebar a:hover, .sidebar a.active {
     color: var(--accent-color);
+    border-color: var(--accent-color);
+    /* 微微透出主題色光暈，拒絕死板實心色 */
+    background-color: rgba(229, 9, 20, 0.05); 
 }
 
 /* =========================
@@ -198,9 +211,8 @@ main {
 
 .hero-section {
     position: relative;
-    /* 強制滿版螢幕高度 */
     height: 100vh; 
-    height: 100dvh; /* 支援新版手機瀏覽器的動態高度 */
+    height: 100dvh; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -265,7 +277,6 @@ h1 {
    通用頁面排版 (履歷、作品集等)
    ========================= */
 .page-content {
-    /* 頂部推下 100px，確保內容不會被上方固定的透明導覽列遮住 */
     padding: 100px 20px 60px; 
     max-width: 1000px;
     margin: 0 auto;
@@ -326,14 +337,14 @@ h2.section-title::after {
 .btn-link:hover { text-decoration: underline; }
 
 /* =========================
-   Footer (滑下去才出現)
+   Footer
    ========================= */
 .site-footer {
     background-color: var(--footer-bg);
     color: var(--text-color);
     padding: 40px 20px 20px;
     border-top: 1px solid var(--border-color);
-    margin-top: auto; /* 確保內容不夠長時 Footer 也能墊底 */
+    margin-top: auto; 
 }
 
 .footer-container {
@@ -359,7 +370,6 @@ h2.section-title::after {
 @media (max-width: 768px) {
     .top-bar { padding: 10px 20px; }
     
-    /* 手機版隱藏橫排導覽，顯示漢堡按鈕 */
     .desktop-nav { display: none; }
     .menu-btn { display: block; }
     
