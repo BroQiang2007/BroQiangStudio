@@ -15,18 +15,24 @@
             <a href="portfolio.html" data-i18n="nav_portfolio">作品集</a>
             <a href="games.html" data-i18n="nav_games">遊戲日常</a>
         </nav>
-        <div class="settings-wrapper desktop-only">
-            <button class="settings-icon-btn" id="desktopSettingsBtn">⚙️</button>
-            <div class="settings-dropdown" id="desktopDropdown">
-                <select class="lang-selector">
-                    <option value="zh-TW">繁體中文</option>
-                    <option value="zh-CN">简体中文</option>
-                    <option value="en">English</option>
-                    <option value="ms">Bahasa Melayu</option>
-                </select>
-                <button class="theme-toggle-btn">
-                    <span class="theme-icon">☀️</span> <span class="theme-text">日間模式</span>
-                </button>
+        
+        <!-- 首頁專屬：包含「了解更多」按鈕與設定的控制區塊 -->
+        <div class="top-right-controls">
+            <a href="about-me.html" class="intro-btn" data-i18n="nav_intro_btn">了解更多</a>
+            
+            <div class="settings-wrapper desktop-only">
+                <button class="settings-icon-btn" id="desktopSettingsBtn">⚙️</button>
+                <div class="settings-dropdown" id="desktopDropdown">
+                    <select class="lang-selector">
+                        <option value="zh-TW">繁體中文</option>
+                        <option value="zh-CN">简体中文</option>
+                        <option value="en">English</option>
+                        <option value="ms">Bahasa Melayu</option>
+                    </select>
+                    <button class="theme-toggle-btn">
+                        <span class="theme-icon">☀️</span> <span class="theme-text">日間模式</span>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
