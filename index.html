@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me | BroQiangStudio</title>
+    <title>關於我 | BroQiangStudio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/jpeg" href="ProfilePicture.jpg">
 </head>
 <body>
     <nav>
-        <a href="index.html" class="active">關於我</a>
-        <a href="resume.html">專業履歷</a>
-        <a href="portfolio.html">作品集</a>
-        <a href="games.html">遊戲日常</a>
+        <a href="index.html" class="active" data-i18n="nav_about">關於我</a>
+        <a href="resume.html" data-i18n="nav_resume">專業履歷</a>
+        <a href="portfolio.html" data-i18n="nav_portfolio">作品集</a>
+        <a href="games.html" data-i18n="nav_games">遊戲日常</a>
         
         <div class="nav-controls">
             <select class="lang-selector" id="languageSelect" onchange="changeLanguage()">
@@ -27,15 +27,14 @@
 
     <main class="about-section">
         <img src="ProfilePicture.jpg" alt="Profile Picture" class="profile-pic">
-        <h1>嗨，我是 余樂銨</h1>
-        <p class="subtitle">熱愛用程式解決問題的開發者 / 喜歡用設計說故事的創作者。</p>
+        <h1 data-i18n="index_greeting">嗨，我是 余樂鈜</h1>
+        <p class="subtitle" data-i18n="index_subtitle">熱愛用程式解決問題的開發者 / 喜歡用設計說故事的創作者。</p>
 
-        <!-- 補回來的社群媒體按鈕區塊 -->
         <div class="social-links">
-            <a href="#" class="social-btn">Instagram</a>
-            <a href="#" class="social-btn">YouTube</a>
-            <a href="#" class="social-btn">抖音</a>
-            <a href="#" class="social-btn">GitHub</a>
+            <a href="#" class="social-btn" data-i18n="social_ig">Instagram</a>
+            <a href="#" class="social-btn" data-i18n="social_yt">YouTube</a>
+            <a href="#" class="social-btn" data-i18n="social_tt">抖音</a>
+            <a href="#" class="social-btn" data-i18n="social_gh">GitHub</a>
         </div>
     </main>
 
@@ -43,28 +42,28 @@
         <div class="footer-container">
             <div class="footer-col">
                 <h4>BroQiangStudio</h4>
-                <p>致力於網頁開發、多媒體設計與創意專案。歡迎與我聯繫交流！</p>
+                <p data-i18n="footer_desc">致力於網頁開發、多媒體設計與創意專案。歡迎與我聯繫交流！</p>
             </div>
             <div class="footer-col">
-                <h4>快速導覽</h4>
+                <h4 data-i18n="footer_nav">快速導覽</h4>
                 <ul>
-                    <li><a href="index.html">關於我</a></li>
-                    <li><a href="resume.html">專業履歷</a></li>
-                    <li><a href="portfolio.html">作品集</a></li>
-                    <li><a href="games.html">遊戲日常</a></li>
+                    <li><a href="index.html" data-i18n="nav_about">關於我</a></li>
+                    <li><a href="resume.html" data-i18n="nav_resume">專業履歷</a></li>
+                    <li><a href="portfolio.html" data-i18n="nav_portfolio">作品集</a></li>
+                    <li><a href="games.html" data-i18n="nav_games">遊戲日常</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>社群平台</h4>
+                <h4 data-i18n="footer_social">社群平台</h4>
                 <ul>
-                    <li><a href="#">Instagram</a></li>
-                    <li><a href="#">YouTube</a></li>
-                    <li><a href="#">TikTok (抖音)</a></li>
-                    <li><a href="#">GitHub</a></li>
+                    <li><a href="#" data-i18n="social_ig">Instagram</a></li>
+                    <li><a href="#" data-i18n="social_yt">YouTube</a></li>
+                    <li><a href="#" data-i18n="social_tt">抖音</a></li>
+                    <li><a href="#" data-i18n="social_gh">GitHub</a></li>
                 </ul>
             </div>
         </div>
-        <div class="footer-bottom">
+        <div class="footer-bottom" data-i18n="footer_copy">
             &copy; 2026 BroQiangStudio. All rights reserved. | 聯絡我：anle82760@gmail.com
         </div>
     </footer>
