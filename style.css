@@ -33,7 +33,6 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* 加入平滑過渡動畫 */
     transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
@@ -44,6 +43,21 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-out {
+    animation: fadeOut 0.3s ease-in forwards !important;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-15px); }
 }
 
 /* =========================
@@ -67,6 +81,7 @@ nav a {
     text-decoration: none;
     font-weight: bold;
     padding: 5px 10px;
+    white-space: nowrap; /* 🔥 防止字被擠成直排 */
 }
 
 nav a:hover, nav a.active {
@@ -89,7 +104,6 @@ nav a:hover, nav a.active {
     outline: none;
 }
 
-/* 日夜切換按鈕 */
 .theme-toggle-btn {
     background: none;
     border: none;
@@ -110,16 +124,15 @@ nav a:hover, nav a.active {
    ========================= */
 main {
     flex: 1;
-    padding: 60px 20px; /* 解決首頁頂部空白問題，給予固定的內邊距 */
+    padding: 60px 20px;
     max-width: 1000px;
     margin: 0 auto;
     width: 100%;
 }
 
-/* 首頁專屬置中 */
 .about-section {
     text-align: center;
-    margin-top: 20px; /* 稍微往下推一點，不再佔滿全螢幕 */
+    margin-top: 20px;
 }
 
 .profile-pic {
@@ -158,6 +171,35 @@ h2.section-title::after {
 .subtitle {
     color: var(--text-muted);
     margin-bottom: 30px;
+}
+
+/* 首頁社群按鈕 */
+.social-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* 🔥 允許按鈕自動換行，不會爆出螢幕 */
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.social-btn {
+    display: inline-block;
+    padding: 8px 25px;
+    background-color: var(--card-bg);
+    color: var(--accent-color);
+    border: 1px solid var(--border-color);
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.social-btn:hover {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    border-color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(229, 9, 20, 0.4);
 }
 
 /* =========================
@@ -273,67 +315,56 @@ h2.section-title::after {
     font-size: 0.85rem;
 }
 
-/* =========================
-   頁面跳轉平滑動畫 (Fade In / Fade Out)
-   ========================= */
-body {
-    /* 載入頁面時自動執行淡入動畫 */
-    animation: fadeIn 0.4s ease-out forwards;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(15px); /* 從下方稍微浮現 */
+/* =========================================
+   📱 手機與平板專屬優化 (Responsive Design)
+   ========================================= */
+@media (max-width: 768px) {
+    /* 1. 修復導覽列：字體縮小，自動換行，讓語言切換獨立一行 */
+    nav {
+        flex-wrap: wrap;
+        padding: 10px;
+        gap: 10px;
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    nav a {
+        flex: 1 1 20%; 
+        text-align: center;
+        font-size: 0.95rem;
+        padding: 5px 0;
     }
-}
-
-/* 點擊按鈕離開頁面時的淡出狀態 */
-.fade-out {
-    animation: fadeOut 0.3s ease-in forwards !important;
-}
-
-@keyframes fadeOut {
-    from {
-        opacity: 1;
-        transform: translateY(0);
+    .nav-controls {
+        width: 100%;
+        justify-content: center;
+        margin-left: 0;
+        margin-top: 5px;
     }
-    to {
-        opacity: 0;
-        transform: translateY(-15px);
+
+    /* 2. 標題與內文縮放 */
+    h1 { font-size: 2rem; }
+    .subtitle { font-size: 0.95rem; padding: 0 10px; }
+    
+    /* 3. 內容卡片改為單行排列，避免硬擠 */
+    .grid-container {
+        grid-template-columns: 1fr;
     }
+
+    /* 4. 🔥 完美修復 Footer：第一區塊置中，第二三區塊並排放置 */
+    .footer-container {
+        grid-template-columns: 1fr 1fr; /* 強制分成左右兩半 */
+        gap: 20px;
+        text-align: left;
+    }
+    .footer-col:first-child {
+        grid-column: 1 / -1; /* 第一塊(關於我簡介)佔滿一整行 */
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    .footer-col h4 { font-size: 1rem; }
+    .footer-col p, .footer-col ul li a { font-size: 0.85rem; }
 }
 
-/* =========================
-   首頁社群媒體按鈕 (Social Media Buttons)
-   ========================= */
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 25px;
-}
-
-.social-btn {
-    display: inline-block;
-    padding: 8px 25px;
-    background-color: var(--card-bg);
-    color: var(--accent-color); /* 預設紅色文字 */
-    border: 1px solid var(--border-color);
-    border-radius: 25px; /* 圓角膠囊形狀 */
-    text-decoration: none;
-    font-size: 0.95rem;
-    transition: all 0.3s ease;
-}
-
-.social-btn:hover {
-    background-color: var(--accent-color); /* 移過去變紅色背景 */
-    color: #ffffff;
-    border-color: var(--accent-color);
-    transform: translateY(-3px);
-    box-shadow: 0 4px 12px rgba(229, 9, 20, 0.4); /* 紅色發光陰影 */
+@media (max-width: 480px) {
+    /* 針對螢幕超級小的手機 (例如 iPhone SE)，讓上面四個按鈕變成 2x2 格子 */
+    nav a {
+        flex: 1 1 40%;
+    }
 }
