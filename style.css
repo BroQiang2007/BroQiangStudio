@@ -86,7 +86,6 @@ body {
 /* 右上角控制區塊與自介按鈕 */
 .top-right-controls { display: flex; gap: 15px; align-items: center; pointer-events: auto; }
 
-/* 了解更多按鈕，紅色外框與毛玻璃背景 */
 .intro-btn {
     background: var(--nav-bg-glass); 
     border: 1px solid var(--accent-color); 
@@ -255,7 +254,6 @@ h2.section-title::after { content: ''; position: absolute; bottom: 0; left: 50%;
     box-shadow: 0 10px 30px rgba(211, 47, 47, 0.4), 0 0 15px rgba(211, 47, 47, 0.2);
 }
 
-.card-img-placeholder { width: 100%; height: 180px; background-color: #333; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff; margin-bottom: 15px; }
 .card h3 { margin-bottom: 10px; font-size: 1.3rem; transition: color 0.3s ease; }
 .card:hover h3 { color: var(--accent-color); }
 .card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; }
@@ -276,7 +274,6 @@ h2.section-title::after { content: ''; position: absolute; bottom: 0; left: 50%;
     background-color: #050505; 
 }
 
-/* 讓圖片跟影片都能完美填滿容器並套用過渡動畫 */
 .reveal-img-wrapper img,
 .reveal-img-wrapper video {
     position: absolute;
@@ -294,7 +291,6 @@ h2.section-title::after { content: ''; position: absolute; bottom: 0; left: 50%;
     transform: scale(1);
 }
 
-/* 隱藏的圖片 (.img-back) 或 影片 (.media-back) 預設狀態 */
 .reveal-img-wrapper .img-back,
 .reveal-img-wrapper .media-back {
     opacity: 0;
@@ -308,7 +304,6 @@ h2.section-title::after { content: ''; position: absolute; bottom: 0; left: 50%;
     transform: scale(0.95); 
 }
 
-/* 滑鼠懸浮時浮現隱藏圖片/影片 */
 .card:hover .reveal-img-wrapper .img-back,
 .card:hover .reveal-img-wrapper .media-back {
     opacity: 1;
