@@ -63,6 +63,7 @@ body {
 .desktop-nav, .menu-btn, .settings-wrapper, .intro-btn { pointer-events: auto; }
 .desktop-nav { display: flex; gap: 15px; flex: 1; justify-content: flex-start; }
 
+/* 漢堡選單(三條線)毛玻璃設計與手機點擊修復 */
 .menu-btn { 
     display: none; 
     background: var(--nav-bg-glass); 
@@ -75,8 +76,15 @@ body {
     cursor: pointer; 
     transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); 
     backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    
+    /* 這裡加入防護機制，強制手機版 100% 能點擊 */
+    pointer-events: auto !important; 
+    position: relative;
+    z-index: 1050;
+    touch-action: manipulation;
 }
-.menu-btn:hover { 
+
+.menu-btn:hover, .menu-btn:active { 
     transform: scale(1.1); 
     border-color: var(--accent-color);
     color: var(--accent-color);
