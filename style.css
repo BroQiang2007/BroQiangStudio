@@ -5,383 +5,163 @@
     --bg-color: #121212;
     --text-color: #ffffff;
     --text-muted: #aaaaaa;
-    /* 液態玻璃背景色 (深色模式) */
-    --nav-bg-glass: rgba(10, 10, 10, 0.65); 
+    --nav-bg-glass: rgba(20, 20, 20, 0.75); 
     --card-bg: #1e1e1e;
     --accent-color: #e50914; 
     --footer-bg: #050505;
-    /* 邊框顏色改淡，按鈕看起來更高級 */
-    --border-color: rgba(255, 255, 255, 0.2); 
+    --border-color: rgba(255, 255, 255, 0.15); 
 }
 
 [data-theme="light"] {
     --bg-color: #f5f5f5;
     --text-color: #121212;
     --text-muted: #555555;
-    /* 液態玻璃背景色 (亮色模式 - 清透感 0.4) */
-    --nav-bg-glass: rgba(255, 255, 255, 0.4); 
+    --nav-bg-glass: rgba(255, 255, 255, 0.85); 
     --card-bg: #ffffff;
     --accent-color: #d32f2f;
     --footer-bg: #e0e0e0;
-    --border-color: rgba(0, 0, 0, 0.2);
+    --border-color: rgba(0, 0, 0, 0.15);
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0; padding: 0; box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
 }
 
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    line-height: 1.6;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    animation: fadeIn 0.5s ease-out forwards;
-    overflow-x: hidden;
+    background-color: var(--bg-color); color: var(--text-color);
+    line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh;
+    animation: fadeIn 0.5s ease-out forwards; overflow-x: hidden;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-.fade-out {
-    animation: fadeOut 0.3s ease-in forwards !important;
-}
-
-@keyframes fadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
-}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 /* =========================
-   iPhone 液態玻璃導覽列 (全站套用)
+   全透明懸浮導覽列 (徹底移除黑Bar)
    ========================= */
 .top-bar {
-    position: fixed; 
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
-    background-color: var(--nav-bg-glass); 
-    
-    /* 核心魔法：毛玻璃模糊效果 */
-    backdrop-filter: saturate(180%) blur(20px); 
-    -webkit-backdrop-filter: saturate(180%) blur(20px); 
-    
-    border-bottom: 1px solid var(--border-color); 
+    position: fixed; top: 0; left: 0; width: 100%;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 30px;
+    background-color: transparent; /* 完全透明 */
+    backdrop-filter: none; -webkit-backdrop-filter: none; border-bottom: none; 
     z-index: 1000; 
+    /* 核心魔法：讓透明區域不會阻擋底下滑鼠點擊 */
+    pointer-events: none; 
 }
 
-/* 電腦版橫排選單 */
-.desktop-nav {
-    display: flex;
-    gap: 15px; 
-    flex: 1;
-    justify-content: flex-start;
-}
+/* 讓按鈕恢復點擊功能 */
+.desktop-nav, .menu-btn, .settings-wrapper { pointer-events: auto; }
 
-/* 漢堡選單按鈕 (電腦版預設隱藏) */
-.menu-btn {
-    display: none;
-    background: none;
-    border: none;
-    color: var(--text-color);
-    font-size: 1.8rem;
-    cursor: pointer;
-}
-
-.nav-controls {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-/* 語言切換框 (無違和透明版) */
-.lang-selector {
-    background-color: transparent; 
-    color: var(--text-color);
-    border: 1px solid var(--border-color);
-    padding: 6px 12px;
-    border-radius: 20px; 
-    outline: none;
-    cursor: pointer;
-}
-
-.lang-selector option {
-    background-color: var(--card-bg);
-    color: var(--text-color);
-}
-
-.theme-toggle-btn {
-    background: none;
-    border: none;
-    font-size: 1.2rem;
-    cursor: pointer;
-    color: var(--text-color);
-}
+.desktop-nav { display: flex; gap: 15px; flex: 1; justify-content: flex-start; }
+.menu-btn { display: none; background: none; border: none; color: var(--text-color); font-size: 2rem; cursor: pointer; }
 
 /* =========================
-   手機版側邊欄 (全面升級液態玻璃)
+   手機版側邊欄 (修改右下角設定)
    ========================= */
 .sidebar {
-    position: fixed;
-    top: 0;
-    left: -300px;
-    width: 250px;
-    height: 100vh;
-    
-    /* 與頂部相同的液態玻璃特效 */
+    position: fixed; top: 0; left: -300px; width: 280px; height: 100vh;
     background-color: var(--nav-bg-glass);
-    backdrop-filter: saturate(180%) blur(25px); 
-    -webkit-backdrop-filter: saturate(180%) blur(25px); 
-    
+    backdrop-filter: saturate(180%) blur(25px); -webkit-backdrop-filter: saturate(180%) blur(25px); 
     border-right: 1px solid var(--border-color);
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    padding: 80px 20px 20px;
-    gap: 20px; 
-    transition: left 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    z-index: 1001;
+    display: flex; flex-direction: column;
+    padding: 80px 20px 20px; transition: left 0.4s cubic-bezier(0.25, 1, 0.5, 1); z-index: 1001;
 }
 
-.sidebar.active {
-    left: 0;
-    box-shadow: 5px 0 25px rgba(0,0,0,0.5);
-}
+.sidebar.active { left: 0; box-shadow: 5px 0 25px rgba(0,0,0,0.5); }
+.close-btn { position: absolute; top: 15px; right: 20px; background: none; border: none; color: var(--text-color); font-size: 2.5rem; cursor: pointer; }
+.sidebar-nav { display: flex; flex-direction: column; gap: 15px; width: 100%; }
 
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    background: none;
-    border: none;
-    color: var(--text-color);
-    font-size: 2.5rem;
-    cursor: pointer;
+/* 🔥 布加迪奢華風：圓潤膠囊按鈕 */
+.desktop-nav a, .sidebar-nav a {
+    color: var(--text-color); text-decoration: none; font-size: 0.95rem; letter-spacing: 1px; 
+    padding: 10px 24px; border-radius: 30px; border: 1px solid var(--border-color); 
+    background-color: transparent; transition: all 0.3s ease; white-space: nowrap; text-align: center;
+}
+.desktop-nav a:hover, .desktop-nav a.active, .sidebar-nav a:hover, .sidebar-nav a.active {
+    color: var(--accent-color); border-color: var(--accent-color); background-color: rgba(229, 9, 20, 0.05); 
 }
 
 /* =========================
-   🔥 布加迪奢華風：圓潤膠囊按鈕 (電腦 & 手機共用)
+   Telegram風格 設定彈出選單
    ========================= */
-.desktop-nav a, .sidebar a {
-    color: var(--text-color);
-    text-decoration: none;
-    font-size: 0.95rem;
-    letter-spacing: 1px; 
-    padding: 8px 24px; 
-    border-radius: 30px; 
-    border: 1px solid var(--border-color); 
-    background-color: transparent;
-    transition: all 0.3s ease;
-    white-space: nowrap;
+.settings-wrapper { position: relative; }
+
+/* 齒輪按鈕 */
+.settings-icon-btn {
+    background: var(--nav-bg-glass); border: 1px solid var(--border-color); border-radius: 50%;
+    width: 45px; height: 45px; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; color: var(--text-color); font-size: 1.3rem;
+    backdrop-filter: blur(10px); transition: all 0.3s ease;
+}
+.settings-icon-btn:hover { background: var(--accent-color); border-color: var(--accent-color); color: #fff; }
+
+/* 下拉選單外框 */
+.settings-dropdown {
+    position: absolute; right: 0; width: 220px;
+    background-color: var(--nav-bg-glass); backdrop-filter: saturate(180%) blur(25px); -webkit-backdrop-filter: saturate(180%) blur(25px);
+    border: 1px solid var(--border-color); border-radius: 15px; padding: 15px;
+    display: flex; flex-direction: column; gap: 12px;
+    opacity: 0; visibility: hidden; transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4); z-index: 1002;
 }
 
-/* 手機版側邊欄按鈕拉寬一點 */
-.sidebar a {
-    width: 90%;
-    text-align: center;
+/* 電腦版選單 (往下彈) */
+#desktopDropdown { top: 60px; transform: translateY(-15px); }
+#desktopDropdown.active { opacity: 1; visibility: visible; transform: translateY(0); }
+
+/* 手機版設定選單 (釘在右下角，往上彈) */
+.mobile-settings { position: absolute; bottom: 25px; right: 25px; }
+#mobileDropdown { top: auto; bottom: 60px; right: 0; transform: translateY(15px); }
+#mobileDropdown.active { opacity: 1; visibility: visible; transform: translateY(0); }
+
+/* 選單內的按鈕樣式 */
+.settings-dropdown .lang-selector, .settings-dropdown .theme-toggle-btn {
+    width: 100%; background: transparent; color: var(--text-color); border: 1px solid var(--border-color);
+    padding: 10px 15px; border-radius: 10px; cursor: pointer; font-size: 0.95rem; outline: none;
 }
-
-/* 滑鼠移過去 & 當前頁面的高亮效果 */
-.desktop-nav a:hover, .desktop-nav a.active,
-.sidebar a:hover, .sidebar a.active {
-    color: var(--accent-color);
-    border-color: var(--accent-color);
-    background-color: rgba(229, 9, 20, 0.05); 
-}
-
-/* =========================
-   首頁：全螢幕沉浸式影片區塊
-   ========================= */
-main {
-    flex: 1;
-    width: 100%;
-}
-
-.hero-section {
-    position: relative;
-    height: 100vh; 
-    height: 100dvh; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.hero-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-}
-
-.hero-bg video, .hero-bg img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.hero-bg .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6); 
-}
-
-.hero-content {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    padding: 20px;
-    color: #ffffff; 
-}
-
-.profile-pic {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid var(--accent-color);
-    box-shadow: 0 0 15px rgba(229, 9, 20, 0.5);
-    margin-bottom: 20px;
-}
-
-h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
-}
-
-.subtitle {
-    color: #dddddd;
-    margin-bottom: 30px;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
-}
-
-/* =========================
-   通用頁面排版 (履歷、作品集等)
-   ========================= */
-.page-content {
-    padding: 100px 20px 60px; 
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-h2.section-title {
-    text-align: center;
-    margin-bottom: 40px;
-    position: relative;
-    padding-bottom: 10px;
-}
-
-h2.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
-    background-color: var(--accent-color);
-}
-
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-.card {
-    background-color: var(--card-bg);
-    border-radius: 12px;
-    overflow: hidden;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(229, 9, 20, 0.2);
-}
-
-.card-img-placeholder {
-    width: 100%;
-    height: 180px;
-    background-color: #333;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    margin-bottom: 15px;
-}
-
-.card h3 { margin-bottom: 10px; font-size: 1.3rem; }
-.card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; }
-.btn-link { display: inline-block; color: var(--accent-color); text-decoration: none; font-weight: bold; }
-.btn-link:hover { text-decoration: underline; }
-
-/* =========================
-   Footer
-   ========================= */
-.site-footer {
-    background-color: var(--footer-bg);
-    color: var(--text-color);
-    padding: 40px 20px 20px;
-    border-top: 1px solid var(--border-color);
-    margin-top: auto; 
-}
-
-.footer-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 30px;
-    margin-bottom: 30px;
-}
-
-.footer-col h4 { color: var(--accent-color); margin-bottom: 15px; font-size: 1.1rem; }
-.footer-col p { color: var(--text-muted); font-size: 0.9rem; }
-.footer-col ul { list-style: none; }
-.footer-col ul li { margin-bottom: 10px; }
-.footer-col ul li a { color: var(--text-muted); text-decoration: none; }
-.footer-col ul li a:hover { color: var(--accent-color); }
-.footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.85rem; }
+.settings-dropdown .theme-toggle-btn { display: flex; align-items: center; gap: 10px; text-align: left; transition: background 0.2s; }
+.settings-dropdown .lang-selector option { background-color: var(--card-bg); color: var(--text-color); }
+.settings-dropdown .lang-selector:hover, .settings-dropdown .theme-toggle-btn:hover { background: rgba(150, 150, 150, 0.15); }
 
 /* =========================================
-   📱 手機與平板專屬優化 (Responsive Design)
+   📱 RWD 切換控制
    ========================================= */
+.desktop-only { display: block; }
+.mobile-only { display: none; }
+
 @media (max-width: 768px) {
-    .top-bar { padding: 10px 20px; }
-    
+    .desktop-only { display: none; }
+    .mobile-only { display: block; }
     .desktop-nav { display: none; }
-    .menu-btn { display: block; }
-    
-    h1 { font-size: 2rem; }
-    
-    .footer-container {
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-        text-align: left;
-    }
-    .footer-col:first-child {
-        grid-column: 1 / -1;
-        text-align: center;
-        margin-bottom: 15px;
-    }
+    .menu-btn { display: block; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+    .top-bar { padding: 15px 20px; }
 }
+
+/* =========================
+   以下保留你原本的內容樣式 (Hero, Card, Footer等)
+   ========================= */
+main { flex: 1; width: 100%; }
+.hero-section { position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
+.hero-bg video, .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+.hero-bg .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); }
+.hero-content { position: relative; z-index: 1; text-align: center; padding: 20px; color: #ffffff; }
+.profile-pic { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-color); box-shadow: 0 0 15px rgba(229, 9, 20, 0.5); margin-bottom: 20px; }
+h1 { font-size: 2.5rem; margin-bottom: 10px; text-shadow: 2px 2px 5px rgba(0,0,0,0.8); }
+.subtitle { color: #dddddd; margin-bottom: 30px; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); }
+.page-content { padding: 100px 20px 60px; max-width: 1000px; margin: 0 auto; }
+h2.section-title { text-align: center; margin-bottom: 40px; position: relative; padding-bottom: 10px; }
+h2.section-title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background-color: var(--accent-color); }
+.grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.card { background-color: var(--card-bg); border-radius: 12px; overflow: hidden; padding: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+.card-img-placeholder { width: 100%; height: 180px; background-color: #333; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff; margin-bottom: 15px; }
+.card h3 { margin-bottom: 10px; font-size: 1.3rem; }
+.card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; }
+.site-footer { background-color: var(--footer-bg); color: var(--text-color); padding: 40px 20px 20px; border-top: 1px solid var(--border-color); margin-top: auto; }
+.footer-container { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-bottom: 30px; }
+.footer-col h4 { color: var(--accent-color); margin-bottom: 15px; font-size: 1.1rem; }
+.footer-col p, .footer-col ul li a { color: var(--text-muted); font-size: 0.9rem; text-decoration: none; }
+.footer-col ul { list-style: none; }
+.footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.85rem; }
