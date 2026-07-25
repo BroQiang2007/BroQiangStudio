@@ -28,7 +28,6 @@
     transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
 }
 
-/* 修正：移除了 transform 避免破壞 position: fixed */
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
@@ -55,7 +54,7 @@ body {
 }
 
 /* =========================
-   上方控制列 & 側邊欄 (Sidebar)
+   上方控制列 & 導覽列
    ========================= */
 .top-bar {
     display: flex;
@@ -69,7 +68,30 @@ body {
     z-index: 100;
 }
 
+/* 電腦版橫排選單 */
+.desktop-nav {
+    display: flex;
+    gap: 25px;
+    flex: 1;
+    justify-content: flex-start;
+}
+
+.desktop-nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 5px 10px;
+    white-space: nowrap;
+}
+
+.desktop-nav a:hover, .desktop-nav a.active {
+    color: var(--accent-color);
+}
+
+/* 漢堡選單按鈕 (電腦版預設隱藏) */
 .menu-btn {
+    display: none;
     background: none;
     border: none;
     color: var(--text-color);
@@ -100,6 +122,7 @@ body {
     color: var(--text-color);
 }
 
+/* 手機版側邊欄 (電腦版預設不需要用到，但保留給手機) */
 .sidebar {
     position: fixed;
     top: 0;
@@ -215,7 +238,7 @@ h1 {
     text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
 }
 
-/* 通用頁面排版 (履歷、作品集、遊戲) */
+/* 通用頁面排版 */
 .page-content {
     padding: 60px 20px;
     max-width: 1000px;
@@ -277,39 +300,6 @@ h2.section-title::after {
 .btn-link:hover { text-decoration: underline; }
 
 /* =========================
-   常駐浮動社群按鈕 (修復定位)
-   ========================= */
-.floating-socials {
-    position: fixed;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%); /* 這個 transform 不會影響，因為它本身就是 fixed */
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    z-index: 9999; /* 確保浮在最上層 */
-}
-
-.floating-socials .social-btn {
-    background-color: var(--card-bg);
-    color: var(--accent-color);
-    border: 1px solid var(--border-color);
-    padding: 10px 20px;
-    border-radius: 25px;
-    text-decoration: none;
-    font-size: 0.95rem;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    white-space: nowrap;
-}
-
-.floating-socials .social-btn:hover {
-    background-color: var(--accent-color);
-    color: #ffffff;
-    transform: scale(1.1);
-}
-
-/* =========================
    Footer
    ========================= */
 .site-footer {
@@ -342,6 +332,11 @@ h2.section-title::after {
    ========================================= */
 @media (max-width: 768px) {
     .top-bar { padding: 10px 20px; }
+    
+    /* 手機版：隱藏橫排導覽，顯示漢堡按鈕 */
+    .desktop-nav { display: none; }
+    .menu-btn { display: block; }
+    
     h1 { font-size: 2rem; }
     
     .footer-container {
@@ -353,27 +348,5 @@ h2.section-title::after {
         grid-column: 1 / -1;
         text-align: center;
         margin-bottom: 15px;
-    }
-
-    /* 手機版：將浮動社群按鈕固定在畫面正下方 */
-    .floating-socials {
-        top: auto;
-        bottom: 20px; /* 固定在距離底部 20px 的位置 */
-        right: 50%;
-        transform: translateX(50%); /* 水平居中 */
-        flex-direction: row;
-        width: max-content;
-        justify-content: center;
-        gap: 10px;
-        background-color: rgba(30, 30, 30, 0.8); /* 加上半透明底色避免跟內容混在一起 */
-        padding: 10px;
-        border-radius: 30px;
-        backdrop-filter: blur(5px);
-    }
-    
-    .floating-socials .social-btn {
-        padding: 8px 15px;
-        font-size: 0.85rem;
-        box-shadow: none;
     }
 }
