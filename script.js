@@ -1,10 +1,7 @@
-// =========================
-// 1. 全站多語言翻譯字典 (完整版)
-// =========================
 const translations = {
     "zh-TW": {
         "nav_about": "關於我", "nav_resume": "專業履歷", "nav_portfolio": "作品集", "nav_games": "遊戲日常",
-        "index_greeting": "嗨，我是 余樂銨",
+        "index_greeting": "嗨，我是 余樂鈜",
         "index_subtitle": "熱愛用程式解決問題的開發者 / 喜歡用設計說故事的創作者。",
         "social_ig": "Instagram", "social_yt": "YouTube", "social_tt": "抖音", "social_gh": "GitHub",
         "resume_title": "專業履歷",
@@ -18,7 +15,7 @@ const translations = {
         "resume_skill": "🛠️ 專業技能",
         "resume_skill_list": "AI, HTML / CSS, JavaScript, 專案管理, 視覺設計, Adobe Illustrator, Adobe Photoshop, Adobe Premiere Pro, Adobe After Effects",
         "resume_edu": "🎓 學歷",
-        "resume_edu_1_title": "[Adtect JTM AP Nibong Tebal] - [互動式多媒體技術證書]",
+        "resume_edu_1_title": "[Adtect JTM AP Nibong Tebal] - [交互式多媒體技術證書]",
         "resume_edu_1_date": "07/2025 - 07/2027",
         "resume_edu_2_title": "[SMK BUKIT GAMBIR] - [SPM]",
         "resume_edu_2_date": "2020 - 2025",
@@ -51,7 +48,7 @@ const translations = {
     },
     "zh-CN": {
         "nav_about": "关于我", "nav_resume": "专业履历", "nav_portfolio": "作品集", "nav_games": "游戏日常",
-        "index_greeting": "嗨，我是 余乐铵",
+        "index_greeting": "嗨，我是 余乐鈜",
         "index_subtitle": "热爱用程式解决问题的开发者 / 喜欢用设计说故事的创作者。",
         "social_ig": "Instagram", "social_yt": "YouTube", "social_tt": "抖音", "social_gh": "GitHub",
         "resume_title": "专业履历",
@@ -98,17 +95,17 @@ const translations = {
     },
     "en": {
         "nav_about": "About Me", "nav_resume": "Resume", "nav_portfolio": "Portfolio", "nav_games": "Gaming",
-        "index_greeting": "Hi, I'm MICHAEL ER",
+        "index_greeting": "Hi, I'm Yu Le Hong",
         "index_subtitle": "A developer passionate about solving problems with code / A creator who loves storytelling through design.",
-        "social_ig": "Instagram", "social_yt": "YouTube", "social_tt": "TikTok (Chian Version)", "social_gh": "GitHub",
+        "social_ig": "Instagram", "social_yt": "YouTube", "social_tt": "TikTok", "social_gh": "GitHub",
         "resume_title": "Professional Resume",
         "resume_exp": "💼 Experience",
-        "resume_exp_1_title": "[Company Name (N/A)] - [Job Title (N/A)]",
-        "resume_exp_1_date": "No Date - Present",
-        "resume_exp_1_desc": "Job description or project achievements. (N/A)",
-        "resume_exp_2_title": "[Previous Company (N/A)] - [Job Title (N/A)]",
-        "resume_exp_2_date": "No Date - No Date",
-        "resume_exp_2_desc": "Job description or project achievements. (N/A)",
+        "resume_exp_1_title": "[Company Name] - [Job Title]",
+        "resume_exp_1_date": "No Data - Present",
+        "resume_exp_1_desc": "Job description or project achievements. (No Data)",
+        "resume_exp_2_title": "[Previous Company] - [Job Title]",
+        "resume_exp_2_date": "No Data - No Data",
+        "resume_exp_2_desc": "Job description or project achievements. (No Data)",
         "resume_skill": "🛠️ Skills",
         "resume_skill_list": "AI, HTML / CSS, JavaScript, Project Management, Visual Design, Adobe Illustrator, Photoshop, Premiere Pro, After Effects",
         "resume_edu": "🎓 Education",
@@ -145,16 +142,16 @@ const translations = {
     },
     "ms": {
         "nav_about": "Tentang Saya", "nav_resume": "Resume", "nav_portfolio": "Portfolio", "nav_games": "Permainan",
-        "index_greeting": "Hai, saya ER LE AN",
+        "index_greeting": "Hai, saya Yu Le Hong",
         "index_subtitle": "Pembangun yang gemar menyelesaikan masalah dengan kod / Pencipta yang suka bercerita melalui reka bentuk.",
-        "social_ig": "Instagram", "social_yt": "YouTube", "social_tt": "TikTok (Versi China)", "social_gh": "GitHub",
+        "social_ig": "Instagram", "social_yt": "YouTube", "social_tt": "TikTok", "social_gh": "GitHub",
         "resume_title": "Resume Profesional",
         "resume_exp": "💼 Pengalaman Kerja",
-        "resume_exp_1_title": "[Nama Syarikat (Tiada Data)] - [Jawatan (Tiada Data)]",
+        "resume_exp_1_title": "[Nama Syarikat] - [Jawatan]",
         "resume_exp_1_date": "Tiada Data - Kini",
         "resume_exp_1_desc": "Penerangan tugas atau pencapaian projek. (Tiada Data)",
-        "resume_exp_2_title": "[Syarikat Terdahulu (Tiada Data)] - [Jawatan (Tiada Data)]",
-        "resume_exp_2_date": "Tiada Tarikh - Tiada Tarikh",
+        "resume_exp_2_title": "[Syarikat Terdahulu] - [Jawatan]",
+        "resume_exp_2_date": "Tiada Data - Tiada Data",
         "resume_exp_2_desc": "Penerangan tugas atau pencapaian projek. (Tiada Data)",
         "resume_skill": "🛠️ Kemahiran",
         "resume_skill_list": "AI, HTML / CSS, JavaScript, Pengurusan Projek, Reka Bentuk Visual, Adobe Illustrator, Photoshop, Premiere Pro, After Effects",
@@ -192,9 +189,6 @@ const translations = {
     }
 };
 
-// =========================
-// 2. 語言切換核心邏輯
-// =========================
 function changeLanguage() {
     const lang = document.getElementById("languageSelect").value;
     localStorage.setItem("selectedLanguage", lang); 
@@ -218,9 +212,6 @@ function initLanguage() {
     applyLanguage(savedLang); 
 }
 
-// =========================
-// 3. 黑白模式切換邏輯
-// =========================
 const themeBtn = document.getElementById('themeBtn');
 const htmlElement = document.documentElement;
 
@@ -244,11 +235,8 @@ if (themeBtn) {
     });
 }
 
-// =========================
-// 4. 頁面跳轉平滑動畫邏輯
-// =========================
 function initPageTransitions() {
-    document.querySelectorAll('nav a').forEach(link => {
+    document.querySelectorAll('.sidebar a').forEach(link => {
         link.addEventListener('click', function(e) {
             if (this.href === window.location.href || this.target === '_blank') return;
             e.preventDefault(); 
@@ -259,39 +247,24 @@ function initPageTransitions() {
     });
 }
 
-// =========================
-// 啟動器
-// =========================
-document.addEventListener("DOMContentLoaded", () => {
-    initLanguage();       
-    initTheme();          
-    initPageTransitions();
-});
-
-// =========================
-// 5. 側邊欄 (Sidebar) 開關邏輯
-// =========================
 function initSidebar() {
     const menuBtn = document.getElementById('menuBtn');
     const closeBtn = document.getElementById('closeBtn');
     const sidebar = document.getElementById('sidebar');
 
     if (menuBtn && closeBtn && sidebar) {
-        // 點擊漢堡選單打開
         menuBtn.addEventListener('click', () => {
             sidebar.classList.add('active');
         });
-        // 點擊 X 關閉
         closeBtn.addEventListener('click', () => {
             sidebar.classList.remove('active');
         });
     }
 }
 
-// 修改原有的 DOMContentLoaded，把 initSidebar() 加進去啟動
 document.addEventListener("DOMContentLoaded", () => {
     initLanguage();       
     initTheme();          
     initPageTransitions();
-    initSidebar(); // 新增這一行來啟動側邊欄
+    initSidebar(); 
 });
