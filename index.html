@@ -10,10 +10,25 @@
 </head>
 <body>
 
+    <body>
+    <!-- 超炫酷背景區塊 (放在 body 的最前面) -->
+    <div class="hero-background">
+        <!-- 如果你要用影片，請用下面這行 (需要上傳一個 bg-video.mp4 到 GitHub) -->
+        <video autoplay muted loop playsinline>
+            <source src="bg-video.mp4" type="video/mp4">
+        </video>
+        
+        <!-- 如果你暫時只有圖片，就把上面 video 刪掉或註解，改用下面這行 -->
+        <!-- <img src="cool-background.jpg" alt="Background"> -->
+    </div>
+
+    <!-- 下面是你原本的 <nav> 和 <main> 等內容... -->
+        
     <nav>
         <a href="index.html" data-i18n="nav_about">關於我</a>
         <a href="resume.html" data-i18n="nav_resume">專業履歷</a>
         <a href="portfolio.html" data-i18n="nav_portfolio">作品集</a>
+        <a href="games.html" data-i18n="nav_games">遊戲日常</a>
         
         <select class="lang-selector" id="languageSelect" onchange="changeLanguage()">
             <option value="zh-TW">繁體中文</option>
