@@ -29,39 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if(mobileDropdown && mobileDropdown.classList.contains('active') && !mobileDropdown.contains(e.target)) mobileDropdown.classList.remove('active');
     });
 
-    // 3. 日夜模式切換
-    const themeToggleBtns = document.querySelectorAll('.theme-toggle-btn');
-    let currentTheme = localStorage.getItem('theme') || 'dark';
-    
-    document.documentElement.setAttribute('data-theme', currentTheme);
-    updateThemeUI(currentTheme);
-
-    themeToggleBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', currentTheme);
-            localStorage.setItem('theme', currentTheme);
-            updateThemeUI(currentTheme);
-        });
-    });
-
-    function updateThemeUI(theme) {
-        themeToggleBtns.forEach(btn => {
-            const icon = btn.querySelector('.theme-icon');
-            const text = btn.querySelector('.theme-text');
-            if(theme === 'light') {
-                if(icon) icon.textContent = '🌙';
-                if(text) text.textContent = '夜間模式';
-            } else {
-                if(icon) icon.textContent = '☀️';
-                if(text) text.textContent = '日間模式';
-            }
-        });
-    }
-
-    // 4. 多語言切換字典（包含更正後的名字與社群連結文字/結構）
+    // 3. 多語言切換字典 (新增日夜模式翻譯)
     const translations = {
         "zh-TW": {
+            "theme_light": "日間模式", "theme_dark": "夜間模式",
             "nav_intro_btn": "了解更多",
             "about_page_title": "自我介紹",
             "about_bio_title": "用代碼刻劃未來，用設計訴說故事。",
@@ -99,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "game_btn": "查看遊戲詳情 >"
         },
         "zh-CN": {
+            "theme_light": "日间模式", "theme_dark": "夜间模式",
             "nav_intro_btn": "了解更多",
             "about_page_title": "自我介绍",
             "about_bio_title": "用代码刻画未来，用设计诉说故事。",
@@ -136,6 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "game_btn": "查看游戏详情 >"
         },
         "en": {
+            "theme_light": "Light Mode", "theme_dark": "Dark Mode",
             "nav_intro_btn": "Learn More",
             "about_page_title": "About Me",
             "about_bio_title": "Coding the future, designing stories.",
@@ -173,6 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "game_btn": "View Details >"
         },
         "ms": {
+            "theme_light": "Mod Cerah", "theme_dark": "Mod Gelap",
             "nav_intro_btn": "Ketahui Lanjut",
             "about_page_title": "Tentang Saya",
             "about_bio_title": "Mengekod masa depan, mereka bentuk cerita.",
@@ -211,9 +185,55 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // 4. 語言與主題狀態管理
     const langSelectors = document.querySelectorAll('.lang-selector');
     let currentLang = localStorage.getItem('lang') || 'zh-TW';
+    let currentTheme = localStorage.getItem('theme') || 'dark';
 
+    // 初始化主題
+    document.documentElement.setAttribute('data-theme', currentTheme);
+
+    // 5. 更新主題 UI 的函式 (綁定語言)
+    function updateThemeUI(theme, lang) {
+        const themeToggleBtns = document.querySelectorAll('.theme-toggle-btn');
+        themeToggleBtns.forEach(btn => {
+            const icon = btn.querySelector('.theme-icon');
+            const text = btn.querySelector('.theme-text');
+            if(theme === 'light') {
+                if(icon) icon.textContent = '🌙';
+                if(text) text.textContent = translations[lang]["theme_dark"]; // 提示切換成夜間
+            } else {
+                if(icon) icon.textContent = '☀️';
+                if(text) text.textContent = translations[lang]["theme_light"]; // 提示切換成日間
+            }
+        });
+    }
+
+    // 6. 綁定主題切換按鈕事件
+    const themeToggleBtns = document.querySelectorAll('.theme-toggle-btn');
+    themeToggleBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            localStorage.setItem('theme', currentTheme);
+            updateThemeUI(currentTheme, currentLang); // 更新文字
+        });
+    });
+
+    // 7. 切換語言函式
+    function changeLanguage(lang) {
+        currentLang = lang; // 記住當前語言
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) {
+                element.textContent = translations[lang][key];
+            }
+        });
+        // 語言切換時，也要同步更新日夜模式的文字！
+        updateThemeUI(currentTheme, currentLang);
+    }
+
+    // 綁定語言選擇器事件
     langSelectors.forEach(selector => {
         selector.value = currentLang;
         selector.addEventListener('change', (e) => {
@@ -223,16 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
             changeLanguage(selectedLang);
         });
     });
-
-    function changeLanguage(lang) {
-        document.querySelectorAll('[data-i18n]').forEach(element => {
-            const key = element.getAttribute('data-i18n');
-            if (translations[lang] && translations[lang][key]) {
-                element.textContent = translations[lang][key];
-            }
-        });
-    }
     
-    // 初次載入執行語言切換
+    // 網頁初次載入執行語言與主題更新
     changeLanguage(currentLang);
 });
