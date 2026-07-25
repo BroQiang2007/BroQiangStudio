@@ -17,10 +17,16 @@
             <a href="games.html" class="active" data-i18n="nav_games">遊戲日常</a>
         </nav>
         <div class="top-right-controls">
+            <a href="about-me.html" class="intro-btn" data-i18n="nav_intro_btn">了解更多</a>
             <div class="settings-wrapper desktop-only">
                 <button class="settings-icon-btn" id="desktopSettingsBtn">⚙️</button>
                 <div class="settings-dropdown" id="desktopDropdown">
-                    <select class="lang-selector"><option value="zh-TW">繁體中文</option><option value="zh-CN">简体中文</option><option value="en">English</option><option value="ms">Bahasa Melayu</option></select>
+                    <select class="lang-selector">
+                        <option value="zh-TW">繁體中文</option>
+                        <option value="zh-CN">简体中文</option>
+                        <option value="en">English</option>
+                        <option value="ms">Bahasa Melayu</option>
+                    </select>
                     <button class="theme-toggle-btn"><span class="theme-icon">☀️</span> <span class="theme-text">日間模式</span></button>
                 </div>
             </div>
@@ -37,7 +43,12 @@
         </nav>
         <div class="settings-wrapper mobile-only mobile-settings">
             <div class="settings-dropdown" id="mobileDropdown">
-                <select class="lang-selector"><option value="zh-TW">繁體中文</option><option value="zh-CN">简体中文</option><option value="en">English</option><option value="ms">Bahasa Melayu</option></select>
+                <select class="lang-selector">
+                    <option value="zh-TW">繁體中文</option>
+                    <option value="zh-CN">简体中文</option>
+                    <option value="en">English</option>
+                    <option value="ms">Bahasa Melayu</option>
+                </select>
                 <button class="theme-toggle-btn"><span class="theme-icon">☀️</span> <span class="theme-text">日間模式</span></button>
             </div>
             <button class="settings-icon-btn" id="mobileSettingsBtn">⚙️</button>
@@ -47,29 +58,48 @@
     <main class="page-content">
         <h2 class="section-title" data-i18n="games_header">我的遊戲日常</h2>
         <div class="grid-container">
+            <!-- 遊戲 1: 王牌競速 -->
             <div class="card">
-                <img src="ace-racer.jpg" alt="Ace Racer" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;">
+                <div class="reveal-img-wrapper">
+                    <img src="ace-racer.jpg" alt="Ace Racer Front" class="img-front">
+                    <img src="ace-racer-secret.jpg" alt="Ace Racer Secret" class="img-back">
+                </div>
                 <h3 data-i18n="game_1_title">王牌競速 (國服版)</h3>
                 <p data-i18n="game_1_desc">在賽道上享受極速狂飆的快感，釋放王牌技能。</p>
-                <a href="#" class="btn-link" data-i18n="game_btn">查看遊戲詳情 &gt;</a>
+                <a href="#" class="btn-link" data-i18n="game_btn">查看遊戲詳情 ></a>
             </div>
+
+            <!-- 遊戲 2: 第五人格 -->
             <div class="card">
-                <img src="idv.jpg" alt="Identity V" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;">
+                <div class="reveal-img-wrapper">
+                    <img src="idv.jpg" alt="Identity V Front" class="img-front">
+                    <img src="idv-secret.jpg" alt="Identity V Secret" class="img-back">
+                </div>
                 <h3 data-i18n="game_2_title">第五人格 (國際服)</h3>
                 <p data-i18n="game_2_desc">非對稱競技的刺激追逐，考驗策略與心理戰。</p>
-                <a href="#" class="btn-link" data-i18n="game_btn">查看遊戲詳情 &gt;</a>
+                <a href="#" class="btn-link" data-i18n="game_btn">查看遊戲詳情 ></a>
             </div>
+
+            <!-- 遊戲 3: Minecraft Bedrock -->
             <div class="card">
-                <img src="mc-bedrock.jpg" alt="Minecraft Bedrock" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;">
+                <div class="reveal-img-wrapper">
+                    <img src="mc-bedrock.jpg" alt="Minecraft Bedrock Front" class="img-front">
+                    <img src="mc-bedrock-secret.jpg" alt="Minecraft Bedrock Secret" class="img-back">
+                </div>
                 <h3 data-i18n="game_3_title">Minecraft (Bedrock)</h3>
                 <p data-i18n="game_3_desc">與朋友跨平台連線，打造屬於我們的方塊世界。</p>
-                <a href="#" class="btn-link" data-i18n="game_btn">查看遊戲詳情 &gt;</a>
+                <a href="#" class="btn-link" data-i18n="game_btn">查看遊戲詳情 ></a>
             </div>
+
+            <!-- 遊戲 4: Minecraft Java -->
             <div class="card">
-                <img src="mc-java.jpg" alt="Minecraft Java" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;">
+                <div class="reveal-img-wrapper">
+                    <img src="mc-java.jpg" alt="Minecraft Java Front" class="img-front">
+                    <img src="mc-java-secret.jpg" alt="Minecraft Java Secret" class="img-back">
+                </div>
                 <h3 data-i18n="game_4_title">Minecraft (Java)</h3>
                 <p data-i18n="game_4_desc">體驗原汁原味的麥塊生存，探索豐富的社群模組與伺服器。</p>
-                <a href="#" class="btn-link" data-i18n="game_btn">查看遊戲詳情 &gt;</a>
+                <a href="#" class="btn-link" data-i18n="game_btn">查看遊戲詳情 ></a>
             </div>
         </div>
     </main>
