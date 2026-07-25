@@ -269,3 +269,37 @@ document.addEventListener("DOMContentLoaded", () => {
     initPageTransitions();
     initSidebar(); 
 });
+
+// ==========================================
+// 設定下拉選單互動邏輯 (Telegram風格)
+// ==========================================
+const desktopSettingsBtn = document.getElementById('desktopSettingsBtn');
+const desktopDropdown = document.getElementById('desktopDropdown');
+const mobileSettingsBtn = document.getElementById('mobileSettingsBtn');
+const mobileDropdown = document.getElementById('mobileDropdown');
+
+// 電腦版齒輪點擊
+if(desktopSettingsBtn) {
+    desktopSettingsBtn.addEventListener('click', (e) => {
+        e.stopPropagation(); // 防止點擊冒泡
+        desktopDropdown.classList.toggle('active');
+    });
+}
+
+// 手機版齒輪點擊
+if(mobileSettingsBtn) {
+    mobileSettingsBtn.addEventListener('click', (e) => {
+        e.stopPropagation(); // 防止點擊冒泡
+        mobileDropdown.classList.toggle('active');
+    });
+}
+
+// 點擊畫面其他空白處，自動收起選單
+document.addEventListener('click', (e) => {
+    if(desktopDropdown && desktopDropdown.classList.contains('active') && !desktopDropdown.contains(e.target)) {
+        desktopDropdown.classList.remove('active');
+    }
+    if(mobileDropdown && mobileDropdown.classList.contains('active') && !mobileDropdown.contains(e.target)) {
+        mobileDropdown.classList.remove('active');
+    }
+});
