@@ -63,7 +63,7 @@ body {
 .desktop-nav, .menu-btn, .settings-wrapper, .intro-btn { pointer-events: auto; }
 .desktop-nav { display: flex; gap: 15px; flex: 1; justify-content: flex-start; }
 
-/* 調整：漢堡選單(三條線)加入毛玻璃按鈕外框，完美解決任何背景下的辨識度問題 */
+/* 漢堡選單(三條線)毛玻璃設計 */
 .menu-btn { 
     display: none; 
     background: var(--nav-bg-glass); 
@@ -86,6 +86,7 @@ body {
 /* 右上角控制區塊與自介按鈕 */
 .top-right-controls { display: flex; gap: 15px; align-items: center; pointer-events: auto; }
 
+/* 了解更多按鈕，紅色外框與毛玻璃背景 */
 .intro-btn {
     background: var(--nav-bg-glass); 
     border: 1px solid var(--accent-color); 
@@ -192,14 +193,13 @@ body {
 .settings-dropdown .lang-selector option { background-color: var(--card-bg); color: var(--text-color); }
 .settings-dropdown .lang-selector:hover, .settings-dropdown .theme-toggle-btn:hover { background: rgba(150, 150, 150, 0.15); }
 
-/* RWD - 讓按鈕的圖案在手機版也能完美置中 */
+/* RWD */
 .desktop-only { display: block; }
 .mobile-only { display: none; }
 @media (max-width: 768px) {
     .desktop-only { display: none; }
     .mobile-only { display: block; }
     .desktop-nav { display: none; }
-    /* 這裡加上了 flex 來讓三條線置中 */
     .menu-btn { display: flex; align-items: center; justify-content: center; text-shadow: none; }
     .top-bar { padding: 15px 20px; }
     .footer-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
@@ -207,7 +207,7 @@ body {
 }
 
 /* =========================
-   通用頁面與卡片浮動樣式 (Hover)
+   通用頁面樣式
    ========================= */
 main { flex: 1; width: 100%; }
 .hero-section { position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
@@ -262,6 +262,52 @@ h2.section-title::after { content: ''; position: absolute; bottom: 0; left: 50%;
 
 .btn-link { display: inline-block; color: var(--accent-color); text-decoration: none; font-weight: bold; transition: transform 0.3s ease; }
 .btn-link:hover { text-decoration: underline; transform: translateX(5px); }
+
+/* =========================
+   神秘感圖片懸浮切換特效 (Image Reveal)
+   ========================= */
+.reveal-img-wrapper {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    background-color: #050505; 
+}
+
+.reveal-img-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.reveal-img-wrapper .img-front {
+    opacity: 1;
+    z-index: 2;
+    transform: scale(1);
+}
+
+.reveal-img-wrapper .img-back {
+    opacity: 0;
+    z-index: 1;
+    transform: scale(1.15); 
+    filter: brightness(0.9) contrast(1.1); 
+}
+
+.card:hover .reveal-img-wrapper .img-front {
+    opacity: 0;
+    transform: scale(0.95); 
+}
+
+.card:hover .reveal-img-wrapper .img-back {
+    opacity: 1;
+    transform: scale(1); 
+}
 
 /* =========================
    底部樣式
