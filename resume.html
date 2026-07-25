@@ -8,12 +8,8 @@
     <link rel="icon" type="image/jpeg" href="ProfilePicture.jpg">
 </head>
 <body>
-    <nav>
-        <a href="index.html" data-i18n="nav_about">關於我</a>
-        <a href="resume.html" class="active" data-i18n="nav_resume">專業履歷</a>
-        <a href="portfolio.html" data-i18n="nav_portfolio">作品集</a>
-        <a href="games.html" data-i18n="nav_games">遊戲日常</a>
-        
+    <header class="top-bar">
+        <button id="menuBtn" class="menu-btn">☰</button>
         <div class="nav-controls">
             <select class="lang-selector" id="languageSelect" onchange="changeLanguage()">
                 <option value="zh-TW">繁體中文</option>
@@ -23,21 +19,27 @@
             </select>
             <button id="themeBtn" class="theme-toggle-btn">☀️</button>
         </div>
+    </header>
+
+    <nav id="sidebar" class="sidebar">
+        <button id="closeBtn" class="close-btn">&times;</button>
+        <a href="index.html" data-i18n="nav_about">關於我</a>
+        <a href="resume.html" class="active" data-i18n="nav_resume">專業履歷</a>
+        <a href="portfolio.html" data-i18n="nav_portfolio">作品集</a>
+        <a href="games.html" data-i18n="nav_games">遊戲日常</a>
     </nav>
 
-    <main>
+    <main class="page-content">
         <h2 class="section-title" data-i18n="resume_title">專業履歷</h2>
         
         <div class="grid-container">
             <div class="card">
                 <h3 style="color: var(--accent-color); margin-bottom: 20px;" data-i18n="resume_exp">💼 工作經驗</h3>
-                
                 <div style="margin-bottom: 25px;">
                     <h4 data-i18n="resume_exp_1_title">[公司名稱 (無數據)] - [職稱 (無數據)]</h4>
                     <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 5px;" data-i18n="resume_exp_1_date">日期無數據 - 至今</p>
                     <p style="color: var(--text-color);" data-i18n="resume_exp_1_desc">工作內容或達成的專案成就。(無數據)</p>
                 </div>
-
                 <div>
                     <h4 data-i18n="resume_exp_2_title">[前公司名稱 (無數據)] - [職稱 (無數據)]</h4>
                     <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 5px;" data-i18n="resume_exp_2_date">日期無數據 - 日期無數據</p>
@@ -50,18 +52,23 @@
                 <p style="color: var(--text-color); margin-bottom: 30px; line-height: 1.8;" data-i18n="resume_skill_list">
                     AI, HTML / CSS, JavaScript, 專案管理, 視覺設計, Adobe Illustrator, Adobe Photoshop, Adobe Premiere Pro, Adobe After Effects
                 </p>
-
                 <h3 style="color: var(--accent-color); margin-bottom: 20px;" data-i18n="resume_edu">🎓 學歷</h3>
                 <div style="margin-bottom: 20px;">
                     <h4 data-i18n="resume_edu_1_title">[Adtect JTM AP Nibong Tebal] - [交互式多媒體技術證書]</h4>
                     <p style="font-size: 0.85rem; color: var(--text-muted);" data-i18n="resume_edu_1_date">07/2025 - 07/2027</p>
                 </div>
-                
                 <div>
                     <h4 data-i18n="resume_edu_2_title">[SMK BUKIT GAMBIR] - [SPM]</h4>
                     <p style="font-size: 0.85rem; color: var(--text-muted);" data-i18n="resume_edu_2_date">2020 - 2025</p>
                 </div>
             </div>
+        </div>
+
+        <div class="floating-socials">
+            <a href="#" target="_blank" class="social-btn" data-i18n="social_ig">Instagram</a>
+            <a href="#" target="_blank" class="social-btn" data-i18n="social_yt">YouTube</a>
+            <a href="#" target="_blank" class="social-btn" data-i18n="social_tt">抖音</a>
+            <a href="https://github.com/BroQiang2007" target="_blank" class="social-btn" data-i18n="social_gh">GitHub</a>
         </div>
     </main>
 
@@ -81,21 +88,19 @@
                 </ul>
             </div>
             <div class="footer-col">
-    <h4 data-i18n="footer_social">社群平台</h4>
-    <ul>
-        <!-- 將 href 替換成你的網址，並加上 target="_blank" -->
-        <li><a href="https://www.instagram.com/broqiang2007?utm_source=qr&igsh=MWh6cHk3NWptcW1wYw==" target="_blank" data-i18n="social_ig">Instagram</a></li>
-        <li><a href="https://www.youtube.com/@BroQiang2007" target="_blank" data-i18n="social_yt">YouTube</a></li>
-        <li><a href="https://v.douyin.com/Mxdam2fIoO4/" target="_blank" data-i18n="social_tt">抖音</a></li>
-        <li><a href="https://github.com/BroQiang2007" target="_blank" data-i18n="social_gh">GitHub</a></li>
-    </ul>
-</div>
+                <h4 data-i18n="footer_social">社群平台</h4>
+                <ul>
+                    <li><a href="#" target="_blank" data-i18n="social_ig">Instagram</a></li>
+                    <li><a href="#" target="_blank" data-i18n="social_yt">YouTube</a></li>
+                    <li><a href="#" target="_blank" data-i18n="social_tt">抖音</a></li>
+                    <li><a href="https://github.com/BroQiang2007" target="_blank" data-i18n="social_gh">GitHub</a></li>
+                </ul>
+            </div>
         </div>
         <div class="footer-bottom" data-i18n="footer_copy">
             &copy; 2026 BroQiangStudio. All rights reserved. | 聯絡我：anle82760@gmail.com
         </div>
     </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
