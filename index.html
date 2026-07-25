@@ -3,85 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me | BroQiangStudio</title>
+    <title data-i18n="page_title_index">關於我 | BroQiangStudio</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/jpeg" href="ProfilePicture.jpg">
 </head>
 <body>
-    <!-- =========================
-     電腦版與手機版的頂部導覽列
-     ========================= -->
-<header class="top-bar">
-    <!-- 手機版：左上角保留三條線漢堡按鈕 -->
-    <button class="menu-btn" id="menuBtn">☰</button>
-    
-    <!-- 電腦版：左上角保留四個導覽按鈕 -->
-    <nav class="desktop-nav">
-        <a href="index.html" class="active" data-i18n="nav_about">關於我</a>
-        <a href="resume.html" data-i18n="nav_resume">專業履歷</a>
-        <a href="portfolio.html" data-i18n="nav_portfolio">作品集</a>
-        <a href="games.html" data-i18n="nav_games">遊戲日常</a>
-    </nav>
-    
-    <!-- 電腦版：右上角設定按鈕 (Telegram風格) -->
-    <div class="settings-wrapper desktop-only">
-        <button class="settings-icon-btn" id="desktopSettingsBtn">⚙️</button>
-        <div class="settings-dropdown" id="desktopDropdown">
-            <select class="lang-selector">
-                <option value="zh-TW">繁體中文</option>
-                <option value="zh-CN">简体中文</option>
-                <option value="en">English</option>
-                <option value="ms">Bahasa Melayu</option>
-            </select>
-            <button class="theme-toggle-btn">
-                <span class="theme-icon">☀️</span> <span class="theme-text">日間模式</span>
-            </button>
-        </div>
-    </div>
-</header>
 
-<!-- =========================
-     手機版側邊欄
-     ========================= -->
-<aside class="sidebar" id="sidebar">
-    <button class="close-btn" id="closeBtn">×</button>
-    
-    <nav class="sidebar-nav">
-        <a href="index.html" class="active" data-i18n="nav_about">關於我</a>
-        <a href="resume.html" data-i18n="nav_resume">專業履歷</a>
-        <a href="portfolio.html" data-i18n="nav_portfolio">作品集</a>
-        <a href="games.html" data-i18n="nav_games">遊戲日常</a>
-    </nav>
-    
-    <!-- 手機版：右下角設定按鈕 (Telegram風格) -->
-    <div class="settings-wrapper mobile-only mobile-settings">
-        <div class="settings-dropdown" id="mobileDropdown">
-            <select class="lang-selector">
-                <option value="zh-TW">繁體中文</option>
-                <option value="zh-CN">简体中文</option>
-                <option value="en">English</option>
-                <option value="ms">Bahasa Melayu</option>
-            </select>
-            <button class="theme-toggle-btn">
-                <span class="theme-icon">☀️</span> <span class="theme-text">日間模式</span>
-            </button>
+    <!-- 頂部透明導覽列 -->
+    <header class="top-bar">
+        <button class="menu-btn" id="menuBtn">☰</button>
+        <nav class="desktop-nav">
+            <a href="index.html" class="active" data-i18n="nav_about">關於我</a>
+            <a href="resume.html" data-i18n="nav_resume">專業履歷</a>
+            <a href="portfolio.html" data-i18n="nav_portfolio">作品集</a>
+            <a href="games.html" data-i18n="nav_games">遊戲日常</a>
+        </nav>
+        <div class="settings-wrapper desktop-only">
+            <button class="settings-icon-btn" id="desktopSettingsBtn">⚙️</button>
+            <div class="settings-dropdown" id="desktopDropdown">
+                <select class="lang-selector">
+                    <option value="zh-TW">繁體中文</option>
+                    <option value="zh-CN">简体中文</option>
+                    <option value="en">English</option>
+                    <option value="ms">Bahasa Melayu</option>
+                </select>
+                <button class="theme-toggle-btn">
+                    <span class="theme-icon">☀️</span> <span class="theme-text">日間模式</span>
+                </button>
+            </div>
         </div>
-        <button class="settings-icon-btn" id="mobileSettingsBtn">⚙️</button>
-    </div>
-</aside>
+    </header>
+
+    <!-- 手機側邊欄 -->
+    <aside class="sidebar" id="sidebar">
+        <button class="close-btn" id="closeBtn">×</button>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="active" data-i18n="nav_about">關於我</a>
+            <a href="resume.html" data-i18n="nav_resume">專業履歷</a>
+            <a href="portfolio.html" data-i18n="nav_portfolio">作品集</a>
+            <a href="games.html" data-i18n="nav_games">遊戲日常</a>
+        </nav>
+        <div class="settings-wrapper mobile-only mobile-settings">
+            <div class="settings-dropdown" id="mobileDropdown">
+                <select class="lang-selector">
+                    <option value="zh-TW">繁體中文</option>
+                    <option value="zh-CN">简体中文</option>
+                    <option value="en">English</option>
+                    <option value="ms">Bahasa Melayu</option>
+                </select>
+                <button class="theme-toggle-btn">
+                    <span class="theme-icon">☀️</span> <span class="theme-text">日間模式</span>
+                </button>
+            </div>
+            <button class="settings-icon-btn" id="mobileSettingsBtn">⚙️</button>
+        </div>
+    </aside>
+
     <main>
         <section class="hero-section">
             <div class="hero-bg">
-                <video autoplay loop muted playsinline>
-                    <source src="Drift.mp4" type="video/mp4">
-                </video>
+                <!-- 背景影片或圖片 -->
+                <video src="Drift.mp4" autoplay loop muted playsinline></video>
                 <div class="overlay"></div>
             </div>
-
             <div class="hero-content">
                 <img src="ProfilePicture.jpg" alt="Profile Picture" class="profile-pic">
-                <h1 data-i18n="index_greeting">嗨，我是 余樂銨</h1>
-                <p class="subtitle" data-i18n="index_subtitle">熱愛用程式解決問題的開發者 / 喜歡用設計說故事的創作者。</p>
+                <h1 data-i18n="hero_title">嗨，我是 余樂鈜</h1>
+                <p class="subtitle" data-i18n="hero_subtitle">熱愛用程式解決問題的開發者 / 喜歡用設計說故事的創作者。</p>
             </div>
         </section>
     </main>
@@ -89,33 +76,29 @@
     <footer class="site-footer">
         <div class="footer-container">
             <div class="footer-col">
-                <h4>BroQiangStudio</h4>
+                <h4 data-i18n="footer_title_1">BroQiangStudio</h4>
                 <p data-i18n="footer_desc">致力於網頁開發、多媒體設計與創意專案。歡迎與我聯繫交流！</p>
             </div>
             <div class="footer-col">
-                <h4 data-i18n="footer_nav">快速導覽</h4>
+                <h4 data-i18n="footer_title_2">快速導覽</h4>
                 <ul>
                     <li><a href="index.html" data-i18n="nav_about">關於我</a></li>
                     <li><a href="resume.html" data-i18n="nav_resume">專業履歷</a></li>
-                    <li><a href="portfolio.html" data-i18n="nav_portfolio">作品集</a></li>
-                    <li><a href="games.html" data-i18n="nav_games">遊戲日常</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-    <h4 data-i18n="footer_social">社群平台</h4>
-    <ul>
-        <!-- 將 href 替換成你的網址，並加上 target="_blank" -->
-        <li><a href="https://www.instagram.com/broqiang2007?utm_source=qr&igsh=MWh6cHk3NWptcW1wYw==" target="_blank" data-i18n="social_ig">Instagram</a></li>
-        <li><a href="https://www.youtube.com/@BroQiang2007" target="_blank" data-i18n="social_yt">YouTube</a></li>
-        <li><a href="https://v.douyin.com/Mxdam2fIoO4/" target="_blank" data-i18n="social_tt">抖音</a></li>
-        <li><a href="https://github.com/BroQiang2007" target="_blank" data-i18n="social_gh">GitHub</a></li>
-    </ul>
-</div>
+                <h4 data-i18n="footer_title_3">社群平台</h4>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">YouTube</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="footer-bottom" data-i18n="footer_copy">
-            &copy; 2026 BroQiangStudio. All rights reserved. | 聯絡我：anle82760@gmail.com
+        <div class="footer-bottom">
+            <p>&copy; 2026 BroQiangStudio. All rights reserved.</p>
         </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
