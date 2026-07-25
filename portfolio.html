@@ -9,10 +9,10 @@
 </head>
 <body>
     <nav>
-        <a href="index.html">關於我</a>
-        <a href="resume.html">專業履歷</a>
-        <a href="portfolio.html" class="active">作品集</a>
-        <a href="games.html">遊戲日常</a>
+        <a href="index.html" data-i18n="nav_about">關於我</a>
+        <a href="resume.html" data-i18n="nav_resume">專業履歷</a>
+        <a href="portfolio.html" class="active" data-i18n="nav_portfolio">作品集</a>
+        <a href="games.html" data-i18n="nav_games">遊戲日常</a>
         
         <div class="nav-controls">
             <select class="lang-selector" id="languageSelect" onchange="changeLanguage()">
@@ -26,31 +26,28 @@
     </nav>
 
     <main>
-        <h2 class="section-title">作品集與專案</h2>
+        <h2 class="section-title" data-i18n="port_title">作品集與專案</h2>
         
         <div class="grid-container">
-            <!-- 專案 1 -->
             <div class="card">
                 <div class="card-img-placeholder">Project Image</div>
-                <h3>企業品牌形象重塑與網站開發</h3>
-                <p>結合現代美學與流暢的 UI/UX 設計，使用 HTML/CSS/JS 為客戶打造響應式官方網站，大幅提升品牌專業度與使用者停留時間。</p>
-                <a href="#" class="btn-link">查看專案 →</a>
+                <h3 data-i18n="port_1_title">企業品牌形象重塑與網站開發</h3>
+                <p data-i18n="port_1_desc">結合現代美學與流暢的 UI/UX 設計，使用 HTML/CSS/JS 為客戶打造響應式官方網站，大幅提升品牌專業度與使用者停留時間。</p>
+                <a href="#" class="btn-link" data-i18n="port_1_btn">查看專案 →</a>
             </div>
 
-            <!-- 專案 2 -->
             <div class="card">
                 <div class="card-img-placeholder">Project Image</div>
-                <h3>商業宣傳影片與特效剪輯</h3>
-                <p>運用 Adobe Premiere Pro 與 After Effects 製作高質感的商業短片。透過精準的節奏掌控與視覺特效，有效提升產品曝光率。</p>
-                <a href="#" class="btn-link">觀看影片 →</a>
+                <h3 data-i18n="port_2_title">商業宣傳影片與特效剪輯</h3>
+                <p data-i18n="port_2_desc">運用 Adobe Premiere Pro 與 After Effects 製作高質感的商業短片。透過精準的節奏掌控與視覺特效，有效提升產品曝光率。</p>
+                <a href="#" class="btn-link" data-i18n="port_2_btn">觀看影片 →</a>
             </div>
             
-            <!-- 專案 3 (可預留給未來的 APP 開發或其他作品) -->
             <div class="card">
                 <div class="card-img-placeholder">Project Image</div>
-                <h3>跨平台應用程式開發</h3>
-                <p>參與前/後端技術整合，開發兼具流暢度與實用性的應用程式，致力於用程式碼解決生活中的實際問題。</p>
-                <a href="#" class="btn-link">查看專案 →</a>
+                <h3 data-i18n="port_3_title">跨平台應用程式開發</h3>
+                <p data-i18n="port_3_desc">參與前/後端技術整合，開發兼具流暢度與實用性的應用程式，致力於用程式碼解決生活中的實際問題。</p>
+                <a href="#" class="btn-link" data-i18n="port_3_btn">查看專案 →</a>
             </div>
         </div>
     </main>
@@ -59,28 +56,28 @@
         <div class="footer-container">
             <div class="footer-col">
                 <h4>BroQiangStudio</h4>
-                <p>致力於網頁開發、多媒體設計與創意專案。歡迎與我聯繫交流！</p>
+                <p data-i18n="footer_desc">致力於網頁開發、多媒體設計與創意專案。歡迎與我聯繫交流！</p>
             </div>
             <div class="footer-col">
-                <h4>快速導覽</h4>
+                <h4 data-i18n="footer_nav">快速導覽</h4>
                 <ul>
-                    <li><a href="index.html">關於我</a></li>
-                    <li><a href="resume.html">專業履歷</a></li>
-                    <li><a href="portfolio.html">作品集</a></li>
-                    <li><a href="games.html">遊戲日常</a></li>
+                    <li><a href="index.html" data-i18n="nav_about">關於我</a></li>
+                    <li><a href="resume.html" data-i18n="nav_resume">專業履歷</a></li>
+                    <li><a href="portfolio.html" data-i18n="nav_portfolio">作品集</a></li>
+                    <li><a href="games.html" data-i18n="nav_games">遊戲日常</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>社群平台</h4>
+                <h4 data-i18n="footer_social">社群平台</h4>
                 <ul>
-                    <li><a href="#">Instagram</a></li>
-                    <li><a href="#">YouTube</a></li>
-                    <li><a href="#">TikTok (抖音)</a></li>
-                    <li><a href="#">GitHub</a></li>
+                    <li><a href="#" data-i18n="social_ig">Instagram</a></li>
+                    <li><a href="#" data-i18n="social_yt">YouTube</a></li>
+                    <li><a href="#" data-i18n="social_tt">抖音</a></li>
+                    <li><a href="#" data-i18n="social_gh">GitHub</a></li>
                 </ul>
             </div>
         </div>
-        <div class="footer-bottom">
+        <div class="footer-bottom" data-i18n="footer_copy">
             &copy; 2026 BroQiangStudio. All rights reserved. | 聯絡我：anle82760@gmail.com
         </div>
     </footer>
