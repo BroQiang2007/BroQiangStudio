@@ -111,7 +111,7 @@ body {
 .settings-dropdown .lang-selector option { background-color: var(--card-bg); color: var(--text-color); }
 .settings-dropdown .lang-selector:hover, .settings-dropdown .theme-toggle-btn:hover { background: rgba(150, 150, 150, 0.15); }
 
-/* RWD */
+/* RWD - 在此更新了 Footer 的佈局 */
 .desktop-only { display: block; }
 .mobile-only { display: none; }
 @media (max-width: 768px) {
@@ -120,6 +120,18 @@ body {
     .desktop-nav { display: none; }
     .menu-btn { display: block; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
     .top-bar { padding: 15px 20px; }
+    
+    /* 讓手機版 Footer 的「快速導覽」和「社群平台」並排 */
+    .footer-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* 分成兩欄 */
+        gap: 20px;
+    }
+    /* 第一欄（BroQiangStudio 簡介）佔滿整行 */
+    .footer-col:first-child {
+        grid-column: 1 / span 2;
+        margin-bottom: 20px;
+    }
 }
 
 /* =========================
