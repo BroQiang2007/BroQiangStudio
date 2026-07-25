@@ -59,27 +59,6 @@ body {
     to { opacity: 0; }
 }
 
-/* =========================
-   iPhone 液態玻璃導覽列 (全站套用)
-   ========================= */
-.top-bar {
-    position: fixed; 
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
-    background-color: var(--nav-bg-glass); 
-    
-    /* 核心魔法：毛玻璃模糊效果 */
-    backdrop-filter: saturate(180%) blur(20px); 
-    -webkit-backdrop-filter: saturate(180%) blur(20px); 
-    
-    border-bottom: 1px solid var(--border-color); 
-    z-index: 1000; 
-}
 
 /* 電腦版橫排選單 */
 .desktop-nav {
