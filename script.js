@@ -149,6 +149,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // ... 前面的代碼保持不變 ...
+
     // 5. 修復影片播放 Bug (滑鼠移入才播放聲音，移出就暫停)
     const cards = document.querySelectorAll('.card');
     cards.forEach(card => {
@@ -157,7 +159,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (video) {
             // 滑鼠移入卡片時：開始播放
             card.addEventListener('mouseenter', () => {
-                // 如果瀏覽器阻擋自動播放會有報錯，這裡用 catch 抓掉避免紅字
                 video.play().catch(err => console.log("瀏覽器要求先點擊網頁才能播放聲音:", err));
             });
             
@@ -168,4 +169,23 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
     });
+
+    // 6. 首頁背景影片聲音開關控制
+    const muteBtn = document.getElementById('muteBtn');
+    const bgVideo = document.getElementById('bgVideo');
+
+    if (muteBtn && bgVideo) {
+        muteBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (bgVideo.muted) {
+                // 解除靜音
+                bgVideo.muted = false;
+                muteBtn.textContent = '🔊';
+            } else {
+                // 設為靜音
+                bgVideo.muted = true;
+                muteBtn.textContent = '🔇';
+            }
+        });
+    }
 });
