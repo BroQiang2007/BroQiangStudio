@@ -1,8 +1,13 @@
+/* =========================
+   全域變數與日夜模式切換
+   ========================= */
 :root {
     --bg-color: #121212;
     --text-color: #ffffff;
     --text-muted: #aaaaaa;
-    --nav-bg: #0a0a0a;
+    /* 液態玻璃背景色 (帶透明度) */
+    --nav-bg-glass: rgba(10, 10, 10, 0.65); 
+    --sidebar-bg: #0a0a0a;
     --card-bg: #1e1e1e;
     --accent-color: #e50914; 
     --footer-bg: #050505;
@@ -13,7 +18,9 @@
     --bg-color: #f5f5f5;
     --text-color: #121212;
     --text-muted: #555555;
-    --nav-bg: #ffffff;
+    /* 亮色模式的液態玻璃背景色 */
+    --nav-bg-glass: rgba(255, 255, 255, 0.75);
+    --sidebar-bg: #ffffff;
     --card-bg: #ffffff;
     --accent-color: #d32f2f;
     --footer-bg: #e0e0e0;
@@ -54,18 +61,25 @@ body {
 }
 
 /* =========================
-   上方控制列 & 導覽列
+   iPhone 液態玻璃導覽列 (全站套用)
    ========================= */
 .top-bar {
+    position: fixed; /* 固定在畫面上方 */
+    top: 0;
+    left: 0;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
-    background-color: var(--nav-bg);
-    border-bottom: 1px solid var(--border-color);
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    background-color: var(--nav-bg-glass); /* 半透明背景 */
+    
+    /* 核心魔法：毛玻璃模糊效果 */
+    backdrop-filter: saturate(180%) blur(20px); 
+    -webkit-backdrop-filter: saturate(180%) blur(20px); 
+    
+    border-bottom: 1px solid rgba(150, 150, 150, 0.15); /* 超細微的邊界線增加立體感 */
+    z-index: 1000; /* 確保永遠浮在最上層 */
 }
 
 /* 電腦版橫排選單 */
@@ -122,25 +136,25 @@ body {
     color: var(--text-color);
 }
 
-/* 手機版側邊欄 (電腦版預設不需要用到，但保留給手機) */
+/* 手機版側邊欄 */
 .sidebar {
     position: fixed;
     top: 0;
     left: -300px;
     width: 250px;
     height: 100vh;
-    background-color: var(--nav-bg);
+    background-color: var(--sidebar-bg); /* 側邊欄用實色，避免太花 */
     border-right: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
     padding: 70px 20px 20px;
     transition: left 0.4s ease;
-    z-index: 999;
+    z-index: 1001;
 }
 
 .sidebar.active {
     left: 0;
-    box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+    box-shadow: 5px 0 15px rgba(0,0,0,0.8);
 }
 
 .close-btn {
@@ -168,7 +182,7 @@ body {
 }
 
 /* =========================
-   主要內容與影片背景
+   首頁：全螢幕沉浸式影片區塊
    ========================= */
 main {
     flex: 1;
@@ -177,7 +191,9 @@ main {
 
 .hero-section {
     position: relative;
-    min-height: 70vh;
+    /* 強制滿版螢幕高度 */
+    height: 100vh; 
+    height: 100dvh; /* 支援新版手機瀏覽器的動態高度 */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -238,9 +254,12 @@ h1 {
     text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
 }
 
-/* 通用頁面排版 */
+/* =========================
+   通用頁面排版 (履歷、作品集等)
+   ========================= */
 .page-content {
-    padding: 60px 20px;
+    /* 頂部推下 100px，確保內容不會被上方固定的透明導覽列遮住 */
+    padding: 100px 20px 60px; 
     max-width: 1000px;
     margin: 0 auto;
 }
@@ -300,14 +319,14 @@ h2.section-title::after {
 .btn-link:hover { text-decoration: underline; }
 
 /* =========================
-   Footer
+   Footer (滑下去才出現)
    ========================= */
 .site-footer {
     background-color: var(--footer-bg);
     color: var(--text-color);
     padding: 40px 20px 20px;
     border-top: 1px solid var(--border-color);
-    margin-top: auto;
+    margin-top: auto; /* 確保內容不夠長時 Footer 也能墊底 */
 }
 
 .footer-container {
@@ -333,7 +352,7 @@ h2.section-title::after {
 @media (max-width: 768px) {
     .top-bar { padding: 10px 20px; }
     
-    /* 手機版：隱藏橫排導覽，顯示漢堡按鈕 */
+    /* 手機版隱藏橫排導覽，顯示漢堡按鈕 */
     .desktop-nav { display: none; }
     .menu-btn { display: block; }
     
