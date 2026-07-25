@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (mobileDropdown) mobileDropdown.classList.remove('active');
     });
 
-    // 3. 多國語言翻譯引擎 (加入日夜模式翻譯)
+    // 3. 多國語言翻譯引擎
     const translations = {
         "zh-TW": {
             "theme_light": "日間模式", "theme_dark": "夜間模式",
@@ -116,7 +116,6 @@ document.addEventListener("DOMContentLoaded", () => {
         langSelectors.forEach(selector => { if(selector.value !== lang) selector.value = lang; });
         localStorage.setItem('preferredLang', lang);
 
-        // 同步翻譯「日間模式/夜間模式」按鈕文字
         const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
         const themeKey = currentTheme === 'dark' ? 'theme_light' : 'theme_dark';
         document.querySelectorAll('.theme-text').forEach(textEl => {
@@ -128,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const savedLang = localStorage.getItem('preferredLang') || 'zh-TW';
     updateLanguage(savedLang);
 
-    // 4. 日夜模式切換 (加入語言判斷)
+    // 4. 日夜模式切換
     const themeToggleBtns = document.querySelectorAll('.theme-toggle-btn');
     const htmlElement = document.documentElement;
 
@@ -148,5 +147,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 text.textContent = translations[currentLang][newThemeTextKey];
             });
         });
+    });
+
+    // 5. 修復影片播放 Bug (滑鼠移入才播放聲音，移出就暫停)
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        // 抓出卡片裡面的影片
+        const video = card.querySelector('video.media-back');
+        if (video) {
+            // 滑鼠移入卡片時：開始播放
+            card.addEventListener('mouseenter', () => {
+                // 如果瀏覽器阻擋自動播放會有報錯，這裡用 catch 抓掉避免紅字
+                video.play().catch(err => console.log("瀏覽器要求先點擊網頁才能播放聲音:", err));
+            });
+            
+            // 滑鼠移出卡片時：暫停影片，並把時間歸零
+            card.addEventListener('mouseleave', () => {
+                video.pause();
+                video.currentTime = 0; 
+            });
+        }
     });
 });
