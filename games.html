@@ -8,12 +8,8 @@
     <link rel="icon" type="image/jpeg" href="ProfilePicture.jpg">
 </head>
 <body>
-    <nav>
-        <a href="index.html" data-i18n="nav_about">關於我</a>
-        <a href="resume.html" data-i18n="nav_resume">專業履歷</a>
-        <a href="portfolio.html" data-i18n="nav_portfolio">作品集</a>
-        <a href="games.html" class="active" data-i18n="nav_games">遊戲日常</a>
-        
+    <header class="top-bar">
+        <button id="menuBtn" class="menu-btn">☰</button>
         <div class="nav-controls">
             <select class="lang-selector" id="languageSelect" onchange="changeLanguage()">
                 <option value="zh-TW">繁體中文</option>
@@ -23,9 +19,17 @@
             </select>
             <button id="themeBtn" class="theme-toggle-btn">☀️</button>
         </div>
+    </header>
+
+    <nav id="sidebar" class="sidebar">
+        <button id="closeBtn" class="close-btn">&times;</button>
+        <a href="index.html" data-i18n="nav_about">關於我</a>
+        <a href="resume.html" data-i18n="nav_resume">專業履歷</a>
+        <a href="portfolio.html" data-i18n="nav_portfolio">作品集</a>
+        <a href="games.html" class="active" data-i18n="nav_games">遊戲日常</a>
     </nav>
 
-    <main>
+    <main class="page-content">
         <h2 class="section-title" data-i18n="games_title">我的遊戲日常</h2>
         <p class="subtitle" style="text-align: center;" data-i18n="games_subtitle">工作與學習之餘，我也熱愛在遊戲世界中探索與競技。</p>
 
@@ -36,27 +40,31 @@
                 <p data-i18n="game_1_desc">在賽道上享受極速狂飆的快感，釋放王牌技能。</p>
                 <a href="#" class="btn-link" data-i18n="game_btn">查看遊戲詳情 →</a>
             </div>
-
             <div class="card">
                 <div class="card-img-placeholder" data-i18n="game_screenshot">Game Screenshot</div>
                 <h3 data-i18n="game_2_title">第五人格 (國際服)</h3>
                 <p data-i18n="game_2_desc">非對稱競技的刺激追逃，考驗策略與心理戰。</p>
                 <a href="#" class="btn-link" data-i18n="game_btn">查看遊戲詳情 →</a>
             </div>
-
             <div class="card">
                 <div class="card-img-placeholder" data-i18n="game_screenshot">Game Screenshot</div>
                 <h3 data-i18n="game_3_title">Minecraft (Bedrock)</h3>
                 <p data-i18n="game_3_desc">與朋友跨平台連線，打造屬於我們的方塊世界。</p>
                 <a href="#" class="btn-link" data-i18n="game_btn">查看遊戲詳情 →</a>
             </div>
-
             <div class="card">
                 <div class="card-img-placeholder" data-i18n="game_screenshot">Game Screenshot</div>
                 <h3 data-i18n="game_4_title">Minecraft (Java)</h3>
                 <p data-i18n="game_4_desc">體驗豐富的模組與伺服器，探索無限可能。</p>
                 <a href="#" class="btn-link" data-i18n="game_btn">查看遊戲詳情 →</a>
             </div>
+        </div>
+
+        <div class="floating-socials">
+            <a href="#" target="_blank" class="social-btn" data-i18n="social_ig">Instagram</a>
+            <a href="#" target="_blank" class="social-btn" data-i18n="social_yt">YouTube</a>
+            <a href="#" target="_blank" class="social-btn" data-i18n="social_tt">抖音</a>
+            <a href="https://github.com/BroQiang2007" target="_blank" class="social-btn" data-i18n="social_gh">GitHub</a>
         </div>
     </main>
 
@@ -76,21 +84,19 @@
                 </ul>
             </div>
             <div class="footer-col">
-    <h4 data-i18n="footer_social">社群平台</h4>
-    <ul>
-        <!-- 將 href 替換成你的網址，並加上 target="_blank" -->
-        <li><a href="https://www.instagram.com/broqiang2007?utm_source=qr&igsh=MWh6cHk3NWptcW1wYw==" target="_blank" data-i18n="social_ig">Instagram</a></li>
-        <li><a href="https://www.youtube.com/@BroQiang2007" target="_blank" data-i18n="social_yt">YouTube</a></li>
-        <li><a href="https://v.douyin.com/Mxdam2fIoO4/" target="_blank" data-i18n="social_tt">抖音</a></li>
-        <li><a href="https://github.com/BroQiang2007" target="_blank" data-i18n="social_gh">GitHub</a></li>
-    </ul>
-</div>
+                <h4 data-i18n="footer_social">社群平台</h4>
+                <ul>
+                    <li><a href="#" target="_blank" data-i18n="social_ig">Instagram</a></li>
+                    <li><a href="#" target="_blank" data-i18n="social_yt">YouTube</a></li>
+                    <li><a href="#" target="_blank" data-i18n="social_tt">抖音</a></li>
+                    <li><a href="https://github.com/BroQiang2007" target="_blank" data-i18n="social_gh">GitHub</a></li>
+                </ul>
+            </div>
         </div>
         <div class="footer-bottom" data-i18n="footer_copy">
             &copy; 2026 BroQiangStudio. All rights reserved. | 聯絡我：anle82760@gmail.com
         </div>
     </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
