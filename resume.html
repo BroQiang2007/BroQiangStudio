@@ -10,6 +10,12 @@
 <body>
     <header class="top-bar">
         <button id="menuBtn" class="menu-btn">☰</button>
+        <nav class="desktop-nav">
+            <a href="index.html" data-i18n="nav_about">關於我</a>
+            <a href="resume.html" class="active" data-i18n="nav_resume">專業履歷</a>
+            <a href="portfolio.html" data-i18n="nav_portfolio">作品集</a>
+            <a href="games.html" data-i18n="nav_games">遊戲日常</a>
+        </nav>
         <div class="nav-controls">
             <select class="lang-selector" id="languageSelect" onchange="changeLanguage()">
                 <option value="zh-TW">繁體中文</option>
@@ -63,13 +69,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="floating-socials">
-            <a href="#" target="_blank" class="social-btn" data-i18n="social_ig">Instagram</a>
-            <a href="#" target="_blank" class="social-btn" data-i18n="social_yt">YouTube</a>
-            <a href="#" target="_blank" class="social-btn" data-i18n="social_tt">抖音</a>
-            <a href="https://github.com/BroQiang2007" target="_blank" class="social-btn" data-i18n="social_gh">GitHub</a>
-        </div>
     </main>
 
     <footer class="site-footer">
@@ -90,9 +89,9 @@
             <div class="footer-col">
                 <h4 data-i18n="footer_social">社群平台</h4>
                 <ul>
-                    <li><a href="#" target="_blank" data-i18n="social_ig">Instagram</a></li>
-                    <li><a href="#" target="_blank" data-i18n="social_yt">YouTube</a></li>
-                    <li><a href="#" target="_blank" data-i18n="social_tt">抖音</a></li>
+                    <li><a href="https://www.instagram.com/你的IG帳號" target="_blank" data-i18n="social_ig">Instagram</a></li>
+                    <li><a href="https://www.youtube.com/@你的YouTube頻道" target="_blank" data-i18n="social_yt">YouTube</a></li>
+                    <li><a href="你的抖音連結" target="_blank" data-i18n="social_tt">抖音</a></li>
                     <li><a href="https://github.com/BroQiang2007" target="_blank" data-i18n="social_gh">GitHub</a></li>
                 </ul>
             </div>
