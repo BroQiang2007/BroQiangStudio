@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // ==========================================
     // 1. 漢堡選單控制
+    // ==========================================
     const menuBtn = document.getElementById('menuBtn');
     const closeBtn = document.getElementById('closeBtn');
     const sidebar = document.getElementById('sidebar');
@@ -7,7 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (menuBtn) menuBtn.addEventListener('click', () => sidebar.classList.add('active'));
     if (closeBtn) closeBtn.addEventListener('click', () => sidebar.classList.remove('active'));
 
+    // ==========================================
     // 2. Telegram風格 設定下拉選單
+    // ==========================================
     const desktopSettingsBtn = document.getElementById('desktopSettingsBtn');
     const desktopDropdown = document.getElementById('desktopDropdown');
     const mobileSettingsBtn = document.getElementById('mobileSettingsBtn');
@@ -29,7 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if(mobileDropdown && mobileDropdown.classList.contains('active') && !mobileDropdown.contains(e.target)) mobileDropdown.classList.remove('active');
     });
 
+    // ==========================================
     // 3. 日夜模式切換
+    // ==========================================
     const themeToggleBtns = document.querySelectorAll('.theme-toggle-btn');
     let currentTheme = localStorage.getItem('theme') || 'dark';
     
@@ -59,17 +65,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. 超強大多語言切換 (內建字典，保證有效)
+    // ==========================================
+    // 4. 多語言切換字典
+    // ==========================================
     const translations = {
         "zh-TW": {
             "nav_about": "關於我", "nav_resume": "專業履歷", "nav_portfolio": "作品集", "nav_games": "遊戲日常",
             "hero_title": "嗨，我是 余樂鈜", "hero_subtitle": "熱愛用程式解決問題的開發者 / 喜歡用設計說故事的創作者。",
             "footer_title_1": "BroQiangStudio", "footer_desc": "致力於網頁開發、多媒體設計與創意專案。歡迎與我聯繫交流！",
             "footer_title_2": "快速導覽", "footer_title_3": "社群平台",
-            "resume_header": "專業經歷與技能",
+            "resume_header": "專業技能",
             "skill_title_1": "網頁前端開發", "skill_desc_1": "精通 HTML5, CSS3, JavaScript，並能獨立完成 RWD 響應式網頁設計，追求像素級的 UI 還原與順暢的 UX 體驗。",
             "skill_title_2": "UI/UX 設計", "skill_desc_2": "熟悉現代化的設計語言（如 Apple Glassmorphism、布加迪極簡風），善用透明度與動畫提升視覺質感。",
             "skill_title_3": "多語言架構 (i18n)", "skill_desc_3": "具備構建多語言切換系統的經驗，能夠靈活處理中、英、馬來文等本地化需求。",
+            "resume_exp_header": "工作經驗",
+            "exp_title": "前端工程師 / 網頁設計師", "exp_desc": "BroQiangStudio | 2024 - 至今 | 負責網站開發、UI/UX設計，並導入多語言與深色模式架構。",
+            "resume_edu_header": "教育背景",
+            "edu_title": "資訊工程 / 相關科系", "edu_desc": "XXX 學校 | 畢業年份 | 專注於網頁前端技術與軟體開發。",
+            "resume_contact_header": "聯絡方式",
+            "contact_title": "隨時歡迎與我聯繫！", "contact_desc": "你可以透過 Email 或底部的社群平台找到我。",
             "portfolio_header": "精選專案", "project_img": "專案圖片",
             "project_1_title": "個人品牌官方網站", "project_1_desc": "結合深色模式與多語言支持的現代化個人網站，採用 Telegram 風格 UI 交互設計。",
             "project_2_title": "多媒體影音剪輯", "project_2_desc": "高質感的動態影片製作，包含車輛追焦、跑車動態剪輯，展現視覺衝擊力。",
@@ -85,10 +99,13 @@ document.addEventListener('DOMContentLoaded', () => {
             "hero_title": "嗨，我是 余乐鈜", "hero_subtitle": "热爱用代码解决问题的开发者 / 喜欢用设计讲故事的创作者。",
             "footer_title_1": "BroQiangStudio", "footer_desc": "致力于网页开发、多媒体设计与创意项目。欢迎与我联系交流！",
             "footer_title_2": "快速导航", "footer_title_3": "社交平台",
-            "resume_header": "专业经历与技能",
+            "resume_header": "专业技能",
             "skill_title_1": "网页前端开发", "skill_desc_1": "精通 HTML5, CSS3, JavaScript，独立完成 RWD 响应式网页设计，追求像素级 UI 还原。",
             "skill_title_2": "UI/UX 设计", "skill_desc_2": "熟悉现代化设计语言，善用透明度与动画提升视觉质感。",
             "skill_title_3": "多语言架构 (i18n)", "skill_desc_3": "具备构建多语言切换系统的经验，灵活处理本地化需求。",
+            "resume_exp_header": "工作经验", "exp_title": "前端工程师 / 网页设计师", "exp_desc": "BroQiangStudio | 2024 - 至今 | 负责网站开发、UI/UX设计。",
+            "resume_edu_header": "教育背景", "edu_title": "信息工程 / 相关科系", "edu_desc": "XXX 学校 | 毕业年份 | 专注于网页前端技术。",
+            "resume_contact_header": "联系方式", "contact_title": "随时欢迎与我联系！", "contact_desc": "你可以通过 Email 或底部的社交平台找到我。",
             "portfolio_header": "精选项目", "project_img": "项目图片",
             "project_1_title": "个人品牌官方网站", "project_1_desc": "结合深色模式与多语言支持的现代化个人网站，采用 Telegram 风格 UI 交互设计。",
             "project_2_title": "多媒体影音剪辑", "project_2_desc": "高质感的动态视频制作，展现视觉冲击力。",
@@ -104,13 +121,16 @@ document.addEventListener('DOMContentLoaded', () => {
             "hero_title": "Hi, I'm Yu Le Hong", "hero_subtitle": "Developer solving problems with code / Creator telling stories through design.",
             "footer_title_1": "BroQiangStudio", "footer_desc": "Dedicated to web development, multimedia design, and creative projects. Let's connect!",
             "footer_title_2": "Quick Links", "footer_title_3": "Social Media",
-            "resume_header": "Experience & Skills",
-            "skill_title_1": "Front-End Development", "skill_desc_1": "Proficient in HTML5, CSS3, JS, and RWD. Striving for pixel-perfect UI and smooth UX.",
-            "skill_title_2": "UI/UX Design", "skill_desc_2": "Familiar with modern design languages like Glassmorphism. Utilizing animations for better visuals.",
-            "skill_title_3": "i18n Architecture", "skill_desc_3": "Experienced in building multilingual systems for localization needs.",
+            "resume_header": "Professional Skills",
+            "skill_title_1": "Front-End Development", "skill_desc_1": "Proficient in HTML5, CSS3, JS, and RWD. Striving for pixel-perfect UI.",
+            "skill_title_2": "UI/UX Design", "skill_desc_2": "Familiar with modern design languages like Glassmorphism.",
+            "skill_title_3": "i18n Architecture", "skill_desc_3": "Experienced in building multilingual systems.",
+            "resume_exp_header": "Work Experience", "exp_title": "Front-End Engineer / Web Designer", "exp_desc": "BroQiangStudio | 2024 - Present | Web development and UI/UX design.",
+            "resume_edu_header": "Education", "edu_title": "Computer Science / Related Field", "edu_desc": "XXX School | Graduation Year | Focused on web technologies.",
+            "resume_contact_header": "Contact", "contact_title": "Feel free to reach out!", "contact_desc": "You can find me via Email or social media below.",
             "portfolio_header": "Featured Projects", "project_img": "Project Image",
-            "project_1_title": "Personal Brand Website", "project_1_desc": "Modern personal website with Dark Mode and i18n, featuring Telegram-style UI interactions.",
-            "project_2_title": "Multimedia Editing", "project_2_desc": "High-quality dynamic video production, showcasing visual impact.",
+            "project_1_title": "Personal Brand Website", "project_1_desc": "Modern personal website with Dark Mode and i18n.",
+            "project_2_title": "Multimedia Editing", "project_2_desc": "High-quality dynamic video production.",
             "view_project": "View Details >",
             "games_header": "My Gaming Life", "game_screenshot": "Game Screenshot",
             "game_1_title": "Ace Racer (CN)", "game_1_desc": "Enjoy the thrill of racing and releasing ultimate skills.",
@@ -123,10 +143,13 @@ document.addEventListener('DOMContentLoaded', () => {
             "hero_title": "Hai, Saya Yu Le Hong", "hero_subtitle": "Pembangun yang menyelesaikan masalah dengan kod / Pencipta yang bercerita melalui reka bentuk.",
             "footer_title_1": "BroQiangStudio", "footer_desc": "Berdedikasi untuk pembangunan web, reka bentuk multimedia dan projek kreatif. Mari berhubung!",
             "footer_title_2": "Pautan Pantas", "footer_title_3": "Media Sosial",
-            "resume_header": "Pengalaman & Kemahiran",
-            "skill_title_1": "Pembangunan Front-End", "skill_desc_1": "Mahir dalam HTML5, CSS3, JS, dan RWD. Berusaha untuk UI yang sempurna dan UX yang lancar.",
-            "skill_title_2": "Reka Bentuk UI/UX", "skill_desc_2": "Biasa dengan bahasa reka bentuk moden seperti Glassmorphism.",
+            "resume_header": "Kemahiran Profesional",
+            "skill_title_1": "Pembangunan Front-End", "skill_desc_1": "Mahir dalam HTML5, CSS3, JS, dan RWD.",
+            "skill_title_2": "Reka Bentuk UI/UX", "skill_desc_2": "Biasa dengan bahasa reka bentuk moden.",
             "skill_title_3": "Sistem Pelbagai Bahasa", "skill_desc_3": "Berpengalaman membina sistem pelbagai bahasa (i18n).",
+            "resume_exp_header": "Pengalaman Kerja", "exp_title": "Jurutera Front-End / Pereka Web", "exp_desc": "BroQiangStudio | 2024 - Kini | Pembangunan web dan reka bentuk UI/UX.",
+            "resume_edu_header": "Pendidikan", "edu_title": "Sains Komputer", "edu_desc": "Sekolah XXX | Tahun Graduasi | Fokus pada teknologi web.",
+            "resume_contact_header": "Hubungi Saya", "contact_title": "Sila hubungi saya!", "contact_desc": "Anda boleh mencari saya melalui E-mel atau media sosial di bawah.",
             "portfolio_header": "Projek Pilihan", "project_img": "Imej Projek",
             "project_1_title": "Laman Web Jenama Peribadi", "project_1_desc": "Laman web peribadi moden dengan Mod Gelap dan sokongan pelbagai bahasa.",
             "project_2_title": "Penyuntingan Multimedia", "project_2_desc": "Penghasilan video dinamik berkualiti tinggi.",
@@ -161,6 +184,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // 初次載入
+    // 初次載入執行語言切換
     changeLanguage(currentLang);
 });
