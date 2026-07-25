@@ -62,16 +62,33 @@ body {
 }
 .desktop-nav, .menu-btn, .settings-wrapper, .intro-btn { pointer-events: auto; }
 .desktop-nav { display: flex; gap: 15px; flex: 1; justify-content: flex-start; }
-.menu-btn { display: none; background: none; border: none; color: var(--text-color); font-size: 2rem; cursor: pointer; transition: transform 0.3s ease; }
-.menu-btn:hover { transform: scale(1.1); }
+
+/* 調整：漢堡選單(三條線)加入毛玻璃按鈕外框，完美解決任何背景下的辨識度問題 */
+.menu-btn { 
+    display: none; 
+    background: var(--nav-bg-glass); 
+    border: 1px solid var(--border-color); 
+    border-radius: 12px;
+    color: var(--text-color); 
+    width: 45px; 
+    height: 45px; 
+    font-size: 1.5rem; 
+    cursor: pointer; 
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); 
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+}
+.menu-btn:hover { 
+    transform: scale(1.1); 
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
 
 /* 右上角控制區塊與自介按鈕 */
 .top-right-controls { display: flex; gap: 15px; align-items: center; pointer-events: auto; }
 
-/* 調整：了解更多按鈕的外框改為紅色 (--accent-color) */
 .intro-btn {
     background: var(--nav-bg-glass); 
-    border: 1px solid var(--accent-color); /* <--- 這裡改成了紅色變數 */
+    border: 1px solid var(--accent-color); 
     color: var(--text-color); 
     padding: 8px 20px; 
     border-radius: 20px;
@@ -175,14 +192,15 @@ body {
 .settings-dropdown .lang-selector option { background-color: var(--card-bg); color: var(--text-color); }
 .settings-dropdown .lang-selector:hover, .settings-dropdown .theme-toggle-btn:hover { background: rgba(150, 150, 150, 0.15); }
 
-/* RWD */
+/* RWD - 讓按鈕的圖案在手機版也能完美置中 */
 .desktop-only { display: block; }
 .mobile-only { display: none; }
 @media (max-width: 768px) {
     .desktop-only { display: none; }
     .mobile-only { display: block; }
     .desktop-nav { display: none; }
-    .menu-btn { display: block; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+    /* 這裡加上了 flex 來讓三條線置中 */
+    .menu-btn { display: flex; align-items: center; justify-content: center; text-shadow: none; }
     .top-bar { padding: 15px 20px; }
     .footer-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
     .footer-col:first-child { grid-column: 1 / span 2; margin-bottom: 20px; }
