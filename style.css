@@ -1,56 +1,4 @@
 /* =========================
-   全域變數與日夜模式切換
-   ========================= */
-:root {
-    --bg-color: #121212;
-    --text-color: #ffffff;
-    --text-muted: #aaaaaa;
-    --nav-bg-glass: rgba(20, 20, 20, 0.3); 
-    --card-bg: #1e1e1e;
-    --accent-color: #e50914; 
-    --footer-bg: #050505;
-    --border-color: rgba(255, 255, 255, 0.15); 
-}
-
-[data-theme="light"] {
-    --bg-color: #f5f5f5;
-    --text-color: #121212;
-    --text-muted: #555555;
-    --nav-bg-glass: rgba(255, 255, 255, 0.3); 
-    --card-bg: #ffffff;
-    --accent-color: #d32f2f;
-    --footer-bg: #e0e0e0;
-    --border-color: rgba(0, 0, 0, 0.15);
-}
-
-* {
-    margin: 0; padding: 0; box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
-}
-
-body {
-    background-color: var(--bg-color); color: var(--text-color);
-    line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh;
-    overflow-x: hidden;
-}
-
-/* =========================
-   全局絲滑動畫 (Fade In Up)
-   ========================= */
-@keyframes fadeInUp {
-    0% { opacity: 0; transform: translateY(30px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeIn {
-    from { opacity: 0; } to { opacity: 1; }
-}
-
-.hero-content, .footer-container {
-    animation: fadeInUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-}
-
-/* =========================
    懸浮導覽列 (徹底修復手機點擊問題)
    ========================= */
 .top-bar {
@@ -59,14 +7,19 @@ body {
     padding: 20px 30px;
     background-color: transparent; 
     z-index: 1000;
-    /* 💡 移除了 pointer-events: none，這是導致部分手機無法點擊的元凶 */
+    pointer-events: none; /* 外層透明，防止阻擋下方內容點擊 */
+}
+
+/* 讓裡面的按鈕恢復可點擊狀態 */
+.top-bar > * { 
+    pointer-events: auto; 
 }
 
 .desktop-nav { display: flex; gap: 15px; flex: 1; justify-content: flex-start; }
 
-/* 漢堡選單(三條線)毛玻璃設計 */
+/* 漢堡選單(三條線) */
 .menu-btn { 
-    display: none; /* 預設隱藏，手機版才會顯示 */
+    display: none; 
     background: var(--nav-bg-glass); 
     border: 1px solid var(--border-color); 
     border-radius: 12px;
@@ -78,264 +31,12 @@ body {
     transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); 
     backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
     
-    /* 確保層級最高，且完美支援手機觸控 */
     position: relative;
     z-index: 1050;
     touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent; /* 移除點擊時的手機預設閃爍 */
 }
 .menu-btn:hover, .menu-btn:active { 
     transform: scale(1.1); 
     border-color: var(--accent-color);
     color: var(--accent-color);
 }
-
-/* 右上角控制區塊 */
-.top-right-controls { display: flex; gap: 15px; align-items: center; }
-
-/* 了解更多按鈕 (若主頁有保留則套用此樣式) */
-.intro-btn {
-    background: var(--nav-bg-glass); 
-    border: 1px solid var(--accent-color); 
-    color: var(--text-color); 
-    padding: 8px 20px; 
-    border-radius: 20px;
-    text-decoration: none; 
-    font-size: 0.9rem; 
-    font-weight: bold;
-    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); 
-    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); 
-    white-space: nowrap; 
-    display: inline-block;
-}
-.intro-btn:hover { 
-    background: var(--accent-color); 
-    color: #fff; 
-    box-shadow: 0 5px 15px rgba(229, 9, 20, 0.5); 
-    transform: translateY(-2px);
-}
-
-/* =========================
-   手機版側邊欄
-   ========================= */
-.sidebar {
-    position: fixed; top: 0; left: -300px; width: 280px; 
-    height: 100%; height: 100dvh; 
-    background-color: var(--nav-bg-glass);
-    backdrop-filter: saturate(180%) blur(12px); -webkit-backdrop-filter: saturate(180%) blur(12px); 
-    border-right: 1px solid var(--border-color);
-    display: flex; flex-direction: column; 
-    padding: 80px 20px 20px; transition: left 0.4s cubic-bezier(0.25, 1, 0.5, 1); z-index: 1001;
-}
-.sidebar.active { left: 0; box-shadow: 5px 0 25px rgba(0,0,0,0.5); }
-.close-btn { position: absolute; top: 15px; right: 20px; background: none; border: none; color: var(--text-color); font-size: 2.5rem; cursor: pointer; transition: transform 0.3s ease; }
-.close-btn:hover { transform: rotate(90deg); color: var(--accent-color); }
-
-.sidebar-nav { 
-    display: flex; flex-direction: column; gap: 15px; width: 100%; 
-    flex: 1; overflow-y: auto; padding-bottom: 80px; 
-}
-
-/* 導覽列按鈕 */
-.desktop-nav a, .sidebar-nav a {
-    color: var(--text-color); 
-    text-decoration: none; 
-    font-size: 0.95rem; 
-    letter-spacing: 1px; 
-    padding: 10px 24px; 
-    border-radius: 30px; 
-    border: 1px solid var(--border-color); 
-    background-color: var(--nav-bg-glass); 
-    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); 
-    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); 
-    white-space: nowrap; 
-    text-align: center;
-}
-
-.desktop-nav a.active, .sidebar-nav a.active {
-    color: var(--accent-color); 
-    border-color: var(--accent-color); 
-    background-color: rgba(229, 9, 20, 0.05); 
-}
-
-.desktop-nav a:hover, .sidebar-nav a:hover {
-    color: var(--accent-color); 
-    border-color: var(--accent-color); 
-    background-color: rgba(229, 9, 20, 0.05); 
-    transform: translateY(-2px); 
-}
-
-/* =========================
-   設定彈出選單 & 齒輪
-   ========================= */
-.settings-wrapper { position: relative; }
-.settings-icon-btn {
-    background: var(--nav-bg-glass); border: 1px solid var(--border-color); border-radius: 50%;
-    width: 45px; height: 45px; display: flex; align-items: center; justify-content: center;
-    cursor: pointer; color: var(--text-color); font-size: 1.3rem;
-    backdrop-filter: blur(10px); transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-}
-.settings-icon-btn:hover { background: var(--accent-color); border-color: var(--accent-color); color: #fff; transform: rotate(45deg); }
-
-.settings-dropdown {
-    position: absolute; right: 0; width: 220px;
-    background-color: var(--nav-bg-glass); backdrop-filter: saturate(180%) blur(25px); -webkit-backdrop-filter: saturate(180%) blur(25px);
-    border: 1px solid var(--border-color); border-radius: 15px; padding: 15px;
-    display: flex; flex-direction: column; gap: 12px;
-    opacity: 0; visibility: hidden; transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4); z-index: 1002;
-}
-#desktopDropdown { top: 60px; transform: translateY(-15px); }
-#desktopDropdown.active { opacity: 1; visibility: visible; transform: translateY(0); }
-
-.mobile-settings { position: absolute; bottom: 30px; right: 25px; z-index: 10; }
-#mobileDropdown { top: auto; bottom: 60px; right: 0; transform: translateY(15px); }
-#mobileDropdown.active { opacity: 1; visibility: visible; transform: translateY(0); }
-
-.settings-dropdown .lang-selector, .settings-dropdown .theme-toggle-btn {
-    width: 100%; background: transparent; color: var(--text-color); border: 1px solid var(--border-color);
-    padding: 10px 15px; border-radius: 10px; cursor: pointer; font-size: 0.95rem; outline: none; transition: background 0.3s;
-}
-.settings-dropdown .theme-toggle-btn { display: flex; align-items: center; gap: 10px; text-align: left; }
-.settings-dropdown .lang-selector option { background-color: var(--card-bg); color: var(--text-color); }
-.settings-dropdown .lang-selector:hover, .settings-dropdown .theme-toggle-btn:hover { background: rgba(150, 150, 150, 0.15); }
-
-/* =========================
-   RWD 手機版響應式設計
-   ========================= */
-.desktop-only { display: block; }
-.mobile-only { display: none; }
-@media (max-width: 768px) {
-    .desktop-only { display: none; }
-    .mobile-only { display: block; }
-    .desktop-nav { display: none; }
-    
-    /* 確保三條線在手機上顯示，且完美置中、絕對可點擊 */
-    .menu-btn { 
-        display: flex !important; 
-        align-items: center; 
-        justify-content: center; 
-        text-shadow: none; 
-        z-index: 9999;
-    }
-    
-    .top-bar { padding: 15px 20px; }
-    .footer-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .footer-col:first-child { grid-column: 1 / span 2; margin-bottom: 20px; }
-}
-
-/* =========================
-   通用頁面樣式
-   ========================= */
-main { flex: 1; width: 100%; }
-.hero-section { position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-.hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
-.hero-bg video, .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
-.hero-bg .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); }
-.hero-content { position: relative; z-index: 1; text-align: center; padding: 20px; color: #ffffff; }
-.profile-pic { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-color); box-shadow: 0 0 15px rgba(229, 9, 20, 0.5); margin-bottom: 20px; transition: transform 0.4s ease; }
-.profile-pic:hover { transform: scale(1.05) rotate(3deg); }
-h1 { font-size: 2.5rem; margin-bottom: 10px; text-shadow: 2px 2px 5px rgba(0,0,0,0.8); }
-.subtitle { color: #dddddd; margin-bottom: 30px; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); }
-
-.page-content { padding: 100px 20px 60px; max-width: 1000px; margin: 0 auto; }
-h2.section-title { text-align: center; margin-bottom: 40px; position: relative; padding-bottom: 10px; animation: fadeIn 1s ease-out forwards; }
-h2.section-title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background-color: var(--accent-color); }
-.grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-
-/* =========================
-   卡片主體與 LED 氛圍燈特效
-   ========================= */
-.card { 
-    background-color: var(--card-bg); 
-    border-radius: 12px; 
-    overflow: hidden; 
-    padding: 20px; 
-    border: 1px solid var(--border-color);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-    animation: fadeInUp 0.6s cubic-bezier(0.25, 1, 0.5, 1) both;
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease, border-color 0.4s ease;
-}
-
-.card:nth-child(1) { animation-delay: 0.1s; }
-.card:nth-child(2) { animation-delay: 0.2s; }
-.card:nth-child(3) { animation-delay: 0.3s; }
-.card:nth-child(4) { animation-delay: 0.4s; }
-.card:nth-child(5) { animation-delay: 0.5s; }
-.card:nth-child(6) { animation-delay: 0.6s; }
-
-.card:hover {
-    transform: translateY(-8px);
-    border-color: var(--accent-color); 
-    box-shadow: 0 10px 30px rgba(229, 9, 20, 0.35), 0 0 15px rgba(229, 9, 20, 0.15); 
-}
-[data-theme="light"] .card:hover {
-    box-shadow: 0 10px 30px rgba(211, 47, 47, 0.4), 0 0 15px rgba(211, 47, 47, 0.2);
-}
-
-.card h3 { margin-bottom: 10px; font-size: 1.3rem; transition: color 0.3s ease; }
-.card:hover h3 { color: var(--accent-color); }
-.card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; }
-
-.btn-link { display: inline-block; color: var(--accent-color); text-decoration: none; font-weight: bold; transition: transform 0.3s ease; }
-.btn-link:hover { text-decoration: underline; transform: translateX(5px); }
-
-/* =========================
-   神秘感影片懸浮切換特效 (Media Reveal)
-   ========================= */
-.reveal-img-wrapper {
-    position: relative;
-    width: 100%;
-    height: 180px;
-    border-radius: 8px;
-    overflow: hidden;
-    margin-bottom: 15px;
-    background-color: #050505; 
-}
-
-.reveal-img-wrapper img,
-.reveal-img-wrapper video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.reveal-img-wrapper .img-front {
-    opacity: 1;
-    z-index: 2;
-    transform: scale(1);
-}
-
-.reveal-img-wrapper .img-back,
-.reveal-img-wrapper .media-back {
-    opacity: 0;
-    z-index: 1;
-    transform: scale(1.15); 
-    filter: brightness(0.9) contrast(1.1); 
-}
-
-.card:hover .reveal-img-wrapper .img-front {
-    opacity: 0;
-    transform: scale(0.95); 
-}
-
-.card:hover .reveal-img-wrapper .img-back,
-.card:hover .reveal-img-wrapper .media-back {
-    opacity: 1;
-    transform: scale(1); 
-}
-
-/* =========================
-   底部樣式
-   ========================= */
-.site-footer { background-color: var(--footer-bg); color: var(--text-color); padding: 40px 20px 20px; border-top: 1px solid var(--border-color); margin-top: auto; }
-.footer-container { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-bottom: 30px; }
-.footer-col h4 { color: var(--accent-color); margin-bottom: 15px; font-size: 1.1rem; }
-.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-.footer-col p, .footer-col ul li a { color: var(--text-muted); font-size: 0.9rem; text-decoration: none; transition: color 0.3s; }
-.footer-col ul li a:hover { color: var(--accent-color); transform: translateX(3px); display: inline-block;}
-.footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.85rem; }
