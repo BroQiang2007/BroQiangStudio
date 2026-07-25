@@ -52,6 +52,34 @@ body {
 .desktop-nav { display: flex; gap: 15px; flex: 1; justify-content: flex-start; }
 .menu-btn { display: none; background: none; border: none; color: var(--text-color); font-size: 2rem; cursor: pointer; }
 
+/* 右上角控制區塊與自介按鈕 */
+.top-right-controls {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    pointer-events: auto;
+}
+
+.intro-btn {
+    background: rgba(229, 9, 20, 0.1); 
+    border: 1px solid var(--accent-color);
+    color: var(--text-color); 
+    padding: 8px 20px; 
+    border-radius: 20px;
+    text-decoration: none; 
+    font-size: 0.9rem; 
+    font-weight: bold;
+    transition: all 0.3s ease; 
+    backdrop-filter: blur(5px);
+    white-space: nowrap;
+}
+
+.intro-btn:hover { 
+    background: var(--accent-color); 
+    color: #fff; 
+    box-shadow: 0 0 15px rgba(229, 9, 20, 0.6); 
+}
+
 /* =========================
    手機版側邊欄
    ========================= */
@@ -111,7 +139,7 @@ body {
 .settings-dropdown .lang-selector option { background-color: var(--card-bg); color: var(--text-color); }
 .settings-dropdown .lang-selector:hover, .settings-dropdown .theme-toggle-btn:hover { background: rgba(150, 150, 150, 0.15); }
 
-/* RWD - 在此更新了 Footer 的佈局 */
+/* RWD - 手機版排版 */
 .desktop-only { display: block; }
 .mobile-only { display: none; }
 @media (max-width: 768px) {
@@ -121,13 +149,11 @@ body {
     .menu-btn { display: block; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
     .top-bar { padding: 15px 20px; }
     
-    /* 讓手機版 Footer 的「快速導覽」和「社群平台」並排 */
     .footer-container {
         display: grid;
-        grid-template-columns: 1fr 1fr; /* 分成兩欄 */
+        grid-template-columns: 1fr 1fr;
         gap: 20px;
     }
-    /* 第一欄（BroQiangStudio 簡介）佔滿整行 */
     .footer-col:first-child {
         grid-column: 1 / span 2;
         margin-bottom: 20px;
