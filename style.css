@@ -118,13 +118,21 @@ body {
     gap: 15px;
 }
 
+/* 修改：讓語言切換框變成透明，完美融入毛玻璃導覽列 */
 .lang-selector {
-    background-color: var(--card-bg);
+    background-color: transparent; /* 改成透明 */
     color: var(--text-color);
     border: 1px solid var(--border-color);
     padding: 5px 10px;
     border-radius: 5px;
     outline: none;
+    cursor: pointer;
+}
+
+/* 新增：確保點開選單時，裡面的選項有實色背景，字才不會跟後面的影片糊在一起 */
+.lang-selector option {
+    background-color: var(--card-bg);
+    color: var(--text-color);
 }
 
 .theme-toggle-btn {
