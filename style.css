@@ -63,7 +63,6 @@ body {
 .desktop-nav, .menu-btn, .settings-wrapper, .intro-btn { pointer-events: auto; }
 .desktop-nav { display: flex; gap: 15px; flex: 1; justify-content: flex-start; }
 
-/* 漢堡選單(三條線)毛玻璃設計 */
 .menu-btn { 
     display: none; 
     background: var(--nav-bg-glass); 
@@ -83,7 +82,6 @@ body {
     color: var(--accent-color);
 }
 
-/* 右上角控制區塊與自介按鈕 */
 .top-right-controls { display: flex; gap: 15px; align-items: center; pointer-events: auto; }
 
 .intro-btn {
@@ -128,7 +126,6 @@ body {
     flex: 1; overflow-y: auto; padding-bottom: 80px; 
 }
 
-/* 導覽列按鈕 */
 .desktop-nav a, .sidebar-nav a {
     color: var(--text-color); 
     text-decoration: none; 
@@ -262,7 +259,7 @@ h2.section-title::after { content: ''; position: absolute; bottom: 0; left: 50%;
 .btn-link:hover { text-decoration: underline; transform: translateX(5px); }
 
 /* =========================
-   神秘感圖片/影片懸浮切換特效 (Media Reveal)
+   神秘感影片懸浮切換特效 (Media Reveal)
    ========================= */
 .reveal-img-wrapper {
     position: relative;
