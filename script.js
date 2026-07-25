@@ -267,3 +267,31 @@ document.addEventListener("DOMContentLoaded", () => {
     initTheme();          
     initPageTransitions();
 });
+
+// =========================
+// 5. 側邊欄 (Sidebar) 開關邏輯
+// =========================
+function initSidebar() {
+    const menuBtn = document.getElementById('menuBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const sidebar = document.getElementById('sidebar');
+
+    if (menuBtn && closeBtn && sidebar) {
+        // 點擊漢堡選單打開
+        menuBtn.addEventListener('click', () => {
+            sidebar.classList.add('active');
+        });
+        // 點擊 X 關閉
+        closeBtn.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+        });
+    }
+}
+
+// 修改原有的 DOMContentLoaded，把 initSidebar() 加進去啟動
+document.addEventListener("DOMContentLoaded", () => {
+    initLanguage();       
+    initTheme();          
+    initPageTransitions();
+    initSidebar(); // 新增這一行來啟動側邊欄
+});
