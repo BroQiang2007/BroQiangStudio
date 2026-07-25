@@ -142,15 +142,16 @@ h2.section-title::after { content: ''; position: absolute; bottom: 0; left: 50%;
 .card-img-placeholder { width: 100%; height: 180px; background-color: #333; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff; margin-bottom: 15px; }
 .card h3 { margin-bottom: 10px; font-size: 1.3rem; }
 .card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; }
-
-/* 修復藍色連結，改回主題紅色 */
 .btn-link { display: inline-block; color: var(--accent-color); text-decoration: none; font-weight: bold; }
 .btn-link:hover { text-decoration: underline; }
 
-/* 底部樣式 */
+/* =========================
+   底部樣式
+   ========================= */
 .site-footer { background-color: var(--footer-bg); color: var(--text-color); padding: 40px 20px 20px; border-top: 1px solid var(--border-color); margin-top: auto; }
 .footer-container { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-bottom: 30px; }
 .footer-col h4 { color: var(--accent-color); margin-bottom: 15px; font-size: 1.1rem; }
-.footer-col p, .footer-col ul li a { color: var(--text-muted); font-size: 0.9rem; text-decoration: none; }
-.footer-col ul { list-style: none; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.footer-col p, .footer-col ul li a { color: var(--text-muted); font-size: 0.9rem; text-decoration: none; transition: color 0.3s; }
+.footer-col ul li a:hover { color: var(--accent-color); }
 .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.85rem; }
