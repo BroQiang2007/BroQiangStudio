@@ -17,7 +17,6 @@
             <a href="games.html" class="active" data-i18n="nav_games">遊戲日常</a>
         </nav>
         <div class="top-right-controls">
-            <!-- 已經將「了解更多」按鈕從此頁面移除 -->
             <div class="settings-wrapper desktop-only">
                 <button class="settings-icon-btn" id="desktopSettingsBtn">⚙️</button>
                 <div class="settings-dropdown" id="desktopDropdown">
@@ -58,44 +57,41 @@
     <main class="page-content">
         <h2 class="section-title" data-i18n="games_header">我的遊戲日常</h2>
         <div class="grid-container">
-            <!-- 遊戲 1: 王牌競速 -->
             <div class="card">
                 <div class="reveal-img-wrapper">
                     <img src="ace-racer.jpg" alt="Ace Racer Front" class="img-front">
-                    <video src="ace-racer-secret.mp4" class="media-back" loop playsinline></video>
+                    <!-- 加上 muted 與 autoplay 確保背景無縫播放 -->
+                    <video src="ace-racer-secret.mp4" class="media-back" autoplay loop muted playsinline></video>
                 </div>
                 <h3 data-i18n="game_1_title">王牌競速 (國服版)</h3>
                 <p data-i18n="game_1_desc">在賽道上享受極速狂飆的快感，釋放王牌技能。</p>
                 <a href="#" class="btn-link" data-i18n="game_btn">查看遊戲詳情 ></a>
             </div>
 
-            <!-- 遊戲 2: 第五人格 -->
             <div class="card">
                 <div class="reveal-img-wrapper">
                     <img src="idv.jpg" alt="Identity V Front" class="img-front">
-                    <video src="idv-secret.mp4" class="media-back" loop playsinline></video>
+                    <video src="idv-secret.mp4" class="media-back" autoplay loop muted playsinline></video>
                 </div>
                 <h3 data-i18n="game_2_title">第五人格 (國際服)</h3>
                 <p data-i18n="game_2_desc">非對稱競技的刺激追逐，考驗策略與心理戰。</p>
                 <a href="#" class="btn-link" data-i18n="game_btn">查看遊戲詳情 ></a>
             </div>
 
-            <!-- 遊戲 3: Minecraft Bedrock -->
             <div class="card">
                 <div class="reveal-img-wrapper">
                     <img src="mc-bedrock.jpg" alt="Minecraft Bedrock Front" class="img-front">
-                    <video src="mc-bedrock-secret.mp4" class="media-back" loop playsinline></video>
+                    <video src="mc-bedrock-secret.mp4" class="media-back" autoplay loop muted playsinline></video>
                 </div>
                 <h3 data-i18n="game_3_title">Minecraft (Bedrock)</h3>
                 <p data-i18n="game_3_desc">與朋友跨平台連線，打造屬於我們的方塊世界。</p>
                 <a href="#" class="btn-link" data-i18n="game_btn">查看遊戲詳情 ></a>
             </div>
 
-            <!-- 遊戲 4: Minecraft Java -->
             <div class="card">
                 <div class="reveal-img-wrapper">
                     <img src="mc-java.jpg" alt="Minecraft Java Front" class="img-front">
-                    <video src="mc-java-secret.mp4" class="media-back" loop playsinline></video>
+                    <video src="mc-java-secret.mp4" class="media-back" autoplay loop muted playsinline></video>
                 </div>
                 <h3 data-i18n="game_4_title">Minecraft (Java)</h3>
                 <p data-i18n="game_4_desc">體驗原汁原味的麥塊生存，探索豐富的社群模組與伺服器。</p>
