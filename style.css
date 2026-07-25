@@ -5,7 +5,8 @@
     --bg-color: #121212;
     --text-color: #ffffff;
     --text-muted: #aaaaaa;
-    --nav-bg-glass: rgba(20, 20, 20, 0.75); 
+    /* 夜間模式的玻璃透度調低至 0.6，增加透視感 */
+    --nav-bg-glass: rgba(20, 20, 20, 0.6); 
     --card-bg: #1e1e1e;
     --accent-color: #e50914; 
     --footer-bg: #050505;
@@ -16,7 +17,8 @@
     --bg-color: #f5f5f5;
     --text-color: #121212;
     --text-muted: #555555;
-    --nav-bg-glass: rgba(255, 255, 255, 0.85); 
+    /* 日間模式的玻璃透度調低至 0.55，讓後方背景透出來 */
+    --nav-bg-glass: rgba(255, 255, 255, 0.55); 
     --card-bg: #ffffff;
     --accent-color: #d32f2f;
     --footer-bg: #e0e0e0;
