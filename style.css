@@ -68,10 +68,10 @@ body {
 /* 右上角控制區塊與自介按鈕 */
 .top-right-controls { display: flex; gap: 15px; align-items: center; pointer-events: auto; }
 
-/* 調整：了解更多按鈕也加入玻璃背景與模糊效果 */
+/* 調整：了解更多按鈕的外框改為紅色 (--accent-color) */
 .intro-btn {
     background: var(--nav-bg-glass); 
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--accent-color); /* <--- 這裡改成了紅色變數 */
     color: var(--text-color); 
     padding: 8px 20px; 
     border-radius: 20px;
@@ -85,7 +85,6 @@ body {
 }
 .intro-btn:hover { 
     background: var(--accent-color); 
-    border-color: var(--accent-color);
     color: #fff; 
     box-shadow: 0 5px 15px rgba(229, 9, 20, 0.5); 
     transform: translateY(-2px);
@@ -112,7 +111,7 @@ body {
     flex: 1; overflow-y: auto; padding-bottom: 80px; 
 }
 
-/* 調整：導覽列的 4 個按鈕加入玻璃背景與模糊效果 */
+/* 導覽列按鈕 */
 .desktop-nav a, .sidebar-nav a {
     color: var(--text-color); 
     text-decoration: none; 
