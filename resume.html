@@ -9,10 +9,10 @@
 </head>
 <body>
     <nav>
-        <a href="index.html">關於我</a>
-        <a href="resume.html" class="active">專業履歷</a>
-        <a href="portfolio.html">作品集</a>
-        <a href="games.html">遊戲日常</a>
+        <a href="index.html" data-i18n="nav_about">關於我</a>
+        <a href="resume.html" class="active" data-i18n="nav_resume">專業履歷</a>
+        <a href="portfolio.html" data-i18n="nav_portfolio">作品集</a>
+        <a href="games.html" data-i18n="nav_games">遊戲日常</a>
         
         <div class="nav-controls">
             <select class="lang-selector" id="languageSelect" onchange="changeLanguage()">
@@ -26,42 +26,40 @@
     </nav>
 
     <main>
-        <h2 class="section-title">專業履歷</h2>
+        <h2 class="section-title" data-i18n="resume_title">專業履歷</h2>
         
         <div class="grid-container">
-            <!-- 左側：工作經驗 -->
             <div class="card">
-                <h3 style="color: var(--accent-color); margin-bottom: 20px;">💼 工作經驗</h3>
+                <h3 style="color: var(--accent-color); margin-bottom: 20px;" data-i18n="resume_exp">💼 工作經驗</h3>
                 
                 <div style="margin-bottom: 25px;">
-                    <h4>[公司名稱 (無數據)] - [職稱 (無數據)]</h4>
-                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 5px;">日期無數據 - 至今</p>
-                    <p style="color: var(--text-color);">工作內容或達成的專案成就。(無數據)</p>
+                    <h4 data-i18n="resume_exp_1_title">[公司名稱 (無數據)] - [職稱 (無數據)]</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 5px;" data-i18n="resume_exp_1_date">日期無數據 - 至今</p>
+                    <p style="color: var(--text-color);" data-i18n="resume_exp_1_desc">工作內容或達成的專案成就。(無數據)</p>
                 </div>
 
                 <div>
-                    <h4>[前公司名稱 (無數據)] - [職稱 (無數據)]</h4>
-                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 5px;">日期無數據 - 日期無數據</p>
-                    <p style="color: var(--text-color);">工作內容或達成的專案成就。(無數據)</p>
+                    <h4 data-i18n="resume_exp_2_title">[前公司名稱 (無數據)] - [職稱 (無數據)]</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 5px;" data-i18n="resume_exp_2_date">日期無數據 - 日期無數據</p>
+                    <p style="color: var(--text-color);" data-i18n="resume_exp_2_desc">工作內容或達成的專案成就。(無數據)</p>
                 </div>
             </div>
 
-            <!-- 右側：技能與學歷 -->
             <div class="card">
-                <h3 style="color: var(--accent-color); margin-bottom: 20px;">🛠️ 專業技能</h3>
-                <p style="color: var(--text-color); margin-bottom: 30px; line-height: 1.8;">
+                <h3 style="color: var(--accent-color); margin-bottom: 20px;" data-i18n="resume_skill">🛠️ 專業技能</h3>
+                <p style="color: var(--text-color); margin-bottom: 30px; line-height: 1.8;" data-i18n="resume_skill_list">
                     AI, HTML / CSS, JavaScript, 專案管理, 視覺設計, Adobe Illustrator, Adobe Photoshop, Adobe Premiere Pro, Adobe After Effects
                 </p>
 
-                <h3 style="color: var(--accent-color); margin-bottom: 20px;">🎓 學歷</h3>
+                <h3 style="color: var(--accent-color); margin-bottom: 20px;" data-i18n="resume_edu">🎓 學歷</h3>
                 <div style="margin-bottom: 20px;">
-                    <h4>[Adtect JTM AP Nibong Tebal] - [交互式多媒體技術證書]</h4>
-                    <p style="font-size: 0.85rem; color: var(--text-muted);">07/2025 - 07/2027</p>
+                    <h4 data-i18n="resume_edu_1_title">[Adtect JTM AP Nibong Tebal] - [交互式多媒體技術證書]</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);" data-i18n="resume_edu_1_date">07/2025 - 07/2027</p>
                 </div>
                 
                 <div>
-                    <h4>[SMK BUKIT GAMBIR] - [SPM]</h4>
-                    <p style="font-size: 0.85rem; color: var(--text-muted);">2020 - 2025</p>
+                    <h4 data-i18n="resume_edu_2_title">[SMK BUKIT GAMBIR] - [SPM]</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);" data-i18n="resume_edu_2_date">2020 - 2025</p>
                 </div>
             </div>
         </div>
@@ -71,28 +69,28 @@
         <div class="footer-container">
             <div class="footer-col">
                 <h4>BroQiangStudio</h4>
-                <p>致力於網頁開發、多媒體設計與創意專案。歡迎與我聯繫交流！</p>
+                <p data-i18n="footer_desc">致力於網頁開發、多媒體設計與創意專案。歡迎與我聯繫交流！</p>
             </div>
             <div class="footer-col">
-                <h4>快速導覽</h4>
+                <h4 data-i18n="footer_nav">快速導覽</h4>
                 <ul>
-                    <li><a href="index.html">關於我</a></li>
-                    <li><a href="resume.html">專業履歷</a></li>
-                    <li><a href="portfolio.html">作品集</a></li>
-                    <li><a href="games.html">遊戲日常</a></li>
+                    <li><a href="index.html" data-i18n="nav_about">關於我</a></li>
+                    <li><a href="resume.html" data-i18n="nav_resume">專業履歷</a></li>
+                    <li><a href="portfolio.html" data-i18n="nav_portfolio">作品集</a></li>
+                    <li><a href="games.html" data-i18n="nav_games">遊戲日常</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>社群平台</h4>
+                <h4 data-i18n="footer_social">社群平台</h4>
                 <ul>
-                    <li><a href="#">Instagram</a></li>
-                    <li><a href="#">YouTube</a></li>
-                    <li><a href="#">TikTok (抖音)</a></li>
-                    <li><a href="#">GitHub</a></li>
+                    <li><a href="#" data-i18n="social_ig">Instagram</a></li>
+                    <li><a href="#" data-i18n="social_yt">YouTube</a></li>
+                    <li><a href="#" data-i18n="social_tt">抖音</a></li>
+                    <li><a href="#" data-i18n="social_gh">GitHub</a></li>
                 </ul>
             </div>
         </div>
-        <div class="footer-bottom">
+        <div class="footer-bottom" data-i18n="footer_copy">
             &copy; 2026 BroQiangStudio. All rights reserved. | 聯絡我：anle82760@gmail.com
         </div>
     </footer>
