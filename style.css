@@ -214,3 +214,58 @@ footer {
     0% { opacity: 0; transform: translateY(30px); }
     100% { opacity: 1; transform: translateY(0); }
 }
+
+/* =========================
+   遊戲頁面格子佈局 (Game Grid)
+   ========================= */
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.game-card {
+    background: #1e1e1e;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(255, 0, 0, 0.2); /* 滑鼠游標移過去會有微微發紅光的效果 */
+}
+
+/* 遊戲截圖的佔位格子 */
+.game-image-placeholder {
+    width: 100%;
+    height: 140px;
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+/* =========================
+   首頁炫酷影片/圖片背景設定
+   ========================= */
+.hero-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1; /* 讓背景躲在所有內容的最後面 */
+    overflow: hidden;
+}
+
+.hero-background video, .hero-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 確保影片或圖片填滿整個畫面不變形 */
+    filter: brightness(0.4); /* 調暗影片亮度，這樣你前面的白色文字才看得清楚！ */
+}
