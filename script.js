@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(mobileDropdown && mobileDropdown.classList.contains('active') && !mobileDropdown.contains(e.target)) mobileDropdown.classList.remove('active');
     });
 
-    // 3. 多語言切換字典 (新增日夜模式翻譯)
+    // 3. 多語言切換字典
     const translations = {
         "zh-TW": {
             "theme_light": "日間模式", "theme_dark": "夜間模式",
@@ -190,10 +190,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentLang = localStorage.getItem('lang') || 'zh-TW';
     let currentTheme = localStorage.getItem('theme') || 'dark';
 
-    // 初始化主題
     document.documentElement.setAttribute('data-theme', currentTheme);
 
-    // 5. 更新主題 UI 的函式 (綁定語言)
+    // 5. 更新主題 UI
     function updateThemeUI(theme, lang) {
         const themeToggleBtns = document.querySelectorAll('.theme-toggle-btn');
         themeToggleBtns.forEach(btn => {
@@ -201,39 +200,36 @@ document.addEventListener('DOMContentLoaded', () => {
             const text = btn.querySelector('.theme-text');
             if(theme === 'light') {
                 if(icon) icon.textContent = '🌙';
-                if(text) text.textContent = translations[lang]["theme_dark"]; // 提示切換成夜間
+                if(text) text.textContent = translations[lang]["theme_dark"];
             } else {
                 if(icon) icon.textContent = '☀️';
-                if(text) text.textContent = translations[lang]["theme_light"]; // 提示切換成日間
+                if(text) text.textContent = translations[lang]["theme_light"];
             }
         });
     }
 
-    // 6. 綁定主題切換按鈕事件
+    // 6. 綁定切換事件
     const themeToggleBtns = document.querySelectorAll('.theme-toggle-btn');
     themeToggleBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
             document.documentElement.setAttribute('data-theme', currentTheme);
             localStorage.setItem('theme', currentTheme);
-            updateThemeUI(currentTheme, currentLang); // 更新文字
+            updateThemeUI(currentTheme, currentLang);
         });
     });
 
-    // 7. 切換語言函式
     function changeLanguage(lang) {
-        currentLang = lang; // 記住當前語言
+        currentLang = lang; 
         document.querySelectorAll('[data-i18n]').forEach(element => {
             const key = element.getAttribute('data-i18n');
             if (translations[lang] && translations[lang][key]) {
                 element.textContent = translations[lang][key];
             }
         });
-        // 語言切換時，也要同步更新日夜模式的文字！
         updateThemeUI(currentTheme, currentLang);
     }
 
-    // 綁定語言選擇器事件
     langSelectors.forEach(selector => {
         selector.value = currentLang;
         selector.addEventListener('change', (e) => {
@@ -244,6 +240,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // 網頁初次載入執行語言與主題更新
     changeLanguage(currentLang);
 });
