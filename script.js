@@ -236,7 +236,8 @@ if (themeBtn) {
 }
 
 function initPageTransitions() {
-    document.querySelectorAll('.sidebar a').forEach(link => {
+    // 綁定電腦版與手機版的導覽列連結
+    document.querySelectorAll('.desktop-nav a, .sidebar a').forEach(link => {
         link.addEventListener('click', function(e) {
             if (this.href === window.location.href || this.target === '_blank') return;
             e.preventDefault(); 
