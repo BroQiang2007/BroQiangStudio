@@ -147,6 +147,7 @@ h2.section-title::after { content: ''; position: absolute; bottom: 0; left: 50%;
 .btn-link { display: inline-block; color: var(--accent-color); text-decoration: none; font-weight: bold; }
 .btn-link:hover { text-decoration: underline; }
 
+/* 底部樣式 */
 .site-footer { background-color: var(--footer-bg); color: var(--text-color); padding: 40px 20px 20px; border-top: 1px solid var(--border-color); margin-top: auto; }
 .footer-container { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-bottom: 30px; }
 .footer-col h4 { color: var(--accent-color); margin-bottom: 15px; font-size: 1.1rem; }
