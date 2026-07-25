@@ -272,3 +272,68 @@ h2.section-title::after {
     color: var(--text-muted);
     font-size: 0.85rem;
 }
+
+/* =========================
+   頁面跳轉平滑動畫 (Fade In / Fade Out)
+   ========================= */
+body {
+    /* 載入頁面時自動執行淡入動畫 */
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px); /* 從下方稍微浮現 */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 點擊按鈕離開頁面時的淡出狀態 */
+.fade-out {
+    animation: fadeOut 0.3s ease-in forwards !important;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+}
+
+/* =========================
+   首頁社群媒體按鈕 (Social Media Buttons)
+   ========================= */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.social-btn {
+    display: inline-block;
+    padding: 8px 25px;
+    background-color: var(--card-bg);
+    color: var(--accent-color); /* 預設紅色文字 */
+    border: 1px solid var(--border-color);
+    border-radius: 25px; /* 圓角膠囊形狀 */
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.social-btn:hover {
+    background-color: var(--accent-color); /* 移過去變紅色背景 */
+    color: #ffffff;
+    border-color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(229, 9, 20, 0.4); /* 紅色發光陰影 */
+}
