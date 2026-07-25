@@ -1,81 +1,97 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-TW" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>遊戲日常 | 我的專屬網頁</title>
+    <title>遊戲日常 | BroQiangStudio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/jpeg" href="ProfilePicture.jpg">
 </head>
 <body>
-
-    <!-- 導覽列 (記得加上 games.html 的連結) -->
     <nav>
-        <a href="index.html" data-i18n="nav_about">關於我</a>
-        <a href="resume.html" data-i18n="nav_resume">專業履歷</a>
-        <a href="portfolio.html" data-i18n="nav_portfolio">作品集</a>
-        <a href="games.html" data-i18n="nav_games" class="active">遊戲日常</a>
+        <a href="index.html">關於我</a>
+        <a href="resume.html">專業履歷</a>
+        <a href="portfolio.html">作品集</a>
+        <a href="games.html" class="active">遊戲日常</a>
         
-        <select class="lang-selector" id="languageSelect" onchange="changeLanguage()">
-            <option value="zh-TW">繁體中文</option>
-            <option value="zh-CN">简体中文</option>
-            <option value="en">English</option>
-            <option value="ms">Bahasa Melayu</option>
-        </select>
+        <div class="nav-controls">
+            <select class="lang-selector" id="languageSelect" onchange="changeLanguage()">
+                <option value="zh-TW">繁體中文</option>
+            </select>
+            <button id="themeBtn" class="theme-toggle-btn">☀️</button>
+        </div>
     </nav>
 
-    <main class="container">
-        <h1 data-i18n="games_title">我的遊戲日常</h1>
-        <p data-i18n="games_subtitle" class="subtitle">工作與學習之餘，我也熱愛在遊戲世界中探索與競技。</p>
+    <main>
+        <h2 class="section-title">我的遊戲日常</h2>
+        <p class="subtitle" style="text-align: center;">工作與學習之餘，我也熱愛在遊戲世界中探索與競技。</p>
 
-        <!-- 遊戲格子佈局 -->
-        <div class="game-grid">
-            
-            <!-- 遊戲 1：王牌競速 -->
-            <div class="game-card">
-                <div class="game-image-placeholder">
-                    <!-- 未來這裡替換成你的遊戲截圖 -->
-                    <span style="color: #666;">Game Screenshot</span>
-                </div>
-                <h3 data-i18n="game_1_name">王牌競速 (國服版)</h3>
-                <p data-i18n="game_1_desc">在賽道上享受極速狂飆的快感，釋放王牌技能。</p>
+        <div class="grid-container">
+            <!-- 王牌競速 -->
+            <div class="card">
+                <div class="card-img-placeholder">Game Screenshot</div>
+                <h3>王牌競速 (國服版)</h3>
+                <p>在賽道上享受極速狂飆的快感，釋放王牌技能。</p>
+                <a href="#" class="btn-link">查看遊戲詳情 →</a>
             </div>
 
-            <!-- 遊戲 2：第五人格 -->
-            <div class="game-card">
-                <div class="game-image-placeholder">
-                    <span style="color: #666;">Game Screenshot</span>
-                </div>
-                <h3 data-i18n="game_2_name">第五人格 (國際服)</h3>
-                <p data-i18n="game_2_desc">非對稱競技的刺激追逃，考驗策略與心理戰。</p>
+            <!-- 第五人格 -->
+            <div class="card">
+                <div class="card-img-placeholder">Game Screenshot</div>
+                <h3>第五人格 (國際服)</h3>
+                <p>非對稱競技的刺激追逃，考驗策略與心理戰。</p>
+                <a href="#" class="btn-link">查看遊戲詳情 →</a>
             </div>
 
-            <!-- 遊戲 3：Minecraft Bedrock -->
-            <div class="game-card">
-                <div class="game-image-placeholder">
-                    <span style="color: #666;">Game Screenshot</span>
-                </div>
-                <h3 data-i18n="game_3_name">Minecraft (Bedrock)</h3>
-                <p data-i18n="game_3_desc">與朋友跨平台連線，打造屬於我們的方塊世界。</p>
+            <!-- Minecraft Bedrock -->
+            <div class="card">
+                <div class="card-img-placeholder">Game Screenshot</div>
+                <h3>Minecraft (Bedrock)</h3>
+                <p>與朋友跨平台連線，打造屬於我們的方塊世界。</p>
+                <a href="#" class="btn-link">查看遊戲詳情 →</a>
             </div>
 
-            <!-- 遊戲 4：Minecraft Java -->
-            <div class="game-card">
-                <div class="game-image-placeholder">
-                    <span style="color: #666;">Game Screenshot</span>
-                </div>
-                <h3 data-i18n="game_4_name">Minecraft (Java)</h3>
-                <p data-i18n="game_4_desc">體驗豐富的模組與伺服器，探索無限可能。</p>
+            <!-- Minecraft Java -->
+            <div class="card">
+                <div class="card-img-placeholder">Game Screenshot</div>
+                <h3>Minecraft (Java)</h3>
+                <p>體驗豐富的模組與伺服器，探索無限可能。</p>
+                <a href="#" class="btn-link">查看遊戲詳情 →</a>
             </div>
-
         </div>
     </main>
 
-    <footer>
-        <p>联系我：anle82760@gmail.com</p>
+    <footer class="site-footer">
+        <!-- Footer 內容與 index.html 相同，請直接複製貼上以保持一致 -->
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>BroQiangStudio</h4>
+                <p>致力於網頁開發、多媒體設計與創意專案。歡迎與我聯繫交流！</p>
+            </div>
+            <div class="footer-col">
+                <h4>快速導覽</h4>
+                <ul>
+                    <li><a href="index.html">關於我</a></li>
+                    <li><a href="resume.html">專業履歷</a></li>
+                    <li><a href="portfolio.html">作品集</a></li>
+                    <li><a href="games.html">遊戲日常</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>社群平台</h4>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">YouTube</a></li>
+                    <li><a href="#">TikTok (抖音)</a></li>
+                    <li><a href="#">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 BroQiangStudio. All rights reserved. | 聯絡我：anle82760@gmail.com
+        </div>
     </footer>
 
-    <!-- 記得引入你的 JavaScript 檔案來控制語言切換 -->
     <script src="script.js"></script>
 </body>
 </html>
