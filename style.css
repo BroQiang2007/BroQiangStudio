@@ -175,3 +175,36 @@ h3.sub-section-title { margin: 30px 0 15px; border-left: 4px solid var(--accent-
     .footer-container { grid-template-columns: 1fr 1fr; }
     .footer-col:first-child { grid-column: 1 / -1; text-align: center; margin-bottom: 15px; }
 }
+
+/* ===== 進階設定選單功能樣式 ===== */
+.perf-toggle-btn { width: 100%; background: transparent; color: var(--text-color); border: 1px solid var(--border-color); padding: 10px; border-radius: 10px; cursor: pointer; outline: none; text-align: left; transition: all 0.3s; margin-top: 0px; }
+.perf-toggle-btn:hover { border-color: var(--text-muted); }
+
+.color-picker-wrapper { display: flex; flex-direction: column; gap: 10px; padding: 10px; border: 1px solid var(--border-color); border-radius: 10px; background: rgba(0,0,0,0.1); }
+.color-picker-title { font-size: 0.85rem; color: var(--text-muted); font-weight: bold; }
+.color-dots { display: flex; justify-content: space-between; }
+.color-dot { width: 25px; height: 25px; border-radius: 50%; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; border: 2px solid rgba(255,255,255,0.2); }
+.color-dot:hover { transform: scale(1.1); }
+.color-dot.active { border-color: var(--text-color); transform: scale(1.15); box-shadow: 0 0 10px var(--accent-color); }
+
+.reset-btn { width: 100%; background: rgba(255,255,255,0.05); color: var(--text-muted); border: 1px dashed var(--border-color); padding: 10px; border-radius: 10px; cursor: pointer; text-align: center; transition: all 0.3s; font-size: 0.9rem; margin-top: 5px; }
+.reset-btn:hover { background: rgba(229, 9, 20, 0.2); color: var(--text-color); border-color: var(--accent-color); }
+
+/* ===== 效能/省電模式邏輯 (關閉模糊與動態特效) ===== */
+[data-performance="low"] * {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+[data-performance="low"] .card:hover,
+[data-performance="low"] .profile-pic:hover,
+[data-performance="low"] .btn-link:hover,
+[data-performance="low"] .intro-btn:hover,
+[data-performance="low"] .footer-email:hover,
+[data-performance="low"] .footer-col ul li a:hover {
+    transform: none !important;
+    box-shadow: none !important;
+}
+[data-performance="low"] .reveal-img-wrapper .img-front { opacity: 1 !important; transform: scale(1) !important; }
+[data-performance="low"] .reveal-img-wrapper .media-back { opacity: 0 !important; display: none !important; }
+[data-performance="low"] .hero-bg video { display: none !important; }
+[data-performance="low"] .hero-bg { background-color: var(--bg-color); }
