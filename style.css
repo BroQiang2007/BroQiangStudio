@@ -10,7 +10,7 @@
     --bg-color: #0d0d0d;
     --text-color: #f0f0f0;
     --text-muted: #888;
-    --accent-color: #e50914; /* 預設 Bugatti 紅，會被 JS 覆蓋 */
+    --accent-color: #e50914; 
     --card-bg: rgba(25, 25, 25, 0.6);
     --border-color: rgba(255, 255, 255, 0.1);
 }
@@ -31,10 +31,10 @@ body {
     transition: background-color 0.5s, color 0.5s;
 }
 
-/* 🔥 強制清除所有超連結的煩人底線 */
+/* 強制清除所有超連結的煩人底線 */
 a { text-decoration: none !important; color: inherit; }
 
-/* 🌟 全局流暢過渡動畫 (頁面載入時絲滑浮現) */
+/* 全局流暢過渡動畫 */
 @keyframes fadeUpIn {
     0% { opacity: 0; transform: translateY(25px); }
     100% { opacity: 1; transform: translateY(0); }
@@ -43,7 +43,7 @@ a { text-decoration: none !important; color: inherit; }
     animation: fadeUpIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-/* ===== 全透明頂部導覽列 (Top Bar) - Fixed 固定在最上方 ===== */
+/* ===== 全透明頂部導覽列 (Top Bar) ===== */
 .top-bar {
     position: fixed !important;
     top: 0;
@@ -57,7 +57,7 @@ a { text-decoration: none !important; color: inherit; }
     box-shadow: none !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
-    z-index: 9999 !important; /* 🔥 調整了導覽列的層級 */
+    z-index: 9999 !important; 
     pointer-events: none !important; 
 }
 
@@ -86,7 +86,7 @@ a { text-decoration: none !important; color: inherit; }
     text-decoration: none !important;
 }
 
-/* ☀️ 日間模式的玻璃態自動切換 */
+/* 日間模式的玻璃態自動切換 */
 [data-theme="light"] .desktop-nav a,
 [data-theme="light"] .settings-icon-btn,
 [data-theme="light"] .menu-btn {
@@ -104,7 +104,7 @@ a { text-decoration: none !important; color: inherit; }
     text-shadow: none;
 }
 
-/* 漢堡按鈕 (手機版左上角) */
+/* 漢堡按鈕 */
 .menu-btn {
     display: none;
     width: 45px;
@@ -302,7 +302,7 @@ a { text-decoration: none !important; color: inherit; }
     -webkit-backdrop-filter: blur(25px) !important;
     border-right: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 2px 0 15px rgba(0,0,0,0.5);
-    z-index: 999999 !important; /* 🔥 暴力置頂層級，保證絕對不會被導覽列擋住！ */
+    z-index: 999999 !important; /* 暴力置頂層級 */
     transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
@@ -315,8 +315,30 @@ a { text-decoration: none !important; color: inherit; }
 }
 
 .sidebar.active { left: 0; }
-.sidebar-title { color: var(--text-color); font-size: 1.5rem; margin-bottom: 30px; margin-left: 10px; }
-.close-btn { position: absolute; top: 20px; right: 20px; background: none; border: none; color: var(--text-color); font-size: 2rem; cursor: pointer; }
+
+/* 🔥 完美修復：側邊欄標題與打叉按鈕並列一行 */
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-left: 10px; 
+}
+.sidebar-title { 
+    color: var(--text-color); 
+    font-size: 1.5rem; 
+    margin: 0; /* 清除預設邊距 */
+}
+.close-btn { 
+    background: none; 
+    border: none; 
+    color: var(--text-color); 
+    font-size: 2rem; 
+    cursor: pointer; 
+    padding: 0 10px; /* 增加點擊範圍防誤觸 */
+    line-height: 1;
+}
+
 .sidebar-nav { display: flex; flex-direction: column; gap: 15px; flex-grow: 1; }
 .sidebar-nav a {
     color: var(--text-color);
@@ -349,7 +371,7 @@ a { text-decoration: none !important; color: inherit; }
     .mobile-only { display: block; }
 }
 
-/* ===== 首頁與頭像特效 (Hero Section & CyberPulse) ===== */
+/* ===== 首頁與頭像特效 (Hero Section) ===== */
 .hero-section {
     position: relative;
     height: 100vh;
@@ -434,7 +456,7 @@ a { text-decoration: none !important; color: inherit; }
     text-shadow: 0 0 15px rgba(255, 255, 255, 0.9), 0 0 30px rgba(255, 255, 255, 0.8); 
 }
 
-/* 🔥 📊 訪客統計區塊 (終極修復：滑鼠移入才發光，且完全連動主題色) */
+/* 🔥 📊 訪客統計區塊 (修復為純淨的主題色變數，不再死守紅色) */
 .visitor-stats {
     display: inline-flex;
     flex-wrap: nowrap; 
@@ -445,11 +467,11 @@ a { text-decoration: none !important; color: inherit; }
     padding: 12px 30px;
     white-space: nowrap; 
     
-    background: rgba(0, 0, 0, 0.4); /* 預設深色背景 */
+    background: rgba(0, 0, 0, 0.4); 
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     
-    border: 1px solid rgba(255, 255, 255, 0.15); /* 預設淡色邊框，無光暈 */
+    border: 1px solid rgba(255, 255, 255, 0.15); 
     box-shadow: none; 
     border-radius: 40px;
     font-size: 0.95rem;
@@ -457,12 +479,10 @@ a { text-decoration: none !important; color: inherit; }
     cursor: default;
 }
 
-/* 🔥 只有滑鼠懸停 (Hover) 時，才觸發主題色光暈與邊框 */
+/* 只有在滑鼠懸停時觸發光暈，完全連動所選主題色！ */
 .visitor-stats:hover {
     border-color: var(--accent-color);
-    /* 使用 var(--accent-color) 取代有 Bug 的 rgba */
-    box-shadow: 0 0 20px var(--accent-color), 
-                inset 0 0 10px var(--accent-color);
+    box-shadow: 0 0 20px var(--accent-color), inset 0 0 10px var(--accent-color);
 }
 
 .visitor-stats .stat-item {
@@ -472,194 +492,89 @@ a { text-decoration: none !important; color: inherit; }
     color: var(--text-color);
     white-space: nowrap; 
 }
-.visitor-stats .divider {
-    color: var(--border-color);
-}
+.visitor-stats .divider { color: var(--border-color); }
 .visitor-stats strong {
     color: var(--accent-color);
     font-family: 'Courier New', Courier, monospace;
     font-size: 1.2rem;
     font-weight: bold;
-    text-shadow: 0 0 12px var(--accent-color); /* 數字發光同步修正 */
+    text-shadow: 0 0 12px var(--accent-color); 
     transition: color 0.3s, text-shadow 0.3s;
 }
 
-/* ☀️ 日間模式適配 */
-[data-theme="light"] .visitor-stats {
-    background: rgba(255, 255, 255, 0.7); 
-    border: 1px solid rgba(0, 0, 0, 0.1);
-}
-[data-theme="light"] .visitor-stats:hover {
-    border-color: var(--accent-color);
-    box-shadow: 0 0 20px var(--accent-color); 
-}
+[data-theme="light"] .visitor-stats { background: rgba(255, 255, 255, 0.7); border: 1px solid rgba(0, 0, 0, 0.1); }
+[data-theme="light"] .visitor-stats:hover { border-color: var(--accent-color); box-shadow: 0 0 20px var(--accent-color); }
 
-/* 📱 手機版排版壓縮 */
+/* 📱 手機版排版壓縮 (🔥 加入 Clamp 動態縮放，完美解決英文過長爆框問題) */
 @media (max-width: 768px) {
     .visitor-stats {
-        padding: 10px 15px;
-        gap: 10px;
-        font-size: 0.85rem;
+        padding: 8px 12px;
+        gap: 5px;
+        /* 神奇魔法：字體會根據螢幕寬度自動縮放，保證單行絕對塞得下！ */
+        font-size: clamp(0.6rem, 2.8vw, 0.85rem); 
         border-radius: 30px;
         margin-top: 25px;
-        max-width: 90vw;
-        overflow: hidden;
+        max-width: 95vw; /* 給方塊多一點點呼吸空間 */
     }
-    .visitor-stats strong {
-        font-size: 1rem;
+    .visitor-stats strong { 
+        font-size: clamp(0.7rem, 3.2vw, 1rem); 
     }
-    .visitor-stats .stat-item {
-        font-size: 0.85rem;
-        gap: 4px;
+    .visitor-stats .stat-item { 
+        font-size: inherit; 
+        gap: 3px; 
+    }
+    .visitor-stats .divider {
+        margin: 0 3px;
     }
 }
 
 /* ===== 內頁通用排版 (Page Content) ===== */
-.page-content {
-    padding: 120px 5% 60px;
-    min-height: calc(100vh - 200px);
-    max-width: 1200px;
-    margin: 0 auto;
-}
-.section-title {
-    font-size: 2.5rem;
-    text-align: center;
-    margin-bottom: 50px;
-    position: relative;
-    display: inline-block;
-    left: 50%;
-    transform: translateX(-50%);
-}
-.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: var(--accent-color);
-}
-.sub-section-title {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    color: var(--accent-color);
-    border-left: 4px solid var(--accent-color);
-    padding-left: 10px;
-}
+.page-content { padding: 120px 5% 60px; min-height: calc(100vh - 200px); max-width: 1200px; margin: 0 auto; }
+.section-title { font-size: 2.5rem; text-align: center; margin-bottom: 50px; position: relative; display: inline-block; left: 50%; transform: translateX(-50%); }
+.section-title::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 100%; height: 3px; background: var(--accent-color); }
+.sub-section-title { font-size: 1.8rem; margin-bottom: 20px; color: var(--accent-color); border-left: 4px solid var(--accent-color); padding-left: 10px; }
 
 /* ===== 卡片系統 (Card Grid) ===== */
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
+.grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
 .card {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 15px;
-    padding: 20px;
+    background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 15px; padding: 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    display: flex;
-    flex-direction: column;
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); display: flex; flex-direction: column;
 }
-.card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent-color);
-    box-shadow: 0 0 30px var(--accent-color);
-}
+.card:hover { transform: translateY(-5px); border-color: var(--accent-color); box-shadow: 0 0 30px var(--accent-color); }
 .card h3 { font-size: 1.5rem; margin-bottom: 10px; }
 .card p { color: var(--text-muted); font-size: 1rem; margin-bottom: 15px; flex-grow: 1; }
 .card .date-text { font-size: 0.9rem; color: var(--accent-color); display: block; margin-bottom: 5px; font-weight: bold; }
 .card-large { grid-column: 1 / -1; }
 
-.btn-link {
-    color: var(--accent-color);
-    font-weight: bold;
-    display: inline-block;
-    transition: transform 0.3s;
-    text-decoration: none !important;
-}
+.btn-link { color: var(--accent-color); font-weight: bold; display: inline-block; transition: transform 0.3s; text-decoration: none !important; }
 .btn-link:hover { transform: translateX(5px); text-shadow: 0 0 5px rgba(229, 9, 20, 0.5); }
 
-.reveal-img-wrapper {
-    position: relative;
-    width: 100%;
-    padding-top: 56.25%;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 15px;
-}
-.img-front, .media-back {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
+.reveal-img-wrapper { position: relative; width: 100%; padding-top: 56.25%; border-radius: 10px; overflow: hidden; margin-bottom: 15px; }
+.img-front, .media-back { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 0.5s ease, transform 0.5s ease; }
 .media-back { opacity: 0; }
 .card:hover .img-front { opacity: 0; transform: scale(1.05); }
 .card:hover .media-back { opacity: 1; }
 
 /* ===== 內頁頁尾 (Footer) ===== */
-.site-footer {
-    background: rgba(0,0,0,0.2);
-    border-top: 1px solid var(--border-color);
-    padding: 50px 5% 20px;
-    margin-top: 50px;
-}
+.site-footer { background: rgba(0,0,0,0.2); border-top: 1px solid var(--border-color); padding: 50px 5% 20px; margin-top: 50px; }
 [data-theme="light"] .site-footer { background: rgba(0,0,0,0.05); }
-.footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
-    margin-bottom: 30px;
-}
-@media (max-width: 768px) {
-    .footer-container { grid-template-columns: 1fr 1fr; gap: 20px; }
-    .footer-col:first-child { grid-column: 1 / -1; }
-}
-
+.footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 30px; }
+@media (max-width: 768px) { .footer-container { grid-template-columns: 1fr 1fr; gap: 20px; } .footer-col:first-child { grid-column: 1 / -1; } }
 .footer-col h4 { font-size: 1.2rem; margin-bottom: 20px; color: var(--accent-color); }
 .footer-col ul { list-style: none; }
 .footer-col ul li { margin-bottom: 10px; }
 .footer-col p { color: var(--text-muted); font-size: 0.95rem; }
-.footer-col ul li a { 
-    color: var(--text-muted); font-size: 0.95rem; display: inline-block; transition: all 0.3s ease; text-decoration: none !important;
-}
+.footer-col ul li a { color: var(--text-muted); font-size: 0.95rem; display: inline-block; transition: all 0.3s ease; text-decoration: none !important; }
 .footer-col ul li a:hover { color: var(--accent-color); text-shadow: 0 0 10px rgba(229, 9, 20, 0.8); transform: translateX(5px); }
-
 .footer-contact { margin-top: 15px; }
-.footer-email {
-    display: inline-block; color: var(--accent-color); font-weight: bold; transition: all 0.3s ease; text-decoration: none !important;
-}
+.footer-email { display: inline-block; color: var(--accent-color); font-weight: bold; transition: all 0.3s ease; text-decoration: none !important; }
 .footer-email:hover { transform: translateX(5px); text-shadow: 0 0 5px rgba(229, 9, 20, 0.5); }
+.footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.85rem; }
 
-.footer-bottom {
-    text-align: center;
-    padding-top: 20px;
-    border-top: 1px solid var(--border-color);
-    color: var(--text-muted);
-    font-size: 0.85rem;
-}
+/* ===== ⚡ 效能模式控制邏輯 (回歸 雙段式切換) ===== */
 
-/* ===== ⚡ 效能模式控制邏輯 ===== */
-
-/* 🔋 1. 均衡模式 (Medium) */
-[data-performance="medium"] .intro-btn {
-    animation: none !important;
-}
-[data-performance="medium"] .profile-pic:hover,
-[data-performance="medium"] .profile-pic:active {
-    animation: none !important; 
-}
-
-/* 🪫 2. 省電模式 (Low) */
+/* 🔋 省電模式 (Low): 完全關閉模糊、陰影過渡與背景影片 */
 [data-performance="low"] * { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
 
 [data-performance="low"] .hero-content,
