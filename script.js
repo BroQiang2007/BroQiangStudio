@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (mobileDropdown) mobileDropdown.classList.remove('active');
     });
 
-    // 3. 多國語言翻譯字典 (加入了 sidebar_menu)
+    // 3. 多國語言翻譯字典
     const translations = {
         "zh-TW": {
             "theme_light": "日間模式", "theme_dark": "夜間模式",
@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "sidebar_menu": "選單",
             "nav_about": "關於我", "nav_resume": "專業履歷", "nav_portfolio": "作品集", "nav_games": "遊戲日常",
             "footer_title_1": "BroQiangStudio", "footer_desc": "致力於網頁開發、多媒體設計與創意專案。歡迎與我聯繫交流！", "footer_title_2": "快速導覽", "footer_title_3": "社群平台",
+            "footer_contact": "聯繫我：", /* 新增這行 */
             "social_douyin": "抖音",
             "page_title_home": "首頁 | BroQiangStudio", "hero_title": "嗨，我是 余樂銨", "hero_subtitle": "熱愛用程式解決問題的開發者 / 喜歡用設計說故事的創作者。", "intro_btn": "了解更多",
             "page_title_games": "遊戲日常 | BroQiangStudio", "games_header": "我的遊戲日常", "game_1_title": "王牌競速 (國服版)", "game_1_desc": "在賽道上享受極速狂飆的快感，釋放王牌技能。", "game_2_title": "第五人格 (國際服)", "game_2_desc": "非對稱競技的刺激追逐，考驗策略與心理戰。", "game_3_title": "Minecraft (Bedrock)", "game_3_desc": "與朋友跨平台連線，打造屬於我們的方塊世界。", "game_4_title": "Minecraft (Java)", "game_4_desc": "體驗原汁原味的麥塊生存，探索豐富的社群模組與伺服器。", "game_btn": "查看遊戲詳情 >",
@@ -51,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "sidebar_menu": "菜单",
             "nav_about": "关于我", "nav_resume": "专业履历", "nav_portfolio": "作品集", "nav_games": "游戏日常",
             "footer_title_1": "BroQiangStudio", "footer_desc": "致力于网页开发、多媒体设计与创意专案。欢迎与我联系交流！", "footer_title_2": "快速导航", "footer_title_3": "社群平台",
+            "footer_contact": "联系我：", /* 新增这行 */
             "social_douyin": "抖音",
             "page_title_home": "首页 | BroQiangStudio", "hero_title": "嗨，我是 余乐铵", "hero_subtitle": "热爱用程式解决问题的开发者 / 喜欢用设计说故事的创作者。", "intro_btn": "了解更多",
             "page_title_games": "游戏日常 | BroQiangStudio", "games_header": "我的游戏日常", "game_1_title": "王牌竞速 (国服版)", "game_1_desc": "在赛道上享受极速狂飙的快感，释放王牌技能。", "game_2_title": "第五人格 (国际服)", "game_2_desc": "非对称竞技的刺激追逐，考验策略与心理战。", "game_3_title": "Minecraft (Bedrock)", "game_3_desc": "与朋友跨平台连线，打造属于我们的方块世界。", "game_4_title": "Minecraft (Java)", "game_4_desc": "体验原汁原味的麦块生存，探索丰富的社群模组。", "game_btn": "查看游戏详情 >",
@@ -64,6 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "sidebar_menu": "Menu",
             "nav_about": "About Me", "nav_resume": "Resume", "nav_portfolio": "Portfolio", "nav_games": "Gaming Life",
             "footer_title_1": "BroQiangStudio", "footer_desc": "Dedicated to web development and multimedia design. Contact me!", "footer_title_2": "Quick Links", "footer_title_3": "Social Media",
+            "footer_contact": "Contact Me:", /* 新增這行 */
             "social_douyin": "TikTok (CN)",
             "page_title_home": "Home | BroQiangStudio", "hero_title": "Hi, I'm Michael Er", "hero_subtitle": "Developer solving problems with code / Creator telling stories with design.", "intro_btn": "Learn More",
             "page_title_games": "Gaming Life | BroQiangStudio", "games_header": "My Gaming Life", "game_1_title": "Ace Racer (CN)", "game_1_desc": "Enjoy the thrill of extreme speed on the track, unleash ultimate skills.", "game_2_title": "Identity V (Global)", "game_2_desc": "Asymmetrical competitive thrilling chase, testing strategy.", "game_3_title": "Minecraft (Bedrock)", "game_3_desc": "Cross-platform multiplayer, building our blocky world.", "game_4_title": "Minecraft (Java)", "game_4_desc": "Original survival experience, explore rich community mods.", "game_btn": "View Details >",
@@ -77,6 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "sidebar_menu": "Menu",
             "nav_about": "Tentang Saya", "nav_resume": "Resume", "nav_portfolio": "Portfolio", "nav_games": "Permainan",
             "footer_title_1": "BroQiangStudio", "footer_desc": "Berdedikasi untuk pembangunan web & reka bentuk. Hubungi saya!", "footer_title_2": "Pautan Pantas", "footer_title_3": "Media Sosial",
+            "footer_contact": "Hubungi Saya:", /* 新增這行 */
             "social_douyin": "TikTok (CN)",
             "page_title_home": "Utama | BroQiangStudio", "hero_title": "Hai, Saya Er Le An", "hero_subtitle": "Pembangun menyelesaikan masalah dengan kod / Pencipta bercerita dengan reka bentuk.", "intro_btn": "Ketahui Lebih Lanjut",
             "page_title_games": "Permainan | BroQiangStudio", "games_header": "Kehidupan Permainan Saya", "game_1_title": "Ace Racer (CN)", "game_1_desc": "Nikmati keseronokan kelajuan melampau di litar perlumbaan.", "game_2_title": "Identity V (Global)", "game_2_desc": "Pengejaran mendebarkan kompetitif tidak simetri.", "game_3_title": "Minecraft (Bedrock)", "game_3_desc": "Bermain merentas platform bersama rakan, bina dunia blok kita.", "game_4_title": "Minecraft (Java)", "game_4_desc": "Pengalaman kelangsungan hidup asal, terokai mod komuniti.", "game_btn": "Lihat Butiran >",
