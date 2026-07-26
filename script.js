@@ -30,11 +30,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (mobileDropdown) mobileDropdown.classList.remove('active');
     });
 
-    // 3. 多國語言翻譯字典
+    // 3. 多國語言翻譯字典 (加入了 sidebar_menu)
     const translations = {
         "zh-TW": {
             "theme_light": "日間模式", "theme_dark": "夜間模式",
             "sound_on": "聲音：開啟", "sound_off": "聲音：靜音",
+            "sidebar_menu": "選單",
             "nav_about": "關於我", "nav_resume": "專業履歷", "nav_portfolio": "作品集", "nav_games": "遊戲日常",
             "footer_title_1": "BroQiangStudio", "footer_desc": "致力於網頁開發、多媒體設計與創意專案。歡迎與我聯繫交流！", "footer_title_2": "快速導覽", "footer_title_3": "社群平台",
             "social_douyin": "抖音",
@@ -47,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "zh-CN": {
             "theme_light": "日间模式", "theme_dark": "夜间模式",
             "sound_on": "声音：开启", "sound_off": "声音：静音",
+            "sidebar_menu": "菜单",
             "nav_about": "关于我", "nav_resume": "专业履历", "nav_portfolio": "作品集", "nav_games": "游戏日常",
             "footer_title_1": "BroQiangStudio", "footer_desc": "致力于网页开发、多媒体设计与创意专案。欢迎与我联系交流！", "footer_title_2": "快速导航", "footer_title_3": "社群平台",
             "social_douyin": "抖音",
@@ -59,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "en": {
             "theme_light": "Light Mode", "theme_dark": "Dark Mode",
             "sound_on": "Sound: On", "sound_off": "Sound: Muted",
+            "sidebar_menu": "Menu",
             "nav_about": "About Me", "nav_resume": "Resume", "nav_portfolio": "Portfolio", "nav_games": "Gaming Life",
             "footer_title_1": "BroQiangStudio", "footer_desc": "Dedicated to web development and multimedia design. Contact me!", "footer_title_2": "Quick Links", "footer_title_3": "Social Media",
             "social_douyin": "TikTok (CN)",
@@ -71,6 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "ms": {
             "theme_light": "Mod Cerah", "theme_dark": "Mod Gelap",
             "sound_on": "Bunyi: Buka", "sound_off": "Bunyi: Senyap",
+            "sidebar_menu": "Menu",
             "nav_about": "Tentang Saya", "nav_resume": "Resume", "nav_portfolio": "Portfolio", "nav_games": "Permainan",
             "footer_title_1": "BroQiangStudio", "footer_desc": "Berdedikasi untuk pembangunan web & reka bentuk. Hubungi saya!", "footer_title_2": "Pautan Pantas", "footer_title_3": "Media Sosial",
             "social_douyin": "TikTok (CN)",
@@ -168,7 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
             document.documentElement.setAttribute('data-theme', newTheme);
             
-            // 【修復 Bug】將主題狀態存進 localStorage
+            // 將主題狀態存進 localStorage
             localStorage.setItem('preferredTheme', newTheme);
             
             const currentLang = localStorage.getItem('preferredLang') || 'zh-TW';
