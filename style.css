@@ -31,9 +31,14 @@ body {
     transition: background-color 0.5s, color 0.5s;
 }
 
-/* ===== Typography (排版) ===== */
-h1, h2, h3, h4 { font-weight: 700; }
-a { text-decoration: none; color: inherit; }
+/* 🌟 全局流暢過渡動畫 (頁面載入時絲滑浮現) */
+@keyframes fadeUpIn {
+    0% { opacity: 0; transform: translateY(25px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+.hero-content, .page-content {
+    animation: fadeUpIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
 
 /* ===== 全透明頂部導覽列 (Top Bar) - Fixed 固定在最上方 ===== */
 .top-bar {
@@ -148,8 +153,8 @@ a { text-decoration: none; color: inherit; }
     animation: floatBubble 3s ease-in-out infinite; 
 }
 .intro-btn:hover {
-    background: rgba(255, 255, 255, 0.3) !important; /* 🔥 保持毛玻璃感 */
-    color: var(--accent-color) !important; /* 🔥 文字變更為主題色 */
+    background: rgba(255, 255, 255, 0.3) !important;
+    color: var(--accent-color) !important; 
     box-shadow: 0 0 20px var(--accent-color) !important;
     text-shadow: none;
 }
@@ -317,10 +322,11 @@ a { text-decoration: none; color: inherit; }
     color: var(--accent-color);
 }
 
+/* ⚙️ 設定按鈕下移至完美角落位置 */
 .mobile-settings { 
     margin-top: auto; 
     align-self: flex-end; 
-    margin-bottom: 40px; 
+    margin-bottom: 15px; /* 🔥 大幅縮減底部邊距，讓它完美貼齊右下角 */
     margin-right: 15px;  
 }
 
@@ -381,27 +387,25 @@ a { text-decoration: none; color: inherit; }
 }
 .profile-pic:hover { transform: scale(1.05); }
 
-/* 🔥 主標題變更為常駐跟隨主題色 */
 .hero-content h1 { 
     font-size: 3.5rem; 
     margin-bottom: 10px; 
     letter-spacing: 2px; 
     color: var(--accent-color); 
-    text-shadow: 0 2px 10px rgba(0,0,0,0.5); /* 讓名字更立體 */
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5); 
 }
 
-/* 預設深色模式副標題 */
 .hero-content .subtitle { 
     font-size: 1.2rem; 
     color: var(--text-muted); 
     font-weight: 300; 
-    text-shadow: 0 2px 5px rgba(0,0,0,0.8); /* 預設深色陰影增加對比 */
+    text-shadow: 0 2px 5px rgba(0,0,0,0.8); 
 }
 @media (max-width: 768px) {
     .hero-content h1 { font-size: 2.5rem; }
     .hero-content .subtitle { font-size: 1rem; padding: 0 20px; }
 }
-/* 🔥 日間模式下：加深副標題顏色並加上強烈白暈，確保背景變亮也絕對可見 */
+
 [data-theme="light"] .hero-content .subtitle { 
     color: #222; 
     font-weight: 600; 
@@ -477,11 +481,10 @@ a { text-decoration: none; color: inherit; }
 }
 .btn-link:hover { transform: translateX(5px); text-shadow: 0 0 5px rgba(229, 9, 20, 0.5); }
 
-/* 作品集與遊戲 媒體切換組件 */
 .reveal-img-wrapper {
     position: relative;
     width: 100%;
-    padding-top: 56.25%; /* 16:9 比例 */
+    padding-top: 56.25%;
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 15px;
@@ -515,6 +518,18 @@ a { text-decoration: none; color: inherit; }
     gap: 40px;
     margin-bottom: 30px;
 }
+
+/* 🔥 手機版專屬：強制讓「快速導覽」和「社群平台」左右並排 */
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr 1fr; /* 切割成兩欄 */
+        gap: 20px;
+    }
+    .footer-col:first-child {
+        grid-column: 1 / -1; /* 第一欄（介紹及信箱）佔滿整列，剩下的自然並排 */
+    }
+}
+
 .footer-col h4 {
     font-size: 1.2rem;
     margin-bottom: 20px;
@@ -554,6 +569,15 @@ a { text-decoration: none; color: inherit; }
 
 /* ===== ⚡ 效能/省電模式邏輯 (關閉模糊與動態特效) ===== */
 [data-performance="low"] * { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+
+/* 🌟 省電模式下關閉過渡動畫，保護效能 */
+[data-performance="low"] .hero-content,
+[data-performance="low"] .page-content {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+}
+
 [data-performance="low"] .card:hover,
 [data-performance="low"] .profile-pic:hover,
 [data-performance="low"] .btn-link:hover,
@@ -576,7 +600,7 @@ a { text-decoration: none; color: inherit; }
     border: 1px solid var(--border-color) !important;
 }
 
-/* 🔥 省電模式下，滑鼠懸停時 6 個按鈕外框變為主題色 */
+/* 省電模式下，滑鼠懸停時 6 個按鈕外框變為主題色 */
 [data-performance="low"] .desktop-nav a:hover,
 [data-performance="low"] .settings-icon-btn:hover,
 [data-performance="low"] .menu-btn:hover,
