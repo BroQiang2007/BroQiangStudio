@@ -27,15 +27,27 @@
                         <option value="ms">Bahasa Melayu</option>
                     </select>
                     <button class="theme-toggle-btn"><span class="theme-icon">☀️</span> <span class="theme-text">日間模式</span></button>
-                    <!-- 新增：全域聲音設定 -->
                     <button class="sound-toggle-btn"><span class="sound-icon">🔇</span> <span class="sound-text">聲音：靜音</span></button>
+                    <!-- ⚡ 效能模式 -->
+                    <button class="perf-toggle-btn"><span class="perf-icon">⚡</span> <span class="perf-text" data-i18n="perf_high">效能：極致</span></button>
+                    <!-- 🎨 主題色切換 -->
+                    <div class="color-picker-wrapper">
+                        <span class="color-picker-title" data-i18n="color_picker_title">主題色</span>
+                        <div class="color-dots">
+                            <span class="color-dot" data-color="#e50914" style="background: #e50914;" title="Bugatti Red"></span>
+                            <span class="color-dot" data-color="#ff9800" style="background: #ff9800;" title="Lambo Orange"></span>
+                            <span class="color-dot" data-color="#00bcd4" style="background: #00bcd4;" title="Tech Blue"></span>
+                            <span class="color-dot" data-color="#4caf50" style="background: #4caf50;" title="Eco Green"></span>
+                        </div>
+                    </div>
+                    <!-- 🔄 恢復預設 -->
+                    <button class="reset-btn" data-i18n="reset_btn">🔄 恢復預設</button>
                 </div>
             </div>
         </div>
     </header>
 
     <aside class="sidebar" id="sidebar">
-        <!-- 加入下面這一行標題 -->
         <h2 class="sidebar-title" data-i18n="sidebar_menu">選單</h2>
         <button class="close-btn" id="closeBtn">×</button>
         <nav class="sidebar-nav">
@@ -53,8 +65,21 @@
                     <option value="ms">Bahasa Melayu</option>
                 </select>
                 <button class="theme-toggle-btn"><span class="theme-icon">☀️</span> <span class="theme-text">日間模式</span></button>
-                <!-- 新增：全域聲音設定 -->
                 <button class="sound-toggle-btn"><span class="sound-icon">🔇</span> <span class="sound-text">聲音：靜音</span></button>
+                <!-- ⚡ 效能模式 -->
+                <button class="perf-toggle-btn"><span class="perf-icon">⚡</span> <span class="perf-text" data-i18n="perf_high">效能：極致</span></button>
+                <!-- 🎨 主題色切換 -->
+                <div class="color-picker-wrapper">
+                    <span class="color-picker-title" data-i18n="color_picker_title">主題色</span>
+                    <div class="color-dots">
+                        <span class="color-dot" data-color="#e50914" style="background: #e50914;" title="Bugatti Red"></span>
+                        <span class="color-dot" data-color="#ff9800" style="background: #ff9800;" title="Lambo Orange"></span>
+                        <span class="color-dot" data-color="#00bcd4" style="background: #00bcd4;" title="Tech Blue"></span>
+                        <span class="color-dot" data-color="#4caf50" style="background: #4caf50;" title="Eco Green"></span>
+                    </div>
+                </div>
+                <!-- 🔄 恢復預設 -->
+                <button class="reset-btn" data-i18n="reset_btn">🔄 恢復預設</button>
             </div>
             <button class="settings-icon-btn" id="mobileSettingsBtn">⚙️</button>
         </div>
@@ -64,43 +89,55 @@
         <h2 class="section-title" data-i18n="portfolio_header">作品集</h2>
         <div class="grid-container">
             <div class="card">
-                <div class="reveal-img-wrapper"><img src="ProfilePicture.jpg" alt="Project 1" class="img-front"></div>
+                <div class="reveal-img-wrapper">
+                    <img src="ProfilePicture.jpg" alt="Project 1" class="img-front">
+                    <video src="video1.mp4" class="media-back" loop playsinline></video>
+                </div>
                 <h3 data-i18n="pf_1_title">網頁開發專案 A</h3>
                 <p data-i18n="pf_1_desc">結合 HTML/CSS 的響應式個人網站設計。</p>
                 <a href="#" class="btn-link" data-i18n="pf_btn">查看專案詳情 ></a>
             </div>
             <div class="card">
-                <div class="reveal-img-wrapper"><img src="ProfilePicture.jpg" alt="Project 2" class="img-front"></div>
+                <div class="reveal-img-wrapper">
+                    <img src="ProfilePicture.jpg" alt="Project 2" class="img-front">
+                    <video src="video2.mp4" class="media-back" loop playsinline></video>
+                </div>
                 <h3 data-i18n="pf_2_title">多媒體設計專案 B</h3>
                 <p data-i18n="pf_2_desc">視覺動畫與特效短片製作。</p>
                 <a href="#" class="btn-link" data-i18n="pf_btn">查看專案詳情 ></a>
             </div>
             <div class="card">
-                <div class="reveal-img-wrapper"><img src="ProfilePicture.jpg" alt="Project 3" class="img-front"></div>
+                <div class="reveal-img-wrapper">
+                    <img src="ProfilePicture.jpg" alt="Project 3" class="img-front">
+                    <video src="video3.mp4" class="media-back" loop playsinline></video>
+                </div>
                 <h3 data-i18n="pf_3_title">互動 UI 專案 C</h3>
                 <p data-i18n="pf_3_desc">專注於使用者體驗的介面設計。</p>
                 <a href="#" class="btn-link" data-i18n="pf_btn">查看專案詳情 ></a>
             </div>
             <div class="card">
-                <div class="reveal-img-wrapper"><img src="ProfilePicture.jpg" alt="Project 4" class="img-front"></div>
+                <div class="reveal-img-wrapper">
+                    <img src="ProfilePicture.jpg" alt="Project 4" class="img-front">
+                    <video src="video4.mp4" class="media-back" loop playsinline></video>
+                </div>
                 <h3 data-i18n="pf_4_title">遊戲模組開發</h3>
                 <p data-i18n="pf_4_desc">Minecraft 客製化素材與整合包。</p>
                 <a href="#" class="btn-link" data-i18n="pf_btn">查看專案詳情 ></a>
             </div>
             <div class="card">
-            <div class="reveal-img-wrapper">
-                <!-- 第一層：預設顯示的靜態封面圖 (img-front) -->
-                <img src="ProfilePicture.jpg" alt="Project 5" class="img-front">
-        
-                <!-- 第二層：滑鼠移入時才會出現並播放的影片 (media-back) -->
-                <video src="Rumah-Kopi.mp4" class="media-back" loop playsinline></video>
-            </div>
+                <div class="reveal-img-wrapper">
+                    <img src="ProfilePicture.jpg" alt="Project 5" class="img-front">
+                    <video src="Rumah-Kopi.mp4" class="media-back" loop playsinline></video>
+                </div>
                 <h3 data-i18n="pf_5_title">創意剪輯作品</h3>
                 <p data-i18n="pf_5_desc">結合節奏與特效的影音創作。</p>
                 <a href="#" class="btn-link" data-i18n="pf_btn">查看專案詳情 ></a>
             </div>
             <div class="card">
-                <div class="reveal-img-wrapper"><img src="ProfilePicture.jpg" alt="Project 6" class="img-front"></div>
+                <div class="reveal-img-wrapper">
+                    <img src="ProfilePicture.jpg" alt="Project 6" class="img-front">
+                    <video src="video6.mp4" class="media-back" loop playsinline></video>
+                </div>
                 <h3 data-i18n="pf_6_title">敬請期待</h3>
                 <p data-i18n="pf_6_desc">更多精彩網頁與設計專案即將上線...</p>
                 <a href="#" class="btn-link" data-i18n="pf_btn">查看專案詳情 ></a>
@@ -111,14 +148,13 @@
     <footer class="site-footer">
         <div class="footer-container">
             <div class="footer-col">
-        <h4 data-i18n="footer_title_1">BroQiangStudio</h4>
-        <p data-i18n="footer_desc">致力於網頁開發、多媒體設計與創意專案。歡迎與我聯繫交流！</p>
-        <!-- 新增的聯繫我區塊 -->
-        <div class="footer-contact">
-            <strong data-i18n="footer_contact">聯繫我：</strong>
-            <a href="mailto:anle82760@gmail.com" class="footer-email">anle82760@gmail.com</a>
-        </div>
-    </div>
+                <h4 data-i18n="footer_title_1">BroQiangStudio</h4>
+                <p data-i18n="footer_desc">致力於網頁開發、多媒體設計與創意專案。歡迎與我聯繫交流！</p>
+                <div class="footer-contact">
+                    <strong data-i18n="footer_contact">聯繫我：</strong>
+                    <a href="mailto:anle82760@gmail.com" class="footer-email">anle82760@gmail.com</a>
+                </div>
+            </div>
             <div class="footer-col">
                 <h4 data-i18n="footer_title_2">快速導覽</h4>
                 <ul>
