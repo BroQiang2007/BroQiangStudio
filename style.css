@@ -327,11 +327,14 @@ a { text-decoration: none !important; color: inherit; }
     border-radius: 30px;
     transition: all 0.3s;
     border: 1px solid var(--border-color);
-    text-decoration: none !important; /* 確保選單沒有底線 */
+    text-decoration: none !important;
 }
+
+/* 🔥 手機側邊欄：點擊/懸停時加入專屬 LED 氛圍燈特效 */
 .sidebar-nav a.active, .sidebar-nav a:hover {
     border-color: var(--accent-color);
     color: var(--accent-color);
+    box-shadow: 0 0 20px var(--accent-color); /* 🔥 LED 光暈在這裡！ */
 }
 
 /* 設定按鈕完美角落位置 */
@@ -591,11 +594,14 @@ a { text-decoration: none !important; color: inherit; }
     transform: none !important;
 }
 
+/* 省電模式：關閉卡片、頭像、底部連結與側邊欄的發光/放大特效 */
 [data-performance="low"] .card:hover,
 [data-performance="low"] .profile-pic:hover,
 [data-performance="low"] .btn-link:hover,
 [data-performance="low"] .footer-email:hover,
-[data-performance="low"] .footer-col ul li a:hover {
+[data-performance="low"] .footer-col ul li a:hover,
+[data-performance="low"] .sidebar-nav a.active,
+[data-performance="low"] .sidebar-nav a:hover {
     transform: none !important;
     box-shadow: none !important;
 }
