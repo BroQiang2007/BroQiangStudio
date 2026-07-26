@@ -35,9 +35,9 @@ body {
 h1, h2, h3, h4 { font-weight: 700; }
 a { text-decoration: none; color: inherit; }
 
-/* ===== 全透明頂部導覽列 (Top Bar) - 🔥 改為 Fixed 固定在最上方 ===== */
+/* ===== 全透明頂部導覽列 (Top Bar) - Fixed 固定在最上方 ===== */
 .top-bar {
-    position: fixed !important; /* 🔥 讓導覽列跟著畫面滑動 */
+    position: fixed !important;
     top: 0;
     left: 0;
     width: 100%;
@@ -61,22 +61,22 @@ a { text-decoration: none; color: inherit; }
     pointer-events: auto !important;
 }
 
-/* 🔥 玻璃態按鈕通用設定 (包含 4個導覽文字、了解更多、設定齒輪、漢堡選單) */
+/* 玻璃態按鈕通用設定 (包含 4個導覽文字、了解更多、設定齒輪、漢堡選單) */
 .desktop-nav a,
 .intro-btn,
 .settings-icon-btn,
 .menu-btn {
-    background: rgba(255, 255, 255, 0.15) !important; /* 半透明液態玻璃白 */
+    background: rgba(255, 255, 255, 0.15) !important;
     backdrop-filter: blur(12px) !important;
     -webkit-backdrop-filter: blur(12px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.4) !important; /* 高光白邊框 */
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15) !important;
     color: var(--text-color) !important;
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8); /* 讓白字在白玻璃上也能清晰可見 */
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
     transition: all 0.3s ease;
 }
 
-/* ☀️ 日間模式的玻璃態自動切換，確保文字清晰 */
+/* 日間模式的玻璃態自動切換，確保文字清晰 */
 [data-theme="light"] .desktop-nav a,
 [data-theme="light"] .intro-btn,
 [data-theme="light"] .settings-icon-btn,
@@ -84,7 +84,7 @@ a { text-decoration: none; color: inherit; }
     background: rgba(255, 255, 255, 0.65) !important;
     border: 1px solid rgba(0, 0, 0, 0.2) !important;
     color: #1d1d1f !important;
-    text-shadow: none; /* 日間模式黑字不需陰影 */
+    text-shadow: none;
 }
 
 /* 漢堡按鈕 (手機版左上角) */
@@ -92,7 +92,7 @@ a { text-decoration: none; color: inherit; }
     display: none;
     width: 45px;
     height: 45px;
-    border-radius: 12px; /* 圓角矩形 */
+    border-radius: 12px;
     font-size: 1.5rem;
     align-items: center;
     justify-content: center;
@@ -132,7 +132,7 @@ a { text-decoration: none; color: inherit; }
     gap: 15px;
 }
 
-/* 🫧 了解更多 - 泡泡飄動動畫 */
+/* 了解更多 - 泡泡飄動動畫 */
 @keyframes floatBubble {
     0% { transform: translateY(0px); }
     50% { transform: translateY(-6px); }
@@ -144,14 +144,12 @@ a { text-decoration: none; color: inherit; }
     padding: 10px 24px;
     border-radius: 30px;
     font-weight: 600;
-    /* 🔥 常駐主題色邊框 */
     border: 2px solid var(--accent-color) !important; 
-    /* 🫧 泡泡特效啟動 */
     animation: floatBubble 3s ease-in-out infinite; 
 }
 .intro-btn:hover {
-    background: var(--accent-color) !important;
-    color: #fff !important;
+    background: rgba(255, 255, 255, 0.3) !important; /* 🔥 保持毛玻璃感 */
+    color: var(--accent-color) !important; /* 🔥 文字變更為主題色 */
     box-shadow: 0 0 20px var(--accent-color) !important;
     text-shadow: none;
 }
@@ -161,7 +159,7 @@ a { text-decoration: none; color: inherit; }
 .settings-icon-btn {
     width: 45px;
     height: 45px;
-    border-radius: 50%; /* 完美圓形 */
+    border-radius: 50%;
     font-size: 1.2rem;
     cursor: pointer;
     display: flex;
@@ -170,7 +168,7 @@ a { text-decoration: none; color: inherit; }
 }
 .settings-icon-btn:hover {
     border-color: var(--accent-color) !important;
-    transform: rotate(90deg) scale(1.1); /* 旋轉+微微放大 */
+    transform: rotate(90deg) scale(1.1);
     box-shadow: 0 0 15px var(--accent-color) !important;
     color: var(--accent-color) !important;
     text-shadow: none;
@@ -196,7 +194,6 @@ a { text-decoration: none; color: inherit; }
     transition: all 0.3s ease;
     z-index: 10001;
 }
-/* 手機版設定選單要往上彈 */
 .mobile-settings .settings-dropdown {
     top: auto;
     bottom: 60px;
@@ -277,7 +274,7 @@ a { text-decoration: none; color: inherit; }
     border-color: var(--accent-color);
 }
 
-/* ===== 手機版側邊欄 (Sidebar) - 🔥 新增 iOS 液態毛玻璃特效 ===== */
+/* ===== 手機版側邊欄 (Sidebar) ===== */
 .sidebar {
     position: fixed;
     top: 0;
@@ -285,7 +282,6 @@ a { text-decoration: none; color: inherit; }
     width: 300px;
     height: 100dvh; 
     
-    /* 深色模式毛玻璃 */
     background: rgba(20, 20, 20, 0.6) !important; 
     backdrop-filter: blur(25px) !important;
     -webkit-backdrop-filter: blur(25px) !important;
@@ -299,7 +295,6 @@ a { text-decoration: none; color: inherit; }
     padding: 40px 20px;
     overflow-y: auto; 
 }
-/* 淺色模式的側邊欄毛玻璃 */
 [data-theme="light"] .sidebar {
     background: rgba(255, 255, 255, 0.6) !important;
     border-right: 1px solid rgba(0, 0, 0, 0.1);
@@ -322,7 +317,6 @@ a { text-decoration: none; color: inherit; }
     color: var(--accent-color);
 }
 
-/* 手機側邊欄底部的設定按鈕位置 */
 .mobile-settings { 
     margin-top: auto; 
     align-self: flex-end; 
@@ -386,16 +380,37 @@ a { text-decoration: none; color: inherit; }
     transition: transform 0.3s;
 }
 .profile-pic:hover { transform: scale(1.05); }
-.hero-content h1 { font-size: 3.5rem; margin-bottom: 10px; letter-spacing: 2px; }
-.hero-content .subtitle { font-size: 1.2rem; color: var(--text-muted); font-weight: 300; }
+
+/* 🔥 主標題變更為常駐跟隨主題色 */
+.hero-content h1 { 
+    font-size: 3.5rem; 
+    margin-bottom: 10px; 
+    letter-spacing: 2px; 
+    color: var(--accent-color); 
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5); /* 讓名字更立體 */
+}
+
+/* 預設深色模式副標題 */
+.hero-content .subtitle { 
+    font-size: 1.2rem; 
+    color: var(--text-muted); 
+    font-weight: 300; 
+    text-shadow: 0 2px 5px rgba(0,0,0,0.8); /* 預設深色陰影增加對比 */
+}
 @media (max-width: 768px) {
     .hero-content h1 { font-size: 2.5rem; }
     .hero-content .subtitle { font-size: 1rem; padding: 0 20px; }
 }
+/* 🔥 日間模式下：加深副標題顏色並加上強烈白暈，確保背景變亮也絕對可見 */
+[data-theme="light"] .hero-content .subtitle { 
+    color: #222; 
+    font-weight: 600; 
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.9), 0 0 30px rgba(255, 255, 255, 0.8); 
+}
 
 /* ===== 內頁通用排版 (Page Content) ===== */
 .page-content {
-    padding: 120px 5% 60px; /* 上方留空間給固定的導覽列 */
+    padding: 120px 5% 60px;
     min-height: calc(100vh - 200px);
     max-width: 1200px;
     margin: 0 auto;
@@ -426,7 +441,7 @@ a { text-decoration: none; color: inherit; }
     padding-left: 10px;
 }
 
-/* ===== 卡片系統 (Card Grid) + 🔴 懸浮 LED 氛圍燈特效 ===== */
+/* ===== 卡片系統 (Card Grid) ===== */
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -446,7 +461,6 @@ a { text-decoration: none; color: inherit; }
 .card:hover {
     transform: translateY(-5px);
     border-color: var(--accent-color);
-    /* 🔴 只有當滑鼠停留在上面時，外框後面才會亮起 LED 氛圍燈！ */
     box-shadow: 0 0 30px var(--accent-color);
 }
 
@@ -549,7 +563,7 @@ a { text-decoration: none; color: inherit; }
     box-shadow: none !important;
 }
 
-/* 🔥 省電模式：針對 6 個上方按鈕進行簡化 (去除發光與毛玻璃) */
+/* 省電模式：針對上方按鈕進行簡化 (去除發光與毛玻璃) */
 [data-performance="low"] .desktop-nav a,
 [data-performance="low"] .settings-icon-btn,
 [data-performance="low"] .menu-btn,
@@ -561,10 +575,22 @@ a { text-decoration: none; color: inherit; }
     text-shadow: none !important;
     border: 1px solid var(--border-color) !important;
 }
-/* 確保「了解更多」的邊框維持主題色，但沒有動畫 */
+
+/* 🔥 省電模式下，滑鼠懸停時 6 個按鈕外框變為主題色 */
+[data-performance="low"] .desktop-nav a:hover,
+[data-performance="low"] .settings-icon-btn:hover,
+[data-performance="low"] .menu-btn:hover,
+[data-performance="low"] .intro-btn:hover {
+    border-color: var(--accent-color) !important;
+}
+
+/* 確保省電模式下，了解更多 hover 時文字依然變色，但關閉飄浮動畫 */
 [data-performance="low"] .intro-btn {
     border-color: var(--accent-color) !important;
     animation: none !important; 
+}
+[data-performance="low"] .intro-btn:hover {
+    color: var(--accent-color) !important;
 }
 
 [data-performance="low"] .reveal-img-wrapper .img-front { opacity: 1 !important; transform: scale(1) !important; }
