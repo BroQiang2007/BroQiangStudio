@@ -17,7 +17,7 @@
             <a href="games.html" data-i18n="nav_games">遊戲日常</a>
         </nav>
         <div class="top-right-controls">
-            <a href="about-me.html" class="intro-btn" data-i18n="intro_btn">了解更多</a>
+            <!-- 內頁移除了解更多按鈕 -->
             <div class="settings-wrapper desktop-only">
                 <button class="settings-icon-btn" id="desktopSettingsBtn">⚙️</button>
                 <div class="settings-dropdown" id="desktopDropdown">
@@ -46,7 +46,6 @@
     </header>
 
     <aside class="sidebar" id="sidebar">
-        <!-- 🔥 已修復：將標題與按鈕包裝在 sidebar-header 內確保並列 -->
         <div class="sidebar-header">
             <h2 class="sidebar-title" data-i18n="sidebar_menu">選單</h2>
             <button class="close-btn" id="closeBtn">×</button>
@@ -86,6 +85,20 @@
     <main class="page-content">
         <h2 class="section-title" data-i18n="resume_header">專業履歷</h2>
         
+        <!-- 🔥 調整順序：專業技能移至最上方 -->
+        <h3 class="sub-section-title" data-i18n="resume_sec_skill">🛠️ 專業技能</h3>
+        <div class="grid-container">
+            <div class="card">
+                <h3 data-i18n="resume_skill1_title"></h3>
+                <p data-i18n="resume_skill1_desc"></p>
+            </div>
+            <div class="card">
+                <h3 data-i18n="resume_skill2_title"></h3>
+                <p data-i18n="resume_skill2_desc"></p>
+            </div>
+        </div>
+        <br><br>
+
         <h3 class="sub-section-title" data-i18n="resume_sec_work">💼 工作經驗</h3>
         <div class="grid-container">
             <div class="card card-large">
@@ -106,19 +119,6 @@
                 <span class="date-text" data-i18n="resume_edu2_date"></span>
                 <h3 data-i18n="resume_edu2_school"></h3>
                 <p data-i18n="resume_edu2_major"></p>
-            </div>
-        </div>
-        <br><br>
-
-        <h3 class="sub-section-title" data-i18n="resume_sec_skill">🛠️ 專業技能</h3>
-        <div class="grid-container">
-            <div class="card">
-                <h3 data-i18n="resume_skill1_title"></h3>
-                <p data-i18n="resume_skill1_desc"></p>
-            </div>
-            <div class="card">
-                <h3 data-i18n="resume_skill2_title"></h3>
-                <p data-i18n="resume_skill2_desc"></p>
             </div>
         </div>
     </main>
@@ -145,7 +145,11 @@
             <div class="footer-col">
                 <h4 data-i18n="footer_title_3">社群平台</h4>
                 <ul>
-                    <li><a href="#" target="_blank" data-i18n="social_douyin">抖音</a></li>
+                    <li><a href="https://www.instagram.com/broqiang2007?utm_source=qr&igsh=MWh6cHk3NWptcW1wYw==" target="_blank" data-i18n="social_ig">Instagram</a></li>
+                    <li><a href="https://youtube.com/@broqiang2007?si=uo9xAyqIRmN0Kkyi" target="_blank" data-i18n="social_yt">YouTube</a></li>
+                    <li><a href="https://www.facebook.com/share/1DXNaqJbdc/" target="_blank" data-i18n="social_fb">Facebook</a></li>
+                    <li><a href="https://tiktok.com/@broqiangstudio/" target="_blank" data-i18n="social_tk">TikTok</a></li>
+                    <li><a href="https://v.douyin.com/Mxdam2fIoO4/" target="_blank" data-i18n="social_dy">抖音</a></li>
                 </ul>
             </div>
         </div>
