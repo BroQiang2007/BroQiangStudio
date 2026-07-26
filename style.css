@@ -322,12 +322,12 @@ a { text-decoration: none !important; color: inherit; }
     justify-content: space-between;
     align-items: center;
     margin-bottom: 30px;
-    padding-left: 10px; /* 保留原本標題的左邊距視覺 */
+    padding-left: 10px; 
 }
 .sidebar-title { 
     color: var(--text-color); 
     font-size: 1.5rem; 
-    margin: 0; /* 清除舊有 margin */
+    margin: 0; /* 清除預設邊距 */
 }
 .close-btn { 
     background: none; 
@@ -335,7 +335,8 @@ a { text-decoration: none !important; color: inherit; }
     color: var(--text-color); 
     font-size: 2rem; 
     cursor: pointer; 
-    padding: 0 10px; /* 增加點擊範圍 */
+    padding: 0 10px; /* 增加點擊範圍防誤觸 */
+    line-height: 1;
 }
 
 .sidebar-nav { display: flex; flex-direction: column; gap: 15px; flex-grow: 1; }
@@ -455,7 +456,7 @@ a { text-decoration: none !important; color: inherit; }
     text-shadow: 0 0 15px rgba(255, 255, 255, 0.9), 0 0 30px rgba(255, 255, 255, 0.8); 
 }
 
-/* 📊 訪客統計區塊 */
+/* 🔥 📊 訪客統計區塊 (修復為純淨的主題色變數，不再死守紅色) */
 .visitor-stats {
     display: inline-flex;
     flex-wrap: nowrap; 
@@ -478,6 +479,7 @@ a { text-decoration: none !important; color: inherit; }
     cursor: default;
 }
 
+/* 只有在滑鼠懸停時觸發光暈，完全連動所選主題色！ */
 .visitor-stats:hover {
     border-color: var(--accent-color);
     box-shadow: 0 0 20px var(--accent-color), inset 0 0 10px var(--accent-color);
@@ -561,16 +563,15 @@ a { text-decoration: none !important; color: inherit; }
 .footer-email:hover { transform: translateX(5px); text-shadow: 0 0 5px rgba(229, 9, 20, 0.5); }
 .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.85rem; }
 
-
 /* ===== ⚡ 效能模式控制邏輯 (三段式切換) ===== */
 
 /* ⚖️ 1. 均衡模式 (Medium): 關閉耗能的無限關鍵影格動畫，但保留毛玻璃與基礎懸停放大 */
 [data-performance="medium"] .intro-btn {
-    animation: none !important; /* 關閉了解更多的無限泡泡飄浮 */
+    animation: none !important; 
 }
 [data-performance="medium"] .profile-pic:hover,
 [data-performance="medium"] .profile-pic:active {
-    animation: none !important; /* 關閉無限賽博脈衝，但 CSS 原有的 scale 放大與基礎陰影會保留 */
+    animation: none !important; 
 }
 
 /* 🔋 2. 省電模式 (Low): 完全關閉模糊、陰影過渡與背景影片 */
