@@ -35,9 +35,9 @@ body {
 h1, h2, h3, h4 { font-weight: 700; }
 a { text-decoration: none; color: inherit; }
 
-/* ===== 全透明頂部導覽列 (Top Bar) ===== */
+/* ===== 全透明頂部導覽列 (Top Bar) - 🔥 改為 Fixed 固定在最上方 ===== */
 .top-bar {
-    position: absolute !important;
+    position: fixed !important; /* 🔥 讓導覽列跟著畫面滑動 */
     top: 0;
     left: 0;
     width: 100%;
@@ -108,14 +108,14 @@ a { text-decoration: none; color: inherit; }
 /* 電腦版導覽連結 */
 .desktop-nav {
     display: flex;
-    gap: 12px; /* 有邊框了，間距縮小一點比較緊湊好看 */
+    gap: 12px; 
     align-items: center;
 }
 .desktop-nav a {
     font-weight: 500;
     font-size: 1.05rem;
     padding: 8px 18px;
-    border-radius: 20px; /* 膠囊狀 */
+    border-radius: 20px; 
 }
 .desktop-nav a:hover, .desktop-nav a.active {
     border-color: var(--accent-color) !important;
@@ -144,7 +144,7 @@ a { text-decoration: none; color: inherit; }
     padding: 10px 24px;
     border-radius: 30px;
     font-weight: 600;
-    /* 🔥 常駐主題色邊框（覆蓋原本的白邊） */
+    /* 🔥 常駐主題色邊框 */
     border: 2px solid var(--accent-color) !important; 
     /* 🫧 泡泡特效啟動 */
     animation: floatBubble 3s ease-in-out infinite; 
@@ -277,22 +277,34 @@ a { text-decoration: none; color: inherit; }
     border-color: var(--accent-color);
 }
 
-/* ===== 手機版側邊欄 (Sidebar) ===== */
+/* ===== 手機版側邊欄 (Sidebar) - 🔥 新增 iOS 液態毛玻璃特效 ===== */
 .sidebar {
     position: fixed;
     top: 0;
     left: -300px;
     width: 300px;
-    height: 100dvh; /* 🔥 修正 Bug：改用動態視窗高度，避免被手機原生導航條吃掉 */
-    background: var(--bg-color);
+    height: 100dvh; 
+    
+    /* 深色模式毛玻璃 */
+    background: rgba(20, 20, 20, 0.6) !important; 
+    backdrop-filter: blur(25px) !important;
+    -webkit-backdrop-filter: blur(25px) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    
     box-shadow: 2px 0 15px rgba(0,0,0,0.5);
     z-index: 10000 !important;
     transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
     padding: 40px 20px;
-    overflow-y: auto; /* 若螢幕太小可以滾動 */
+    overflow-y: auto; 
 }
+/* 淺色模式的側邊欄毛玻璃 */
+[data-theme="light"] .sidebar {
+    background: rgba(255, 255, 255, 0.6) !important;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
 .sidebar.active { left: 0; }
 .sidebar-title { color: var(--text-color); font-size: 1.5rem; margin-bottom: 30px; margin-left: 10px; }
 .close-btn { position: absolute; top: 20px; right: 20px; background: none; border: none; color: var(--text-color); font-size: 2rem; cursor: pointer; }
@@ -310,19 +322,19 @@ a { text-decoration: none; color: inherit; }
     color: var(--accent-color);
 }
 
-/* ⚙️ 修正手機側邊欄底部的設定按鈕位置 */
+/* 手機側邊欄底部的設定按鈕位置 */
 .mobile-settings { 
     margin-top: auto; 
     align-self: flex-end; 
-    margin-bottom: 40px; /* 🔥 往上推離邊界，確保圖示 100% 完整 */
-    margin-right: 15px;  /* 🔥 往左推一點 */
+    margin-bottom: 40px; 
+    margin-right: 15px;  
 }
 
 /* 響應式控制：電腦隱藏側邊欄，手機隱藏頂部導覽列 */
 .mobile-only { display: none; }
 @media (max-width: 900px) {
     .desktop-nav, .desktop-only { display: none; }
-    .menu-btn { display: flex !important; } /* 🔥 確保漢堡線條完美置中 */
+    .menu-btn { display: flex !important; } 
     .mobile-only { display: block; }
 }
 
@@ -383,7 +395,7 @@ a { text-decoration: none; color: inherit; }
 
 /* ===== 內頁通用排版 (Page Content) ===== */
 .page-content {
-    padding: 120px 5% 60px; /* 上方留空間給絕對透明的導覽列 */
+    padding: 120px 5% 60px; /* 上方留空間給固定的導覽列 */
     min-height: calc(100vh - 200px);
     max-width: 1200px;
     margin: 0 auto;
@@ -531,16 +543,30 @@ a { text-decoration: none; color: inherit; }
 [data-performance="low"] .card:hover,
 [data-performance="low"] .profile-pic:hover,
 [data-performance="low"] .btn-link:hover,
-[data-performance="low"] .intro-btn:hover,
 [data-performance="low"] .footer-email:hover,
 [data-performance="low"] .footer-col ul li a:hover {
     transform: none !important;
     box-shadow: none !important;
 }
-/* 低效能模式下關閉泡泡飄動動畫 */
+
+/* 🔥 省電模式：針對 6 個上方按鈕進行簡化 (去除發光與毛玻璃) */
+[data-performance="low"] .desktop-nav a,
+[data-performance="low"] .settings-icon-btn,
+[data-performance="low"] .menu-btn,
 [data-performance="low"] .intro-btn {
+    background: var(--bg-color) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    border: 1px solid var(--border-color) !important;
+}
+/* 確保「了解更多」的邊框維持主題色，但沒有動畫 */
+[data-performance="low"] .intro-btn {
+    border-color: var(--accent-color) !important;
     animation: none !important; 
 }
+
 [data-performance="low"] .reveal-img-wrapper .img-front { opacity: 1 !important; transform: scale(1) !important; }
 [data-performance="low"] .reveal-img-wrapper .media-back { opacity: 0 !important; display: none !important; }
 [data-performance="low"] .hero-bg video { display: none !important; }
