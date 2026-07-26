@@ -370,7 +370,7 @@ a { text-decoration: none; color: inherit; }
     padding-left: 10px;
 }
 
-/* ===== 卡片系統 (Card Grid) + 🔴 LED 氛圍燈特效 ===== */
+/* ===== 卡片系統 (Card Grid) + 🔴 懸浮 LED 氛圍燈特效 ===== */
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -386,15 +386,13 @@ a { text-decoration: none; color: inherit; }
     -webkit-backdrop-filter: blur(10px);
     display: flex;
     flex-direction: column;
-    
-    /* 🔴 LED 氛圍燈 (預設微微發光，顏色會自動跟隨你的設定！) */
-    box-shadow: 0 0 12px var(--accent-color);
+    /* 預設沒有任何發光，保持乾淨 */
 }
 .card:hover {
     transform: translateY(-5px);
     border-color: var(--accent-color);
-    /* 🔴 滑鼠懸浮時，LED 燈瞬間向外爆亮，且內側也有微光！ */
-    box-shadow: 0 0 30px var(--accent-color), inset 0 0 10px var(--accent-color);
+    /* 🔴 只有當滑鼠停留在上面時，外框後面才會亮起 LED 氛圍燈！ */
+    box-shadow: 0 0 30px var(--accent-color);
 }
 
 .card h3 { font-size: 1.5rem; margin-bottom: 10px; }
@@ -487,7 +485,6 @@ a { text-decoration: none; color: inherit; }
 
 /* ===== ⚡ 效能/省電模式邏輯 (關閉模糊與動態特效) ===== */
 [data-performance="low"] * { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
-[data-performance="low"] .card,  /* 為了省電，低效能模式會關閉 LED 發光 */
 [data-performance="low"] .card:hover,
 [data-performance="low"] .profile-pic:hover,
 [data-performance="low"] .btn-link:hover,
