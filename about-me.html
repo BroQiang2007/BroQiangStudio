@@ -27,15 +27,27 @@
                         <option value="ms">Bahasa Melayu</option>
                     </select>
                     <button class="theme-toggle-btn"><span class="theme-icon">☀️</span> <span class="theme-text">日間模式</span></button>
-                    <!-- 新增：全域聲音設定 -->
                     <button class="sound-toggle-btn"><span class="sound-icon">🔇</span> <span class="sound-text">聲音：靜音</span></button>
+                    <!-- ⚡ 效能模式 -->
+                    <button class="perf-toggle-btn"><span class="perf-icon">⚡</span> <span class="perf-text" data-i18n="perf_high">效能：極致</span></button>
+                    <!-- 🎨 主題色切換 -->
+                    <div class="color-picker-wrapper">
+                        <span class="color-picker-title" data-i18n="color_picker_title">主題色</span>
+                        <div class="color-dots">
+                            <span class="color-dot" data-color="#e50914" style="background: #e50914;" title="Bugatti Red"></span>
+                            <span class="color-dot" data-color="#ff9800" style="background: #ff9800;" title="Lambo Orange"></span>
+                            <span class="color-dot" data-color="#00bcd4" style="background: #00bcd4;" title="Tech Blue"></span>
+                            <span class="color-dot" data-color="#4caf50" style="background: #4caf50;" title="Eco Green"></span>
+                        </div>
+                    </div>
+                    <!-- 🔄 恢復預設 -->
+                    <button class="reset-btn" data-i18n="reset_btn">🔄 恢復預設</button>
                 </div>
             </div>
         </div>
     </header>
 
     <aside class="sidebar" id="sidebar">
-        <!-- 加入下面這一行標題 -->
         <h2 class="sidebar-title" data-i18n="sidebar_menu">選單</h2>
         <button class="close-btn" id="closeBtn">×</button>
         <nav class="sidebar-nav">
@@ -53,8 +65,21 @@
                     <option value="ms">Bahasa Melayu</option>
                 </select>
                 <button class="theme-toggle-btn"><span class="theme-icon">☀️</span> <span class="theme-text">日間模式</span></button>
-                <!-- 新增：全域聲音設定 -->
                 <button class="sound-toggle-btn"><span class="sound-icon">🔇</span> <span class="sound-text">聲音：靜音</span></button>
+                <!-- ⚡ 效能模式 -->
+                <button class="perf-toggle-btn"><span class="perf-icon">⚡</span> <span class="perf-text" data-i18n="perf_high">效能：極致</span></button>
+                <!-- 🎨 主題色切換 -->
+                <div class="color-picker-wrapper">
+                    <span class="color-picker-title" data-i18n="color_picker_title">主題色</span>
+                    <div class="color-dots">
+                        <span class="color-dot" data-color="#e50914" style="background: #e50914;" title="Bugatti Red"></span>
+                        <span class="color-dot" data-color="#ff9800" style="background: #ff9800;" title="Lambo Orange"></span>
+                        <span class="color-dot" data-color="#00bcd4" style="background: #00bcd4;" title="Tech Blue"></span>
+                        <span class="color-dot" data-color="#4caf50" style="background: #4caf50;" title="Eco Green"></span>
+                    </div>
+                </div>
+                <!-- 🔄 恢復預設 -->
+                <button class="reset-btn" data-i18n="reset_btn">🔄 恢復預設</button>
             </div>
             <button class="settings-icon-btn" id="mobileSettingsBtn">⚙️</button>
         </div>
