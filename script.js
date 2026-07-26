@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (mobileDropdown) mobileDropdown.classList.remove('active');
     });
 
-    // 3. 多國語言字典 (加入均衡模式)
+    // 3. 多國語言字典 (🔥 加入均衡模式 perf_medium)
     const translations = {
         "zh-TW": {
             "theme_light": "日間模式", "theme_dark": "夜間模式",
@@ -104,24 +104,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // --- 核心更新介面與同步狀態邏輯 ---
     function updateLanguageAndSettings(lang) {
-        // 翻譯一般文字
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (translations[lang] && translations[lang][key]) { el.textContent = translations[lang][key]; }
         });
         
-        // 語言選單同步
         document.querySelectorAll('.lang-selector').forEach(selector => { 
             if(selector.value !== lang) selector.value = lang; 
         });
         localStorage.setItem('preferredLang', lang);
 
-        // 同步「日夜模式」
         const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
         const themeKey = currentTheme === 'dark' ? 'theme_light' : 'theme_dark';
         document.querySelectorAll('.theme-text').forEach(textEl => { textEl.textContent = translations[lang][themeKey]; });
 
-        // 同步「聲音設定」
         const isMuted = localStorage.getItem('globalMuted') !== 'false';
         const soundKey = isMuted ? 'sound_off' : 'sound_on';
         document.querySelectorAll('.sound-text').forEach(textEl => { textEl.textContent = translations[lang][soundKey]; });
@@ -170,7 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (bgVideo) {
         bgVideo.muted = initMuted;
         if (initPerf === 'low') {
-            bgVideo.pause(); // 省電模式停止播放
+            bgVideo.pause(); 
         } else if (!initMuted) {
             bgVideo.play().catch(e => {
                 console.log("自動播放被阻擋，已切換回靜音");
@@ -228,7 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // 🔥 效能模式切換 (三段式：高 -> 均衡 -> 省電 -> 高)
+    // 🔥 效能模式切換 (三段式循環：極致 -> 均衡 -> 省電)
     document.querySelectorAll('.perf-toggle-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -242,7 +238,7 @@ document.addEventListener("DOMContentLoaded", () => {
             
             if (bgVideo) {
                 if (nextMode === 'low') {
-                    bgVideo.pause(); // 省電模式停播
+                    bgVideo.pause(); // 只有省電模式停播
                 } else {
                     bgVideo.play().catch(err => console.log(err)); // 極致與均衡皆保留背景影片
                 }
