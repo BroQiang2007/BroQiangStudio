@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
         closeBtn.addEventListener('click', () => { sidebar.classList.remove('active'); });
     }
 
-    // 2. 齒輪設定選單控制 (點擊內部不關閉)
+    // 2. 齒輪設定選單控制
     const desktopSettingsBtn = document.getElementById('desktopSettingsBtn');
     const desktopDropdown = document.getElementById('desktopDropdown');
     const mobileSettingsBtn = document.getElementById('mobileSettingsBtn');
@@ -30,12 +30,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (mobileDropdown) mobileDropdown.classList.remove('active');
     });
 
-    // 3. 多國語言字典 (新增新功能詞彙)
+    // 3. 多國語言字典 (加入均衡模式)
     const translations = {
         "zh-TW": {
             "theme_light": "日間模式", "theme_dark": "夜間模式",
             "sound_on": "聲音：開啟", "sound_off": "聲音：靜音",
-            "perf_high": "效能：極致", "perf_low": "效能：省電",
+            "perf_high": "效能：極致", "perf_medium": "效能：均衡", "perf_low": "效能：省電",
             "color_picker_title": "主題色",
             "reset_btn": "🔄 恢復預設", "reset_confirm": "確定要將所有設定恢復預設嗎？",
             "sidebar_menu": "選單",
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "zh-CN": {
             "theme_light": "日间模式", "theme_dark": "夜间模式",
             "sound_on": "声音：开启", "sound_off": "声音：静音",
-            "perf_high": "性能：极致", "perf_low": "性能：省电",
+            "perf_high": "性能：极致", "perf_medium": "性能：均衡", "perf_low": "性能：省电",
             "color_picker_title": "主题色",
             "reset_btn": "🔄 恢复默认", "reset_confirm": "确定要将所有设置恢复默认吗？",
             "sidebar_menu": "菜单",
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "en": {
             "theme_light": "Light Mode", "theme_dark": "Dark Mode",
             "sound_on": "Sound: On", "sound_off": "Sound: Muted",
-            "perf_high": "Performance: High", "perf_low": "Performance: Low",
+            "perf_high": "Perf: High", "perf_medium": "Perf: Balanced", "perf_low": "Perf: Low",
             "color_picker_title": "Accent Color",
             "reset_btn": "🔄 Reset Settings", "reset_confirm": "Are you sure you want to reset all settings to default?",
             "sidebar_menu": "Menu",
@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "ms": {
             "theme_light": "Mod Cerah", "theme_dark": "Mod Gelap",
             "sound_on": "Bunyi: Buka", "sound_off": "Bunyi: Senyap",
-            "perf_high": "Prestasi: Tinggi", "perf_low": "Prestasi: Jimat",
+            "perf_high": "Prestasi: Tinggi", "perf_medium": "Prestasi: Seimbang", "perf_low": "Prestasi: Jimat",
             "color_picker_title": "Warna Tema",
             "reset_btn": "🔄 Tetap Semula", "reset_confirm": "Adakah anda pasti mahu menetapkan semula semua tetapan?",
             "sidebar_menu": "Menu",
@@ -127,45 +127,50 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll('.sound-text').forEach(textEl => { textEl.textContent = translations[lang][soundKey]; });
         document.querySelectorAll('.sound-icon').forEach(iconEl => { iconEl.textContent = isMuted ? '🔇' : '🔊'; });
 
-        // 同步「效能模式」
-        const isLowPerf = localStorage.getItem('performanceMode') === 'low';
-        const perfKey = isLowPerf ? 'perf_low' : 'perf_high';
+        // 🔥 同步「效能模式」 (新增均衡模式邏輯)
+        const perfMode = localStorage.getItem('performanceMode') || 'high';
+        let perfKey = 'perf_high';
+        let perfIcon = '⚡';
+        
+        if (perfMode === 'medium') {
+            perfKey = 'perf_medium';
+            perfIcon = '⚖️'; // 均衡圖示
+        } else if (perfMode === 'low') {
+            perfKey = 'perf_low';
+            perfIcon = '🔋'; // 省電圖示
+        }
+        
         document.querySelectorAll('.perf-text').forEach(textEl => { textEl.textContent = translations[lang][perfKey]; });
-        document.querySelectorAll('.perf-icon').forEach(iconEl => { iconEl.textContent = isLowPerf ? '🔋' : '⚡'; });
+        document.querySelectorAll('.perf-icon').forEach(iconEl => { iconEl.textContent = perfIcon; });
     }
 
-    // --- 網頁載入時的初始化 (加入日夜、顏色、效能記憶功能) ---
-    // 1. 日夜模式
+    // --- 網頁載入時的初始化 ---
     const savedTheme = localStorage.getItem('preferredTheme') || 'dark';
     document.documentElement.setAttribute('data-theme', savedTheme);
     document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
         btn.querySelector('.theme-icon').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
     });
 
-    // 2. 讀取並套用語系
     const savedLang = localStorage.getItem('preferredLang') || 'zh-TW';
     updateLanguageAndSettings(savedLang);
 
-    // 3. 全域聲音狀態
     const initMuted = localStorage.getItem('globalMuted') !== 'false'; 
 
-    // 4. 主題色 (預設 Bugatti 紅 #e50914)
     const savedColor = localStorage.getItem('preferredColor') || '#e50914';
     document.documentElement.style.setProperty('--accent-color', savedColor);
     document.querySelectorAll('.color-dot').forEach(dot => {
         dot.classList.toggle('active', dot.getAttribute('data-color') === savedColor);
     });
 
-    // 5. 效能模式
     const initPerf = localStorage.getItem('performanceMode') || 'high';
     document.documentElement.setAttribute('data-performance', initPerf);
     
-    // 初始化背景影片聲音與效能控制 (首頁專用)
+    // 背景影片播放控制
     const bgVideo = document.getElementById('bgVideo');
     if (bgVideo) {
         bgVideo.muted = initMuted;
         if (initPerf === 'low') {
-            bgVideo.pause(); // 省電模式停止播放背景影片
+            bgVideo.pause(); // 省電模式停止播放
         } else if (!initMuted) {
             bgVideo.play().catch(e => {
                 console.log("自動播放被阻擋，已切換回靜音");
@@ -176,7 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // 初始化遊戲日常影片懸浮控制 (遊戲頁專用)
+    // 遊戲頁懸停控制
     const cards = document.querySelectorAll('.card');
     cards.forEach(card => {
         const video = card.querySelector('video.media-back');
@@ -193,12 +198,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // --- 事件綁定 ---
-    // 語言切換
     document.querySelectorAll('.lang-selector').forEach(selector => { 
         selector.addEventListener('change', (e) => { updateLanguageAndSettings(e.target.value); }); 
     });
 
-    // 日夜模式切換
     document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-theme');
@@ -213,7 +216,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // 聲音開關切換
     document.querySelectorAll('.sound-toggle-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             let isMuted = localStorage.getItem('globalMuted') !== 'false';
@@ -226,18 +228,24 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // 效能模式切換
+    // 🔥 效能模式切換 (三段式：高 -> 均衡 -> 省電 -> 高)
     document.querySelectorAll('.perf-toggle-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
-            let isLowPerf = localStorage.getItem('performanceMode') === 'low';
-            isLowPerf = !isLowPerf;
-            localStorage.setItem('performanceMode', isLowPerf ? 'low' : 'high');
-            document.documentElement.setAttribute('data-performance', isLowPerf ? 'low' : 'high');
+            const modes = ['high', 'medium', 'low'];
+            let currentMode = localStorage.getItem('performanceMode') || 'high';
+            let nextIndex = (modes.indexOf(currentMode) + 1) % modes.length;
+            let nextMode = modes[nextIndex];
+            
+            localStorage.setItem('performanceMode', nextMode);
+            document.documentElement.setAttribute('data-performance', nextMode);
             
             if (bgVideo) {
-                if (isLowPerf) bgVideo.pause();
-                else bgVideo.play().catch(err=>console.log(err));
+                if (nextMode === 'low') {
+                    bgVideo.pause(); // 省電模式停播
+                } else {
+                    bgVideo.play().catch(err => console.log(err)); // 極致與均衡皆保留背景影片
+                }
             }
             
             const currentLang = localStorage.getItem('preferredLang') || 'zh-TW';
@@ -245,22 +253,18 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // 主題色切換
     document.querySelectorAll('.color-dot').forEach(dot => {
         dot.addEventListener('click', (e) => {
             e.stopPropagation();
             const newColor = dot.getAttribute('data-color');
             document.documentElement.style.setProperty('--accent-color', newColor);
             localStorage.setItem('preferredColor', newColor);
-            
-            // 同步更新所有的顏色圓點為 active 狀態
             document.querySelectorAll('.color-dot').forEach(d => {
                 d.classList.toggle('active', d.getAttribute('data-color') === newColor);
             });
         });
     });
 
-    // 恢復預設設定
     document.querySelectorAll('.reset-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -272,7 +276,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // ===== 📊 模擬訪客統計動畫邏輯 =====
+    // 📊 模擬訪客統計動畫
     function updateVisitorStats() {
         let total = parseInt(localStorage.getItem('totalVisitors') || '12048');
         let daily = parseInt(localStorage.getItem('dailyVisitors') || '132');
