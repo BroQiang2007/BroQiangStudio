@@ -45,97 +45,138 @@ a { text-decoration: none; color: inherit; }
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: transparent !important; /* 絕對透明 */
+    background: transparent !important; 
     box-shadow: none !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     z-index: 9999 !important;
-    pointer-events: none !important; /* 讓透明區塊可穿透 */
+    pointer-events: none !important;
 }
 
 /* 確保導覽列內的元件可以被點擊 */
 .top-bar .menu-btn,
 .top-bar .desktop-nav,
-.top-bar .top-right-controls {
+.top-bar .top-right-controls,
+.sidebar .settings-icon-btn {
     pointer-events: auto !important;
 }
 
-/* 漢堡按鈕 (手機版專用) */
+/* 🔥 玻璃態按鈕通用設定 (包含 4個導覽文字、了解更多、設定齒輪、漢堡選單) */
+.desktop-nav a,
+.intro-btn,
+.settings-icon-btn,
+.menu-btn {
+    background: rgba(255, 255, 255, 0.15) !important; /* 半透明液態玻璃白 */
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important; /* 高光白邊框 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15) !important;
+    color: var(--text-color) !important;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8); /* 讓白字在白玻璃上也能清晰可見 */
+    transition: all 0.3s ease;
+}
+
+/* ☀️ 日間模式的玻璃態自動切換，確保文字清晰 */
+[data-theme="light"] .desktop-nav a,
+[data-theme="light"] .intro-btn,
+[data-theme="light"] .settings-icon-btn,
+[data-theme="light"] .menu-btn {
+    background: rgba(255, 255, 255, 0.65) !important;
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    color: #1d1d1f !important;
+    text-shadow: none; /* 日間模式黑字不需陰影 */
+}
+
+/* 漢堡按鈕 (手機版左上角) */
 .menu-btn {
     display: none;
-    background: none;
-    border: none;
-    color: var(--text-color);
-    font-size: 2rem;
+    width: 45px;
+    height: 45px;
+    border-radius: 12px; /* 圓角矩形 */
+    font-size: 1.5rem;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    transition: color 0.3s;
 }
-.menu-btn:hover { color: var(--accent-color); }
+.menu-btn:hover { 
+    border-color: var(--accent-color) !important;
+    color: var(--accent-color) !important;
+    box-shadow: 0 0 15px var(--accent-color) !important;
+    text-shadow: none;
+}
 
 /* 電腦版導覽連結 */
 .desktop-nav {
     display: flex;
-    gap: 30px;
+    gap: 12px; /* 有邊框了，間距縮小一點比較緊湊好看 */
     align-items: center;
 }
 .desktop-nav a {
-    color: var(--text-color);
     font-weight: 500;
-    font-size: 1.1rem;
-    padding: 8px 16px;
-    border-radius: 20px;
-    transition: all 0.3s ease;
-    border: 1px solid transparent;
+    font-size: 1.05rem;
+    padding: 8px 18px;
+    border-radius: 20px; /* 膠囊狀 */
 }
 .desktop-nav a:hover, .desktop-nav a.active {
-    color: var(--accent-color);
-    border-color: var(--border-color);
-    background: rgba(255,255,255,0.05);
+    border-color: var(--accent-color) !important;
+    background: rgba(255, 255, 255, 0.3) !important;
+    color: var(--accent-color) !important;
+    box-shadow: 0 0 15px var(--accent-color) !important;
+    text-shadow: none;
 }
 
-/* 右上角控制區 (包含 了解更多 & 設定) */
+/* 右上角控制區 */
 .top-right-controls {
     display: flex;
     align-items: center;
     gap: 15px;
 }
 
-.intro-btn {
-    padding: 10px 24px;
-    background: transparent;
-    color: var(--text-color);
-    border: 1px solid var(--border-color);
-    border-radius: 30px;
-    font-weight: 600;
-    transition: all 0.3s;
-}
-.intro-btn:hover {
-    border-color: var(--accent-color);
-    color: var(--accent-color);
-    box-shadow: 0 0 15px rgba(229, 9, 20, 0.3);
+/* 🫧 了解更多 - 泡泡飄動動畫 */
+@keyframes floatBubble {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0px); }
 }
 
-/* ===== 設定選單 (Settings Dropdown) ===== */
+/* 了解更多按鈕專屬設定 */
+.intro-btn {
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-weight: 600;
+    /* 🔥 常駐主題色邊框（覆蓋原本的白邊） */
+    border: 2px solid var(--accent-color) !important; 
+    /* 🫧 泡泡特效啟動 */
+    animation: floatBubble 3s ease-in-out infinite; 
+}
+.intro-btn:hover {
+    background: var(--accent-color) !important;
+    color: #fff !important;
+    box-shadow: 0 0 20px var(--accent-color) !important;
+    text-shadow: none;
+}
+
+/* 設定齒輪按鈕 */
 .settings-wrapper { position: relative; }
 .settings-icon-btn {
-    background: transparent;
-    border: 1px solid var(--border-color);
-    color: var(--text-color);
-    font-size: 1.2rem;
     width: 45px;
     height: 45px;
-    border-radius: 50%;
+    border-radius: 50%; /* 完美圓形 */
+    font-size: 1.2rem;
     cursor: pointer;
-    transition: all 0.3s;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .settings-icon-btn:hover {
-    border-color: var(--accent-color);
-    transform: rotate(90deg);
+    border-color: var(--accent-color) !important;
+    transform: rotate(90deg) scale(1.1); /* 旋轉+微微放大 */
+    box-shadow: 0 0 15px var(--accent-color) !important;
+    color: var(--accent-color) !important;
+    text-shadow: none;
 }
 
+/* ===== 設定選單 (Settings Dropdown) ===== */
 .settings-dropdown {
     position: absolute;
     top: 60px;
@@ -162,13 +203,11 @@ a { text-decoration: none; color: inherit; }
     right: 0;
     transform: translateY(10px);
 }
-
 .settings-dropdown.active {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
 }
-
 .lang-selector {
     width: 100%;
     padding: 10px;
@@ -180,7 +219,6 @@ a { text-decoration: none; color: inherit; }
     font-family: inherit;
 }
 .lang-selector option { background: var(--bg-color); color: var(--text-color); }
-
 .theme-toggle-btn, .sound-toggle-btn, .perf-toggle-btn {
     width: 100%;
     background: transparent;
@@ -196,8 +234,6 @@ a { text-decoration: none; color: inherit; }
 .theme-toggle-btn:hover, .sound-toggle-btn:hover, .perf-toggle-btn:hover {
     border-color: var(--text-muted);
 }
-
-/* 🎨 彩虹六色主題選單樣式 */
 .color-picker-wrapper {
     display: flex;
     flex-direction: column;
@@ -223,7 +259,6 @@ a { text-decoration: none; color: inherit; }
     transform: scale(1.15);
     box-shadow: 0 0 10px var(--accent-color);
 }
-
 .reset-btn {
     width: 100%;
     background: rgba(255,255,255,0.05);
@@ -248,7 +283,7 @@ a { text-decoration: none; color: inherit; }
     top: 0;
     left: -300px;
     width: 300px;
-    height: 100vh;
+    height: 100dvh; /* 🔥 修正 Bug：改用動態視窗高度，避免被手機原生導航條吃掉 */
     background: var(--bg-color);
     box-shadow: 2px 0 15px rgba(0,0,0,0.5);
     z-index: 10000 !important;
@@ -256,6 +291,7 @@ a { text-decoration: none; color: inherit; }
     display: flex;
     flex-direction: column;
     padding: 40px 20px;
+    overflow-y: auto; /* 若螢幕太小可以滾動 */
 }
 .sidebar.active { left: 0; }
 .sidebar-title { color: var(--text-color); font-size: 1.5rem; margin-bottom: 30px; margin-left: 10px; }
@@ -273,13 +309,21 @@ a { text-decoration: none; color: inherit; }
     border-color: var(--accent-color);
     color: var(--accent-color);
 }
-.mobile-settings { margin-top: auto; align-self: flex-end; }
+
+/* ⚙️ 修正手機側邊欄底部的設定按鈕位置 */
+.mobile-settings { 
+    margin-top: auto; 
+    align-self: flex-end; 
+    margin-bottom: 40px; /* 🔥 往上推離邊界，確保圖示 100% 完整 */
+    margin-right: 15px;  /* 🔥 往左推一點 */
+}
 
 /* 響應式控制：電腦隱藏側邊欄，手機隱藏頂部導覽列 */
 .mobile-only { display: none; }
 @media (max-width: 900px) {
     .desktop-nav, .desktop-only { display: none; }
-    .menu-btn, .mobile-only { display: block; }
+    .menu-btn { display: flex !important; } /* 🔥 確保漢堡線條完美置中 */
+    .mobile-only { display: block; }
 }
 
 /* ===== 首頁專用 (Hero Section) ===== */
@@ -386,7 +430,6 @@ a { text-decoration: none; color: inherit; }
     -webkit-backdrop-filter: blur(10px);
     display: flex;
     flex-direction: column;
-    /* 預設沒有任何發光，保持乾淨 */
 }
 .card:hover {
     transform: translateY(-5px);
@@ -493,6 +536,10 @@ a { text-decoration: none; color: inherit; }
 [data-performance="low"] .footer-col ul li a:hover {
     transform: none !important;
     box-shadow: none !important;
+}
+/* 低效能模式下關閉泡泡飄動動畫 */
+[data-performance="low"] .intro-btn {
+    animation: none !important; 
 }
 [data-performance="low"] .reveal-img-wrapper .img-front { opacity: 1 !important; transform: scale(1) !important; }
 [data-performance="low"] .reveal-img-wrapper .media-back { opacity: 0 !important; display: none !important; }
