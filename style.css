@@ -353,7 +353,7 @@ a { text-decoration: none !important; color: inherit; }
     .mobile-only { display: block; }
 }
 
-/* ===== 首頁專用 (Hero Section) ===== */
+/* ===== 首頁與頭像特效 (Hero Section & CyberPulse) ===== */
 .hero-section {
     position: relative;
     height: 100vh;
@@ -390,17 +390,37 @@ a { text-decoration: none !important; color: inherit; }
     z-index: 10 !important;
     text-align: center;
 }
+
+/* 🔥 電競賽博風：從高光到深色漸層的脈衝動畫 */
+@keyframes cyberPulse {
+    0% {
+        box-shadow: 0 0 10px var(--accent-color), 
+                    0 0 20px var(--accent-color);
+    }
+    100% {
+        box-shadow: 0 0 15px var(--accent-color), 
+                    0 0 35px var(--accent-color), 
+                    0 0 60px var(--accent-color);
+    }
+}
+
 .profile-pic {
     width: 180px;
     height: 180px;
     border-radius: 50%;
     object-fit: cover;
     border: 4px solid var(--accent-color);
-    box-shadow: 0 0 20px rgba(229, 9, 20, 0.5);
+    /* 將固定的紅色光暈改為跟隨主題色的漸層基礎光暈 */
+    box-shadow: 0 0 15px var(--accent-color);
     margin-bottom: 20px;
-    transition: transform 0.3s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.profile-pic:hover { transform: scale(1.05); }
+
+/* 點擊或懸停時，啟動極致光暈與脈衝動畫 */
+.profile-pic:hover, .profile-pic:active {
+    transform: scale(1.05);
+    animation: cyberPulse 0.8s infinite alternate ease-in-out;
+}
 
 .hero-content h1 { 
     font-size: 3.5rem; 
@@ -594,7 +614,13 @@ a { text-decoration: none !important; color: inherit; }
     transform: none !important;
 }
 
-/* 省電模式：關閉卡片、頭像、底部連結與側邊欄的發光/放大特效 */
+/* 🔥 關鍵修復：省電模式下，頭像徹底移除發光與動畫，解決反相閃爍 Bug */
+[data-performance="low"] .profile-pic {
+    box-shadow: none !important;
+    animation: none !important;
+}
+
+/* 省電模式：關閉卡片、底部連結與側邊欄的發光/放大特效 */
 [data-performance="low"] .card:hover,
 [data-performance="low"] .profile-pic:hover,
 [data-performance="low"] .btn-link:hover,
@@ -620,13 +646,13 @@ a { text-decoration: none !important; color: inherit; }
     color: var(--text-color) !important;
 }
 
-/* 🔥 關鍵修復：省電模式下，當前所在頁面的按鈕 (active) 必須保持主題色外框與文字 */
+/* 省電模式下，當前所在頁面的按鈕 (active) 必須保持主題色外框與文字 */
 [data-performance="low"] .desktop-nav a.active {
     border-color: var(--accent-color) !important;
     color: var(--accent-color) !important;
 }
 
-/* 省電模式下，滑鼠懸停時 6 個按鈕外框與文字變為主題色 */
+/* 省電模式下，滑鼠懸停時按鈕外框與文字變為主題色 */
 [data-performance="low"] .desktop-nav a:hover,
 [data-performance="low"] .settings-icon-btn:hover,
 [data-performance="low"] .menu-btn:hover,
