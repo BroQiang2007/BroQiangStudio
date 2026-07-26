@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
         closeBtn.addEventListener('click', () => { sidebar.classList.remove('active'); });
     }
 
-    // 2. 齒輪設定選單控制 (點擊內部不關閉，點擊外部關閉)
+    // 2. 齒輪設定選單控制 (點擊內部不關閉)
     const desktopSettingsBtn = document.getElementById('desktopSettingsBtn');
     const desktopDropdown = document.getElementById('desktopDropdown');
     const mobileSettingsBtn = document.getElementById('mobileSettingsBtn');
@@ -30,15 +30,18 @@ document.addEventListener("DOMContentLoaded", () => {
         if (mobileDropdown) mobileDropdown.classList.remove('active');
     });
 
-    // 3. 多國語言翻譯字典
+    // 3. 多國語言字典 (新增新功能詞彙)
     const translations = {
         "zh-TW": {
             "theme_light": "日間模式", "theme_dark": "夜間模式",
             "sound_on": "聲音：開啟", "sound_off": "聲音：靜音",
+            "perf_high": "效能：極致", "perf_low": "效能：省電",
+            "color_picker_title": "主題色",
+            "reset_btn": "🔄 恢復預設", "reset_confirm": "確定要將所有設定恢復預設嗎？",
             "sidebar_menu": "選單",
             "nav_about": "關於我", "nav_resume": "專業履歷", "nav_portfolio": "作品集", "nav_games": "遊戲日常",
             "footer_title_1": "BroQiangStudio", "footer_desc": "致力於網頁開發、多媒體設計與創意專案。歡迎與我聯繫交流！", "footer_title_2": "快速導覽", "footer_title_3": "社群平台",
-            "footer_contact": "聯繫我：", /* 新增這行 */
+            "footer_contact": "聯繫我：",
             "social_douyin": "抖音",
             "page_title_home": "首頁 | BroQiangStudio", "hero_title": "嗨，我是 余樂銨", "hero_subtitle": "熱愛用程式解決問題的開發者 / 喜歡用設計說故事的創作者。", "intro_btn": "了解更多",
             "page_title_games": "遊戲日常 | BroQiangStudio", "games_header": "我的遊戲日常", "game_1_title": "王牌競速 (國服版)", "game_1_desc": "在賽道上享受極速狂飆的快感，釋放王牌技能。", "game_2_title": "第五人格 (國際服)", "game_2_desc": "非對稱競技的刺激追逐，考驗策略與心理戰。", "game_3_title": "Minecraft (Bedrock)", "game_3_desc": "與朋友跨平台連線，打造屬於我們的方塊世界。", "game_4_title": "Minecraft (Java)", "game_4_desc": "體驗原汁原味的麥塊生存，探索豐富的社群模組與伺服器。", "game_btn": "查看遊戲詳情 >",
@@ -49,10 +52,13 @@ document.addEventListener("DOMContentLoaded", () => {
         "zh-CN": {
             "theme_light": "日间模式", "theme_dark": "夜间模式",
             "sound_on": "声音：开启", "sound_off": "声音：静音",
+            "perf_high": "性能：极致", "perf_low": "性能：省电",
+            "color_picker_title": "主题色",
+            "reset_btn": "🔄 恢复默认", "reset_confirm": "确定要将所有设置恢复默认吗？",
             "sidebar_menu": "菜单",
             "nav_about": "关于我", "nav_resume": "专业履历", "nav_portfolio": "作品集", "nav_games": "游戏日常",
             "footer_title_1": "BroQiangStudio", "footer_desc": "致力于网页开发、多媒体设计与创意专案。欢迎与我联系交流！", "footer_title_2": "快速导航", "footer_title_3": "社群平台",
-            "footer_contact": "联系我：", /* 新增这行 */
+            "footer_contact": "联系我：", 
             "social_douyin": "抖音",
             "page_title_home": "首页 | BroQiangStudio", "hero_title": "嗨，我是 余乐铵", "hero_subtitle": "热爱用程式解决问题的开发者 / 喜欢用设计说故事的创作者。", "intro_btn": "了解更多",
             "page_title_games": "游戏日常 | BroQiangStudio", "games_header": "我的游戏日常", "game_1_title": "王牌竞速 (国服版)", "game_1_desc": "在赛道上享受极速狂飙的快感，释放王牌技能。", "game_2_title": "第五人格 (国际服)", "game_2_desc": "非对称竞技的刺激追逐，考验策略与心理战。", "game_3_title": "Minecraft (Bedrock)", "game_3_desc": "与朋友跨平台连线，打造属于我们的方块世界。", "game_4_title": "Minecraft (Java)", "game_4_desc": "体验原汁原味的麦块生存，探索丰富的社群模组。", "game_btn": "查看游戏详情 >",
@@ -63,10 +69,13 @@ document.addEventListener("DOMContentLoaded", () => {
         "en": {
             "theme_light": "Light Mode", "theme_dark": "Dark Mode",
             "sound_on": "Sound: On", "sound_off": "Sound: Muted",
+            "perf_high": "Performance: High", "perf_low": "Performance: Low",
+            "color_picker_title": "Accent Color",
+            "reset_btn": "🔄 Reset Settings", "reset_confirm": "Are you sure you want to reset all settings to default?",
             "sidebar_menu": "Menu",
             "nav_about": "About Me", "nav_resume": "Resume", "nav_portfolio": "Portfolio", "nav_games": "Gaming Life",
             "footer_title_1": "BroQiangStudio", "footer_desc": "Dedicated to web development and multimedia design. Contact me!", "footer_title_2": "Quick Links", "footer_title_3": "Social Media",
-            "footer_contact": "Contact Me:", /* 新增這行 */
+            "footer_contact": "Contact Me:", 
             "social_douyin": "TikTok (CN)",
             "page_title_home": "Home | BroQiangStudio", "hero_title": "Hi, I'm Michael Er", "hero_subtitle": "Developer solving problems with code / Creator telling stories with design.", "intro_btn": "Learn More",
             "page_title_games": "Gaming Life | BroQiangStudio", "games_header": "My Gaming Life", "game_1_title": "Ace Racer (CN)", "game_1_desc": "Enjoy the thrill of extreme speed on the track, unleash ultimate skills.", "game_2_title": "Identity V (Global)", "game_2_desc": "Asymmetrical competitive thrilling chase, testing strategy.", "game_3_title": "Minecraft (Bedrock)", "game_3_desc": "Cross-platform multiplayer, building our blocky world.", "game_4_title": "Minecraft (Java)", "game_4_desc": "Original survival experience, explore rich community mods.", "game_btn": "View Details >",
@@ -77,10 +86,13 @@ document.addEventListener("DOMContentLoaded", () => {
         "ms": {
             "theme_light": "Mod Cerah", "theme_dark": "Mod Gelap",
             "sound_on": "Bunyi: Buka", "sound_off": "Bunyi: Senyap",
+            "perf_high": "Prestasi: Tinggi", "perf_low": "Prestasi: Jimat",
+            "color_picker_title": "Warna Tema",
+            "reset_btn": "🔄 Tetap Semula", "reset_confirm": "Adakah anda pasti mahu menetapkan semula semua tetapan?",
             "sidebar_menu": "Menu",
             "nav_about": "Tentang Saya", "nav_resume": "Resume", "nav_portfolio": "Portfolio", "nav_games": "Permainan",
             "footer_title_1": "BroQiangStudio", "footer_desc": "Berdedikasi untuk pembangunan web & reka bentuk. Hubungi saya!", "footer_title_2": "Pautan Pantas", "footer_title_3": "Media Sosial",
-            "footer_contact": "Hubungi Saya:", /* 新增這行 */
+            "footer_contact": "Hubungi Saya:", 
             "social_douyin": "TikTok (CN)",
             "page_title_home": "Utama | BroQiangStudio", "hero_title": "Hai, Saya Er Le An", "hero_subtitle": "Pembangun menyelesaikan masalah dengan kod / Pencipta bercerita dengan reka bentuk.", "intro_btn": "Ketahui Lebih Lanjut",
             "page_title_games": "Permainan | BroQiangStudio", "games_header": "Kehidupan Permainan Saya", "game_1_title": "Ace Racer (CN)", "game_1_desc": "Nikmati keseronokan kelajuan melampau di litar perlumbaan.", "game_2_title": "Identity V (Global)", "game_2_desc": "Pengejaran mendebarkan kompetitif tidak simetri.", "game_3_title": "Minecraft (Bedrock)", "game_3_desc": "Bermain merentas platform bersama rakan, bina dunia blok kita.", "game_4_title": "Minecraft (Java)", "game_4_desc": "Pengalaman kelangsungan hidup asal, terokai mod komuniti.", "game_btn": "Lihat Butiran >",
@@ -104,20 +116,26 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         localStorage.setItem('preferredLang', lang);
 
-        // 同步「日夜模式」按鈕文字
+        // 同步「日夜模式」
         const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
         const themeKey = currentTheme === 'dark' ? 'theme_light' : 'theme_dark';
         document.querySelectorAll('.theme-text').forEach(textEl => { textEl.textContent = translations[lang][themeKey]; });
 
-        // 同步「聲音設定」按鈕文字與圖標
+        // 同步「聲音設定」
         const isMuted = localStorage.getItem('globalMuted') !== 'false';
         const soundKey = isMuted ? 'sound_off' : 'sound_on';
         document.querySelectorAll('.sound-text').forEach(textEl => { textEl.textContent = translations[lang][soundKey]; });
         document.querySelectorAll('.sound-icon').forEach(iconEl => { iconEl.textContent = isMuted ? '🔇' : '🔊'; });
+
+        // 同步「效能模式」
+        const isLowPerf = localStorage.getItem('performanceMode') === 'low';
+        const perfKey = isLowPerf ? 'perf_low' : 'perf_high';
+        document.querySelectorAll('.perf-text').forEach(textEl => { textEl.textContent = translations[lang][perfKey]; });
+        document.querySelectorAll('.perf-icon').forEach(iconEl => { iconEl.textContent = isLowPerf ? '🔋' : '⚡'; });
     }
 
-    // --- 網頁載入時的初始化 (加入日夜模式記憶功能) ---
-    // 1. 讀取並套用儲存的日夜模式
+    // --- 網頁載入時的初始化 (加入日夜、顏色、效能記憶功能) ---
+    // 1. 日夜模式
     const savedTheme = localStorage.getItem('preferredTheme') || 'dark';
     document.documentElement.setAttribute('data-theme', savedTheme);
     document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
@@ -128,16 +146,29 @@ document.addEventListener("DOMContentLoaded", () => {
     const savedLang = localStorage.getItem('preferredLang') || 'zh-TW';
     updateLanguageAndSettings(savedLang);
 
-    // 3. 讀取並套用全域聲音狀態
-    const initMuted = localStorage.getItem('globalMuted') !== 'false'; // 預設為靜音(防瀏覽器阻擋)
+    // 3. 全域聲音狀態
+    const initMuted = localStorage.getItem('globalMuted') !== 'false'; 
+
+    // 4. 主題色 (預設 Bugatti 紅 #e50914)
+    const savedColor = localStorage.getItem('preferredColor') || '#e50914';
+    document.documentElement.style.setProperty('--accent-color', savedColor);
+    document.querySelectorAll('.color-dot').forEach(dot => {
+        dot.classList.toggle('active', dot.getAttribute('data-color') === savedColor);
+    });
+
+    // 5. 效能模式
+    const initPerf = localStorage.getItem('performanceMode') || 'high';
+    document.documentElement.setAttribute('data-performance', initPerf);
     
-    // 初始化背景影片聲音 (首頁專用)
+    // 初始化背景影片聲音與效能控制 (首頁專用)
     const bgVideo = document.getElementById('bgVideo');
     if (bgVideo) {
         bgVideo.muted = initMuted;
-        if (!initMuted) {
+        if (initPerf === 'low') {
+            bgVideo.pause(); // 省電模式停止播放背景影片
+        } else if (!initMuted) {
             bgVideo.play().catch(e => {
-                console.log("瀏覽器阻擋了帶聲音的自動播放，系統已強制切換回靜音以確保背景能動。");
+                console.log("自動播放被阻擋，已切換回靜音");
                 bgVideo.muted = true;
                 localStorage.setItem('globalMuted', 'true');
                 updateLanguageAndSettings(localStorage.getItem('preferredLang') || 'zh-TW');
@@ -145,40 +176,35 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // 初始化遊戲日常影片並加入懸浮控制邏輯 (遊戲頁專用)
+    // 初始化遊戲日常影片懸浮控制 (遊戲頁專用)
     const cards = document.querySelectorAll('.card');
     cards.forEach(card => {
         const video = card.querySelector('video.media-back');
         if (video) {
             video.muted = initMuted;
             card.addEventListener('mouseenter', () => {
-                // 每次懸浮播放前，確保跟隨最新的全域設定
-                video.muted = localStorage.getItem('globalMuted') !== 'false';
-                video.play().catch(err => console.log("播放被阻擋:", err));
+                if (localStorage.getItem('performanceMode') !== 'low') {
+                    video.muted = localStorage.getItem('globalMuted') !== 'false';
+                    video.play().catch(err => console.log(err));
+                }
             });
-            card.addEventListener('mouseleave', () => {
-                video.pause();
-                video.currentTime = 0; 
-            });
+            card.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
         }
     });
 
     // --- 事件綁定 ---
-    // 語言切換事件
+    // 語言切換
     document.querySelectorAll('.lang-selector').forEach(selector => { 
         selector.addEventListener('change', (e) => { updateLanguageAndSettings(e.target.value); }); 
     });
 
-    // 日夜模式切換 (加入 localStorage 儲存)
+    // 日夜模式切換
     document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
             document.documentElement.setAttribute('data-theme', newTheme);
-            
-            // 將主題狀態存進 localStorage
             localStorage.setItem('preferredTheme', newTheme);
-            
             const currentLang = localStorage.getItem('preferredLang') || 'zh-TW';
             document.querySelectorAll('.theme-toggle-btn').forEach(updateBtn => {
                 updateBtn.querySelector('.theme-icon').textContent = newTheme === 'dark' ? '☀️' : '🌙';
@@ -187,22 +213,62 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // 全域聲音開關切換
+    // 聲音開關切換
     document.querySelectorAll('.sound-toggle-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             let isMuted = localStorage.getItem('globalMuted') !== 'false';
-            isMuted = !isMuted; // 切換狀態
+            isMuted = !isMuted; 
             localStorage.setItem('globalMuted', isMuted);
-            
-            // 更新 UI
             const currentLang = localStorage.getItem('preferredLang') || 'zh-TW';
             updateLanguageAndSettings(currentLang);
-            
-            // 實時套用到背景影片(如果有)
             if (bgVideo) bgVideo.muted = isMuted;
-
-            // 實時套用到遊戲卡片影片(如果有)
             document.querySelectorAll('video.media-back').forEach(vid => { vid.muted = isMuted; });
+        });
+    });
+
+    // 效能模式切換
+    document.querySelectorAll('.perf-toggle-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            let isLowPerf = localStorage.getItem('performanceMode') === 'low';
+            isLowPerf = !isLowPerf;
+            localStorage.setItem('performanceMode', isLowPerf ? 'low' : 'high');
+            document.documentElement.setAttribute('data-performance', isLowPerf ? 'low' : 'high');
+            
+            if (bgVideo) {
+                if (isLowPerf) bgVideo.pause();
+                else bgVideo.play().catch(err=>console.log(err));
+            }
+            
+            const currentLang = localStorage.getItem('preferredLang') || 'zh-TW';
+            updateLanguageAndSettings(currentLang);
+        });
+    });
+
+    // 主題色切換
+    document.querySelectorAll('.color-dot').forEach(dot => {
+        dot.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const newColor = dot.getAttribute('data-color');
+            document.documentElement.style.setProperty('--accent-color', newColor);
+            localStorage.setItem('preferredColor', newColor);
+            
+            // 同步更新所有的顏色圓點為 active 狀態
+            document.querySelectorAll('.color-dot').forEach(d => {
+                d.classList.toggle('active', d.getAttribute('data-color') === newColor);
+            });
+        });
+    });
+
+    // 恢復預設設定
+    document.querySelectorAll('.reset-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const currentLang = localStorage.getItem('preferredLang') || 'zh-TW';
+            if (confirm(translations[currentLang]['reset_confirm'])) {
+                localStorage.clear();
+                location.reload();
+            }
         });
     });
 });
