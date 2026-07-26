@@ -17,6 +17,7 @@
             <a href="games.html" data-i18n="nav_games">遊戲日常</a>
         </nav>
         <div class="top-right-controls">
+            <a href="about-me.html" class="intro-btn" data-i18n="intro_btn">了解更多</a>
             <div class="settings-wrapper desktop-only">
                 <button class="settings-icon-btn" id="desktopSettingsBtn">⚙️</button>
                 <div class="settings-dropdown" id="desktopDropdown">
@@ -28,9 +29,7 @@
                     </select>
                     <button class="theme-toggle-btn"><span class="theme-icon">☀️</span> <span class="theme-text">日間模式</span></button>
                     <button class="sound-toggle-btn"><span class="sound-icon">🔇</span> <span class="sound-text">聲音：靜音</span></button>
-                    <!-- ⚡ 效能模式 -->
                     <button class="perf-toggle-btn"><span class="perf-icon">⚡</span> <span class="perf-text" data-i18n="perf_high">效能：極致</span></button>
-                    <!-- 🎨 主題色切換 -->
                     <div class="color-picker-wrapper">
                         <span class="color-picker-title" data-i18n="color_picker_title">主題色</span>
                         <div class="color-dots">
@@ -40,7 +39,6 @@
                             <span class="color-dot" data-color="#4caf50" style="background: #4caf50;" title="Eco Green"></span>
                         </div>
                     </div>
-                    <!-- 🔄 恢復預設 -->
                     <button class="reset-btn" data-i18n="reset_btn">🔄 恢復預設</button>
                 </div>
             </div>
@@ -48,8 +46,10 @@
     </header>
 
     <aside class="sidebar" id="sidebar">
-        <h2 class="sidebar-title" data-i18n="sidebar_menu">選單</h2>
-        <button class="close-btn" id="closeBtn">×</button>
+        <div class="sidebar-header">
+            <h2 class="sidebar-title" data-i18n="sidebar_menu">選單</h2>
+            <button class="close-btn" id="closeBtn">×</button>
+        </div>
         <nav class="sidebar-nav">
             <a href="index.html" class="active" data-i18n="nav_about">關於我</a>
             <a href="resume.html" data-i18n="nav_resume">專業履歷</a>
@@ -66,9 +66,7 @@
                 </select>
                 <button class="theme-toggle-btn"><span class="theme-icon">☀️</span> <span class="theme-text">日間模式</span></button>
                 <button class="sound-toggle-btn"><span class="sound-icon">🔇</span> <span class="sound-text">聲音：靜音</span></button>
-                <!-- ⚡ 效能模式 -->
                 <button class="perf-toggle-btn"><span class="perf-icon">⚡</span> <span class="perf-text" data-i18n="perf_high">效能：極致</span></button>
-                <!-- 🎨 主題色切換 -->
                 <div class="color-picker-wrapper">
                     <span class="color-picker-title" data-i18n="color_picker_title">主題色</span>
                     <div class="color-dots">
@@ -78,7 +76,6 @@
                         <span class="color-dot" data-color="#4caf50" style="background: #4caf50;" title="Eco Green"></span>
                     </div>
                 </div>
-                <!-- 🔄 恢復預設 -->
                 <button class="reset-btn" data-i18n="reset_btn">🔄 恢復預設</button>
             </div>
             <button class="settings-icon-btn" id="mobileSettingsBtn">⚙️</button>
@@ -87,16 +84,10 @@
 
     <main class="page-content">
         <h2 class="section-title" data-i18n="about_header">關於 余樂銨</h2>
-        
-        <div style="text-align: center; margin-bottom: 30px;">
-            <img src="ProfilePicture.jpg" alt="Avatar" class="profile-pic" style="margin: 0 auto;">
-        </div>
-
-        <div class="grid-container">
-            <div class="card card-large">
-                <p data-i18n="about_content_1" style="font-size: 1.1rem; margin-bottom: 15px;">你好！我是余樂銨，一位充滿熱情的網頁開發者與多媒體創作者。</p>
-                <p data-i18n="about_content_2" style="font-size: 1.1rem;">我喜歡將天馬行空的設計想法，透過程式碼轉化為真實互動的網頁。對我來說，科技與藝術不是兩條平行線，而是能創造無限可能的交叉點。在這個網站裡，你可以看到我的專業履歷、作品集，以及我平時熱愛的遊戲日常。感謝你的來訪！</p>
-            </div>
+        <div class="card card-large">
+            <p data-i18n="about_content_1"></p>
+            <br>
+            <p data-i18n="about_content_2"></p>
         </div>
     </main>
 
@@ -104,9 +95,9 @@
         <div class="footer-container">
             <div class="footer-col">
                 <h4 data-i18n="footer_title_1">BroQiangStudio</h4>
-                <p data-i18n="footer_desc">致力於網頁開發、多媒體設計與創意專案。歡迎與我聯繫交流！</p>
+                <p data-i18n="footer_desc"></p>
                 <div class="footer-contact">
-                    <strong data-i18n="footer_contact">聯繫我：</strong>
+                    <span data-i18n="footer_contact"></span>
                     <a href="mailto:anle82760@gmail.com" class="footer-email">anle82760@gmail.com</a>
                 </div>
             </div>
@@ -122,11 +113,7 @@
             <div class="footer-col">
                 <h4 data-i18n="footer_title_3">社群平台</h4>
                 <ul>
-                    <li><a href="https://www.instagram.com/broqiang2007?utm_source=qr&igsh=MWh6cHk3NWptcW1wYw==" target="_blank">Instagram</a></li>
-                    <li><a href="https://youtube.com/@broqiang2007?si=uo9xAyqIRmN0Kkyi" target="_blank">YouTube</a></li>
-                    <li><a href="https://www.facebook.com/share/1DXNaqJbdc/" target="_blank">Facebook</a></li>
-                    <li><a href="https://tiktok.com/@broqiangstudio/" target="_blank">TikTok</a></li>
-                    <li><a href="https://v.douyin.com/Mxdam2fIoO4/" target="_blank" data-i18n="social_douyin">抖音</a></li>
+                    <li><a href="#" target="_blank" data-i18n="social_douyin">抖音</a></li>
                 </ul>
             </div>
         </div>
@@ -134,6 +121,7 @@
             <p>&copy; 2026 BroQiangStudio. All rights reserved.</p>
         </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
