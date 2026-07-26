@@ -271,4 +271,38 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+
+    // ===== 📊 模擬訪客統計動畫邏輯 =====
+    function updateVisitorStats() {
+        let total = parseInt(localStorage.getItem('totalVisitors') || '12048');
+        let daily = parseInt(localStorage.getItem('dailyVisitors') || '132');
+        
+        total += Math.floor(Math.random() * 3) + 1;
+        daily += Math.floor(Math.random() * 2) + 1;
+        
+        localStorage.setItem('totalVisitors', total);
+        localStorage.setItem('dailyVisitors', daily);
+        
+        const dailyEl = document.getElementById('daily-visitors');
+        const totalEl = document.getElementById('total-visitors');
+        
+        if(dailyEl && totalEl) {
+            animateValue(dailyEl, daily - 10, daily, 1000);
+            animateValue(totalEl, total - 15, total, 1500);
+        }
+    }
+
+    function animateValue(obj, start, end, duration) {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            obj.innerHTML = Math.floor(progress * (end - start) + start).toLocaleString();
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            }
+        };
+        window.requestAnimationFrame(step);
+    }
+    updateVisitorStats();
 });
