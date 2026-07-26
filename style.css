@@ -61,6 +61,17 @@ a { text-decoration: none; }
 .sidebar { position: fixed; top: 0; left: -300px; width: 280px; height: 100dvh; background-color: var(--nav-bg-glass); backdrop-filter: saturate(180%) blur(15px); -webkit-backdrop-filter: saturate(180%) blur(15px); border-right: 1px solid var(--border-color); display: flex; flex-direction: column; padding: 80px 20px 20px; transition: left 0.4s ease; z-index: 1001; }
 .sidebar.active { left: 0; box-shadow: 5px 0 25px rgba(0,0,0,0.5); }
 .close-btn { position: absolute; top: 15px; right: 20px; background: none; border: none; color: var(--text-color); font-size: 2.5rem; cursor: pointer; }
+/* 手機版側邊欄標題 */
+.sidebar-title { 
+    position: absolute; 
+    top: 25px; 
+    left: 25px; 
+    color: var(--text-color); 
+    font-size: 1.5rem; 
+    font-weight: bold; 
+    letter-spacing: 2px; 
+    margin: 0;
+}
 .sidebar-nav { display: flex; flex-direction: column; gap: 15px; flex: 1; overflow-y: auto; padding-bottom: 80px; }
 
 .settings-wrapper { position: relative; }
