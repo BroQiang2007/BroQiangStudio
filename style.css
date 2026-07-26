@@ -82,7 +82,7 @@ a { text-decoration: none !important; color: inherit; }
     color: var(--text-color) !important;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
     transition: all 0.3s ease;
-    text-decoration: none !important; /* 再次確保沒有底線 */
+    text-decoration: none !important;
 }
 
 /* ☀️ 日間模式的玻璃態自動切換，確保文字清晰 */
@@ -98,7 +98,7 @@ a { text-decoration: none !important; color: inherit; }
 /* 🔥 獨立設定「了解更多」在日間模式下的外觀，確保主題色邊框不被覆蓋 */
 [data-theme="light"] .intro-btn {
     background: rgba(255, 255, 255, 0.65) !important;
-    border: 2px solid var(--accent-color) !important; /* 強制保留主題色邊框 */
+    border: 2px solid var(--accent-color) !important;
     color: #1d1d1f !important;
     text-shadow: none;
 }
@@ -330,11 +330,11 @@ a { text-decoration: none !important; color: inherit; }
     text-decoration: none !important;
 }
 
-/* 🔥 手機側邊欄：點擊/懸停時加入專屬 LED 氛圍燈特效 */
+/* 手機側邊欄：點擊/懸停時加入專屬 LED 氛圍燈特效 */
 .sidebar-nav a.active, .sidebar-nav a:hover {
     border-color: var(--accent-color);
     color: var(--accent-color);
-    box-shadow: 0 0 20px var(--accent-color); /* 🔥 LED 光暈在這裡！ */
+    box-shadow: 0 0 20px var(--accent-color);
 }
 
 /* 設定按鈕完美角落位置 */
@@ -617,22 +617,27 @@ a { text-decoration: none !important; color: inherit; }
     box-shadow: none !important;
     text-shadow: none !important;
     border: 1px solid var(--border-color) !important;
+    color: var(--text-color) !important;
 }
 
-/* 省電模式下，滑鼠懸停時 6 個按鈕外框變為主題色 */
+/* 🔥 關鍵修復：省電模式下，當前所在頁面的按鈕 (active) 必須保持主題色外框與文字 */
+[data-performance="low"] .desktop-nav a.active {
+    border-color: var(--accent-color) !important;
+    color: var(--accent-color) !important;
+}
+
+/* 省電模式下，滑鼠懸停時 6 個按鈕外框與文字變為主題色 */
 [data-performance="low"] .desktop-nav a:hover,
 [data-performance="low"] .settings-icon-btn:hover,
 [data-performance="low"] .menu-btn:hover,
 [data-performance="low"] .intro-btn:hover {
     border-color: var(--accent-color) !important;
+    color: var(--accent-color) !important;
 }
 
 [data-performance="low"] .intro-btn {
-    border-color: var(--accent-color) !important;
+    border-color: var(--accent-color) !important; /* 了解更多按鈕常駐主題色 */
     animation: none !important; 
-}
-[data-performance="low"] .intro-btn:hover {
-    color: var(--accent-color) !important;
 }
 
 [data-performance="low"] .reveal-img-wrapper .img-front { opacity: 1 !important; transform: scale(1) !important; }
