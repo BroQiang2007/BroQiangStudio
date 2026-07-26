@@ -208,3 +208,20 @@ h3.sub-section-title { margin: 30px 0 15px; border-left: 4px solid var(--accent-
 [data-performance="low"] .reveal-img-wrapper .media-back { opacity: 0 !important; display: none !important; }
 [data-performance="low"] .hero-bg video { display: none !important; }
 [data-performance="low"] .hero-bg { background-color: var(--bg-color); }
+
+/* ===== 修復頂部導覽列與按鈕點不到的 Bug ===== */
+.top-bar {
+    position: relative; /* 確保圖層屬性生效（如果你原本是 fixed，請把這行刪掉） */
+    z-index: 9999 !important; /* 強制提到最高層，誰都蓋不住它 */
+    pointer-events: auto !important; /* 確保它可以接收點擊指令 */
+}
+
+/* 確保手機版側邊欄出來時，不會被其他東西蓋住 */
+.sidebar {
+    z-index: 10000 !important; 
+}
+
+/* 確保背景影片與濾鏡不會意外擋住前面的按鈕 */
+.hero-bg, .overlay {
+    pointer-events: none !important; 
+}
