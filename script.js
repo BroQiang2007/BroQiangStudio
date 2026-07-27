@@ -293,3 +293,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     updateVisitorStats();
 });
+
+/* ==================== 開屏動畫控制 ==================== */
+window.addEventListener('load', () => {
+  const splashScreen = document.getElementById('splash-screen');
+  
+  if (splashScreen) {
+    // 稍微延遲 0.5 秒再淡出，讓動畫有時間展示，也確保影片平順起播
+    setTimeout(() => {
+      splashScreen.classList.add('hidden');
+    }, 500); 
+  }
+});
