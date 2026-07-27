@@ -83,18 +83,6 @@ html.splash-active .hero-content, html.splash-active .page-content, html.splash-
     animation: none !important; transform: translateY(25px); opacity: 0; 
 }
 
-/* 強制清除所有超連結的煩人底線 */
-a { text-decoration: none !important; color: inherit; }
-
-/* 全局流暢過渡動畫 */
-@keyframes fadeUpIn {
-    0% { opacity: 0; transform: translateY(25px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
-.hero-content, .page-content {
-    animation: fadeUpIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-}
-
 /* ===== 全透明頂部導覽列 (Top Bar) ===== */
 .top-bar {
     position: fixed !important;
