@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // 3. 多國語言字典 (🔥 已完美補回所有被刪減的靈魂文案，四國語言完美對齊)
     const translations = {
         "zh-TW": {
-            "initializing": "系統初始化中...", "loading": "載入中...",
+            "initializing": "網站初始化中...", "loading": "載入中...",
             "theme_light": "日間模式", "theme_dark": "夜間模式", "sound_on": "聲音：開啟", "sound_off": "聲音：靜音", "perf_high": "效能：極致", "perf_low": "效能：省電", "color_picker_title": "主題色", "reset_btn": "🔄 恢復預設", "reset_confirm": "確定要將所有設定恢復預設嗎？", "sidebar_menu": "選單",
             "nav_about": "關於我", "nav_resume": "專業履歷", "nav_portfolio": "作品集", "nav_games": "遊戲日常",
             "footer_title_1": "BroQiangStudio", "footer_desc": "致力於網頁開發、多媒體設計與創意專案。歡迎與我聯繫交流！", "footer_title_2": "快速導覽", "footer_title_3": "社群平台", "footer_contact": "聯繫我：", "footer_changelog": "網站更新日誌 (Changelog)",
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "g4_p1": "《Minecraft Java版》是遊戲最初、最經典的版本，僅支援 Windows、Mac 和 Linux 電腦遊玩。這個版本擁有全世界最龐大、最活躍的開源社群，你可以自由安裝無數的第三方模組 (Mods)、光影包、材質包，並加入各種大型多人線上伺服器。", "g4_p2": "📍 <strong>特色亮點：</strong> 豐富的第三方模組支援、頂級光影特效、硬核紅石與生存機制。<br><br><small><i>*註：Java 版為電腦獨佔，無官方手機版本。</i></small>"
         },
         "zh-CN": {
-            "initializing": "系统初始化中...", "loading": "加载中...", "theme_light": "日间模式", "theme_dark": "夜间模式", "sound_on": "声音：开启", "sound_off": "声音：静音", "perf_high": "性能：极致", "perf_low": "性能：省电", "color_picker_title": "主题色", "reset_btn": "🔄 恢复默认", "reset_confirm": "确定要将所有设置恢复默认吗？", "sidebar_menu": "菜单", "nav_about": "关于我", "nav_resume": "专业履历", "nav_portfolio": "作品集", "nav_games": "游戏日常", "footer_title_1": "BroQiangStudio", "footer_desc": "致力于网页开发、多媒体设计与创意专案。欢迎与我联系交流！", "footer_title_2": "快速导航", "footer_title_3": "社群平台", "footer_contact": "联系我：", "footer_changelog": "网站更新日志 (Changelog)", "social_ig": "Instagram", "social_yt": "YouTube", "social_fb": "Facebook", "social_tk": "TikTok", "social_dy": "抖音", 
+            "initializing": "网站初始化中...", "loading": "加载中...", "theme_light": "日间模式", "theme_dark": "夜间模式", "sound_on": "声音：开启", "sound_off": "声音：静音", "perf_high": "性能：极致", "perf_low": "性能：省电", "color_picker_title": "主题色", "reset_btn": "🔄 恢复默认", "reset_confirm": "确定要将所有设置恢复默认吗？", "sidebar_menu": "菜单", "nav_about": "关于我", "nav_resume": "专业履历", "nav_portfolio": "作品集", "nav_games": "游戏日常", "footer_title_1": "BroQiangStudio", "footer_desc": "致力于网页开发、多媒体设计与创意专案。欢迎与我联系交流！", "footer_title_2": "快速导航", "footer_title_3": "社群平台", "footer_contact": "联系我：", "footer_changelog": "网站更新日志 (Changelog)", "social_ig": "Instagram", "social_yt": "YouTube", "social_fb": "Facebook", "social_tk": "TikTok", "social_dy": "抖音", 
             
             // 首页与关于我 (完整版补齐)
             "page_title_home": "首页 | BroQiangStudio", 
