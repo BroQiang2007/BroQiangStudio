@@ -30,16 +30,15 @@ document.addEventListener("DOMContentLoaded", () => {
         if (mobileDropdown) mobileDropdown.classList.remove('active');
     });
 
-    // 3. 多國語言字典 (🔥 已完美補回所有被刪減的靈魂文案，四國語言完美對齊)
+    // 3. 多國語言字典 (🔥 已新增「恢復預設中...」與「網站更新日誌」翻譯)
     const translations = {
         "zh-TW": {
-            "initializing": "網站初始化中...", "loading": "載入中...",
+            "initializing": "系統初始化中...", "loading": "載入中...", "resetting": "恢復預設中...",
             "theme_light": "日間模式", "theme_dark": "夜間模式", "sound_on": "聲音：開啟", "sound_off": "聲音：靜音", "perf_high": "效能：極致", "perf_low": "效能：省電", "color_picker_title": "主題色", "reset_btn": "🔄 恢復預設", "reset_confirm": "確定要將所有設定恢復預設嗎？", "sidebar_menu": "選單",
             "nav_about": "關於我", "nav_resume": "專業履歷", "nav_portfolio": "作品集", "nav_games": "遊戲日常",
             "footer_title_1": "BroQiangStudio", "footer_desc": "致力於網頁開發、多媒體設計與創意專案。歡迎與我聯繫交流！", "footer_title_2": "快速導覽", "footer_title_3": "社群平台", "footer_contact": "聯繫我：", "footer_changelog": "網站更新日誌 (Changelog)",
             "social_ig": "Instagram", "social_yt": "YouTube", "social_fb": "Facebook", "social_tk": "TikTok", "social_dy": "抖音",
             
-            // 首頁與關於我 (完整版)
             "page_title_home": "首頁 | BroQiangStudio", 
             "hero_title": "嗨，我是 余樂銨", 
             "hero_subtitle": "熱愛用程式解決問題的開發者 / 喜歡用設計說故事的創作者。", 
@@ -49,7 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
             "about_content_1": "你好！我是余樂銨，一位充滿熱情的網頁開發者與多媒體創作者。", 
             "about_content_2": "我喜歡將天馬行空的設計想法，透過程式碼轉化為真實互動的網頁。對我來說，科技與藝術不是兩條平行線，而是能創造無限可能的交叉點。感謝你的來訪！",
             
-            // 首頁遊戲簡介 (完整版)
             "page_title_games": "遊戲日常 | BroQiangStudio", "games_header": "我的遊戲日常", 
             "game_1_title": "王牌競速 (國服版)", "game_1_desc": "在賽道上享受極速狂飆的快感，釋放王牌技能。", 
             "game_2_title": "第五人格 (國際服)", "game_2_desc": "非對稱競技的刺激追逐，考驗策略與心理戰。", 
@@ -59,7 +57,6 @@ document.addEventListener("DOMContentLoaded", () => {
             "page_title_resume": "專業履歷 | BroQiangStudio", "resume_header": "專業履歷", "resume_sec_work": "💼 工作經驗", "resume_work_title": "無數據", "resume_work_desc": "目前專注於學業與個人專案開發，期待未來的實戰機會。", "resume_sec_edu": "🎓 教育背景", "resume_edu1_school": "ADTEC JTM Kampus Nibong Tebal", "resume_edu1_date": "07/2025 - 07/2027", "resume_edu1_major": "專業：互動式多媒體證書", "resume_edu2_school": "SMK Bukit Gambir", "resume_edu2_date": "2020 - 2025", "resume_edu2_major": "Form 5 畢業，持有 SPM 文憑", "resume_sec_skill": "🛠️ 專業技能", "resume_skill1_title": "網頁前端開發", "resume_skill1_desc": "熟悉 HTML, CSS, JavaScript，並能實作 RWD 響應式網頁與互動特效。", "resume_skill2_title": "多媒體視覺設計", "resume_skill2_desc": "熱愛剪輯與視覺排版，致力於結合設計美學與程式邏輯。", "resume_sec_contact": "📩 聯繫我", "resume_contact_email": "anle82760@gmail.com", "resume_contact_desc": "歡迎隨時透過電子郵件與我聯繫，我會盡快回覆您！期待與您的交流與合作。",
             "page_title_portfolio": "作品集 | BroQiangStudio", "portfolio_header": "作品集", "pf_btn": "查看專案詳情 >", "pf_1_title": "網頁開發專案 A", "pf_1_desc": "結合 HTML/CSS 的響應式個人網站設計。", "pf_2_title": "多媒體設計專案 B", "pf_2_desc": "視覺動畫與特效短片製作。", "pf_3_title": "互動 UI 專案 C", "pf_3_desc": "專注於使用者體驗的介面設計。", "pf_4_title": "遊戲模組開發", "pf_4_desc": "Minecraft 客製化素材與整合包。", "pf_5_title": "創意剪輯作品", "pf_5_desc": "結合節奏與特效的影音創作。", "pf_6_title": "敬請期待", "pf_6_desc": "更多精彩網頁與設計專案即將上線...",
             
-            // 詳情頁面專屬翻譯
             "detail_back": "← 返回遊戲列表", "btn_website": "🌐 官方網站", "btn_mobile": "📱 手機版下載", "btn_pc_emu": "💻 PC 模擬器版", "btn_pc_sync": "💻 PC 互通版", "btn_pc_win": "💻 PC 版 (Win10/11)", "btn_pc_launcher": "💻 PC 啟動器下載",
             "g1_p1": "《王牌競速》是一款由網易遊戲開發的寫實風格創新賽車手遊。遊戲內不僅擁有海量授權真車，更有造型誇張的試製車。每台車都擁有專屬的「王牌技能」，讓你在賽道上體驗閃現穿牆、變身劍客等顛覆傳統的競速快感。", "g1_p2": "📍 <strong>特色亮點：</strong> 寫實畫風、專屬大招、豐富的世界實景賽道。",
             "g2_p1": "《第五人格》是網易首款非對稱性對抗競技手遊。荒誕的哥德畫風、懸疑燒腦的劇情，以及刺激的 1V4 追逃玩法，帶來全新的遊戲體驗。玩家可以選擇扮演監管者或求生者，在莊園中展開激烈的心理與策略博弈。", "g2_p2": "📍 <strong>特色亮點：</strong> 1V4 非對稱競技、豐富的角色技能搭配、獨特的懸疑畫風。",
@@ -67,9 +64,10 @@ document.addEventListener("DOMContentLoaded", () => {
             "g4_p1": "《Minecraft Java版》是遊戲最初、最經典的版本，僅支援 Windows、Mac 和 Linux 電腦遊玩。這個版本擁有全世界最龐大、最活躍的開源社群，你可以自由安裝無數的第三方模組 (Mods)、光影包、材質包，並加入各種大型多人線上伺服器。", "g4_p2": "📍 <strong>特色亮點：</strong> 豐富的第三方模組支援、頂級光影特效、硬核紅石與生存機制。<br><br><small><i>*註：Java 版為電腦獨佔，無官方手機版本。</i></small>"
         },
         "zh-CN": {
-            "initializing": "网站初始化中...", "loading": "加载中...", "theme_light": "日间模式", "theme_dark": "夜间模式", "sound_on": "声音：开启", "sound_off": "声音：静音", "perf_high": "性能：极致", "perf_low": "性能：省电", "color_picker_title": "主题色", "reset_btn": "🔄 恢复默认", "reset_confirm": "确定要将所有设置恢复默认吗？", "sidebar_menu": "菜单", "nav_about": "关于我", "nav_resume": "专业履历", "nav_portfolio": "作品集", "nav_games": "游戏日常", "footer_title_1": "BroQiangStudio", "footer_desc": "致力于网页开发、多媒体设计与创意专案。欢迎与我联系交流！", "footer_title_2": "快速导航", "footer_title_3": "社群平台", "footer_contact": "联系我：", "footer_changelog": "网站更新日志 (Changelog)", "social_ig": "Instagram", "social_yt": "YouTube", "social_fb": "Facebook", "social_tk": "TikTok", "social_dy": "抖音", 
+            "initializing": "系统初始化中...", "loading": "加载中...", "resetting": "恢复默认中...",
+            "theme_light": "日间模式", "theme_dark": "夜间模式", "sound_on": "声音：开启", "sound_off": "声音：静音", "perf_high": "性能：极致", "perf_low": "性能：省电", "color_picker_title": "主题色", "reset_btn": "🔄 恢复默认", "reset_confirm": "确定要将所有设置恢复默认吗？", "sidebar_menu": "菜单", "nav_about": "关于我", "nav_resume": "专业履历", "nav_portfolio": "作品集", "nav_games": "游戏日常", "footer_title_1": "BroQiangStudio", "footer_desc": "致力于网页开发、多媒体设计与创意专案。欢迎与我联系交流！", "footer_title_2": "快速导航", "footer_title_3": "社群平台", "footer_contact": "联系我：", "footer_changelog": "网站更新日志 (Changelog)",
+            "social_ig": "Instagram", "social_yt": "YouTube", "social_fb": "Facebook", "social_tk": "TikTok", "social_dy": "抖音", 
             
-            // 首页与关于我 (完整版补齐)
             "page_title_home": "首页 | BroQiangStudio", 
             "hero_title": "嗨，我是 余乐铵", 
             "hero_subtitle": "热爱用程序解决问题的开发者 / 喜欢用设计说故事的创作者。", 
@@ -79,7 +77,6 @@ document.addEventListener("DOMContentLoaded", () => {
             "about_content_1": "你好！我是余乐铵，一位充满热情的网页开发者与多媒体创作者。", 
             "about_content_2": "我喜欢将天马行空的设计想法，透过代码转化为真实互动的网页。对我来说，科技与艺术不是两条平行线，而是能创造无限可能的交叉点。感谢你的来访！",
             
-            // 首页游戏简介 (完整版)
             "page_title_games": "游戏日常 | BroQiangStudio", "games_header": "我的游戏日常", 
             "game_1_title": "王牌竞速 (国服版)", "game_1_desc": "在赛道上享受极速狂飙的快感，释放王牌技能。", 
             "game_2_title": "第五人格 (国际服)", "game_2_desc": "非对称竞技的刺激追逐，考验策略与心理战。", 
@@ -95,9 +92,10 @@ document.addEventListener("DOMContentLoaded", () => {
             "g4_p1": "《Minecraft Java版》是最经典的版本，仅支援 Windows、Mac 和 Linux。拥有全世界最庞大活跃的开源社群，可自由安装第三方模组、光影包及加入大型伺服器。", "g4_p2": "📍 <strong>特色亮点：</strong> 丰富的第三方模组支援、顶级光影特效、硬核红石机制。<br><br><small><i>*注：Java 版为电脑独占，无官方手机版本。</i></small>"
         },
         "en": {
-            "initializing": "INITIALIZING...", "loading": "LOADING...", "theme_light": "Light Mode", "theme_dark": "Dark Mode", "sound_on": "Sound: On", "sound_off": "Sound: Muted", "perf_high": "Performance: High", "perf_low": "Performance: Low", "color_picker_title": "Accent Color", "reset_btn": "🔄 Reset Settings", "reset_confirm": "Reset all settings to default?", "sidebar_menu": "Menu", "nav_about": "About Me", "nav_resume": "Resume", "nav_portfolio": "Portfolio", "nav_games": "Gaming Life", "footer_title_1": "BroQiangStudio", "footer_desc": "Dedicated to web development, multimedia design, and creative projects. Let's connect!", "footer_title_2": "Quick Links", "footer_title_3": "Social Media", "footer_contact": "Contact Me:", "footer_changelog": "Website Changelog", "social_ig": "Instagram", "social_yt": "YouTube", "social_fb": "Facebook", "social_tk": "TikTok", "social_dy": "TikTok (CN)", 
+            "initializing": "INITIALIZING...", "loading": "LOADING...", "resetting": "Resetting...",
+            "theme_light": "Light Mode", "theme_dark": "Dark Mode", "sound_on": "Sound: On", "sound_off": "Sound: Muted", "perf_high": "Performance: High", "perf_low": "Performance: Low", "color_picker_title": "Accent Color", "reset_btn": "🔄 Reset Settings", "reset_confirm": "Reset all settings to default?", "sidebar_menu": "Menu", "nav_about": "About Me", "nav_resume": "Resume", "nav_portfolio": "Portfolio", "nav_games": "Gaming Life", "footer_title_1": "BroQiangStudio", "footer_desc": "Dedicated to web development, multimedia design, and creative projects. Let's connect!", "footer_title_2": "Quick Links", "footer_title_3": "Social Media", "footer_contact": "Contact Me:", "footer_changelog": "Website Changelog",
+            "social_ig": "Instagram", "social_yt": "YouTube", "social_fb": "Facebook", "social_tk": "TikTok", "social_dy": "TikTok (CN)", 
             
-            // 首頁與關於我 (完整版補齊)
             "page_title_home": "Home | BroQiangStudio", 
             "hero_title": "Hi, I'm Michael Er", 
             "hero_subtitle": "A developer passionate about solving problems with code / A creator who loves telling stories through design.", 
@@ -107,7 +105,6 @@ document.addEventListener("DOMContentLoaded", () => {
             "about_content_1": "Hello! I'm Michael Er, a passionate web developer and multimedia creator.", 
             "about_content_2": "I love turning imaginative design ideas into real, interactive web pages through programming. To me, technology and art are not two parallel lines, but an intersection that creates infinite possibilities. Thank you for visiting!",
             
-            // 首頁遊戲簡介 (完整版)
             "page_title_games": "Gaming Life | BroQiangStudio", "games_header": "My Gaming Life", 
             "game_1_title": "Ace Racer (CN)", "game_1_desc": "Enjoy the thrill of extreme speed on the track and unleash your ultimate skills.", 
             "game_2_title": "Identity V (Global)", "game_2_desc": "An asymmetrical competitive thrilling chase that tests your strategy and psychological warfare.", 
@@ -123,9 +120,10 @@ document.addEventListener("DOMContentLoaded", () => {
             "g4_p1": "Minecraft Java Edition is the original classic version for Windows, Mac, and Linux. It boasts the most massive open-source community, allowing you to freely install Mods, Shaders, and join massive multiplayer servers.", "g4_p2": "📍 <strong>Key Features:</strong> Infinite Mod support, top-tier Shaders, hardcore mechanics.<br><br><small><i>*Note: Java Edition is PC exclusive.</i></small>"
         },
         "ms": {
-            "initializing": "MEMULAKAN...", "loading": "MEMUATKAN...", "theme_light": "Mod Cerah", "theme_dark": "Mod Gelap", "sound_on": "Bunyi: Buka", "sound_off": "Bunyi: Senyap", "perf_high": "Prestasi: Tinggi", "perf_low": "Prestasi: Jimat", "color_picker_title": "Warna Tema", "reset_btn": "🔄 Tetap Semula", "reset_confirm": "Adakah anda pasti mahu menetapkan semula semua tetapan?", "sidebar_menu": "Menu", "nav_about": "Tentang Saya", "nav_resume": "Resume", "nav_portfolio": "Portfolio", "nav_games": "Permainan", "footer_title_1": "BroQiangStudio", "footer_desc": "Berdedikasi untuk pembangunan web, reka bentuk multimedia dan projek kreatif. Sila hubungi saya!", "footer_title_2": "Pautan Pantas", "footer_title_3": "Media Sosial", "footer_contact": "Hubungi Saya:", "footer_changelog": "Log Kemas Kini Laman Web", "social_ig": "Instagram", "social_yt": "YouTube", "social_fb": "Facebook", "social_tk": "TikTok", "social_dy": "TikTok (CN)", 
+            "initializing": "MEMULAKAN...", "loading": "MEMUATKAN...", "resetting": "Menetapkan Semula...",
+            "theme_light": "Mod Cerah", "theme_dark": "Mod Gelap", "sound_on": "Bunyi: Buka", "sound_off": "Bunyi: Senyap", "perf_high": "Prestasi: Tinggi", "perf_low": "Prestasi: Jimat", "color_picker_title": "Warna Tema", "reset_btn": "🔄 Tetap Semula", "reset_confirm": "Adakah anda pasti mahu menetapkan semula semua tetapan?", "sidebar_menu": "Menu", "nav_about": "Tentang Saya", "nav_resume": "Resume", "nav_portfolio": "Portfolio", "nav_games": "Permainan", "footer_title_1": "BroQiangStudio", "footer_desc": "Berdedikasi untuk pembangunan web, reka bentuk multimedia dan projek kreatif. Sila hubungi saya!", "footer_title_2": "Pautan Pantas", "footer_title_3": "Media Sosial", "footer_contact": "Hubungi Saya:", "footer_changelog": "Log Kemas Kini Laman Web",
+            "social_ig": "Instagram", "social_yt": "YouTube", "social_fb": "Facebook", "social_tk": "TikTok", "social_dy": "TikTok (CN)", 
             
-            // 首頁與關於我 (完整版補齊)
             "page_title_home": "Utama | BroQiangStudio", 
             "hero_title": "Hai, Saya Er Le An", 
             "hero_subtitle": "Pembangun yang bersemangat menyelesaikan masalah dengan kod / Pencipta yang suka bercerita melalui reka bentuk.", 
@@ -135,7 +133,6 @@ document.addEventListener("DOMContentLoaded", () => {
             "about_content_1": "Helo! Saya Michael Er, seorang pembangun web dan pencipta multimedia yang bersemangat.", 
             "about_content_2": "Saya suka mengubah idea reka bentuk yang imaginatif kepada halaman web interaktif yang nyata melalui pengaturcaraan. Bagi saya, teknologi dan seni bukanlah dua garisan selari, tetapi titik pertemuan yang mampu mencipta kemungkinan yang tidak terhingga. Terima kasih kerana melawat!",
             
-            // 首頁遊戲簡介 (完整版)
             "page_title_games": "Permainan | BroQiangStudio", "games_header": "Permainan Harian Saya", 
             "game_1_title": "Ace Racer (CN)", "game_1_desc": "Nikmati keseronokan kelajuan melampau di litar dan lepaskan kemahiran ultimate anda.", 
             "game_2_title": "Identity V (Global)", "game_2_desc": "Pengejaran mendebarkan kompetitif tidak simetri yang menguji strategi dan perang psikologi anda.", 
@@ -157,7 +154,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (translations[lang] && translations[lang][key]) { 
-                // 🔥 修復關鍵：把 textContent 換成了 innerHTML，讓粗體和換行代碼生效！
                 el.innerHTML = translations[lang][key]; 
             }
         });
@@ -302,13 +298,35 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // 🔥 全新升級：恢復預設按鈕邏輯 (加入高級過渡動畫)
     document.querySelectorAll('.reset-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
             const currentLang = localStorage.getItem('preferredLang') || 'zh-TW';
+            
             if (confirm(translations[currentLang]['reset_confirm'])) {
-                localStorage.clear();
-                location.reload();
+                // 1. 抓取開屏動畫元素
+                const splashScreen = document.getElementById('splash-screen');
+                const splashText = document.getElementById('splash-text');
+                
+                if (splashScreen && splashText) {
+                    // 2. 更改文字為「恢復預設中...」並顯示出來
+                    splashText.textContent = translations[currentLang]['resetting'];
+                    splashScreen.classList.remove('hidden');
+                    
+                    // 3. 重新凍結背景動畫 (防穿幫)
+                    document.documentElement.classList.add('splash-active');
+                    
+                    // 4. 等待 1.5 秒讓用戶看到轉圈圈，再清除資料與重整頁面
+                    setTimeout(() => {
+                        localStorage.clear();
+                        location.reload();
+                    }, 1500); 
+                } else {
+                    // 備用方案 (如果找不到元素就直接重整)
+                    localStorage.clear();
+                    location.reload();
+                }
             }
         });
     });
