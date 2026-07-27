@@ -15,17 +15,24 @@
   <div class="splash-text" data-i18n="initializing">INITIALIZING...</div>
 </div>
 
-<!-- 🚀 閃爍攔截器：在畫面顯示前，瞬間套用使用者的設定 -->
+<!-- 🚀 閃爍攔截器與動畫鎖定 -->
 <script>
   (function() {
-    // 1. 瞬間套用日/夜間模式與主題色
+    // 1. 瞬間套用日/夜間模式、主題色與「效能模式」
     const savedTheme = localStorage.getItem('preferredTheme') || 'dark';
     document.documentElement.setAttribute('data-theme', savedTheme);
     
     const savedColor = localStorage.getItem('preferredColor') || '#e50914';
     document.documentElement.style.setProperty('--accent-color', savedColor);
     
-    // 2. 瞬間套用正確的多國語言 (避免文字閃爍)
+    // 🔥 修復：瞬間套用極致模式，確保動畫設定正確
+    const savedPerf = localStorage.getItem('performanceMode') || 'high';
+    document.documentElement.setAttribute('data-performance', savedPerf);
+
+    // 2. 啟動「時間暫停」，凍結底層動畫，避免被開屏畫面吃掉
+    document.documentElement.classList.add('splash-active');
+    
+    // 3. 瞬間套用正確的多國語言
     const lang = localStorage.getItem('preferredLang') || 'zh-TW';
     const splashText = document.querySelector('.splash-text');
     if (splashText) {
