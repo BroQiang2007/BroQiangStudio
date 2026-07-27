@@ -8,6 +8,40 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- 開屏動畫 (Splash Screen) -->
+<div id="splash-screen">
+  <div class="splash-loader"></div>
+  <div class="splash-text" data-i18n="initializing">INITIALIZING...</div>
+</div>
+
+<!-- 🚀 閃爍攔截器與動畫鎖定 -->
+<script>
+  (function() {
+    // 1. 瞬間套用日/夜間模式、主題色與「效能模式」
+    const savedTheme = localStorage.getItem('preferredTheme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    
+    const savedColor = localStorage.getItem('preferredColor') || '#e50914';
+    document.documentElement.style.setProperty('--accent-color', savedColor);
+    
+    // 🔥 修復：瞬間套用極致模式，確保動畫設定正確
+    const savedPerf = localStorage.getItem('performanceMode') || 'high';
+    document.documentElement.setAttribute('data-performance', savedPerf);
+
+    // 2. 啟動「時間暫停」，凍結底層動畫，避免被開屏畫面吃掉
+    document.documentElement.classList.add('splash-active');
+    
+    // 3. 瞬間套用正確的多國語言
+    const lang = localStorage.getItem('preferredLang') || 'zh-TW';
+    const splashText = document.querySelector('.splash-text');
+    if (splashText) {
+      if (lang === 'zh-TW') splashText.textContent = '系統初始化中...';
+      else if (lang === 'zh-CN') splashText.textContent = '系统初始化中...';
+      else if (lang === 'ms') splashText.textContent = 'MEMULAKAN...';
+      else splashText.textContent = 'INITIALIZING...';
+    }
+  })();
+</script>
     <header class="top-bar">
         <button class="menu-btn" id="menuBtn">☰</button>
         <nav class="desktop-nav">
