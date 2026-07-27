@@ -6,16 +6,33 @@
     <title data-i18n="page_title_home">首頁 | BroQiangStudio</title>
     <link rel="icon" href="Pictures/ProfilePicture.jpg" type="image/jpeg">
     <link rel="stylesheet" href="style.css">
+    
+    <!-- 👇 就是這裡原本被你不小心刪壞了，我幫你補回完美的 <style> 標籤 -->
+    <style>
+        html, body {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            background-color: black;
+        }
+        canvas {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
 <body>
     <!-- ==================== 開屏動畫與攔截器 ==================== -->
     <div id="welcome-screen">
         <h1 class="welcome-text" id="welcome-text"></h1>
     </div>
+    
     <div id="splash-screen">
       <div class="splash-loader"></div>
       <div class="splash-text" id="splash-text">INITIALIZING...</div>
     </div>
+    
     <script>
       (function() {
         const savedTheme = localStorage.getItem('preferredTheme') || 'dark'; document.documentElement.setAttribute('data-theme', savedTheme);
@@ -37,12 +54,10 @@
         const welcomeScreen = document.getElementById('welcome-screen');
         const welcomeText = document.getElementById('welcome-text');
         
-        // 判定是否為第一次造訪，並將結果存為全局變數給 script.js 讀取
         window.isFirstTimeVisitor = !localStorage.getItem('hasVisitedBroQiang');
         const bqStyled = '<span style="color: var(--accent-color);">BroQiangStudio</span>';
 
         if (window.isFirstTimeVisitor) {
-            // 新用戶設定迎賓文字與初始化文字
             if (lang === 'zh-TW') welcomeText.innerHTML = `歡迎光臨進入 ${bqStyled} 的網站！`;
             else if (lang === 'zh-CN') welcomeText.innerHTML = `欢迎光临进入 ${bqStyled} 的网站！`;
             else if (lang === 'ms') welcomeText.innerHTML = `Selamat Datang ke Laman Web ${bqStyled}!`;
@@ -56,7 +71,6 @@
                 else splashText.textContent = 'INITIALIZING...';
             }
         } else {
-            // 老用戶直接隱藏迎賓畫面
             if (welcomeScreen) welcomeScreen.style.display = 'none';
             if (splashText) {
                 const isSessionInit = sessionStorage.getItem('siteInitialized');
