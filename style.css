@@ -624,7 +624,7 @@ a { text-decoration: none !important; color: inherit; }
   width: 100vw;
   height: 100vh;
   background-color: #0f0f11;
-  z-index: 999999; /* 絕對最高層級，覆蓋所有導航列和按鈕 */
+  z-index: 999999;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -632,28 +632,31 @@ a { text-decoration: none !important; color: inherit; }
   transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
 }
 
-/* 觸發淡出時會加上這個 class */
 #splash-screen.hidden {
   opacity: 0;
   visibility: hidden;
-  pointer-events: none; /* 隱藏後徹底不阻擋滑鼠點擊 */
+  pointer-events: none;
 }
 
 /* 科技感載入圈圈 */
 .splash-loader {
   width: 50px;
   height: 50px;
-  border: 3px solid rgba(255, 0, 0, 0.2);
-  border-top: 3px solid #ff0000;
+  /* 圓圈底色改為低調的半透明，百搭任何主題色 */
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  /* 旋轉的引導線：自動跟隨主題色 */
+  border-top: 3px solid var(--accent-color);
   border-radius: 50%;
   animation: spin 1s linear infinite;
-  box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+  /* 光暈：自動跟隨主題色 */
+  box-shadow: 0 0 15px var(--accent-color);
 }
 
 /* 文字呼吸燈效果 */
 .splash-text {
   margin-top: 20px;
-  color: #ff0000;
+  /* 文字：自動跟隨主題色 */
+  color: var(--accent-color);
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
   letter-spacing: 3px;
@@ -667,5 +670,6 @@ a { text-decoration: none !important; color: inherit; }
 
 @keyframes pulse {
   0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; text-shadow: 0 0 10px rgba(255, 0, 0, 0.8); }
+  /* 文字發光：自動跟隨主題色 */
+  50% { opacity: 1; text-shadow: 0 0 12px var(--accent-color); }
 }
