@@ -267,10 +267,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ==================== 開屏動畫結束機制 ====================
 window.addEventListener('load', () => {
+    const welcomeScreen = document.getElementById('welcome-screen');
     const splashScreen = document.getElementById('splash-screen');
-    if (splashScreen) {
+    
+    if (window.isFirstTimeVisitor) {
+        // 【全新用戶的 3A 級出場體驗】
+        // 1. 迎賓畫面顯示 2.5 秒後淡出
         setTimeout(() => {
-            splashScreen.classList.add('hidden');
+            if (welcomeScreen) welcomeScreen.classList.add('hidden');
+            localStorage.setItem('hasVisitedBroQiang', 'true'); // 標記為老用戶
+            sessionStorage.setItem('siteInitialized', 'true');
+            
+            // 2. 迎賓畫面淡出後，露出底下的轉圈圈，讓它再轉 1.5 秒才結束
+            setTimeout(() => {
+                if (splashScreen) splashScreen.classList.add('hidden');
+                document.documentElement.classList.remove('splash-active'); // 解除網頁凍結，元素飛入！
+            }, 1500);
+            
+        }, 2500); 
+        
+    } else {
+        // 【老用戶快速通關體驗】
+        // 迎賓畫面早就被隱藏了，直接讓轉圈圈顯示 0.5 秒後結束
+        setTimeout(() => {
+            if (splashScreen) splashScreen.classList.add('hidden');
             document.documentElement.classList.remove('splash-active');
         }, 500); 
     }
