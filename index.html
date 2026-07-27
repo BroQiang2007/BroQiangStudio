@@ -54,14 +54,29 @@
         const welcomeScreen = document.getElementById('welcome-screen');
         const welcomeText = document.getElementById('welcome-text');
         
-        window.isFirstTimeVisitor = !localStorage.getItem('hasVisitedBroQiang');
+        // 判斷狀態的雙重保險
+        const isFirstTimeVisitor = !localStorage.getItem('hasVisitedBroQiang'); // 是否這輩子第一次來
+        const isNewSession = !sessionStorage.getItem('siteInitialized'); // 是否為本次「剛打開網站」
+        
+        // 傳遞給 script.js 決定要不要播完整動畫
+        window.showWelcome = isNewSession; 
         const bqStyled = '<span style="color: var(--accent-color);">BroQiangStudio</span>';
 
-        if (window.isFirstTimeVisitor) {
-            if (lang === 'zh-TW') welcomeText.innerHTML = `歡迎光臨進入 ${bqStyled} 的網站！`;
-            else if (lang === 'zh-CN') welcomeText.innerHTML = `欢迎光临进入 ${bqStyled} 的网站！`;
-            else if (lang === 'ms') welcomeText.innerHTML = `Selamat Datang ke Laman Web ${bqStyled}!`;
-            else welcomeText.innerHTML = `Welcome to ${bqStyled}!`;
+        if (isNewSession) {
+            // 【只要是這次剛打開網站，就播迎賓動畫！】
+            if (isFirstTimeVisitor) {
+                // 1. 全新用戶：歡迎光臨
+                if (lang === 'zh-TW') welcomeText.innerHTML = `歡迎光臨進入 ${bqStyled} 的網站！`;
+                else if (lang === 'zh-CN') welcomeText.innerHTML = `欢迎光临进入 ${bqStyled} 的网站！`;
+                else if (lang === 'ms') welcomeText.innerHTML = `Selamat Datang ke Laman Web ${bqStyled}!`;
+                else welcomeText.innerHTML = `Welcome to ${bqStyled}!`;
+            } else {
+                // 2. 老用戶回歸：歡迎回到
+                if (lang === 'zh-TW') welcomeText.innerHTML = `歡迎回到 ${bqStyled} 的網站！`;
+                else if (lang === 'zh-CN') welcomeText.innerHTML = `欢迎回到 ${bqStyled} 的网站！`;
+                else if (lang === 'ms') welcomeText.innerHTML = `Selamat Kembali ke Laman Web ${bqStyled}!`;
+                else welcomeText.innerHTML = `Welcome back to ${bqStyled}!`;
+            }
 
             if (splashText) {
                 splashText.setAttribute('data-i18n', 'initializing');
@@ -71,23 +86,14 @@
                 else splashText.textContent = 'INITIALIZING...';
             }
         } else {
+            // 【已經在網站內部點擊按鈕切換頁面】：直接隱藏迎賓畫面，快速通關
             if (welcomeScreen) welcomeScreen.style.display = 'none';
             if (splashText) {
-                const isSessionInit = sessionStorage.getItem('siteInitialized');
-                if (!isSessionInit) {
-                    splashText.setAttribute('data-i18n', 'initializing');
-                    if (lang === 'zh-TW') splashText.textContent = '系統初始化中...';
-                    else if (lang === 'zh-CN') splashText.textContent = '系统初始化中...';
-                    else if (lang === 'ms') splashText.textContent = 'MEMULAKAN...';
-                    else splashText.textContent = 'INITIALIZING...';
-                    sessionStorage.setItem('siteInitialized', 'true');
-                } else {
-                    splashText.setAttribute('data-i18n', 'loading');
-                    if (lang === 'zh-TW') splashText.textContent = '載入中...';
-                    else if (lang === 'zh-CN') splashText.textContent = '加载中...';
-                    else if (lang === 'ms') splashText.textContent = 'MEMUATKAN...';
-                    else splashText.textContent = 'LOADING...';
-                }
+                splashText.setAttribute('data-i18n', 'loading');
+                if (lang === 'zh-TW') splashText.textContent = '載入中...';
+                else if (lang === 'zh-CN') splashText.textContent = '加载中...';
+                else if (lang === 'ms') splashText.textContent = 'MEMUATKAN...';
+                else splashText.textContent = 'LOADING...';
             }
         }
       })();
