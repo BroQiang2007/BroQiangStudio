@@ -122,7 +122,7 @@
 
     <main class="hero-section">
         <div class="hero-bg">
-            <video id="bgVideo" src="Videos/heart-python.mp4" autoplay loop muted playsinline></video>
+            <canvas id="pinkboard" style="position: absolute; width: 100%; height: 100%; background-color: black;"></canvas>
             <div class="overlay"></div>
         </div>
         <div class="hero-content">
@@ -142,6 +142,35 @@
         </div>
     </main>
 
+    <main class="hero-section">
+        <div class="hero-bg">
+            <!-- ⬇️ 把原本的 video 替換成你的愛心 Canvas ⬇️ -->
+            <canvas id="pinkboard" style="position: absolute; width: 100%; height: 100%; background-color: black;"></canvas>
+            <div class="overlay"></div>
+        </div>
+
+        <div class="hero-content">
+            <img src="Pictures/ProfilePicture.jpg" alt="Avatar" class="profile-pic">
+            <h1 data-i18n="hero_title">嗨，我是 余樂銨</h1>
+            <p class="subtitle" data-i18n="hero_subtitle">熱愛用程式解決問題的開發者 / 喜歡用設計說故事的創作者。</p>
+            
+            <div class="visitor-stats">
+                <span class="stat-item">
+                    <i class="icon">👁️</i> <span data-i18n="stat_daily">今日訪客：</span><strong id="daily-visitors">0</strong>
+                </span>
+                <span class="divider">|</span>
+                <span class="stat-item">
+                    <i class="icon">🚀</i> <span data-i18n="stat_total">歷史總量：</span><strong id="total-visitors">0</strong>
+                </span>
+            </div>
+        </div>
+    </main>
+
+    <!-- ⬇️ 把愛心特效的 JavaScript 放在這裡 (貼上愛心的動畫邏輯) ⬇️ -->
+    <script>
+        /* 這裡請貼上你愛心特效 <script> 裡面的所有 JavaScript 程式碼 */
+        /* 例如: var canvas = document.getElementById('pinkboard'); ... */
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
