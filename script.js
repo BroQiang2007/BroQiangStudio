@@ -299,9 +299,9 @@ window.addEventListener('load', () => {
   const splashScreen = document.getElementById('splash-screen');
   
   if (splashScreen) {
-    // 稍微延遲 0.5 秒再淡出，讓動畫有時間展示，也確保影片平順起播
+    // 延遲 0.6 秒再淡出，確保多語言替換完成，且畫面渲染平順
     setTimeout(() => {
       splashScreen.classList.add('hidden');
-    }, 500); 
+    }, 600); 
   }
 });
