@@ -623,13 +623,20 @@ a { text-decoration: none !important; color: inherit; }
   left: 0;
   width: 100vw;
   height: 100vh;
+  /* 預設：夜間模式深色背景 */
   background-color: #0f0f11;
   z-index: 999999;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+  /* 加入 background-color 的漸變動畫，切換主題時更平滑 */
+  transition: opacity 0.8s ease-out, visibility 0.8s ease-out, background-color 0.3s ease;
+}
+
+/* 🔥 關鍵：當切換到日間模式時，自動變成淺色背景 */
+[data-theme="light"] #splash-screen {
+  background-color: #ffffff; 
 }
 
 #splash-screen.hidden {
@@ -642,20 +649,22 @@ a { text-decoration: none !important; color: inherit; }
 .splash-loader {
   width: 50px;
   height: 50px;
-  /* 圓圈底色改為低調的半透明，百搭任何主題色 */
+  /* 預設夜間模式的圓圈底色（淺白半透明） */
   border: 3px solid rgba(255, 255, 255, 0.1);
-  /* 旋轉的引導線：自動跟隨主題色 */
   border-top: 3px solid var(--accent-color);
   border-radius: 50%;
   animation: spin 1s linear infinite;
-  /* 光暈：自動跟隨主題色 */
   box-shadow: 0 0 15px var(--accent-color);
+}
+
+/* 🔥 日間模式的圓圈底色自動變深，這樣在白底上才看得清楚 */
+[data-theme="light"] .splash-loader {
+  border: 3px solid rgba(0, 0, 0, 0.1);
 }
 
 /* 文字呼吸燈效果 */
 .splash-text {
   margin-top: 20px;
-  /* 文字：自動跟隨主題色 */
   color: var(--accent-color);
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
@@ -670,6 +679,5 @@ a { text-decoration: none !important; color: inherit; }
 
 @keyframes pulse {
   0%, 100% { opacity: 0.6; }
-  /* 文字發光：自動跟隨主題色 */
   50% { opacity: 1; text-shadow: 0 0 12px var(--accent-color); }
 }
