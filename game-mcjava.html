@@ -9,13 +9,7 @@
     <style>
         .game-detail-container { display: flex; flex-direction: column; gap: 30px; max-width: 900px; margin: 0 auto; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 30px; backdrop-filter: blur(10px); }
         @media (min-width: 768px) { .game-detail-container { flex-direction: row; } }
-        .detail-image-card { 
-            padding: 0 !important; border: 2px solid var(--accent-color) !important; background: transparent !important; 
-            width: 100%; max-width: 400px; margin: 0 auto; box-shadow: none !important; 
-            /* 👇 加上這兩行，完美解決電腦版下方留白，且不影響手機版！ */
-            height: max-content; 
-            align-self: flex-start; 
-        }
+        .detail-image-card { padding: 0 !important; border: 2px solid var(--accent-color) !important; background: transparent !important; width: 100%; max-width: 400px; margin: 0 auto; box-shadow: none !important; }
         .detail-image-card:hover { transform: scale(1.02) !important; box-shadow: 0 0 20px var(--accent-color) !important; }
         .detail-image-card .reveal-img-wrapper { margin-bottom: 0; border-radius: 13px; }
         
