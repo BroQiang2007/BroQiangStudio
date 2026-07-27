@@ -270,25 +270,26 @@ window.addEventListener('load', () => {
     const welcomeScreen = document.getElementById('welcome-screen');
     const splashScreen = document.getElementById('splash-screen');
     
-    if (window.isFirstTimeVisitor) {
-        // 【全新用戶的 3A 級出場體驗】
-        // 1. 迎賓畫面顯示 2.5 秒後淡出
+    if (window.showWelcome) {
+        // 【剛點進網站的第一次 (包含新老用戶)，播完整雙層動畫】
         setTimeout(() => {
             if (welcomeScreen) welcomeScreen.classList.add('hidden');
-            localStorage.setItem('hasVisitedBroQiang', 'true'); // 標記為老用戶
-            sessionStorage.setItem('siteInitialized', 'true');
             
-            // 2. 迎賓畫面淡出後，露出底下的轉圈圈，讓它再轉 1.5 秒才結束
+            // 播完後，做記號！
+            localStorage.setItem('hasVisitedBroQiang', 'true'); // 標記已來過，下次變老用戶
+            sessionStorage.setItem('siteInitialized', 'true');  // 標記本次連線已看過，內部切換頁面就不再播
+            
+            // 底下的轉圈圈再轉 1.5 秒
             setTimeout(() => {
                 if (splashScreen) splashScreen.classList.add('hidden');
-                document.documentElement.classList.remove('splash-active'); // 解除網頁凍結，元素飛入！
+                document.documentElement.classList.remove('splash-active');
             }, 1500);
             
         }, 2500); 
         
     } else {
-        // 【老用戶快速通關體驗】
-        // 迎賓畫面早就被隱藏了，直接讓轉圈圈顯示 0.5 秒後結束
+        // 【網站內部切換頁面】
+        // 迎賓畫面早已隱藏，只顯示 0.5 秒的「載入中...」極速通關
         setTimeout(() => {
             if (splashScreen) splashScreen.classList.add('hidden');
             document.documentElement.classList.remove('splash-active');
