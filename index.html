@@ -14,6 +14,28 @@
   <div class="splash-loader"></div>
   <div class="splash-text" data-i18n="initializing">INITIALIZING...</div>
 </div>
+
+<!-- 🚀 閃爍攔截器：在畫面顯示前，瞬間套用使用者的設定 -->
+<script>
+  (function() {
+    // 1. 瞬間套用日/夜間模式與主題色
+    const savedTheme = localStorage.getItem('preferredTheme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    
+    const savedColor = localStorage.getItem('preferredColor') || '#e50914';
+    document.documentElement.style.setProperty('--accent-color', savedColor);
+    
+    // 2. 瞬間套用正確的多國語言 (避免文字閃爍)
+    const lang = localStorage.getItem('preferredLang') || 'zh-TW';
+    const splashText = document.querySelector('.splash-text');
+    if (splashText) {
+      if (lang === 'zh-TW') splashText.textContent = '系統初始化中...';
+      else if (lang === 'zh-CN') splashText.textContent = '系统初始化中...';
+      else if (lang === 'ms') splashText.textContent = 'MEMULAKAN...';
+      else splashText.textContent = 'INITIALIZING...';
+    }
+  })();
+</script>
     <header class="top-bar">
         <button class="menu-btn" id="menuBtn">☰</button>
         <nav class="desktop-nav">
