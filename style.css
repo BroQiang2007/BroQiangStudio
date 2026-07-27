@@ -615,6 +615,34 @@ a { text-decoration: none !important; color: inherit; }
 .card:hover .img-front { opacity: 0; transform: scale(1.05); }
 .card:hover .media-back { opacity: 1; }
 
+/* ===== 遊戲詳情頁專屬排版 (Game Detail Pages) ===== */
+.game-detail-container { 
+    display: flex; flex-direction: column; gap: 30px; max-width: 900px; margin: 0 auto; 
+    background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; 
+    padding: 30px; backdrop-filter: blur(10px); 
+}
+@media (min-width: 768px) { .game-detail-container { flex-direction: row; } }
+
+.game-info { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+.game-info h3 { font-size: 2rem; color: var(--accent-color); margin-bottom: 10px; }
+.game-info p { color: var(--text-color); font-size: 1.05rem; line-height: 1.8; text-align: justify; }
+
+.download-links { display: flex; flex-wrap: wrap; gap: 15px; margin-top: auto; }
+.download-links .intro-btn { 
+    flex: 1; text-align: center; min-width: 140px; padding: 12px 10px; 
+    font-size: 0.95rem; display: flex; justify-content: center; align-items: center; 
+}
+
+/* 遊戲詳情頁專用的隱藏影片卡片 (防拉長留白) */
+.detail-image-card { 
+    padding: 0 !important; border: 2px solid var(--accent-color) !important; background: transparent !important; 
+    width: 100%; max-width: 400px; margin: 0 auto; box-shadow: none !important; 
+    height: max-content; align-self: flex-start; /* 完美解決電腦版被拉長下方留白的問題！ */
+}
+.detail-image-card:hover { transform: scale(1.02) !important; box-shadow: 0 0 20px var(--accent-color) !important; }
+.detail-image-card .reveal-img-wrapper { margin-bottom: 0; border-radius: 13px; }
+
+
 /* ===== 內頁頁尾 (Footer) ===== */
 .site-footer { background: rgba(0,0,0,0.2); border-top: 1px solid var(--border-color); padding: 50px 5% 20px; margin-top: 50px; }
 [data-theme="light"] .site-footer { background: rgba(0,0,0,0.05); }
