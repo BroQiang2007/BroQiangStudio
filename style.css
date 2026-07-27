@@ -35,15 +35,6 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* 🚀 凍結底層動畫 (防偷跑鎖定) */
-html.splash-active .hero-content, 
-html.splash-active .page-content,
-html.splash-active .profile-pic {
-    animation: none !important;
-    transform: translateY(25px); /* 保持在動畫起始位置 */
-    opacity: 0; /* 保持透明，直到 splash-active 被移除才開始進場 */
-}
-
 /* ===== 基礎設定 (Reset & Variables) ===== */
 * {
     margin: 0;
