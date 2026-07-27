@@ -144,7 +144,30 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.querySelector('.theme-icon').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
     });
 
-    const savedLang = localStorage.getItem('preferredLang') || 'zh-TW';
+    // 首次載入偵測設備語言
+    let savedLang = localStorage.getItem('preferredLang');
+    
+    if (!savedLang) {
+        // 取得用戶設備語言並轉成小寫方便比對
+        const navLang = navigator.language.toLowerCase(); 
+        
+        // 根據你網站支援的 4 種語言進行精準配對
+        if (navLang.includes('zh-tw') || navLang.includes('zh-hk')) {
+            savedLang = 'zh-TW'; // 繁體中文 (台灣、香港)
+        } else if (navLang.includes('zh')) {
+            savedLang = 'zh-CN'; // 簡體中文 (中國、新加坡等其他中文)
+        } else if (navLang.includes('ms') || navLang.includes('id')) {
+            savedLang = 'ms';    // 馬來文 (或印尼文)
+        } else if (navLang.includes('en')) {
+            savedLang = 'en';    // 英文
+        } else {
+            savedLang = 'en'; // 如果是日文、韓文等其他不在支援列表內的語言，預設顯示英文 (你也可以改成 'zh-TW')
+        }
+        
+        // 存入 localStorage，這樣用戶下次來就會記住，且他們之後可以手動更改
+        localStorage.setItem('preferredLang', savedLang);
+    }
+
     updateLanguageAndSettings(savedLang);
 
     const initMuted = localStorage.getItem('globalMuted') !== 'false'; 
