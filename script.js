@@ -309,3 +309,23 @@ window.addEventListener('load', () => {
     }, 600); 
   }
 });
+
+/* ==================== 開屏動畫控制 ==================== */
+window.addEventListener('load', () => {
+  const splashScreen = document.getElementById('splash-screen');
+  
+  if (splashScreen) {
+    // 延遲 0.6 秒再淡出
+    setTimeout(() => {
+      splashScreen.classList.add('hidden');
+      
+      // 🔥 關鍵修復：在開屏畫面開始淡出的瞬間，解除時間暫停！
+      // 這樣你的極致模式進場動畫，就會在畫面出現的這一刻完美開始播放
+      document.documentElement.classList.remove('splash-active');
+      
+    }, 600); 
+  } else {
+    // 如果沒有開屏動畫，也確保解鎖
+    document.documentElement.classList.remove('splash-active');
+  }
+});
