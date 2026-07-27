@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Java | 遊戲詳情</title>
+    <link rel="icon" href="Pictures/ProfilePicture.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .game-detail-container { display: flex; flex-direction: column; gap: 30px; max-width: 900px; margin: 0 auto; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 30px; backdrop-filter: blur(10px); }
+        @media (min-width: 768px) { .game-detail-container { flex-direction: row; } }
+        .game-cover { width: 100%; max-width: 400px; border-radius: 15px; border: 2px solid var(--accent-color); object-fit: cover; margin: 0 auto; }
+        .game-info { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+        .game-info h3 { font-size: 2rem; color: var(--accent-color); margin-bottom: 10px; }
+        .game-info p { color: var(--text-color); font-size: 1.05rem; line-height: 1.8; text-align: justify; }
+        .download-links { display: flex; flex-wrap: wrap; gap: 15px; margin-top: auto; }
+        .download-links .intro-btn { flex: 1; text-align: center; min-width: 140px; padding: 12px 10px; font-size: 0.95rem; }
+    </style>
+</head>
+<body>
+    <header class="top-bar">
+        <button class="menu-btn" id="menuBtn">☰</button>
+        <nav class="desktop-nav">
+            <a href="games.html">← 返回遊戲列表</a>
+        </nav>
+        <div class="top-right-controls">
+            <div class="settings-wrapper desktop-only">
+                <button class="settings-icon-btn" id="desktopSettingsBtn">⚙️</button>
+                <div class="settings-dropdown" id="desktopDropdown">
+                    <button class="theme-toggle-btn"><span class="theme-icon">☀️</span> <span class="theme-text">日間模式</span></button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main class="page-content">
+        <h2 class="section-title">遊戲詳情</h2>
+        <div class="game-detail-container">
+            <img src="Pictures/mc-java.jpg" alt="Minecraft Java" class="game-cover">
+            <div class="game-info">
+                <h3>Minecraft (Java Edition)</h3>
+                <p>《Minecraft Java版》是遊戲最初、最經典的版本，僅支援 Windows、Mac 和 Linux 電腦遊玩。這個版本擁有全世界最龐大、最活躍的開源社群，你可以自由安裝無數的第三方模組 (Mods)、光影包、材質包，並加入各種大型多人線上伺服器。</p>
+                <p>📍 <strong>特色亮點：</strong> 豐富的第三方模組支援、頂級光影特效、硬核紅石與生存機制。<br><br><small><i>*註：Java 版為電腦獨佔，無官方手機版本。</i></small></p>
+                <div class="download-links">
+                    <a href="https://www.minecraft.net/" target="_blank" class="intro-btn">🌐 官方網站</a>
+                    <a href="https://www.minecraft.net/download" target="_blank" class="intro-btn">💻 PC 啟動器下載</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
