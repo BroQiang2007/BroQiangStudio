@@ -8,6 +8,44 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- ==================== 開屏動畫與攔截器 ==================== -->
+    <div id="splash-screen">
+      <div class="splash-loader"></div>
+      <div class="splash-text" id="splash-text">INITIALIZING...</div>
+    </div>
+    <script>
+      (function() {
+        const savedTheme = localStorage.getItem('preferredTheme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        const savedColor = localStorage.getItem('preferredColor') || '#e50914';
+        document.documentElement.style.setProperty('--accent-color', savedColor);
+        const savedPerf = localStorage.getItem('performanceMode') || 'high';
+        document.documentElement.setAttribute('data-performance', savedPerf);
+        document.documentElement.classList.add('splash-active');
+        
+        const lang = localStorage.getItem('preferredLang') || 'zh-TW';
+        const splashText = document.getElementById('splash-text');
+        if (splashText) {
+          const isInitialized = sessionStorage.getItem('siteInitialized');
+          if (!isInitialized) {
+            splashText.setAttribute('data-i18n', 'initializing');
+            if (lang === 'zh-TW') splashText.textContent = '系統初始化中...';
+            else if (lang === 'zh-CN') splashText.textContent = '系统初始化中...';
+            else if (lang === 'ms') splashText.textContent = 'MEMULAKAN...';
+            else splashText.textContent = 'INITIALIZING...';
+            sessionStorage.setItem('siteInitialized', 'true');
+          } else {
+            splashText.setAttribute('data-i18n', 'loading');
+            if (lang === 'zh-TW') splashText.textContent = '載入中...';
+            else if (lang === 'zh-CN') splashText.textContent = '加载中...';
+            else if (lang === 'ms') splashText.textContent = 'MEMUATKAN...';
+            else splashText.textContent = 'LOADING...';
+          }
+        }
+      })();
+    </script>
+    <!-- ==================== 開屏動畫結束 ==================== -->
+
     <header class="top-bar">
         <button class="menu-btn" id="menuBtn">☰</button>
         <nav class="desktop-nav">
@@ -17,7 +55,6 @@
             <a href="games.html" data-i18n="nav_games">遊戲日常</a>
         </nav>
         <div class="top-right-controls">
-            <!-- 內頁移除了解更多按鈕 -->
             <div class="settings-wrapper desktop-only">
                 <button class="settings-icon-btn" id="desktopSettingsBtn">⚙️</button>
                 <div class="settings-dropdown" id="desktopDropdown">
@@ -109,7 +146,6 @@
                 <h4 data-i18n="footer_title_2">快速導覽</h4>
                 <ul>
                     <li><a href="index.html" data-i18n="nav_about">關於我</a></li>
-                    <!-- 🔥 在關於我下面新增了解更多 -->
                     <li><a href="about-me.html" data-i18n="intro_btn">了解更多</a></li>
                     <li><a href="resume.html" data-i18n="nav_resume">專業履歷</a></li>
                     <li><a href="portfolio.html" data-i18n="nav_portfolio">作品集</a></li>
