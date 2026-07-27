@@ -681,3 +681,10 @@ a { text-decoration: none !important; color: inherit; }
   0%, 100% { opacity: 0.6; }
   50% { opacity: 1; text-shadow: 0 0 12px var(--accent-color); }
 }
+
+/* ==================== 防動畫偷跑鎖定 ==================== */
+/* 當開屏動畫還在時，暫停底層所有的 CSS 動畫與轉場，但不影響開屏動畫本身 */
+html.splash-active body *:not(#splash-screen):not(#splash-screen *) {
+  animation-play-state: paused !important;
+  transition: none !important;
+}
