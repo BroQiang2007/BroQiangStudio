@@ -23,7 +23,16 @@
         document.documentElement.setAttribute('data-performance', savedPerf);
         document.documentElement.classList.add('splash-active');
         
-        const lang = localStorage.getItem('preferredLang') || 'zh-TW';
+        let lang = localStorage.getItem('preferredLang');
+        if (!lang) {
+            const navLang = navigator.language.toLowerCase();
+            if (navLang.includes('zh-tw') || navLang.includes('zh-hk')) lang = 'zh-TW';
+            else if (navLang.includes('zh')) lang = 'zh-CN';
+            else if (navLang.includes('ms') || navLang.includes('id')) lang = 'ms';
+            else if (navLang.includes('en')) lang = 'en';
+            else lang = 'en'; 
+            localStorage.setItem('preferredLang', lang);
+        }
         const splashText = document.getElementById('splash-text');
         if (splashText) {
           const isInitialized = sessionStorage.getItem('siteInitialized');
