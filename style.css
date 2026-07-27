@@ -615,3 +615,59 @@ a { text-decoration: none !important; color: inherit; }
 [data-performance="low"] .reveal-img-wrapper .media-back { opacity: 0 !important; display: none !important; }
 [data-performance="low"] .hero-bg video { display: none !important; }
 [data-performance="low"] .hero-bg { background-color: var(--bg-color); }
+
+/* ==================== 開屏動畫 ==================== */
+#splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0f0f11; /* 深邃的科技黑背景 */
+  z-index: 9999; /* 確保它蓋住所有東西 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* 淡出的轉場效果 */
+  transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+}
+
+/* 觸發淡出時會加上這個 class */
+#splash-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* 科技感載入圈圈 */
+.splash-loader {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(255, 0, 0, 0.2); /* 暗紅色底圈 */
+  border-top: 3px solid #ff0000;          /* 亮紅色引導線 */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.5); /* 霓虹發光效果 */
+}
+
+/* 文字呼吸燈效果 */
+.splash-text {
+  margin-top: 20px;
+  color: #ff0000;
+  font-family: 'Courier New', Courier, monospace; /* 終端機字體 */
+  font-weight: bold;
+  letter-spacing: 3px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* 旋轉動畫關鍵影格 */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 呼吸燈動畫關鍵影格 */
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; text-shadow: 0 0 10px rgba(255, 0, 0, 0.8); }
+}
