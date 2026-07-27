@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (mobileDropdown) mobileDropdown.classList.remove('active');
     });
 
-    // 3. 多國語言字典 (包含詳情頁面的所有翻譯)
+    // 3. 多國語言字典 (包含所有頁面與詳情頁)
     const translations = {
         "zh-TW": {
             "initializing": "系統初始化中...", "loading": "載入中...",
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "page_title_resume": "專業履歷 | BroQiangStudio", "resume_header": "專業履歷", "resume_sec_work": "💼 工作經驗", "resume_work_title": "無數據", "resume_work_desc": "目前專注於學業與個人專案開發，期待未來的實戰機會。", "resume_sec_edu": "🎓 教育背景", "resume_edu1_school": "ADTEC JTM Kampus Nibong Tebal", "resume_edu1_date": "07/2025 - 07/2027", "resume_edu1_major": "專業：互動式多媒體證書", "resume_edu2_school": "SMK Bukit Gambir", "resume_edu2_date": "2020 - 2025", "resume_edu2_major": "Form 5 畢業，持有 SPM 文憑", "resume_sec_skill": "🛠️ 專業技能", "resume_skill1_title": "網頁前端開發", "resume_skill1_desc": "熟悉 HTML, CSS, JavaScript，並能實作 RWD 響應式網頁與互動特效。", "resume_skill2_title": "多媒體視覺設計", "resume_skill2_desc": "熱愛剪輯與視覺排版，致力於結合設計美學與程式邏輯。", "resume_sec_contact": "📩 聯繫我", "resume_contact_email": "anle82760@gmail.com", "resume_contact_desc": "歡迎隨時透過電子郵件與我聯繫，我會盡快回覆您！期待與您的交流與合作。",
             "page_title_portfolio": "作品集 | BroQiangStudio", "portfolio_header": "作品集", "pf_btn": "查看專案詳情 >", "pf_1_title": "網頁開發專案 A", "pf_1_desc": "結合 HTML/CSS 的響應式個人網站設計。", "pf_2_title": "多媒體設計專案 B", "pf_2_desc": "視覺動畫與特效短片製作。", "pf_3_title": "互動 UI 專案 C", "pf_3_desc": "專注於使用者體驗的介面設計。", "pf_4_title": "遊戲模組開發", "pf_4_desc": "Minecraft 客製化素材與整合包。", "pf_5_title": "創意剪輯作品", "pf_5_desc": "結合節奏與特效的影音創作。", "pf_6_title": "敬請期待", "pf_6_desc": "更多精彩網頁與設計專案即將上線...",
             "page_title_about": "關於我 | BroQiangStudio", "about_header": "關於 余樂銨", "about_content_1": "你好！我是余樂銨，一位充滿熱情的網頁開發者與多媒體創作者。", "about_content_2": "我喜歡將天馬行空的設計想法，透過程式碼轉化為真實互動的網頁。對我來說，科技與藝術不是兩條平行線，而是能創造無限可能的交叉點。感謝你的來訪！",
-            // === 以下為詳情頁面專屬翻譯 ===
+            // 詳情頁面專屬翻譯
             "detail_back": "← 返回遊戲列表", "btn_website": "🌐 官方網站", "btn_mobile": "📱 手機版下載", "btn_pc_emu": "💻 PC 模擬器版", "btn_pc_sync": "💻 PC 互通版", "btn_pc_win": "💻 PC 版 (Win10/11)", "btn_pc_launcher": "💻 PC 啟動器下載",
             "g1_p1": "《王牌競速》是一款由網易遊戲開發的寫實風格創新賽車手遊。遊戲內不僅擁有海量授權真車，更有造型誇張的試製車。每台車都擁有專屬的「王牌技能」，讓你在賽道上體驗閃現穿牆、變身劍客等顛覆傳統的競速快感。", "g1_p2": "📍 <strong>特色亮點：</strong> 寫實畫風、專屬大招、豐富的世界實景賽道。",
             "g2_p1": "《第五人格》是網易首款非對稱性對抗競技手遊。荒誕的哥德畫風、懸疑燒腦的劇情，以及刺激的 1V4 追逃玩法，帶來全新的遊戲體驗。玩家可以選擇扮演監管者或求生者，在莊園中展開激烈的心理與策略博弈。", "g2_p2": "📍 <strong>特色亮點：</strong> 1V4 非對稱競技、豐富的角色技能搭配、獨特的懸疑畫風。",
@@ -75,12 +75,15 @@ document.addEventListener("DOMContentLoaded", () => {
             "g4_p1": "Minecraft Java ialah versi klasik asal untuk Windows, Mac, dan Linux. Ia mempunyai komuniti sumber terbuka terbesar untuk memasang Mods dan Shaders secara bebas.", "g4_p2": "📍 <strong>Ciri Utama:</strong> Sokongan Mod tanpa had, Shaders terbaik, mekanik tegar.<br><br><small><i>*Nota: Edisi Java adalah eksklusif untuk PC.</i></small>"
         }
     };
-    
+
     // --- 核心更新介面與同步狀態邏輯 ---
     function updateLanguageAndSettings(lang) {
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
-            if (translations[lang] && translations[lang][key]) { el.textContent = translations[lang][key]; }
+            if (translations[lang] && translations[lang][key]) { 
+                // 🔥 修復關鍵：把 textContent 換成了 innerHTML，讓粗體和換行代碼生效！
+                el.innerHTML = translations[lang][key]; 
+            }
         });
         
         document.querySelectorAll('.lang-selector').forEach(selector => { 
@@ -110,34 +113,19 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.querySelector('.theme-icon').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
     });
 
-    // 首次載入偵測設備語言
     let savedLang = localStorage.getItem('preferredLang');
-    
     if (!savedLang) {
-        // 取得用戶設備語言並轉成小寫方便比對
         const navLang = navigator.language.toLowerCase(); 
-        
-        // 根據你網站支援的 4 種語言進行精準配對
-        if (navLang.includes('zh-tw') || navLang.includes('zh-hk')) {
-            savedLang = 'zh-TW'; // 繁體中文 (台灣、香港)
-        } else if (navLang.includes('zh')) {
-            savedLang = 'zh-CN'; // 簡體中文 (中國、新加坡等其他中文)
-        } else if (navLang.includes('ms') || navLang.includes('id')) {
-            savedLang = 'ms';    // 馬來文 (或印尼文)
-        } else if (navLang.includes('en')) {
-            savedLang = 'en';    // 英文
-        } else {
-            savedLang = 'en'; // 如果是日文、韓文等其他不在支援列表內的語言，預設顯示英文 (你也可以改成 'zh-TW')
-        }
-        
-        // 存入 localStorage，這樣用戶下次來就會記住，且他們之後可以手動更改
+        if (navLang.includes('zh-tw') || navLang.includes('zh-hk')) { savedLang = 'zh-TW'; }
+        else if (navLang.includes('zh')) { savedLang = 'zh-CN'; }
+        else if (navLang.includes('ms') || navLang.includes('id')) { savedLang = 'ms'; }
+        else if (navLang.includes('en')) { savedLang = 'en'; }
+        else { savedLang = 'en'; }
         localStorage.setItem('preferredLang', savedLang);
     }
-
     updateLanguageAndSettings(savedLang);
 
     const initMuted = localStorage.getItem('globalMuted') !== 'false'; 
-
     const savedColor = localStorage.getItem('preferredColor') || '#e50914';
     document.documentElement.style.setProperty('--accent-color', savedColor);
     document.querySelectorAll('.color-dot').forEach(dot => {
@@ -147,13 +135,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const initPerf = localStorage.getItem('performanceMode') || 'high';
     document.documentElement.setAttribute('data-performance', initPerf);
     
-    // 背景影片播放控制
+    // 背景影片控制
     const bgVideo = document.getElementById('bgVideo');
     if (bgVideo) {
         bgVideo.muted = initMuted;
-        if (initPerf === 'low') {
-            bgVideo.pause(); // 省電模式停止播放
-        } else if (!initMuted) {
+        if (initPerf === 'low') { bgVideo.pause(); } 
+        else if (!initMuted) {
             bgVideo.play().catch(e => {
                 console.log("自動播放被阻擋，已切換回靜音");
                 bgVideo.muted = true;
@@ -210,7 +197,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // 效能模式切換
     document.querySelectorAll('.perf-toggle-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -223,7 +209,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (isLowPerf) bgVideo.pause();
                 else bgVideo.play().catch(err=>console.log(err));
             }
-            
             const currentLang = localStorage.getItem('preferredLang') || 'zh-TW';
             updateLanguageAndSettings(currentLang);
         });
@@ -256,16 +241,11 @@ document.addEventListener("DOMContentLoaded", () => {
     function updateVisitorStats() {
         let total = parseInt(localStorage.getItem('totalVisitors') || '12048');
         let daily = parseInt(localStorage.getItem('dailyVisitors') || '132');
-        
-        total += Math.floor(Math.random() * 3) + 1;
-        daily += Math.floor(Math.random() * 2) + 1;
-        
-        localStorage.setItem('totalVisitors', total);
-        localStorage.setItem('dailyVisitors', daily);
+        total += Math.floor(Math.random() * 3) + 1; daily += Math.floor(Math.random() * 2) + 1;
+        localStorage.setItem('totalVisitors', total); localStorage.setItem('dailyVisitors', daily);
         
         const dailyEl = document.getElementById('daily-visitors');
         const totalEl = document.getElementById('total-visitors');
-        
         if(dailyEl && totalEl) {
             animateValue(dailyEl, daily - 10, daily, 1000);
             animateValue(totalEl, total - 15, total, 1500);
@@ -278,9 +258,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!startTimestamp) startTimestamp = timestamp;
             const progress = Math.min((timestamp - startTimestamp) / duration, 1);
             obj.innerHTML = Math.floor(progress * (end - start) + start).toLocaleString();
-            if (progress < 1) {
-                window.requestAnimationFrame(step);
-            }
+            if (progress < 1) window.requestAnimationFrame(step);
         };
         window.requestAnimationFrame(step);
     }
@@ -291,11 +269,8 @@ document.addEventListener("DOMContentLoaded", () => {
 window.addEventListener('load', () => {
     const splashScreen = document.getElementById('splash-screen');
     if (splashScreen) {
-        // 設定一點點延遲，確保過渡不會太唐突
         setTimeout(() => {
-            // 1. 隱藏開屏畫面
             splashScreen.classList.add('hidden');
-            // 2. 移除時間暫停（解鎖底層的所有進場動畫）
             document.documentElement.classList.remove('splash-active');
         }, 500); 
     }
