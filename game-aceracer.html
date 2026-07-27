@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>王牌競速 | 遊戲詳情</title>
+    <link rel="icon" href="Pictures/ProfilePicture.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .game-detail-container { display: flex; flex-direction: column; gap: 30px; max-width: 900px; margin: 0 auto; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 30px; backdrop-filter: blur(10px); }
+        @media (min-width: 768px) { .game-detail-container { flex-direction: row; } }
+        .game-cover { width: 100%; max-width: 400px; border-radius: 15px; border: 2px solid var(--accent-color); object-fit: cover; margin: 0 auto; }
+        .game-info { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+        .game-info h3 { font-size: 2rem; color: var(--accent-color); margin-bottom: 10px; }
+        .game-info p { color: var(--text-color); font-size: 1.05rem; line-height: 1.8; text-align: justify; }
+        .download-links { display: flex; flex-wrap: wrap; gap: 15px; margin-top: auto; }
+        .download-links .intro-btn { flex: 1; text-align: center; min-width: 140px; padding: 12px 10px; font-size: 0.95rem; }
+    </style>
+</head>
+<body>
+    <header class="top-bar">
+        <button class="menu-btn" id="menuBtn">☰</button>
+        <nav class="desktop-nav">
+            <a href="games.html">← 返回遊戲列表</a>
+        </nav>
+        <div class="top-right-controls">
+            <div class="settings-wrapper desktop-only">
+                <button class="settings-icon-btn" id="desktopSettingsBtn">⚙️</button>
+                <div class="settings-dropdown" id="desktopDropdown">
+                    <button class="theme-toggle-btn"><span class="theme-icon">☀️</span> <span class="theme-text">日間模式</span></button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main class="page-content">
+        <h2 class="section-title">遊戲詳情</h2>
+        <div class="game-detail-container">
+            <img src="Pictures/ace-racer.jpg" alt="王牌競速" class="game-cover">
+            <div class="game-info">
+                <h3>王牌競速 (國服版)</h3>
+                <p>《王牌競速》是一款由網易遊戲開發的寫實風格創新賽車手遊。遊戲內不僅擁有海量授權真車，更有造型誇張的試製車。每台車都擁有專屬的「王牌技能」，讓你在賽道上體驗閃現穿牆、變身劍客等顛覆傳統的競速快感。</p>
+                <p>📍 <strong>特色亮點：</strong> 寫實畫風、專屬大招、豐富的世界實景賽道。</p>
+                <div class="download-links">
+                    <a href="https://race.163.com/" target="_blank" class="intro-btn">🌐 官方網站</a>
+                    <a href="https://race.163.com/" target="_blank" class="intro-btn">💻 PC 模擬器版</a>
+                    <a href="https://race.163.com/" target="_blank" class="intro-btn">📱 手機版下載</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
