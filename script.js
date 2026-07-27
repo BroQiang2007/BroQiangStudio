@@ -30,9 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
         if (mobileDropdown) mobileDropdown.classList.remove('active');
     });
 
-    // 3. 多國語言字典 (🔥 新增社群平台的翻譯)
+    // 3. 多國語言字典 (🔥 已新增開屏動畫的翻譯)
     const translations = {
         "zh-TW": {
+            "initializing": "系統初始化中...",
             "theme_light": "日間模式", "theme_dark": "夜間模式",
             "sound_on": "聲音：開啟", "sound_off": "聲音：靜音",
             "perf_high": "效能：極致", "perf_low": "效能：省電",
@@ -51,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "page_title_about": "關於我 | BroQiangStudio", "about_header": "關於 余樂銨", "about_content_1": "你好！我是余樂銨，一位充滿熱情的網頁開發者與多媒體創作者。", "about_content_2": "我喜歡將天馬行空的設計想法，透過程式碼轉化為真實互動的網頁。對我來說，科技與藝術不是兩條平行線，而是能創造無限可能的交叉點。在這個網站裡，你可以看到我的專業履歷、作品集，以及我平時熱愛的遊戲日常。感謝你的來訪！"
         },
         "zh-CN": {
+            "initializing": "系统初始化中...",
             "theme_light": "日间模式", "theme_dark": "夜间模式",
             "sound_on": "声音：开启", "sound_off": "声音：静音",
             "perf_high": "性能：极致", "perf_low": "性能：省电",
@@ -69,6 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "page_title_about": "关于我 | BroQiangStudio", "about_header": "关于 余乐铵", "about_content_1": "你好！我是余乐铵，一位充满热情的网页开发者与多媒体创作者。", "about_content_2": "我喜欢将天马行空的设计想法，透过程式码转化为真实互动的网页。对我来说，科技与艺术不是两条平行线，而是能创造无限可能的交叉点。感谢你的来访！"
         },
         "en": {
+            "initializing": "INITIALIZING...",
             "theme_light": "Light Mode", "theme_dark": "Dark Mode",
             "sound_on": "Sound: On", "sound_off": "Sound: Muted",
             "perf_high": "Performance: High", "perf_low": "Performance: Low",
@@ -87,6 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "page_title_about": "About Me | BroQiangStudio", "about_header": "About Michael Er", "about_content_1": "Hello! I'm Michael Er, a passionate web developer and multimedia creator.", "about_content_2": "I love turning imaginative design ideas into real, interactive web pages through code. To me, tech and art are an intersection of infinite possibilities. Thanks for visiting!"
         },
         "ms": {
+            "initializing": "MEMULAKAN...",
             "theme_light": "Mod Cerah", "theme_dark": "Mod Gelap",
             "sound_on": "Bunyi: Buka", "sound_off": "Bunyi: Senyap",
             "perf_high": "Prestasi: Tinggi", "perf_low": "Prestasi: Jimat",
