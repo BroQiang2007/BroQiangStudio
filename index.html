@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page_title_home">首頁 | BroQiangStudio</title>
+    <!-- 🔥 修正了頭像路徑 -->
+    <link rel="icon" href="Pictures/ProfilePicture.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="top-bar">
+        <button class="menu-btn" id="menuBtn">☰</button>
+        <nav class="desktop-nav">
+            <a href="index.html" class="active" data-i18n="nav_about">關於我</a>
+            <a href="resume.html" data-i18n="nav_resume">專業履歷</a>
+            <a href="portfolio.html" data-i18n="nav_portfolio">作品集</a>
+            <a href="games.html" data-i18n="nav_games">遊戲日常</a>
+        </nav>
+        <div class="top-right-controls">
+            <a href="about-me.html" class="intro-btn" data-i18n="intro_btn">了解更多</a>
+            <div class="settings-wrapper desktop-only">
+                <button class="settings-icon-btn" id="desktopSettingsBtn">⚙️</button>
+                <div class="settings-dropdown" id="desktopDropdown">
+                    <select class="lang-selector">
+                        <option value="zh-TW">繁體中文</option>
+                        <option value="zh-CN">简体中文</option>
+                        <option value="en">English</option>
+                        <option value="ms">Bahasa Melayu</option>
+                    </select>
+                    <button class="theme-toggle-btn"><span class="theme-icon">☀️</span> <span class="theme-text">日間模式</span></button>
+                    <button class="sound-toggle-btn"><span class="sound-icon">🔇</span> <span class="sound-text">聲音：靜音</span></button>
+                    <button class="perf-toggle-btn"><span class="perf-icon">⚡</span> <span class="perf-text" data-i18n="perf_high">效能：極致</span></button>
+                    <div class="color-picker-wrapper">
+                        <span class="color-picker-title" data-i18n="color_picker_title">主題色</span>
+                        <div class="color-dots">
+                            <span class="color-dot" data-color="#e50914" style="background: #e50914;" title="Bugatti Red"></span>
+                            <span class="color-dot" data-color="#ff9800" style="background: #ff9800;" title="Lambo Orange"></span>
+                            <span class="color-dot" data-color="#00bcd4" style="background: #00bcd4;" title="Tech Blue"></span>
+                            <span class="color-dot" data-color="#4caf50" style="background: #4caf50;" title="Eco Green"></span>
+                        </div>
+                    </div>
+                    <button class="reset-btn" data-i18n="reset_btn">🔄 恢復預設</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2 class="sidebar-title" data-i18n="sidebar_menu">選單</h2>
+            <button class="close-btn" id="closeBtn">×</button>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="active" data-i18n="nav_about">關於我</a>
+            <a href="resume.html" data-i18n="nav_resume">專業履歷</a>
+            <a href="portfolio.html" data-i18n="nav_portfolio">作品集</a>
+            <a href="games.html" data-i18n="nav_games">遊戲日常</a>
+        </nav>
+        <div class="settings-wrapper mobile-only mobile-settings">
+            <div class="settings-dropdown" id="mobileDropdown">
+                <select class="lang-selector">
+                    <option value="zh-TW">繁體中文</option>
+                    <option value="zh-CN">简体中文</option>
+                    <option value="en">English</option>
+                    <option value="ms">Bahasa Melayu</option>
+                </select>
+                <button class="theme-toggle-btn"><span class="theme-icon">☀️</span> <span class="theme-text">日間模式</span></button>
+                <button class="sound-toggle-btn"><span class="sound-icon">🔇</span> <span class="sound-text">聲音：靜音</span></button>
+                <button class="perf-toggle-btn"><span class="perf-icon">⚡</span> <span class="perf-text" data-i18n="perf_high">效能：極致</span></button>
+                <div class="color-picker-wrapper">
+                    <span class="color-picker-title" data-i18n="color_picker_title">主題色</span>
+                    <div class="color-dots">
+                        <span class="color-dot" data-color="#e50914" style="background: #e50914;" title="Bugatti Red"></span>
+                        <span class="color-dot" data-color="#ff9800" style="background: #ff9800;" title="Lambo Orange"></span>
+                        <span class="color-dot" data-color="#00bcd4" style="background: #00bcd4;" title="Tech Blue"></span>
+                        <span class="color-dot" data-color="#4caf50" style="background: #4caf50;" title="Eco Green"></span>
+                    </div>
+                </div>
+                <button class="reset-btn" data-i18n="reset_btn">🔄 恢復預設</button>
+            </div>
+            <button class="settings-icon-btn" id="mobileSettingsBtn">⚙️</button>
+        </div>
+    </aside>
+
+    <main class="hero-section">
+        <div class="hero-bg">
+            <!-- 🔥 修正了背景影片路徑 -->
+            <video id="bgVideo" src="Videos/heart-python.mp4" autoplay loop muted playsinline></video>
+            <div class="overlay"></div>
+        </div>
+        <div class="hero-content">
+            <!-- 🔥 修正了頭像路徑 -->
+            <img src="Pictures/ProfilePicture.jpg" alt="Avatar" class="profile-pic">
+            <h1 data-i18n="hero_title">嗨，我是 余樂銨</h1>
+            <p class="subtitle" data-i18n="hero_subtitle">熱愛用程式解決問題的開發者 / 喜歡用設計說故事的創作者。</p>
+            
+            <div class="visitor-stats">
+                <span class="stat-item">
+                    <i class="icon">👁️</i> <span data-i18n="stat_daily">今日訪客：</span><strong id="daily-visitors">0</strong>
+                </span>
+                <span class="divider">|</span>
+                <span class="stat-item">
+                    <i class="icon">🚀</i> <span data-i18n="stat_total">歷史總量：</span><strong id="total-visitors">0</strong>
+                </span>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
