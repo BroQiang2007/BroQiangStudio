@@ -40,11 +40,11 @@ document.addEventListener("DOMContentLoaded", () => {
             "social_ig": "Instagram", "social_yt": "YouTube", "social_fb": "Facebook", "social_tk": "TikTok", "social_dy": "抖音",
             
             "page_title_home": "首頁 | BroQiangStudio", 
-            "hero_title": "嗨，我是 強某", 
+            "hero_title": "嗨，我是強某！", 
             "hero_subtitle": "熱愛用程式解決問題的開發者 / 喜歡用設計說故事的創作者。", 
             "intro_btn": "了解更多", "stat_daily": "今日訪客：", "stat_total": "歷史總量：",
             "page_title_about": "關於我 | BroQiangStudio", 
-            "about_header": "關於 強某", 
+            "about_header": "關於強某", 
             "about_content_1": "你好！我是強某，一位充滿熱情的網頁開發者與多媒體創作者。", 
             "about_content_2": "我喜歡將天馬行空的設計想法，透過程式碼轉化為真實互動的網頁。對我來說，科技與藝術不是兩條平行線，而是能創造無限可能的交叉點。感謝你的來訪！",
             
@@ -69,11 +69,11 @@ document.addEventListener("DOMContentLoaded", () => {
             "social_ig": "Instagram", "social_yt": "YouTube", "social_fb": "Facebook", "social_tk": "TikTok", "social_dy": "抖音", 
             
             "page_title_home": "首页 | BroQiangStudio", 
-            "hero_title": "嗨，我是 强某", 
+            "hero_title": "嗨，我是强某！", 
             "hero_subtitle": "热爱用程序解决问题的开发者 / 喜欢用设计说故事的创作者。", 
             "intro_btn": "了解更多", "stat_daily": "今日访客：", "stat_total": "历史总量：", 
             "page_title_about": "关于我 | BroQiangStudio", 
-            "about_header": "关于 强某", 
+            "about_header": "关于强某", 
             "about_content_1": "你好！我是强某，一位充满热情的网页开发者与多媒体创作者。", 
             "about_content_2": "我喜欢将天马行空的设计想法，透过代码转化为真实互动的网页。对我来说，科技与艺术不是两条平行线，而是能创造无限可能的交叉点。感谢你的来访！",
             
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "social_ig": "Instagram", "social_yt": "YouTube", "social_fb": "Facebook", "social_tk": "TikTok", "social_dy": "TikTok (CN)", 
             
             "page_title_home": "Home | BroQiangStudio", 
-            "hero_title": "Hi, I'm BRO QIANG", 
+            "hero_title": "Hi, I'm BRO QIANG!", 
             "hero_subtitle": "A developer passionate about solving problems with code / A creator who loves telling stories through design.", 
             "intro_btn": "Learn More", "stat_daily": "Today's Visitors: ", "stat_total": "Total Visitors: ", 
             "page_title_about": "About Me | BroQiangStudio", 
@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "social_ig": "Instagram", "social_yt": "YouTube", "social_fb": "Facebook", "social_tk": "TikTok", "social_dy": "TikTok (CN)", 
             
             "page_title_home": "Utama | BroQiangStudio", 
-            "hero_title": "Hai, Saya BRO QIANG", 
+            "hero_title": "Hai, Saya BRO QIANG!", 
             "hero_subtitle": "Pembangun yang bersemangat menyelesaikan masalah dengan kod / Pencipta yang suka bercerita melalui reka bentuk.", 
             "intro_btn": "Ketahui Lebih Lanjut", "stat_daily": "Pelawat Hari Ini: ", "stat_total": "Jumlah Pelawat: ", 
             "page_title_about": "Tentang Saya | BroQiangStudio", 
