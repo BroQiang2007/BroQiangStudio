@@ -29,8 +29,8 @@
           const isInitialized = sessionStorage.getItem('siteInitialized');
           if (!isInitialized) {
             splashText.setAttribute('data-i18n', 'initializing');
-            if (lang === 'zh-TW') splashText.textContent = '系統初始化中...';
-            else if (lang === 'zh-CN') splashText.textContent = '系统初始化中...';
+            if (lang === 'zh-TW') splashText.textContent = '網站初始化中...';
+            else if (lang === 'zh-CN') splashText.textContent = '网站初始化中...';
             else if (lang === 'ms') splashText.textContent = 'MEMULAKAN...';
             else splashText.textContent = 'INITIALIZING...';
             sessionStorage.setItem('siteInitialized', 'true');
