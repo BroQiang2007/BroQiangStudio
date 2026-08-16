@@ -579,3 +579,43 @@ document.addEventListener('click', function(e) {
     }
     animate();
 })();
+
+// ==========================================================
+// ===== 3. 炫酷賽博風：自定義專屬發光滑鼠游標 =================
+// ==========================================================
+(function() {
+    // 創建自定義游標元素並加入網頁
+    const cursor = document.createElement('div');
+    cursor.className = 'custom-cursor';
+    document.body.appendChild(cursor);
+
+    // 讓發光點緊緊跟隨滑鼠的實際位置
+    window.addEventListener('mousemove', (e) => {
+        cursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
+    });
+
+    // 智能偵測：當滑鼠碰到「可互動元素」時，觸發游標的「鎖定環」變形動畫
+    document.addEventListener('mouseover', (e) => {
+        // 抓取網頁中常見的可點擊元素標籤與 class
+        const clickable = e.target.closest('a, button, select, input, .color-dot, .card, .close-btn, .menu-btn');
+        if (clickable) {
+            cursor.classList.add('hovering');
+        }
+    });
+
+    document.addEventListener('mouseout', (e) => {
+        const clickable = e.target.closest('a, button, select, input, .color-dot, .card, .close-btn, .menu-btn');
+        if (clickable) {
+            cursor.classList.remove('hovering');
+        }
+    });
+
+    // 動態監控：如果用戶切換到「省電模式」，自動關閉自定義游標並恢復 Windows 預設游標
+    setInterval(() => {
+        if (localStorage.getItem('performanceMode') === 'low') {
+            document.body.classList.remove('custom-cursor-active');
+        } else {
+            document.body.classList.add('custom-cursor-active');
+        }
+    }, 300);
+})();
