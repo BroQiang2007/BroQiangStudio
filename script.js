@@ -391,23 +391,59 @@ window.addEventListener('load', () => {
     }
 });
 
-// ==================== 炫酷賽博風：滑鼠跟隨粒子特效 ====================
+// ==================== 1. 炫酷賽博風：滑鼠點擊爆炸特效 (完整恢復) ====================
+document.addEventListener('click', function(e) {
+    // 省電模式下不觸發特效
+    if (localStorage.getItem('performanceMode') === 'low') return;
+
+    // 1. 生成核心衝擊波與雷達
+    const ripple = document.createElement('div');
+    ripple.className = 'cyber-ripple';
+    ripple.style.left = e.clientX + 'px';
+    ripple.style.top = e.clientY + 'px';
+    document.body.appendChild(ripple);
+    
+    // 2. 生成 6 顆向外噴射的發光粒子
+    const sparkCount = 6;
+    for (let i = 0; i < sparkCount; i++) {
+        const spark = document.createElement('div');
+        spark.className = 'cyber-spark';
+        spark.style.left = e.clientX + 'px';
+        spark.style.top = e.clientY + 'px';
+        
+        // 計算 360 度環繞的隨機噴射角度與距離
+        const angle = (Math.PI * 2 / sparkCount) * i + (Math.random() * 0.5 - 0.25); 
+        const velocity = 40 + Math.random() * 30; // 粒子飛出的距離 (40~70px)
+        const tx = Math.cos(angle) * velocity;
+        const ty = Math.sin(angle) * velocity;
+        
+        spark.style.setProperty('--tx', `${tx}px`);
+        spark.style.setProperty('--ty', `${ty}px`);
+        
+        document.body.appendChild(spark);
+        
+        // 0.6秒後刪除粒子
+        setTimeout(() => spark.remove(), 600);
+    }
+
+    // 0.6秒後刪除核心波紋
+    setTimeout(() => ripple.remove(), 600);
+});
+
+// ==================== 2. 炫酷賽博風：滑鼠環繞轉圈粒子特效 (全新升級) ====================
 (function() {
-    // 創建 Canvas 畫布
     const canvas = document.createElement('canvas');
     canvas.style.position = 'fixed';
     canvas.style.top = '0';
     canvas.style.left = '0';
     canvas.style.width = '100vw';
     canvas.style.height = '100vh';
-    canvas.style.pointerEvents = 'none'; // 不干擾點擊
-    canvas.style.zIndex = '99999998'; // 放在點擊特效下面一層
+    canvas.style.pointerEvents = 'none'; 
+    canvas.style.zIndex = '99999998'; // 放在點擊特效下面
     document.body.appendChild(canvas);
 
     const ctx = canvas.getContext('2d');
-    let particlesArray = [];
-
-    // 自動調整畫布大小
+    
     function resizeCanvas() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -415,72 +451,10 @@ window.addEventListener('load', () => {
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    // 粒子物件
-    class Particle {
-        constructor(x, y, color) {
-            this.x = x;
-            this.y = y;
-            this.size = Math.random() * 4 + 1; // 隨機大小 1~5
-            this.speedX = Math.random() * 2 - 1; // 隨機飄散
-            this.speedY = Math.random() * 2 - 1;
-            this.color = color;
-            this.life = 1; // 壽命 (用來控制透明度和大小)
-        }
-        update() {
-            this.x += this.speedX;
-            this.y += this.speedY;
-            this.life -= 0.03; // 衰減速度
-            if (this.size > 0.1) this.size -= 0.05; // 逐漸縮小
-        }
-        draw() {
-            ctx.globalAlpha = Math.max(this.life, 0); // 防負數
-            ctx.fillStyle = this.color;
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fill();
+    // 紀錄滑鼠當前位置 (預設在螢幕正中間)
+    let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    // 讓環繞中心點帶有「延遲跟隨」的滑順感
+    let center = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
 
-            // 加點發光效果
-            ctx.shadowBlur = 10;
-            ctx.shadowColor = this.color;
-        }
-    }
-
-    // 監聽滑鼠移動
-    window.addEventListener('mousemove', function(e) {
-        if (localStorage.getItem('performanceMode') === 'low') {
-            ctx.clearRect(0, 0, canvas.width, canvas.height); // 清空畫布
-            return; // 省電模式不生成粒子
-        }
-
-        // 取得當前主題色 (轉為 Canvas 可用的顏色)
-        const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim() || '#e50914';
-
-        // 每次移動生成 2 顆粒子
-        for (let i = 0; i < 2; i++) {
-            particlesArray.push(new Particle(e.clientX, e.clientY, accentColor));
-        }
-    });
-
-    // 渲染動畫幀
-    function animateParticles() {
-        // 清除上一幀 (留下拖影效果可用 ctx.fillStyle = 'rgba(0,0,0,0.1)' 但透明背景無法這樣做，直接 clear)
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        if (localStorage.getItem('performanceMode') !== 'low') {
-            for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].update();
-                particlesArray[i].draw();
-
-                // 移除死掉的粒子
-                if (particlesArray[i].life <= 0) {
-                    particlesArray.splice(i, 1);
-                    i--;
-                }
-            }
-        } else {
-            particlesArray = []; // 清空記憶體
-        }
-        requestAnimationFrame(animateParticles);
-    }
-    animateParticles();
-})();
+    window.addEventListener('mousemove', (e) => {
+        mouse.x = e.
