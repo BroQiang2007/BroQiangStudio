@@ -390,3 +390,25 @@ window.addEventListener('load', () => {
         }, 500); 
     }
 });
+
+// ==================== 滑鼠點擊水波紋特效 ====================
+document.addEventListener('click', function(e) {
+    // 檢查是否處於「省電模式」，如果是，則不觸發特效以節省效能
+    if (localStorage.getItem('performanceMode') === 'low') return;
+
+    // 創建一個新的 div 元素來當作水波紋
+    const ripple = document.createElement('div');
+    ripple.className = 'click-effect';
+    
+    // 將水波紋的位置設定在滑鼠點擊的座標
+    ripple.style.left = e.clientX + 'px';
+    ripple.style.top = e.clientY + 'px';
+    
+    // 把水波紋加到網頁中
+    document.body.appendChild(ripple);
+    
+    // 0.5 秒後（配合 CSS 動畫時間）自動刪除該元素，避免網頁塞滿垃圾代碼
+    setTimeout(() => {
+        ripple.remove();
+    }, 500);
+});
