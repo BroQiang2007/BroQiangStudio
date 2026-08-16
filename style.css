@@ -739,29 +739,55 @@ a { text-decoration: none !important; color: inherit; }
 [data-performance="low"] .hero-bg video { display: none !important; }
 [data-performance="low"] .hero-bg { background-color: var(--bg-color); }
 
-/* ===== 滑鼠點擊特效 (Click Ripple) ===== */
-.click-effect {
+/* ===== 炫酷賽博風：滑鼠點擊特效 ===== */
+/* 1. 主衝擊波 (光暈擴散) */
+.cyber-ripple {
     position: fixed;
-    pointer-events: none; /* 確保特效不會擋住底下的按鈕點擊 */
+    pointer-events: none;
+    top: 0; left: 0;
+    width: 0; height: 0;
     border-radius: 50%;
-    border: 2px solid var(--accent-color); /* 自動套用當前主題色 */
     transform: translate(-50%, -50%);
-    z-index: 99999999; /* 確保特效在最頂層 */
-    animation: clickRipple 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    z-index: 99999999;
+    box-shadow: 0 0 20px var(--accent-color), inset 0 0 15px var(--accent-color);
+    animation: cyberShockwave 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-@keyframes clickRipple {
-    0% {
-        width: 0px;
-        height: 0px;
-        opacity: 0.8;
-        background: var(--accent-color);
-    }
-    100% {
-        width: 50px;
-        height: 50px;
-        opacity: 0;
-        background: transparent;
-        border-width: 1px;
-    }
+/* 2. 旋轉雷達虛線圈 */
+.cyber-ripple::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 2px dashed var(--accent-color);
+    animation: cyberRadar 0.6s linear forwards;
+}
+
+/* 3. 噴射發光粒子 */
+.cyber-spark {
+    position: fixed;
+    pointer-events: none;
+    top: 0; left: 0;
+    width: 5px; height: 5px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    z-index: 99999999;
+    box-shadow: 0 0 10px var(--accent-color), 0 0 20px var(--accent-color);
+    animation: cyberSparkFly 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* --- 炫酷動畫關鍵影格 --- */
+@keyframes cyberShockwave {
+    0% { width: 0; height: 0; opacity: 1; background: var(--accent-color); }
+    30% { background: transparent; }
+    100% { width: 120px; height: 120px; opacity: 0; box-shadow: 0 0 40px var(--accent-color), inset 0 0 20px var(--accent-color); }
+}
+@keyframes cyberRadar {
+    0% { width: 10px; height: 10px; opacity: 1; transform: translate(-50%, -50%) rotate(0deg); }
+    100% { width: 90px; height: 90px; opacity: 0; transform: translate(-50%, -50%) rotate(135deg); }
+}
+@keyframes cyberSparkFly {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    100% { transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(0); opacity: 0; }
 }
