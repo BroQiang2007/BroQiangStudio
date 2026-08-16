@@ -429,32 +429,3 @@ document.addEventListener('click', function(e) {
     // 0.6秒後刪除核心波紋
     setTimeout(() => ripple.remove(), 600);
 });
-
-// ==================== 2. 炫酷賽博風：滑鼠環繞轉圈粒子特效 (全新升級) ====================
-(function() {
-    const canvas = document.createElement('canvas');
-    canvas.style.position = 'fixed';
-    canvas.style.top = '0';
-    canvas.style.left = '0';
-    canvas.style.width = '100vw';
-    canvas.style.height = '100vh';
-    canvas.style.pointerEvents = 'none'; 
-    canvas.style.zIndex = '99999998'; // 放在點擊特效下面
-    document.body.appendChild(canvas);
-
-    const ctx = canvas.getContext('2d');
-    
-    function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    // 紀錄滑鼠當前位置 (預設在螢幕正中間)
-    let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-    // 讓環繞中心點帶有「延遲跟隨」的滑順感
-    let center = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-
-    window.addEventListener('mousemove', (e) => {
-        mouse.x = e.
