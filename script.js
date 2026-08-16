@@ -429,3 +429,153 @@ document.addEventListener('click', function(e) {
     // 0.6秒後刪除核心波紋
     setTimeout(() => ripple.remove(), 600);
 });
+
+// ==========================================================
+// ===== 1. 炫酷賽博風：滑鼠點擊爆炸特效 =====================
+// ==========================================================
+document.addEventListener('click', function(e) {
+    // 省電模式下不觸發特效
+    if (localStorage.getItem('performanceMode') === 'low') return;
+
+    // 1. 生成核心衝擊波與雷達
+    const ripple = document.createElement('div');
+    ripple.className = 'cyber-ripple';
+    ripple.style.left = e.clientX + 'px';
+    ripple.style.top = e.clientY + 'px';
+    document.body.appendChild(ripple);
+    
+    // 2. 生成 6 顆向外噴射的發光粒子
+    const sparkCount = 6;
+    for (let i = 0; i < sparkCount; i++) {
+        const spark = document.createElement('div');
+        spark.className = 'cyber-spark';
+        spark.style.left = e.clientX + 'px';
+        spark.style.top = e.clientY + 'px';
+        
+        // 計算 360 度環繞的隨機噴射角度與距離
+        const angle = (Math.PI * 2 / sparkCount) * i + (Math.random() * 0.5 - 0.25); 
+        const velocity = 40 + Math.random() * 30; // 粒子飛出的距離 (40~70px)
+        const tx = Math.cos(angle) * velocity;
+        const ty = Math.sin(angle) * velocity;
+        
+        spark.style.setProperty('--tx', `${tx}px`);
+        spark.style.setProperty('--ty', `${ty}px`);
+        
+        document.body.appendChild(spark);
+        
+        // 0.6秒後刪除粒子
+        setTimeout(() => spark.remove(), 600);
+    }
+
+    // 0.6秒後刪除核心波紋
+    setTimeout(() => ripple.remove(), 600);
+});
+
+// ==========================================================
+// ===== 2. 炫酷賽博風：滑鼠「圍繞轉圈」粒子特效 =============
+// ==========================================================
+(function() {
+    // 建立透明畫布來繪製粒子
+    const canvas = document.createElement('canvas');
+    canvas.style.position = 'fixed';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
+    canvas.style.width = '100vw';
+    canvas.style.height = '100vh';
+    canvas.style.pointerEvents = 'none'; // 絕對不干擾點擊
+    canvas.style.zIndex = '99999998';    // 放在點擊特效的下一層
+    document.body.appendChild(canvas);
+
+    const ctx = canvas.getContext('2d');
+    
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    // 紀錄滑鼠當前位置
+    let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    // 讓環繞中心點帶有「延遲跟隨」的滑順感
+    let center = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+
+    window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+    });
+
+    // 環繞粒子模型
+    class OrbitingParticle {
+        constructor() {
+            this.angle = Math.random() * Math.PI * 2; // 初始角度
+            this.radius = Math.random() * 25 + 15;    // 圍繞滑鼠的半徑距離 (15px ~ 40px)
+            // 隨機旋轉速度與方向 (順時針或逆時針)
+            this.speed = (Math.random() * 0.04 + 0.02) * (Math.random() < 0.5 ? 1 : -1);
+            this.size = Math.random() * 1.5 + 1.5;    // 粒子粗細
+            this.history = [];                        // 儲存過去的軌跡來畫發光拖尾
+        }
+
+        update(color) {
+            this.angle += this.speed; // 不斷增加角度產生轉圈效果
+            this.color = color;
+
+            // 計算粒子當前在圓周上的 X, Y 座標
+            const targetX = center.x + Math.cos(this.angle) * this.radius;
+            const targetY = center.y + Math.sin(this.angle) * this.radius;
+
+            // 存入軌跡陣列
+            this.history.push({ x: targetX, y: targetY });
+            if (this.history.length > 12) {
+                this.history.shift(); // 控制拖尾長度 (保留最後 12 個座標點)
+            }
+        }
+
+        draw() {
+            if (this.history.length === 0) return;
+            
+            // 畫出帶有發光效果的拖尾線條
+            ctx.beginPath();
+            ctx.lineWidth = this.size;
+            ctx.strokeStyle = this.color;
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = this.color;
+            ctx.lineCap = 'round';
+            
+            ctx.moveTo(this.history[0].x, this.history[0].y);
+            for (let i = 1; i < this.history.length; i++) {
+                ctx.lineTo(this.history[i].x, this.history[i].y);
+            }
+            ctx.stroke();
+        }
+    }
+
+    // 建立 15 顆會轉圈的粒子 (想更密集可以把 15 改成 20 或 30)
+    let particles = [];
+    for (let i = 0; i < 15; i++) {
+        particles.push(new OrbitingParticle());
+    }
+
+    function animate() {
+        // 清空上一幀的畫布
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // 只有在非省電模式才執行渲染
+        if (localStorage.getItem('performanceMode') !== 'low') {
+            // 讓粒子的中心點滑順地朝向滑鼠移動 (Lerp 物理緩動效果)
+            center.x += (mouse.x - center.x) * 0.15;
+            center.y += (mouse.y - center.y) * 0.15;
+
+            // 即時抓取當前網站的主題色 (紅色/橘色/藍色/綠色)
+            let accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim() || '#e50914';
+            
+            particles.forEach(p => {
+                p.update(accentColor);
+                p.draw();
+            });
+        }
+        
+        requestAnimationFrame(animate); // 不斷循環動畫
+    }
+    animate();
+})();
