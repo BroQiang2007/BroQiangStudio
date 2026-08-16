@@ -391,24 +391,42 @@ window.addEventListener('load', () => {
     }
 });
 
-// ==================== 滑鼠點擊水波紋特效 ====================
+// ==================== 炫酷賽博風：滑鼠點擊特效 ====================
 document.addEventListener('click', function(e) {
-    // 檢查是否處於「省電模式」，如果是，則不觸發特效以節省效能
+    // 省電模式下不觸發特效
     if (localStorage.getItem('performanceMode') === 'low') return;
 
-    // 創建一個新的 div 元素來當作水波紋
+    // 1. 生成核心衝擊波與雷達
     const ripple = document.createElement('div');
-    ripple.className = 'click-effect';
-    
-    // 將水波紋的位置設定在滑鼠點擊的座標
+    ripple.className = 'cyber-ripple';
     ripple.style.left = e.clientX + 'px';
     ripple.style.top = e.clientY + 'px';
-    
-    // 把水波紋加到網頁中
     document.body.appendChild(ripple);
     
-    // 0.5 秒後（配合 CSS 動畫時間）自動刪除該元素，避免網頁塞滿垃圾代碼
-    setTimeout(() => {
-        ripple.remove();
-    }, 500);
+    // 2. 生成 6 顆向外噴射的發光粒子
+    const sparkCount = 6;
+    for (let i = 0; i < sparkCount; i++) {
+        const spark = document.createElement('div');
+        spark.className = 'cyber-spark';
+        spark.style.left = e.clientX + 'px';
+        spark.style.top = e.clientY + 'px';
+        
+        // 計算 360 度環繞的隨機噴射角度與距離
+        const angle = (Math.PI * 2 / sparkCount) * i + (Math.random() * 0.5 - 0.25); 
+        const velocity = 40 + Math.random() * 30; // 粒子飛出的距離 (40~70px)
+        const tx = Math.cos(angle) * velocity;
+        const ty = Math.sin(angle) * velocity;
+        
+        // 將計算好的 X 軸與 Y 軸偏移量傳給 CSS 變數
+        spark.style.setProperty('--tx', `${tx}px`);
+        spark.style.setProperty('--ty', `${ty}px`);
+        
+        document.body.appendChild(spark);
+        
+        // 0.6秒後刪除粒子
+        setTimeout(() => spark.remove(), 600);
+    }
+
+    // 0.6秒後刪除核心波紋
+    setTimeout(() => ripple.remove(), 600);
 });
