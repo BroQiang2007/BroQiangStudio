@@ -794,3 +794,44 @@ a { text-decoration: none !important; color: inherit; }
     0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
     100% { transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(0); opacity: 0; }
 }
+
+/* =================================================== */
+/* ===== 炫酷賽博風：自定義專屬發光滑鼠游標 (新增) ===== */
+/* =================================================== */
+
+/* 1. 啟用自定義滑鼠時，強制隱藏整個網頁的原生滑鼠 */
+body.custom-cursor-active, 
+body.custom-cursor-active * {
+    cursor: none !important;
+}
+
+/* 2. 平常狀態：發光霓虹核心點 */
+.custom-cursor {
+    position: fixed;
+    top: 0; left: 0;
+    width: 10px; height: 10px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    pointer-events: none; /* 絕對不阻擋任何點擊 */
+    z-index: 999999999;   /* 放在整個宇宙的最上層 */
+    transform: translate3d(0, 0, 0) translate(-50%, -50%);
+    box-shadow: 0 0 12px var(--accent-color);
+    /* 讓游標變形時有順暢的動畫過渡 */
+    transition: width 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                height 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                background-color 0.2s, border 0.2s;
+    display: none;
+}
+
+body.custom-cursor-active .custom-cursor {
+    display: block;
+}
+
+/* 3. 懸停狀態：當滑過按鈕/連結時，變成「空心鎖定環」 */
+.custom-cursor.hovering {
+    width: 35px;
+    height: 35px;
+    background-color: transparent;
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 0 15px var(--accent-color), inset 0 0 10px var(--accent-color);
+}
